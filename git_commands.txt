@@ -3,4 +3,7 @@ git log --oneline -5
 git add file1
 git commit -m "first commit"
 git checkout branch1
+git push origin branchname
+git pull origin branchname
+git branch New_branchname
 
