@@ -6,4 +6,30 @@ git checkout branch1
 git push origin branchname
 git pull origin branchname
 git branch New_branchname
+git merge sourceBranch Destination Branch
+git merge --abort --to close the merge in the middle
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Git mege happend in two ways 
+1.Fast farward
+2.Threeway merge
+in fast forward merge no other commit is create but in three way merge Git create a merge commit 
+
+
+
+Git Conflict:
+Delete unwanted content and again we will add to staging and commit local repo with MC commit message
