@@ -8,6 +8,7 @@ git pull origin branchname
 git branch New_branchname
 git merge sourceBranch Destination Branch
 git merge --abort --to close the merge in the middle
+git fetch 
 
 
 
