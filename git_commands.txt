@@ -9,7 +9,7 @@ git branch New_branchname
 git merge sourceBranch Destination Branch
 git merge --abort --to close the merge in the middle
 git fetch --
-
+git revert target id
 
 
 
@@ -34,3 +34,23 @@ in fast forward merge no other commit is create but in three way merge Git creat
 
 Git Conflict:
 Delete unwanted content and again we will add to staging and commit local repo with MC commit message
+
+
+Git Revert Command:
+The git revert command is used to create a new commit that undoes the changes introduced by a previous commit. This is different from git reset, which alters the commit history. git revert is a safe way to undo changes because it doesn't change the existing commit history, making it useful in a shared repository.  
+
+
+
+
+
+Understanding Git Rebase Conflicts:
+
+A conflict during a rebase occurs under the following conditions:
+Overlapping Changes: When two commits modify the same lines in a file differently.
+Add/Delete Conflicts: When one commit deletes a file and another commit modifies the same file.
+Substantial Structural Changes: When the file's structure has changed significantly in both the branch being rebased and the target branch.
+
+Overlapping changes in Git occur when two branches modify the same lines of code differently. When you use the git rebase command, these overlapping changes can cause conflicts that need to be resolved manually.
+
+
+
