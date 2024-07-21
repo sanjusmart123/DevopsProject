@@ -1,0 +1,73 @@
+To create pod
+kubectl run nginx --image=nginx
+Get status of pod
+kubectl get pods
+all info 
+kubectl get all
+Syntax of yaml file
+kubectl explain pods
+To create individual pod by using yaml file
+vi test.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    ports:
+    - containerPort: 80
+then
+kubectl create -f test.yml 
+to delete pod
+kubectl delete pod my-pod
+all info,syntax of pods
+kubectl explain pods --recursive
+
+
+
+
+
+Create Deployment pod:
+vi deploy.yml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        ports:
+        - containerPort: 80
+kubectl create -f deploy.yml
+in Deployemt we can change replicas,we can give 5
+then..apply changes
+kubectl apply -f deploy.yml
+we can change image
+kubectl set image deployment/my-deployment(podName) my-container(containerName)=nginx:latest
+here changed image version ,we can also rollback to previous version by
+kubectl rollout undo deployment/my-deployment(podName)
+we can chnages here
+kubectl get replicaset
+when we give wrong image name,we can see info why our image fail
+kubectl describe deployment.apps/my-deployment
+
+
+in deployment,we delete one pod i will create another pod
+we can delete pod permanently 
+kubectl delete deployment/pod_name
+
+

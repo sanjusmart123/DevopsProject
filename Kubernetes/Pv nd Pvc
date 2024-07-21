@@ -1,0 +1,50 @@
+Initialising Kubernetes... done
+
+controlplane $ vi pv.yml
+controlplane $ kubectl create -f pv.yml
+persistentvolume/example-pv created
+controlplane $ kubectl get pv
+NAME         CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+example-pv   5Gi        RWO            Retain           Available                          <unset>                          6s
+controlplane $ vi pvc.yml
+controlplane $ kubectl create -f pvc.yml
+persistentvolumeclaim/example-pvc created
+controlplane $ kubectl get pvc
+NAME          STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+example-pvc   Pending                                      local-path     <unset>                 10s
+controlplane $ kubectl get pv
+NAME         CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+example-pv   5Gi        RWO            Retain           Available                          <unset>                          2m33s
+controlplane $ vi pvc.yml
+
+
+
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+
+
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+~                          

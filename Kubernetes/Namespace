@@ -1,0 +1,157 @@
+controlplane $ .\kubectl.exe get namespaces
+.kubectl.exe: command not found
+controlplane $ kubectl get namespaces      
+NAME                 STATUS   AGE
+default              Active   15d
+kube-node-lease      Active   15d
+kube-public          Active   15d
+kube-system          Active   15d
+local-path-storage   Active   15d
+controlplane $ kubectl create namespace sai-Namespace
+The Namespace "sai-Namespace" is invalid: metadata.name: Invalid value: "sai-Namespace": a lowercase RFC 1123 label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?')
+controlplane $ kubectl create namespace saiNamespace 
+The Namespace "saiNamespace" is invalid: metadata.name: Invalid value: "saiNamespace": a lowercase RFC 1123 label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?')
+controlplane $ kubectl create namespace sainamespace
+namespace/sainamespace created
+controlplane $ kubectl get namespaces
+NAME                 STATUS   AGE
+default              Active   15d
+kube-node-lease      Active   15d
+kube-public          Active   15d
+kube-system          Active   15d
+local-path-storage   Active   15d
+sainamespace         Active   5s
+controlplane $ vi namespace.yml
+controlplane $ kubectl create -f namespace.yml
+pod/my-nginx-pod created
+controlplane $ kubectl get pods
+No resources found in default namespace.
+controlplane $ kubectl get pods -n sainamespace
+NAME           READY   STATUS    RESTARTS   AGE
+my-nginx-pod   1/1     Running   0          44s
+controlplane $ kubectl get all --all-namespaces
+NAMESPACE            NAME                                           READY   STATUS    RESTARTS      AGE
+kube-system          pod/calico-kube-controllers-75bdb5b75d-2b6mr   1/1     Running   1 (23m ago)   15d
+kube-system          pod/canal-wrxsq                                2/2     Running   2 (23m ago)   15d
+kube-system          pod/coredns-5c69dbb7bd-5rv7t                   1/1     Running   1 (23m ago)   15d
+kube-system          pod/coredns-5c69dbb7bd-lppzs                   1/1     Running   1 (23m ago)   15d
+kube-system          pod/etcd-controlplane                          1/1     Running   1 (23m ago)   15d
+kube-system          pod/kube-apiserver-controlplane                1/1     Running   1 (23m ago)   15d
+kube-system          pod/kube-controller-manager-controlplane       1/1     Running   1 (23m ago)   15d
+kube-system          pod/kube-proxy-dp5fn                           1/1     Running   1 (23m ago)   15d
+kube-system          pod/kube-scheduler-controlplane                1/1     Running   1 (23m ago)   15d
+local-path-storage   pod/local-path-provisioner-75655fcf79-xw9b6    1/1     Running   1 (23m ago)   15d
+sainamespace         pod/my-nginx-pod                               1/1     Running   0             4m
+
+NAMESPACE     NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+default       service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP                  15d
+kube-system   service/kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   15d
+
+NAMESPACE     NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system   daemonset.apps/canal        1         1         1       1            1           kubernetes.io/os=linux   15d
+kube-system   daemonset.apps/kube-proxy   1         1         1       1            1           kubernetes.io/os=linux   15d
+
+NAMESPACE            NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE
+kube-system          deployment.apps/calico-kube-controllers   1/1     1            1           15d
+kube-system          deployment.apps/coredns                   2/2     2            2           15d
+local-path-storage   deployment.apps/local-path-provisioner    1/1     1            1           15d
+
+NAMESPACE            NAME                                                 DESIRED   CURRENT   READY   AGE
+kube-system          replicaset.apps/calico-kube-controllers-75bdb5b75d   1         1         1       15d
+kube-system          replicaset.apps/coredns-5c69dbb7bd                   2         2         2       15d
+kube-system          replicaset.apps/coredns-7db6d8ff4d                   0         0         0       15d
+local-path-storage   replicaset.apps/local-path-provisioner-75655fcf79    1         1         1       15d
+controlplane $ kubectl get all -n apiVersion: v1
+error: you must specify only one resource
+controlplane $ kind: Pod
+kind:: command not found
+controlplane $ metadata:
+metadata:: command not found
+controlplane $   name: my-pod
+
+Command 'name:' not found, did you mean:
+
+  command 'named' from deb bind9 (1:9.16.48-0ubuntu0.20.04.1)
+  command 'namei' from deb util-linux (2.34-0.1ubuntu9.6)
+
+Try: apt install <deb name>
+
+controlplane $   namespace: my-namespace
+namespace:: command not found
+controlplane $ spec:
+spec:: command not found
+controlplane $   containers:
+containers:: command not found
+controlplane $   - name: my-container
+-: command not found
+controlplane $     image: nginx
+
+Command 'image:' not found, did you mean:
+
+  command 'imagen' from deb hevea (2.32-3build1)
+  command 'imagej' from deb imagej (1.52r-1)
+
+Try: apt install <deb name>
+
+controlplane $     ports:
+ports:: command not found
+controlplane $     - containerPort: 80
+-: command not found
+controlplane $ kubectl get all -n kube-system 
+NAME                                           READY   STATUS    RESTARTS      AGE
+pod/calico-kube-controllers-75bdb5b75d-2b6mr   1/1     Running   1 (27m ago)   15d
+pod/canal-wrxsq                                2/2     Running   2 (27m ago)   15d
+pod/coredns-5c69dbb7bd-5rv7t                   1/1     Running   1 (27m ago)   15d
+pod/coredns-5c69dbb7bd-lppzs                   1/1     Running   1 (27m ago)   15d
+pod/etcd-controlplane                          1/1     Running   1 (27m ago)   15d
+pod/kube-apiserver-controlplane                1/1     Running   1 (27m ago)   15d
+pod/kube-controller-manager-controlplane       1/1     Running   1 (27m ago)   15d
+pod/kube-proxy-dp5fn                           1/1     Running   1 (27m ago)   15d
+pod/kube-scheduler-controlplane                1/1     Running   1 (27m ago)   15d
+
+NAME               TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+service/kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   15d
+
+NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/canal        1         1         1       1            1           kubernetes.io/os=linux   15d
+daemonset.apps/kube-proxy   1         1         1       1            1           kubernetes.io/os=linux   15d
+
+NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/calico-kube-controllers   1/1     1            1           15d
+deployment.apps/coredns                   2/2     2            2           15d
+
+NAME                                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/calico-kube-controllers-75bdb5b75d   1         1         1       15d
+replicaset.apps/coredns-5c69dbb7bd                   2         2         2       15d
+replicaset.apps/coredns-7db6d8ff4d                   0         0         0       15d
+controlplane $ kubectl get ns
+NAME                 STATUS   AGE
+default              Active   15d
+kube-node-lease      Active   15d
+kube-public          Active   15d
+kube-system          Active   15d
+local-path-storage   Active   15d
+sainamespace         Active   13m
+controlplane $ kubectl config set-context --current --namespace=default
+Context "kubernetes-admin@kubernetes" modified.
+controlplane $ kubectl get pods
+No resources found in default namespace.
+controlplane $ kubectl config set-context --current --namespace=sainamespace
+Context "kubernetes-admin@kubernetes" modified.
+controlplane $ kubectl get pods
+NAME           READY   STATUS    RESTARTS   AGE
+my-nginx-pod   1/1     Running   0          11m
+controlplane $ kubectl get pods -A
+NAMESPACE            NAME                                       READY   STATUS    RESTARTS      AGE
+kube-system          calico-kube-controllers-75bdb5b75d-2b6mr   1/1     Running   1 (35m ago)   15d
+kube-system          canal-wrxsq                                2/2     Running   2 (35m ago)   15d
+kube-system          coredns-5c69dbb7bd-5rv7t                   1/1     Running   1 (35m ago)   15d
+kube-system          coredns-5c69dbb7bd-lppzs                   1/1     Running   1 (35m ago)   15d
+kube-system          etcd-controlplane                          1/1     Running   1 (35m ago)   15d
+kube-system          kube-apiserver-controlplane                1/1     Running   1 (35m ago)   15d
+kube-system          kube-controller-manager-controlplane       1/1     Running   1 (35m ago)   15d
+kube-system          kube-proxy-dp5fn                           1/1     Running   1 (35m ago)   15d
+kube-system          kube-scheduler-controlplane                1/1     Running   1 (35m ago)   15d
+local-path-storage   local-path-provisioner-75655fcf79-xw9b6    1/1     Running   1 (35m ago)   15d
+sainamespace         my-nginx-pod                               1/1     Running   0             16m
+controlplane $ 

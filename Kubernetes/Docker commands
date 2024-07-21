@@ -1,0 +1,87 @@
+Docker version
+docker search centos  -   it will search images on centos
+docker apt-get update -- it will update file
+sudo docker run hello-world --- it will create container,image
+docker ps ---> show u running containers
+docker ps -a ---> show u updates of all containers
+docker images ---> display images 
+docker run -it centos /bin/bash -->create and servor changes to centos
+interactive teletype  --> it
+ls -lrt   --->file on that server
+exit ---> back
+docker info ---> docker info
+docker pull wordpress --> it will download image
+docker rmi wordpress ---> it will remove image
+docker rm wordpress ---> it will remove container
+docker run --help ---> all info about docker
+docker run -dit --name centos --hostname=centos centsos /bin/bash
+docker attach centos --> change server
+top --->it will show u container info
+docker run centos /usr/bin/free -m ---> display free memory
+docker stats --->display cpu%,limit,memory
+docker start centos
+docker cp centos:/etc/passwd  /root/centos.passwd  --> copy files from docker to local machine
+docker rmi centos -f ---> it will remove forecefully
+docker save -->image save like .tar file
+docker load -->.tar file cchange to image
+docker commit --->then we can push to registry
+docker pause,unpause,start,stop,kill 
+docker build ---> to build docker file
+sudo su - ---->convert to root server
+docker exec -it centos /bin/bash --->This command will give you an interactive bash shell inside the my-centos container. You can now run commands inside this container as if you were logged into a CentOS machine.
+docker inspect dockerID -->display ip address
+
+
+
+
+
+
+Create Docker file commands:
+
+Create docker file Commands:
+
+1. FROM --> to pull base image
+
+2. RUN --> To execute lunux or bash Commands
+
+3. CMD --->it provide default Commands for an executing Container
+
+4. ENTRY POINT → Same as CMD, difference is replace Commands But Entrypoint ok Can in executing time in CMD. We Cant replace
+
+5. WORK DIR -->To Sets the working directory.
+
+6. COPY -->To Copy a directory from our to docker Container. Local machine,
+
+7. ADD -->To Copy files and folders from local machine! to docker
+
+8. EXPOSE -->In Containers, so many applications runs, expose displays the app port numbers
+
+9. ENV -->to set environment Variables.
+
+
+
+
+
+Create a dockerfile...
+
+install tomcat on Centos
+
+* pull Centos from dockerhub Base image-->
+
+FROM
+
+* install Java -->RUN
+
+* Create (opt/tomcat directory →RUN
+
+* change work directory to → WORK DIR
+
+* Download tomcat packages →ADD/RUN
+
+* extract tar.gz file →RUN
+
+* Rename to tomcat directory →RUN
+
+* Tell to docker that it runs on port 8080 → EXPOSE
+
+* start tomcat Services →CMD.

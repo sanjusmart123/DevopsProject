@@ -1,0 +1,285 @@
+controlplane $ vi volume.yml
+controlplane $ kubectl create -f volume.yml
+pod/vol2 created
+controlplane $ kubectl get pods
+NAME   READY   STATUS              RESTARTS   AGE
+vol2   0/1     ContainerCreating   0          6s
+controlplane $ kubectl get pods
+NAME   READY   STATUS             RESTARTS   AGE
+vol2   0/1     ImagePullBackOff   0          35s
+controlplane $ vi volume.yml
+controlplane $ kubectl create -f volume.yml
+Error from server (AlreadyExists): error when creating "volume.yml": pods "vol2" already exists
+controlplane $ kubectl apply -f volume.yml
+Warning: resource pods/vol2 is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+pod/vol2 configured
+controlplane $ kubectl get pods
+NAME   READY   STATUS             RESTARTS   AGE
+vol2   0/1     ImagePullBackOff   0          97s
+controlplane $ vi volume.yml
+controlplane $ kubectl apply -f volume.yml
+pod/vol2 configured
+controlplane $ kubectl get pods
+NAME   READY   STATUS    RESTARTS   AGE
+vol2   1/1     Running   0          2m47s
+controlplane $ kubectl describe vol2
+error: the server doesn't have a resource type "vol2"
+controlplane $ kubectl describe pod vol2
+Name:             vol2
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node01/172.30.2.2
+Start Time:       Fri, 19 Jul 2024 16:48:23 +0000
+Labels:           <none>
+Annotations:      cni.projectcalico.org/containerID: 2fd8d7f80a818cead1faca5d022f2c73089c0795931c945db567952f8ea3b6b0
+                  cni.projectcalico.org/podIP: 192.168.1.4/32
+                  cni.projectcalico.org/podIPs: 192.168.1.4/32
+Status:           Running
+IP:               192.168.1.4
+IPs:
+  IP:  192.168.1.4
+Containers:
+  centos-container2:
+    Container ID:  containerd://e9db271eba278d94b7b7fd5747b5b82a8bdeae68d47f87b09295ddbbc4d0b02f
+    Image:         centos:7
+    Image ID:      docker.io/library/centos@sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sleep
+      3600
+    State:          Running
+      Started:      Fri, 19 Jul 2024 16:50:00 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /test from test (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-llrhv (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  test:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-llrhv:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  4m16s                  default-scheduler  Successfully assigned default/vol2 to node01
+  Normal   Pulling    3m21s (x3 over 4m16s)  kubelet            Pulling image "centsos:7"
+  Warning  Failed     3m14s (x3 over 4m8s)   kubelet            Failed to pull image "centsos:7": failed to pull and unpack image "docker.io/library/centsos:7": failed to resolve reference "docker.io/library/centsos:7": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+  Warning  Failed     3m14s (x3 over 4m8s)   kubelet            Error: ErrImagePull
+  Normal   BackOff    2m48s (x4 over 4m7s)   kubelet            Back-off pulling image "centsos:7"
+  Warning  Failed     2m48s (x4 over 4m7s)   kubelet            Error: ImagePullBackOff
+  Normal   Pulling    2m46s                  kubelet            Pulling image "centos:7"
+  Normal   Pulled     2m40s                  kubelet            Successfully pulled image "centos:7" in 6.075s (6.075s including waiting). Image size: 76101639 bytes.
+  Normal   Created    2m40s                  kubelet            Created container centos-container2
+  Normal   Started    2m40s                  kubelet            Started container centos-container2
+controlplane $ kubectl explain pod.spec.volumes
+KIND:       Pod
+VERSION:    v1
+
+FIELD: volumes <[]Volume>
+
+
+DESCRIPTION:
+    List of volumes that can be mounted by containers belonging to the pod. More
+    info: https://kubernetes.io/docs/concepts/storage/volumes
+    Volume represents a named volume in a pod that may be accessed by any
+    container in the pod.
+    
+FIELDS:
+  awsElasticBlockStore  <AWSElasticBlockStoreVolumeSource>
+    awsElasticBlockStore represents an AWS Disk resource that is attached to a
+    kubelet's host machine and then exposed to the pod. More info:
+    https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+
+  azureDisk     <AzureDiskVolumeSource>
+    azureDisk represents an Azure Data Disk mount on the host and bind mount to
+    the pod.
+
+  azureFile     <AzureFileVolumeSource>
+    azureFile represents an Azure File Service mount on the host and bind mount
+    to the pod.
+
+  cephfs        <CephFSVolumeSource>
+    cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+
+  cinder        <CinderVolumeSource>
+    cinder represents a cinder volume attached and mounted on kubelets host
+    machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+
+  configMap     <ConfigMapVolumeSource>
+    configMap represents a configMap that should populate this volume
+
+  csi   <CSIVolumeSource>
+    csi (Container Storage Interface) represents ephemeral storage that is
+    handled by certain external CSI drivers (Beta feature).
+
+  downwardAPI   <DownwardAPIVolumeSource>
+    downwardAPI represents downward API about the pod that should populate this
+    volume
+
+  emptyDir      <EmptyDirVolumeSource>
+    emptyDir represents a temporary directory that shares a pod's lifetime. More
+    info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+
+  ephemeral     <EphemeralVolumeSource>
+    ephemeral represents a volume that is handled by a cluster storage driver.
+    The volume's lifecycle is tied to the pod that defines it - it will be
+    created before the pod starts, and deleted when the pod is removed.
+    
+    Use this if: a) the volume is only needed while the pod runs, b) features of
+    normal volumes like restoring from snapshot or capacity
+       tracking are needed,
+    c) the storage driver is specified through a storage class, and d) the
+    storage driver supports dynamic volume provisioning through
+       a PersistentVolumeClaim (see EphemeralVolumeSource for more
+       information on the connection between this volume type
+       and PersistentVolumeClaim).
+    
+    Use PersistentVolumeClaim or one of the vendor-specific APIs for volumes
+    that persist for longer than the lifecycle of an individual pod.
+    
+    Use CSI for light-weight local ephemeral volumes if the CSI driver is meant
+    to be used that way - see the documentation of the driver for more
+    information.
+    
+    A pod can use both types of ephemeral volumes and persistent volumes at the
+    same time.
+
+  fc    <FCVolumeSource>
+    fc represents a Fibre Channel resource that is attached to a kubelet's host
+    machine and then exposed to the pod.
+
+  flexVolume    <FlexVolumeSource>
+    flexVolume represents a generic volume resource that is provisioned/attached
+    using an exec based plugin.
+
+  flocker       <FlockerVolumeSource>
+    flocker represents a Flocker volume attached to a kubelet's host machine.
+    This depends on the Flocker control service being running
+
+  gcePersistentDisk     <GCEPersistentDiskVolumeSource>
+    gcePersistentDisk represents a GCE Disk resource that is attached to a
+    kubelet's host machine and then exposed to the pod. More info:
+    https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+
+  gitRepo       <GitRepoVolumeSource>
+    gitRepo represents a git repository at a particular revision. DEPRECATED:
+    GitRepo is deprecated. To provision a container with a git repo, mount an
+    EmptyDir into an InitContainer that clones the repo using git, then mount
+    the EmptyDir into the Pod's container.
+
+  glusterfs     <GlusterfsVolumeSource>
+    glusterfs represents a Glusterfs mount on the host that shares a pod's
+    lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+
+  hostPath      <HostPathVolumeSource>
+    hostPath represents a pre-existing file or directory on the host machine
+    that is directly exposed to the container. This is generally used for system
+    agents or other privileged things that are allowed to see the host machine.
+    Most containers will NOT need this. More info:
+    https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+
+  iscsi <ISCSIVolumeSource>
+    iscsi represents an ISCSI Disk resource that is attached to a kubelet's host
+    machine and then exposed to the pod. More info:
+    https://examples.k8s.io/volumes/iscsi/README.md
+
+  name  <string> -required-
+    name of the volume. Must be a DNS_LABEL and unique within the pod. More
+    info:
+    https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+
+  nfs   <NFSVolumeSource>
+    nfs represents an NFS mount on the host that shares a pod's lifetime More
+    info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+
+  persistentVolumeClaim <PersistentVolumeClaimVolumeSource>
+    persistentVolumeClaimVolumeSource represents a reference to a
+    PersistentVolumeClaim in the same namespace. More info:
+    https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+
+  photonPersistentDisk  <PhotonPersistentDiskVolumeSource>
+    photonPersistentDisk represents a PhotonController persistent disk attached
+    and mounted on kubelets host machine
+
+  portworxVolume        <PortworxVolumeSource>
+    portworxVolume represents a portworx volume attached and mounted on kubelets
+    host machine
+
+  projected     <ProjectedVolumeSource>
+    projected items for all in one resources secrets, configmaps, and downward
+    API
+
+  quobyte       <QuobyteVolumeSource>
+    quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+
+  rbd   <RBDVolumeSource>
+    rbd represents a Rados Block Device mount on the host that shares a pod's
+    lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+
+  scaleIO       <ScaleIOVolumeSource>
+    scaleIO represents a ScaleIO persistent volume attached and mounted on
+    Kubernetes nodes.
+
+  secret        <SecretVolumeSource>
+    secret represents a secret that should populate this volume. More info:
+    https://kubernetes.io/docs/concepts/storage/volumes#secret
+
+  storageos     <StorageOSVolumeSource>
+    storageOS represents a StorageOS volume attached and mounted on Kubernetes
+    nodes.
+
+  vsphereVolume <VsphereVirtualDiskVolumeSource>
+    vsphereVolume represents a vSphere volume attached and mounted on kubelets
+    host machine
+
+
+controlplane $ kubectl exec -it vol2 vi /test/testfile
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+controlplane $ kubectl exec -it vol2 touch  /test/testfile
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+controlplane $ kubectl exec -it vol2 touch /test/testfile
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+controlplane $ vi volume2.yml                            
+controlplane $ kubectl create -f volume2.yml
+error: error parsing volume2.yml: error converting YAML to JSON: yaml: line 14: did not find expected key
+controlplane $ vi volume2.yml
+controlplane $ kubectl create -f volume2.yml
+error: error parsing volume2.yml: error converting YAML to JSON: yaml: line 14: did not find expected key
+controlplane $ kubectl apply -f volume2.yml
+error: error parsing volume2.yml: error converting YAML to JSON: yaml: line 14: did not find expected key
+controlplane $ vi volume2.yml
+controlplane $ kubectl create -f volume2.yml
+error: error parsing volume2.yml: error converting YAML to JSON: yaml: line 16: mapping values are not allowed in this context
+controlplane $ vi volume2.yml
+controlplane $ kubectl create -f volume2.yml
+pod/morevol2 created
+controlplane $ kubectl get pods
+NAME       READY   STATUS    RESTARTS   AGE
+morevol2   2/2     Running   0          6s
+vol2       1/1     Running   0          33m
+controlplane $ kubectl exec -it morevol2 -c centos-container1 -- touch /centos/testfile
+controlplane $ kubectl exec -it morevol2 -c centos-container2 -- ls -l /centos2        
+total 0
+-rw-r--r-- 1 root root 0 Jul 19 17:24 testfile
+controlplane $ 

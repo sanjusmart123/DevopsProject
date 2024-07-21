@@ -1,0 +1,241 @@
+controlplane $ vi deploy.yml
+controlplane $ kubectl create -f deploy.yml
+deployment.apps/nginx-deployment created
+controlplane $ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-77d8468669-56f2v   1/1     Running   0          33s
+nginx-deployment-77d8468669-tfmxs   1/1     Running   0          33s
+nginx-deployment-77d8468669-w2k2z   1/1     Running   0          33s
+controlplane $ kubectl exec -it nginx-deployment-77d8468669-56f2v -- /bin/bash
+root@nginx-deployment-77d8468669-56f2v:/# ip a
+bash: ip: command not found
+root@nginx-deployment-77d8468669-56f2v:/# ps aux
+bash: ps: command not found
+root@nginx-deployment-77d8468669-56f2v:/# cd /proc
+root@nginx-deployment-77d8468669-56f2v:/proc# ls
+1          cgroups    dma          iomem      kmsg         meminfo       partitions   softirqs       timer_list         zoneinfo
+14         cmdline    driver       ioports    kpagecgroup  misc          pressure     stat           tty
+6          consoles   execdomains  irq        kpagecount   modules       sched_debug  swaps          uptime
+7          cpuinfo    fb           kallsyms   kpageflags   mounts        schedstat    sys            version
+acpi       crypto     filesystems  kcore      loadavg      mtrr          scsi         sysrq-trigger  version_signature
+buddyinfo  devices    fs           key-users  locks        net           self         sysvipc        vmallocinfo
+bus        diskstats  interrupts   keys       mdstat       pagetypeinfo  slabinfo     thread-self    vmstat
+root@nginx-deployment-77d8468669-56f2v:/proc# cd 100
+bash: cd: 100: No such file or directory
+root@nginx-deployment-77d8468669-56f2v:/proc# cd 14
+bash: cd: 14: No such file or directory
+root@nginx-deployment-77d8468669-56f2v:/proc# cd 1
+root@nginx-deployment-77d8468669-56f2v:/proc/1# cat cmdline
+nginx: master process nginx -g daemon off;root@nginx-deployment-77d8468669-56f2v:/proc/1# exit
+exit
+controlplane $ kubectl logs nginx-deployment-77d8468669-56f2v
+controlplane $ kubectl get pods                              
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-77d8468669-56f2v   1/1     Running   0          15m
+nginx-deployment-77d8468669-tfmxs   1/1     Running   0          15m
+nginx-deployment-77d8468669-w2k2z   1/1     Running   0          15m
+controlplane $ kubectl logs nginx-deployment-77d8468669-56f2v
+controlplane $ kubectl logs nginx-deployment-77d8468669-tfmxs
+controlplane $ kubectl describe pod nginx-deployment-77d8468669-56f2v
+Name:             nginx-deployment-77d8468669-56f2v
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node01/172.30.2.2
+Start Time:       Sat, 20 Jul 2024 13:08:22 +0000
+Labels:           app=nginx
+                  pod-template-hash=77d8468669
+Annotations:      cni.projectcalico.org/containerID: 67ee01d6972a863ed6ac048eeb90a8ca8544f378c3e6738207bbb5527ca94f51
+                  cni.projectcalico.org/podIP: 192.168.1.5/32
+                  cni.projectcalico.org/podIPs: 192.168.1.5/32
+Status:           Running
+IP:               192.168.1.5
+IPs:
+  IP:           192.168.1.5
+Controlled By:  ReplicaSet/nginx-deployment-77d8468669
+Containers:
+  nginx:
+    Container ID:   containerd://25cf71da6f2deae867dcfccad61eb18c80f3d7faa8e5cb5c7d168c50508ce8aa
+    Image:          nginx:1.14.2
+    Image ID:       docker.io/library/nginx@sha256:f7988fb6c02e0ce69257d9bd9cf37ae20a60f1df7563c3a2a6abe24160306b8d
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 20 Jul 2024 13:08:28 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cfn6q (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-cfn6q:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  17m   default-scheduler  Successfully assigned default/nginx-deployment-77d8468669-56f2v to node01
+  Normal  Pulling    17m   kubelet            Pulling image "nginx:1.14.2"
+  Normal  Pulled     17m   kubelet            Successfully pulled image "nginx:1.14.2" in 4.808s (4.808s including waiting). Image size: 44710204 bytes.
+  Normal  Created    17m   kubelet            Created container nginx
+  Normal  Started    17m   kubelet            Started container nginx
+controlplane $ kubectl get nodes
+NAME           STATUS   ROLES           AGE   VERSION
+controlplane   Ready    control-plane   16d   v1.30.0
+node01         Ready    <none>          16d   v1.30.0
+controlplane $ kubectl cordon -h
+Mark node as unschedulable.
+
+Examples:
+  # Mark node "foo" as unschedulable
+  kubectl cordon foo
+
+Options:
+    --dry-run='none':
+        Must be "none", "server", or "client". If client strategy, only print the object that would be sent, without
+        sending it. If server strategy, submit server-side request without persisting the resource.
+
+    -l, --selector='':
+        Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Matching
+        objects must satisfy all of the specified label constraints.
+
+Usage:
+  kubectl cordon NODE [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+controlplane $ kubectl drain -h
+Drain node in preparation for maintenance.
+
+ The given node will be marked unschedulable to prevent new pods from arriving. 'drain' evicts the pods if the API
+server supports https://kubernetes.io/docs/concepts/workloads/pods/disruptions/ eviction
+https://kubernetes.io/docs/concepts/workloads/pods/disruptions/ . Otherwise, it will use normal DELETE to delete the
+pods. The 'drain' evicts or deletes all pods except mirror pods (which cannot be deleted through the API server).  If
+there are daemon set-managed pods, drain will not proceed without --ignore-daemonsets, and regardless it will not delete
+any daemon set-managed pods, because those pods would be immediately replaced by the daemon set controller, which
+ignores unschedulable markings.  If there are any pods that are neither mirror pods nor managed by a replication
+controller, replica set, daemon set, stateful set, or job, then drain will not delete any pods unless you use --force.
+--force will also allow deletion to proceed if the managing resource of one or more pods is missing.
+
+ 'drain' waits for graceful termination. You should not operate on the machine until the command completes.
+
+ When you are ready to put the node back into service, use kubectl uncordon, which will make the node schedulable again.
+
+https://kubernetes.io/images/docs/kubectl_drain.svg Workflowhttps://kubernetes.io/images/docs/kubectl_drain.svg
+
+Examples:
+  # Drain node "foo", even if there are pods not managed by a replication controller, replica set, job, daemon set, or
+stateful set on it
+  kubectl drain foo --force
+  
+  # As above, but abort if there are pods not managed by a replication controller, replica set, job, daemon set, or
+stateful set, and use a grace period of 15 minutes
+  kubectl drain foo --grace-period=900
+
+Options:
+    --chunk-size=500:
+        Return large lists in chunks rather than all at once. Pass 0 to disable. This flag is beta and may change in
+        the future.
+
+    --delete-emptydir-data=false:
+        Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained).
+
+    --disable-eviction=false:
+        Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use
+        with caution.
+
+    --dry-run='none':
+        Must be "none", "server", or "client". If client strategy, only print the object that would be sent, without
+        sending it. If server strategy, submit server-side request without persisting the resource.
+
+    --force=false:
+        Continue even if there are pods that do not declare a controller.
+
+    --grace-period=-1:
+        Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified
+        in the pod will be used.
+
+    --ignore-daemonsets=false:
+        Ignore DaemonSet-managed pods.
+
+    --pod-selector='':
+        Label selector to filter pods on the node
+
+    -l, --selector='':
+        Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Matching
+        objects must satisfy all of the specified label constraints.
+
+    --skip-wait-for-delete-timeout=0:
+        If pod DeletionTimestamp older than N seconds, skip waiting for the pod.  Seconds must be greater than 0 to
+        skip.
+
+    --timeout=0s:
+        The length of time to wait before giving up, zero means infinite
+
+Usage:
+  kubectl drain NODE [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+controlplane $ kubectl uncordon -h
+Mark node as schedulable.
+
+Examples:
+  # Mark node "foo" as schedulable
+  kubectl uncordon foo
+
+Options:
+    --dry-run='none':
+        Must be "none", "server", or "client". If client strategy, only print the object that would be sent, without
+        sending it. If server strategy, submit server-side request without persisting the resource.
+
+    -l, --selector='':
+        Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Matching
+        objects must satisfy all of the specified label constraints.
+
+Usage:
+  kubectl uncordon NODE [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+
+
+
+
+
+
+
+
+Deployment:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

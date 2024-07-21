@@ -1,0 +1,167 @@
+Initialising Kubernetes... done
+
+controlplane $ vi statefulsets.yml
+controlplane $ kubectl create -f statefulsets.yml
+statefulset.apps/nginx created
+controlplane $ kubectl get pods
+No resources found in default namespace.
+controlplane $ kubectl get pods
+No resources found in default namespace.
+controlplane $ kubectl get all 
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   16d
+
+NAME                     READY   AGE
+statefulset.apps/nginx   0/3     87s
+controlplane $ kubectl get statefulset.apps/nginx
+NAME    READY   AGE
+nginx   0/3     2m12s
+controlplane $ kubectl get statefulset.apps/nginx
+NAME    READY   AGE
+nginx   0/3     2m20s
+controlplane $ kubectl describe statefulset.apps/nginx
+Name:               nginx
+Namespace:          default
+CreationTimestamp:  Sat, 20 Jul 2024 09:17:36 +0000
+Selector:           app=nginx
+Labels:             <none>
+Annotations:        <none>
+Replicas:           3 desired | 0 total
+Update Strategy:    RollingUpdate
+  Partition:        0
+Pods Status:        0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+   nginx:
+    Image:         nginx:1.16
+    Port:          80/TCP
+    Host Port:     0/TCP
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Volume Claims:
+  Name:          www
+  StorageClass:  
+  Labels:        <none>
+  Annotations:   <none>
+  Capacity:      <default>
+  Access Modes:  []
+Events:
+  Type     Reason        Age                     From                    Message
+  ----     ------        ----                    ----                    -------
+  Warning  FailedCreate  4m5s (x12 over 4m15s)   statefulset-controller  create Pod nginx-0 in StatefulSet nginx failed error: failed to create PVC www-nginx-0: PersistentVolumeClaim "www-nginx-0" is invalid: [spec.accessModes: Required value: at least 1 access mode is required, spec.resources[storage]: Required value]
+  Warning  FailedCreate  3m55s (x13 over 4m15s)  statefulset-controller  create Claim www-nginx-0 for Pod nginx-0 in StatefulSet nginx failed error: PersistentVolumeClaim "www-nginx-0" is invalid: [spec.accessModes: Required value: at least 1 access mode is required, spec.resources[storage]: Required value]
+controlplane $ vi statefulsets.yml               
+controlplane $ kubectl apply -f statefulsets.yml
+statefulset.apps/web created
+controlplane $ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+web-0   0/1     Pending   0          7s
+controlplane $ kubectl get all
+NAME        READY   STATUS              RESTARTS   AGE
+pod/web-0   1/1     Running             0          28s
+pod/web-1   0/1     ContainerCreating   0          13s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   16d
+
+NAME                     READY   AGE
+statefulset.apps/nginx   0/3     7m46s
+statefulset.apps/web     1/3     28s
+controlplane $ kubectl delete pod pod/web-0
+error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
+controlplane $ kubectl delete pod web-0
+pod "web-0" deleted
+controlplane $ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+web-0   1/1     Running   0          8s
+web-1   1/1     Running   0          4m13s
+web-2   1/1     Running   0          3m57s
+controlplane $ kubectl delete pod web-1
+pod "web-1" deleted
+controlplane $ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+web-0   1/1     Running   0          50s
+web-1   1/1     Running   0          3s
+web-2   1/1     Running   0          4m39s
+controlplane $ 
+
+controlplane $ vi headless.yml
+controlplane $ kubectl create -f headless.yml
+service/nginx created
+controlplane $ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+web-0   1/1     Running   0          8m13s
+web-1   1/1     Running   0          7m26s
+web-2   1/1     Running   0          12m
+
+
+
+
+
+
+
+
+
+
+
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  serviceName: "nginx"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+
+
+
+
+
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: nginx
+
