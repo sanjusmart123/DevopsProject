@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+    environment{
+        Toolname="Jenkins"
+    }
+    stages{
+        stage("Conditions"){
+            steps{
+                script{
+                    int Buildnum="$BUILD_NUMBER"
+                    if(Buildnum%2==0)
+                        echo "Even"
+                    else
+                        echo "Odd"
+                    }
+                }
+            }
+        }
+}
