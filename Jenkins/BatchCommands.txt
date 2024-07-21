@@ -1,0 +1,12 @@
+pipeline{
+    agent any
+    stages{
+        stage("Batch_Commands"){
+            steps{
+                bat "dir"
+                bat "ver"
+                bat "cd"
+            }
+        }
+    }
+}
