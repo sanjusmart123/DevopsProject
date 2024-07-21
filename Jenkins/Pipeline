@@ -1,0 +1,100 @@
+Declarative Pipeline
+Scripted Pipeline
+Freestyle Pipeline
+Multi Branch Pipeline
+
+shared library:
+
+
+Jenkins Shared Libraries allow you to centralize common pipeline code and reuse it across multiple Jenkinsfiles, making your pipeline code more modular and maintainable. Here’s a detailed guide on setting up and using Shared Libraries in Jenkins:
+###############
+pipeline{
+    agent any
+    environment{
+        name1="jenkins"
+        name2="java"
+    }
+    stages{
+        stage("Concatenation"){
+            steps{
+                script{
+                    shared_Library(I/P-1)
+                    
+
+                
+                echo "welcome to $Name"
+            }
+        }
+    }
+}
+################
+
+shared Pipeline
+
+###############
+A shared library in Jenkins is a reusable collection of Groovy scripts that can be used by multiple Jenkins jobs. This allows you to share code and functionality between different jobs, which can make your builds more efficient and easier to maintain
+
+
+
+pipeline{
+    agent any
+    environment{
+        name1="jenkins"
+        name2="java"
+    }
+    stages{
+        stage("Concatenation"){
+            steps{
+                script{
+                    
+
+                
+                echo "welcome to $Name"
+            }
+        }
+    }
+}
+
+######################
+
+MultiBranch Pipeline
+
+########################
+
+A Multibranch Pipeline in Jenkins allows you to automatically create a pipeline for each branch in a repository, 
+thereby enabling you to have different Jenkinsfiles for different branches. This is particularly useful for projects where each branch may have its own build and deployment process.
+A multibranch pipeline in Jenkins! This is a powerful feature that enables you to manage multiple branches or repositories within a single pipeline.
+When you set up a multibranch pipeline, Jenkins will automatically detect changes to your branches and trigger the pipeline for new changes. 
+This feature is particularly useful for organizations with multiple branches, feature flags, or separate repositories. 
+To set up a multibranch pipeline in Jenkins, you can create a new pipeline and select the "Multibranch Pipeline" option, then configure the pipeline to monitor your desired branches.
+
+                                Advantages of using a Jenkins Multibranch Pipeline are:
+
+1.Automatic branch detection: Jenkins automatically detects new branches in your source control repository and creates a separate pipeline job for each branch.
+
+2.Streamlined workflow: Multibranch pipelines simplify the Jenkins configuration process by automatically managing the pipeline jobs for each branch.
+
+3.Improved organization: Multibranch pipelines group all pipeline jobs for a single repository into a single folder, making it easier to manage and navigate.
+
+4.Scalability: As the number of branches grows, the Multibranch Pipeline plugin can handled the increased the complexity without manual intervention
+
+                              
+                                  Disadvantages of Multi branch pipeline in jenkins 
+
+1.Multi-branch pipelines in Jenkins provide several advantages for managing continuous integration and delivery processes, but they also have some potential disadvantages:
+
+2.Complexity: Multi-branch pipelines can introduce complexity, especially in larger projects with numerous branches. Configuring and maintaining pipelines for each branch can become challenging and time-consuming.
+
+3.Resource Intensive: Running multiple pipelines simultaneously can strain Jenkins resources, particularly if each branch has frequent commits triggering builds. This can lead to slower build times or resource contention.
+
+4.Visibility: With many branches and pipelines, it can be difficult to maintain clear visibility into the status of builds across different branches. This might require additional monitoring and alerting mechanisms.
+
+5.Configuration Overhead: Each branch may require its own pipeline configuration, which increases the overhead of managing Jenkins jobs and configurations. Changes to pipeline structure or dependencies may need to be replicated across multiple branches.
+
+6.Dependency Management: Ensuring consistent dependencies across different branches and pipelines can be challenging. Changes in dependencies or libraries might need to be synchronized across all branch pipelines to avoid inconsistencies.
+
+7.Branch Proliferation: Multi-branch pipelines can encourage the proliferation of branches, as developers may create more branches knowing that Jenkins will automatically build them. This can lead to a larger number of short-lived branches that clutter the pipeline views 
+
+8.Versioning and History: Depending on configuration, multi-branch pipelines may not retain complete history for all branches or builds, making it harder to track changes and performance over time, especially if branches are frequently deleted or recreated
+
+
