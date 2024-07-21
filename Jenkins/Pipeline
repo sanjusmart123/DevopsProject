@@ -2,12 +2,18 @@ Declarative Pipeline
 Scripted Pipeline
 Freestyle Pipeline
 Multi Branch Pipeline
-
+Shared Library
+Shared Pipeline
+#################################
 shared library:
 
+Jenkins Shared Libraries allow you to centralize common pipeline code and reuse it across multiple Jenkinsfiles,
+making your pipeline code more modular and maintainable. 
+A shared library in Jenkins is a reusable collection of Groovy scripts that can be used by multiple Jenkins jobs. 
+This allows you to share code and functionality between different jobs, which can make your builds more efficient and easier to maintain
 
-Jenkins Shared Libraries allow you to centralize common pipeline code and reuse it across multiple Jenkinsfiles, making your pipeline code more modular and maintainable. Here’s a detailed guide on setting up and using Shared Libraries in Jenkins:
-###############
+
+
 pipeline{
     agent any
     environment{
@@ -29,37 +35,76 @@ pipeline{
 }
 ################
 
-shared Pipeline
+shared Pipeline:
 
-###############
-A shared library in Jenkins is a reusable collection of Groovy scripts that can be used by multiple Jenkins jobs. This allows you to share code and functionality between different jobs, which can make your builds more efficient and easier to maintain
+A shared pipeline in Jenkins allows you to define common steps or functions that can be reused across multiple Jenkinsfiles. 
+This helps in maintaining consistency, reducing redundancy, and simplifying the maintenance of your Jenkins pipelines. 
+Shared pipelines are typically implemented using Jenkins Shared Libraries
 
+def call(Map config = [:]) {
+    pipeline {
+        agent any
 
+        stages {
+            stage('Checkout') {
+                steps {
+                    checkout scm
+                }
+            }
 
-pipeline{
-    agent any
-    environment{
-        name1="jenkins"
-        name2="java"
-    }
-    stages{
-        stage("Concatenation"){
-            steps{
-                script{
-                    
+            stage('Build') {
+                steps {
+                    echo 'Building...'
+                    if (config.buildCommand) {
+                        sh config.buildCommand
+                    } else {
+                        echo 'No build command provided'
+                    }
+                }
+            }
 
-                
-                echo "welcome to $Name"
+            stage('Test') {
+                steps {
+                    echo 'Testing...'
+                    if (config.testCommand) {
+                        sh config.testCommand
+                    } else {
+                        echo 'No test command provided'
+                    }
+                }
+            }
+
+            stage('Deploy') {
+                steps {
+                    echo 'Deploying...'
+                    if (config.deployCommand) {
+                        sh config.deployCommand
+                    } else {
+                        echo 'No deploy command provided'
+                    }
+                }
+            }
+        }
+
+        post {
+            always {
+                echo 'Cleaning up...'
+                cleanWs()
+            }
+            success {
+                echo 'Build succeeded!'
+            }
+            failure {
+                echo 'Build failed!'
             }
         }
     }
 }
 
+
 ######################
 
-MultiBranch Pipeline
-
-########################
+MultiBranch Pipeline:
 
 A Multibranch Pipeline in Jenkins allows you to automatically create a pipeline for each branch in a repository, 
 thereby enabling you to have different Jenkinsfiles for different branches. This is particularly useful for projects where each branch may have its own build and deployment process.
@@ -95,6 +140,183 @@ To set up a multibranch pipeline in Jenkins, you can create a new pipeline and s
 
 7.Branch Proliferation: Multi-branch pipelines can encourage the proliferation of branches, as developers may create more branches knowing that Jenkins will automatically build them. This can lead to a larger number of short-lived branches that clutter the pipeline views 
 
-8.Versioning and History: Depending on configuration, multi-branch pipelines may not retain complete history for all branches or builds, making it harder to track changes and performance over time, especially if branches are frequently deleted or recreated
+8.Versioning and History: Depending on configuration, multi-branch pipelines may not retain complete history for all branches or builds, making it harder to track changes and performance over time, especially if branches are frequently deleted or recreated.
+
+
+Create MultiBranch Pipeline:
+
+Creating a multibranch pipeline in Jenkins involves setting up a pipeline job that automatically creates and manages separate jobs for each branch in your source code repository. 
+This ensures that each branch has its own pipeline and can be tested and built independently.
+
+Example Jenkinsfile for a Branch:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Add build steps here
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Add test steps here
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Add deploy steps here
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up...'
+            cleanWs()
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
+
+
+Benefits of Multibranch Pipeline:
+
+1.Automated Job Creation: Automatically creates jobs for each branch with a Jenkinsfile.
+2.Branch-specific Configuration: Each branch can have its own configuration and steps.
+3.Continuous Integration: Ensures that all branches are continuously integrated and tested.
+
+######################################################
+
+Declarative Pipeline:
+
+In Jenkins, a Declarative Pipeline is a more modern and structured way to define your build, test, and deploy pipelines.
+It uses a simplified and expressive syntax, making it easier to write and understand compared to the Scripted Pipeline. 
+Declarative Pipeline was introduced to provide a more opinionated and user-friendly pipeline syntax.
+
+Declarative pipeline define with pipeline,
+
+pipeline{
+    agent any
+    environment{
+        name1="jenkins"
+        name2="java"
+    }
+    stages{
+        stage("Concatenation"){
+            steps{
+                script{
+                    Name=name1 + " with " + name2
+                }
+                echo "welcome to $Name"
+            }
+        }
+    }
+}
+
+The key advantages of declarative pipelines in Jenkins are:
+
+1.Easier to learn and use compared to scripted pipelines, with a richer syntax and built-in syntax checking.
+
+2.Provide facilities for logging and restarting from specific stages, improving pipeline manageability.
+
+3.Allow for the use of conditional statements and access to environment variables, enhancing pipeline flexibility.
+
+4.Help include version control and make the integration and deployment processes more streamlined.
+
+########################################
+
+Scripted Pipeline:
+
+A scripted pipeline in Jenkins is one of the two types of syntax used to define pipeline jobs, 
+the other being the declarative pipeline. Scripted pipelines use a Groovy-based DSL (Domain Specific Language) to define the pipeline and 
+are more flexible and powerful, allowing for complex scripting and logic.
+
+node {
+    stage('Checkout') {
+        // Checkout code from source control
+        checkout scm
+    }
+
+    stage('Build') {
+        // Run build steps
+        echo 'Building...'
+        sh 'mvn clean install'
+    }
+
+    stage('Test') {
+        // Run test steps
+        echo 'Testing...'
+        sh 'mvn test'
+    }
+
+    stage('Deploy') {
+        // Run deployment steps
+        echo 'Deploying...'
+        sh './deploy.sh'
+    }
+
+    // Post-build actions
+    post {
+        always {
+            echo 'Cleaning up...'
+            cleanWs()
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
+
+
+The key advantages of using a Jenkins scripted pipeline are:
+
+1.Flexibility: Scripted pipelines offer more flexibility and control compared to declarative pipelines, allowing you to write custom logic and handle complex scenarios.
+
+2.Domain-Specific Language (DSL): The Groovy-based DSL used in scripted pipelines simplifies many tasks for Jenkins developers, providing a more programmatic approach.
+
+3.Customization: Scripted pipelines allow for more customization and the ability to handle complex use cases that may not be easily expressed in the declarative syntax.
+
+
+The main disadvantages of the scripted pipeline in Jenkins are:
+
+1.Scripted pipeline drawbacks: Scripted pipelines are more complex and harder to read and maintain compared to declarative pipelines. 
+They also lack the built-in error handling and readability features of declarative pipelines.
+
+2.Error handling: Scripted pipelines require more manual error handling,
+while declarative pipelines have built-in error handling mechanisms that make them more intuitive and easier to understand.
+
+
+##################################
+
+
+
+
+
+
+
+
+
+
 
 
