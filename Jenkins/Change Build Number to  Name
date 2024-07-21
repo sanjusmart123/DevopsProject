@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+    stages{
+        stage("Example_pipeline"){
+            steps{
+                script{
+                    currentBuild.displayName="Deployment"
+                    currentBuild.description="This build is used for Deployment"
+                }
+                echo "example"
+            }
+        }
+    }
+}
