@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    environment{
+        name1="jenkins"
+        name2="java"
+    }
+    stages{
+        stage("Concatenation"){
+            steps{
+                script{
+                    Name=name1 + " with " + name2
+                }
+                echo "welcome to $Name"
+            }
+        }
+    }
+}
