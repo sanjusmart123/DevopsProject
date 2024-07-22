@@ -70,4 +70,6 @@ in deployment,we delete one pod i will create another pod
 we can delete pod permanently 
 kubectl delete deployment/pod_name
 
+kubectl get po --show-labels ----> display labels 
+
 
