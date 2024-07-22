@@ -1,0 +1,1 @@
+kubectl get all --->to get all info about present ns
