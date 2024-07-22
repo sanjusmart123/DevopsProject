@@ -6,6 +6,7 @@ Shared Library
 Shared Pipeline
 #################################
 shared library:
+#################################
 
 Jenkins Shared Libraries allow you to centralize common pipeline code and reuse it across multiple Jenkinsfiles,
 making your pipeline code more modular and maintainable. 
@@ -36,6 +37,8 @@ pipeline{
 ################
 
 shared Pipeline:
+
+#################
 
 A shared pipeline in Jenkins allows you to define common steps or functions that can be reused across multiple Jenkinsfiles. 
 This helps in maintaining consistency, reducing redundancy, and simplifying the maintenance of your Jenkins pipelines. 
@@ -105,6 +108,8 @@ def call(Map config = [:]) {
 ######################
 
 MultiBranch Pipeline:
+
+#######################
 
 A Multibranch Pipeline in Jenkins allows you to automatically create a pipeline for each branch in a repository, 
 thereby enabling you to have different Jenkinsfiles for different branches. This is particularly useful for projects where each branch may have its own build and deployment process.
@@ -207,6 +212,8 @@ Benefits of Multibranch Pipeline:
 
 Declarative Pipeline:
 
+#######################################################
+
 In Jenkins, a Declarative Pipeline is a more modern and structured way to define your build, test, and deploy pipelines.
 It uses a simplified and expressive syntax, making it easier to write and understand compared to the Scripted Pipeline. 
 Declarative Pipeline was introduced to provide a more opinionated and user-friendly pipeline syntax.
@@ -244,6 +251,8 @@ The key advantages of declarative pipelines in Jenkins are:
 ########################################
 
 Scripted Pipeline:
+
+#########################################
 
 A scripted pipeline in Jenkins is one of the two types of syntax used to define pipeline jobs, 
 the other being the declarative pipeline. Scripted pipelines use a Groovy-based DSL (Domain Specific Language) to define the pipeline and 
@@ -309,8 +318,34 @@ while declarative pipelines have built-in error handling mechanisms that make th
 
 ##################################
 
+Freestyle Pipeline
 
+##################################
 
+In Jenkins, a Freestyle Project (or Freestyle Job) is one of the simplest and most flexible types of projects you can create. 
+It allows you to configure and run a variety of build steps and post-build actions. 
+While Freestyle Projects are not as powerful or flexible as Jenkins Pipelines (both Declarative and Scripted), they are easy to set up and can handle a wide range of basic use cases.
+
+Jenkins freestyle projects allow users to automate simple jobs, such as running tests, creating and packaging applications, 
+producing reports, or executing commands. Freestyle projects are repeatable and contain both build steps and post-build.
+
+##########################################
+
+JIRA
+
+########################################
+Integrating JIRA with Jenkins allows you to track and manage your software development projects efficiently. 
+JIRA is a popular issue and project tracking tool used by development teams to plan, track, and release software. 
+Jenkins, a widely-used continuous integration/continuous delivery (CI/CD) tool, can be integrated with JIRA to automate and streamline the development process.
+
+Benefits of Integrating JIRA with Jenkins
+1.Automated Issue Tracking: Automatically update JIRA issues based on Jenkins build status, reducing manual work and keeping your JIRA issues up-to-date.
+2.Improved Visibility: Provides better visibility into the development process by linking Jenkins builds with JIRA issues.
+3.Streamlined Workflow: Integrates issue tracking and CI/CD processes, making it easier to manage development tasks and releases.
+4.Enhanced Collaboration: Facilitates collaboration between development and project management teams by providing real-time updates on issue status and build progress.
+
+Integrating JIRA with Jenkins helps streamline your development workflow by automating the process of updating and managing issues.
+This integration ensures that your JIRA issues are always up-to-date with the latest build status and changes, providing better visibility and efficiency for your development team.
 
 
 
