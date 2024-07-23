@@ -71,5 +71,6 @@ we can delete pod permanently
 kubectl delete deployment/pod_name
 
 kubectl get po --show-labels ----> display labels 
+kubectl exec -it mysql -- /bin/bash ----> to enter into specific container or pod
 
 
