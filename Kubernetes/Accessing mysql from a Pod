@@ -1,0 +1,65 @@
+controlplane $ vi pod.yml
+controlplane $ kubectl create -f pod.yml
+pod/mysql created
+controlplane $ kubectl get pod
+NAME    READY   STATUS              RESTARTS   AGE
+mysql   0/1     ContainerCreating   0          8s
+controlplane $ kubectl get pod
+NAME    READY   STATUS    RESTARTS   AGE
+mysql   1/1     Running   0          13s
+controlplane $ cat pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+   - name: mysql-container
+     image: mysql:5
+     env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: sai637
+      - name: MYSQL_DATABASE
+        value: fleetman
+controlplane $ vi service.yml
+controlplane $ kubectl create -f service.yml
+service/database created
+controlplane $ kubectl get all
+NAME        READY   STATUS    RESTARTS   AGE
+pod/mysql   1/1     Running   0          8m38s
+
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+service/database     ClusterIP   10.97.71.68   <none>        3306/TCP   33s
+service/kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP    19d
+controlplane $ kubectl exec -it mysql
+error: you must specify at least one command for the container
+controlplane $ kubectl exec -it -c  mysql
+error: pod, type/name or --filename must be specified
+controlplane $ kubectl exec -it -c pod/mysql
+error: pod, type/name or --filename must be specified
+controlplane $ kubectl exec -it pod  pod/mysql
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+Error from server (NotFound): pods "pod" not found
+controlplane $ kubectl exec -it pods  pod/mysql
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+Error from server (NotFound): pods "pods" not found
+controlplane $ cat service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: database
+spec: 
+  selector:
+    app: mysql
+  ports:
+  - port: 3306
+  type: ClusterIP
+controlplane $ ls
+filesystem  pod.yml  service.yml  snap
+controlplane $ kubectl exec -it mysql -- /bin/bash
+bash-4.2# ls
+bin   dev                         entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+boot  docker-entrypoint-initdb.d  etc            lib   media  opt  root  sbin  sys  usr
+bash-4.2# exit
