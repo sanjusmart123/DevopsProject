@@ -110,4 +110,105 @@ spec:
 DNS:Domain name system
 
 
+There are Four Types of services :
+ClusterIP. Exposes a service which is only accessible from within the cluster.
+NodePort. Exposes a service via a static port on each node's IP.
+LoadBalancer. Exposes the service via the cloud provider's load balancer.
+ExternalName.
+
+
+1.ClusterIP (default)
+
+Description: Exposes the service on an internal IP in the cluster. This type makes the service accessible only within the cluster.
+Use Case: Ideal for internal communication between microservices within the cluster.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+#############################
+
+2.NodePort
+
+Description: Exposes the service on each Node's IP at a static port (the NodePort). A ClusterIP service, to which the NodePort service routes, is automatically created.
+Use Case: Useful for exposing the service to external traffic using <NodeIP>:<NodePort>.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  type: NodePort
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+      nodePort: 30007
+###################################
+
+3. LoadBalancer
+Exposes the service externally using a cloud provider's load balancer.
+A ClusterIP service, to which the external load balancer routes, is automatically created.
+Use case: Ideal for production environments where you need to expose your service to the internet.
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-loadbalancer-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+  type: LoadBalancer
+####################################
+
+4.ExternalName
+Maps the service to the contents of the externalName field (e.g., my.database.example.com).
+The externalName must be a valid DNS name.
+Does not create a cluster IP.
+Use case: When you want to proxy a service to an external DNS name.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-externalname-service
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+#######################################
+
+5.Headless Service
+Does not allocate a ClusterIP.
+Service discovery is done directly via DNS (i.e., DNS A or SRV records) or through a custom mechanism.
+Use case: Useful for stateful applications, where each pod needs to be addressed individually.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-service
+spec:
+  clusterIP: None
+  selector:
+    app: MyApp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+#########################################
+
+
 
