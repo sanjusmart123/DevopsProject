@@ -24,6 +24,33 @@ Disadvantages:
 3.Furthermore, the risk of data loss or corruption due to external factors is higher in cloud computing. 
 4.Lastly, cloud computing can be expensive, especially for small or medium-sized businesses.
 
+##################################################
+1.Iaas:
+
+*In cloud computing, Infrastructure as a Service (IaaS) refers to a cloud delivery model where clients can rent virtual servers, storage, and networking components from a provider. 
+*Users have full control over the configuration and deployment of resources, but are responsible for managing and maintaining them. 
+*IaaS providers install and maintain the underlying infrastructure, and clients can scale resources up or down as needed. 
+*This model offers flexibility, scalability, and cost-effectiveness, making it suitable for businesses that require significant computational power and storage. 
+*Examples of IaaS providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+
+2.Paas:
+*PAAS, also known as Platform as a Service, is a cloud computing model that enables users to deploy applications without managing the underlying infrastructure. 
+*In a PAAS environment, the cloud service provider manages the hardware, security, and infrastructure, while users can focus on developing, testing, and deploying their applications. 
+*Popular PAAS providers include Heroku, Microsoft Azure, and Google App Engine. PAAS is particularly useful for applications that require a specific platform or runtime environment, such as Ruby on Rails or Python. 
+*It provides a high level of scalability, flexibility, and cost-effectiveness.
+
+3.Saas:
+*Saas, or Software as a Service, is a cloud computing model where a third-party provider hosts and manages an application, making it accessible to users over the internet.
+*In a SaaS model, the provider is responsible for maintaining and updating the application, as well as ensuring its security and scalability. 
+*This approach eliminates the need for users to install, configure, and maintain the application on their own devices or servers. 
+*SaaS is popular among businesses and individuals alike, as it offers flexibility, cost savings, and ease of use.
+*Examples of SaaS applications include Microsoft Office 365 and Salesforce
+################################################################################
+
+
+
+
+
 
 
 
