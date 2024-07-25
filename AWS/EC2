@@ -1,0 +1,61 @@
+EC2(Elastic Compute Cloud)
+
+EC2, short for Elastic Compute Cloud, is a service offered by Amazon Web Services (AWS) that provides scalable computing capacity in the cloud. 
+With EC2, you can launch virtual machines, known as instances, with a variety of operating systems, including Windows, Linux, and more.
+Each instance is a virtual server that can be configured to suit your specific needs, with options for CPU, memory, storage, and networking. 
+EC2 is a popular choice for deploying web applications, running batch processing jobs, and hosting relational databases, making it a versatile and powerful tool for cloud computing.
+
+ It allows you to launch and manage virtual servers, known as EC2 instances, with a variety of operating systems, CPU, memory, and storage configurations. 
+ EC2 offers secure, resizable compute capacity with the broadest choice of processor, storage, networking, OS, and purchase model, enabling you to configure capacity with minimal friction.
+
+It also allows the user to configure their instances as per their requirements i.e. allocate the RAM, ROM, and storage according to the need of the current task. 
+Even the user can dismantle the virtual device once its task is completed and it is no more required. 
+For providing, all these scalable resources AWS charges some bill amount at the end of every month, the bill amount is entirely dependent on your usage. 
+EC2 allows you to rent virtual computers. The provision of servers on AWS Cloud is one of the easiest ways in EC2.
+EC2 has resizable capacity. EC2 offers security, reliability, high performance, and cost-effective infrastructure so as to meet the demanding business needs.
+
+Pricing of AWS EC2 (Elastic Compute Cloud) Instance
+The pricing of AWS EC2-instance is mainly going to depend upon the type of instance you are going to choose. The following are the pricing charges on some of the EC2-Instances.
+
+1.On-Demand Instances: The On-Demand instance is like a pay-as-you-go model where you have to pay only for the time you are going to use if the instance is stopped then the billing for that instance will be stopped when it was in the running state then you are going to be charged.
+The billing will be done based on the time EC2-Instance is running.
+2.Reserved Instances: Reversed Instance is like you are going to give the commitment to the AWS by buying the instance for one year or more than one year by the requirement to your organization.
+Because you are giving one year of Commitment to the AWS they will discount the price on that instance.
+3.Spot Instances: You have to bid the instances and who will win the bid they are going to get the instance for use but you can’t save the data which is used in this type of instance.
+
+
+AWS EC2 Instance Types
+Different Amazon EC2 instance types are designed for certain activities. Consider the unique requirements of your workloads and applications when choosing an instance type. This might include needs for computing, memory, or storage.
+
+The AWS EC2 Instance types are as follow:
+
+General Purpose Instances
+Compute Optimized Instances
+Memory-Optimized Instances
+Storage Optimized Instances
+Accelerated Computing Instances
+
+1. General Purpose Instances
+It provides the balanced resources for a wide range of workloads.
+It is suitable for web servers, development environments, and small databases.
+Examples: T3, M5 instances.
+
+2. Compute Optimized Instances
+It provides high-performance processors for compute-intensive applications.
+It will be Ideal for high-performance web servers, scientific modeling, and batch processing.
+Examples: C5, C6g instances.
+
+3. Memory-Optimized Instances
+High memory-to-CPU ratios for large data sets.
+Perfect for in-memory databases, real-time big data analytics, and high-performance computing (HPC).
+Examples: R5, X1e instances.
+
+4. Storage Optimized Instances
+It provides optimized resource of instance for high, sequential read and write access to large data sets.
+Best for data warehousing, Hadoop, and distributed file systems.
+Examples: I3, D2 instances.
+
+5. Accelerated Computing Instances
+It facilitates with providing hardware accelerators or co-processors for graphics processing and parallel computations.
+It is ideal for machine learning, gaming, and 3D rendering.
+ex:P3,G4 instances
