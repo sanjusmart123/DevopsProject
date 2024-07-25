@@ -59,3 +59,82 @@ Examples: I3, D2 instances.
 It facilitates with providing hardware accelerators or co-processors for graphics processing and parallel computations.
 It is ideal for machine learning, gaming, and 3D rendering.
 ex:P3,G4 instances
+
+
+
+
+
+To install and launch an EC2 instance in AWS, follow these steps:
+
+
+In the EC2 Dashboard, click on the Launch Instance button.
+Choose an Amazon Machine Image (AMI):
+
+Select an AMI from the list. Amazon Linux 2 AMI is commonly used for general purposes.
+Click the Select button next to the desired AMI.
+
+
+Choose an Instance Type:
+
+Select an instance type based on your requirements. The t2.micro instance type is eligible for the free tier.
+Click the Next: Configure Instance Details button.
+Configure Instance Details:
+
+Network setings and set vpc
+then set Firwall security groups(create security group)
+then Alow RDP traffic form it wil conect your instance
+then set source type and storage for windows 30 gib gp2
+
+
+Configure your instance settings. For most users, the default settings are sufficient.
+Click the Next: Add Storage button.
+Add Storage:
+
+Configure the storage for your instance. By default, 8 GB of General Purpose SSD (gp2) storage is allocated.
+Adjust the storage size if necessary, then click Next: Add Tags.
+Add Tags:
+
+Add any tags to your instance for easier identification. Tags are key-value pairs.
+Click the Next: Configure Security Group button.
+Configure Security Group:
+
+Create a new security group or select an existing one.
+Add rules to allow specific traffic to your instance (e.g., SSH for Linux instances on port 22).
+Click the Review and Launch button.
+Review and Launch:
+
+Review your instance configuration.
+Click the Launch button.
+Select a Key Pair:
+
+Select an existing key pair or create a new one.
+If creating a new key pair, download the .pem file and store it securely. You will need this file to connect to your instance.
+Confirm by checking the acknowledgment box and click Launch Instances.
+View Launch Status:
+
+Click the View Instances button to go to the Instances Dashboard.
+Your instance will be in a pending state initially. Once it is running, the state will change to running.
+Connect to Your EC2 Instance
+Locate the Public IP Address:
+
+In the EC2 Dashboard, select your running instance.
+Note the public IP address or the public DNS name of your instance.
+Connect via SSH (Linux/Mac) or PuTTY (Windows):
+
+For Linux/Mac:
+
+Open a terminal window.
+Navigate to the directory where your .pem file is located.
+Run the following SSH command:
+sh
+Copy code
+ssh -i "your-key-pair.pem" ec2-user@your-instance-public-ip
+Replace "your-key-pair.pem" with the path to your key pair file and your-instance-public-ip with the instance's public IP address.
+For Windows (using PuTTY):
+
+Download and install PuTTY.
+Use PuTTYgen to convert the .pem file to a .ppk file.
+Open PuTTY and enter the public IP address of your instance in the Host Name field.
+Under Connection -> SSH -> Auth, browse and select the .ppk file.
+Click Open to connect to your instance.
+Log in as ec2-user.
