@@ -153,6 +153,34 @@ You cannot directly encrypt existing unencrypted volumes or snapshots.
 However, you can create encrypted volumes or snapshots from unencrypted volumes or snapshots. 
 If you enable encryption by default, Amazon EBS automatically encrypts new volumes and snapshots using your default KMS key for EBS encryption.
 ################################################
+We cant share un encripted shapshots to another acount
+##################################################
+DLM:
+
+Automating with AWS Data Lifecycle Manager (DLM) allows you to manage the lifecycle of your AWS resources, 
+including Amazon S3 buckets, Amazon Elastic File System (EFS) file systems, and Amazon Elastic Block Store (EBS) volumes. 
+DLM enables you to automate the creation, rotation, and deletion of these resources, 
+while also enforcing compliance and security policies. This helps you maintain scalability, reduce manual errors, and improve overall resource management efficiency. 
+By automating these tasks, you can focus on higher-level tasks and ensure that your AWS resources are properly configured and managed.
+
+###########################################################
+what is your ec2 instance backup strategy in aws:
+
+By using Tag we can filter the instances automatically,AWS Backup supports both instance-level backups as AMIs and volume-level backups as separate snapshots: 
+For a full backup of all EBS volumes on the instance, create an AMI of the EC2 instance running on Linux or Windows. 
+When you want to roll back, use the launch instance wizard to create an instance.
+
+Automated Snapshots:
+AWS Backup by using DLM: Use AWS Backup to automate the backup of your EBS volumes. AWS Backup allows you to create backup plans that specify when and how frequently backups should be created.
+Create a Backup Plan: Define the frequency (e.g., daily, weekly) and retention period.
+Assign Resources: Attach your EBS volumes to the backup plan.
+Manual Snapshots:
+Create Snapshots Manually: If you prefer more control, you can manually create snapshots of your EBS volumes using the AWS Management Console or AWS CLI.
+Console: Go to EC2 > Volumes, select the volume, and choose Create Snapshot.
+
+##################################################################3
+
+
 
 
 
