@@ -1,0 +1,30 @@
+A load balancer in AWS is a service that distributes incoming traffic across multiple targets, such as EC2 instances, containers, or lambda functions.
+This helps to improve the reliability, scalability, and performance of your application by ensuring that no single instance or resource is overwhelmed with traffic. 
+AWS offers three types of load balancers: Application Load Balancer (ALB), Network Load Balancer (NLB), and Classic Load Balancer (CLB). 
+Each type is designed for specific use cases and can be used to route traffic to different types of targets.
+
+A load balancer serves as the single point of contact for clients.
+The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. 
+This increases the availability of your application. You add one or more listeners to your load balancer.
+
+A load balancer in AWS is a service that helps distribute traffic across multiple servers to improve the responsiveness and availability of a website or application.
+It ensures that no single server becomes overwhelmed, reducing the risk of downtime and errors. 
+AWS offers two types of load balancers: Application Load Balancer and Network Load Balancer. 
+Application Load Balancer is designed for Layer 7 traffic and is suitable for web applications, 
+while Network Load Balancer is designed for Layer 4 traffic and is suitable for large-scale applications. 
+Both load balancers can be deployed in various regions and Availability Zones.
+
+Load balancers improve application performance by increasing response time and reducing network latency.
+
+Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, 
+containers, and IP addresses, in one or more Availability Zones.
+
+
+
+Top 4 open-source load balancers:
+
+Traefik. Traefik is a popular open-source edge router and load balancer that makes it easy to expose applications and services running in a network to the internet. ...
+Nginx. NGINX is a popular open-source web server and reverse proxy that can also be used as a load balancer. ...
+Seesaw. ...
+HAProxy.
+
