@@ -18,3 +18,5 @@ It was developed by Red Hat and is primarily used on Red Hat-based Linux operati
 An RPM package uses the . rpm extension and is a bundle (a collection) of different files.
 ########################
 DMK--->Default Master Key
+#######################
+KMS---> Key Management Service
