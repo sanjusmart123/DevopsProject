@@ -20,3 +20,12 @@ An RPM package uses the . rpm extension and is a bundle (a collection) of differ
 DMK--->Default Master Key
 #######################
 KMS---> Key Management Service
+############################
+The Full Form of HTTPS is HyperText Transfer Protocol Secure. 
+HTTP Secure (HTTPS) is a secure HTTP encrypted using the Secure Sockets Layer or Transport Layer Security (SSL/TLS) convention. 
+HyperText Transfer Protocol Secure, enables protected communication over the computer network.
+###################################
+TCP stands for Transmission Control Protocol, which is a transport-layer protocol in the Internet Protocol Suite (TCP/IP).
+It provides reliable, connection-oriented communication over IP networks, ensuring data delivery in the correct order and error-free
+#########################################
+
