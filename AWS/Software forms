@@ -1,0 +1,19 @@
+The full form of IIS is Internet Information Services. :
+
+Internet Information Services is an extensible web server software for the Windows server, created by Microsoft to be 
+used with the Windows NT family. It supports HTTPS, HTTP, HTTP/2, FTPS, FTP, NNTP, and SMTP.
+####################
+The Yellowdog Updater Modified (YUM) :
+is a free and open-source command-line package-management utility for computers running the 
+Linux operating system using the RPM Package Manager.
+######################
+ sudo (Super User DO) - 
+Is an application that allows certain users to be able to run programs as if they were the root user on a Linux system.
+#####################
+RDP (Remote Desktop Protocol):
+is a network communications protocol developed by Microsoft, which allows users to connect to another computer from a remote location.
+######################
+RPM stands for Red Hat Package Manager :
+It was developed by Red Hat and is primarily used on Red Hat-based Linux operating systems (Fedora, CentOS, RHEL, etc.).
+An RPM package uses the . rpm extension and is a bundle (a collection) of different files.
+########################
