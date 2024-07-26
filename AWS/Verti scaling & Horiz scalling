@@ -1,0 +1,11 @@
+Vertical scaling, also known as scaling up, is an AWS practice that increases the power of a virtual machine (EC2 instance) by adjusting its computing resources, such as the number of CPU cores, memory, and storage capacity. 
+This approach is suitable for applications that require consistent high performance and suitable for workloads that don't fluctuate greatly. 
+AWS provides several instance types, each with varying levels of resources, allowing users to scale up or down as needed. 
+Additionally, AWS auto-scaling enables automatic scaling based on demand, ensuring optimal performance and cost-effectiveness.
+
+
+Horizontal scaling is a common technique used to increase the capacity of a system or application.
+In Amazon Web Services (AWS), horizontal scaling can be achieved through several methods. One way is by using Elastic Load Balancers (ELBs), 
+which distribute incoming traffic across multiple EC2 instances. Another method is by using Auto Scaling, which automatically adds or removes EC2 instances based on demand. 
+Additionally, AWS provides services like Elastic Container Service (ECS) and Kubernetes, which support containerized applications and horizontal scaling.
+By scaling horizontally, you can handle increased traffic and improve the overall performance of your application.
