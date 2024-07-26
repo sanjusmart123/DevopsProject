@@ -163,6 +163,38 @@ DLM enables you to automate the creation, rotation, and deletion of these resour
 while also enforcing compliance and security policies. This helps you maintain scalability, reduce manual errors, and improve overall resource management efficiency. 
 By automating these tasks, you can focus on higher-level tasks and ensure that your AWS resources are properly configured and managed.
 
+Policies:
+
+With Amazon Data Lifecycle Manager, you create policies to define your backup creation and retention requirements. These policies typically specify the following:
+
+Policy type — Defines the type of backup resources that the policy manages (snapshots or EBS-backed AMIs).
+
+Target resources — Defines the type of resources that are targeted by the policy (instances or EBS volumes).
+
+Creation frequency — Defines how often the policy runs and creates snapshots or AMIs.
+
+Retention threshold — Defines how long the policy retains snapshots or AMIs after creation.
+
+Additional actions — Defines additional actions that the policy should perform, such as cross-Region copying, archiving, or resource tagging.
+
+Amazon Data Lifecycle Manager offers default policies and custom policies.
+
+Default policies:
+
+Default policies back up all volumes and instances in a Region that do not have recent backups. 
+You can optionally exclude volumes and instances by specifying exclusion parameters.
+
+Custom policies
+Custom policies target specific resources based on their assigned tags and support advanced features, such as fast snapshot restore, snapshot archiving, cross-account copying, and pre and post scripts. A custom policy can include up to 4 schedules, where each schedule can have its own creation frequency, retention threshold, and advanced feature configuration.
+
+Amazon Data Lifecycle Manager supports the following custom policies:
+
+EBS snapshot policy — Targets volumes or instances and automates the creation, retention, and deletion of EBS snapshots.
+
+EBS-backed AMI policy — Targets instances and automates the creation, retention, and deregistration of EBS-backed AMIs.
+
+Cross-account copy event policy — Automates cross-Region copy actions for snapshots that are shared with you.
+
 ###########################################################
 what is your ec2 instance backup strategy in aws:
 
