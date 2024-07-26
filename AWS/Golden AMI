@@ -1,0 +1,55 @@
+Golden AMI or Custom AMI(Amazon machine Image):
+
+In Amazon Web Services (AWS), a Custom AMI (also known as a Golden AMI) is an Amazon Machine Image that is custom-built by a user. 
+It allows users to create a copy of an existing Amazon AMI and modify it to suit their specific needs, such as installing and configuring specific software or patches. 
+Custom AMIs can be used to launch multiple instances with the same configuration, making it easier to manage and maintain a consistent environment across multiple machines. 
+This provides more flexibility and control over the instances launched in AWS.
+
+
+
+Create Golden AMI:
+Create the AMI
+Go to the EC2 Dashboard.
+Select Instances.
+Choose Your Instance.
+Create Image:
+Actions > Image > Create Image.
+Provide a name and description for the image.
+Choose whether to include any additional volumes.
+Click Create Image.
+5. Use the Golden AMI
+Launch New Instances:
+Navigate to the AMIs section in the EC2 Dashboard.
+Select your newly created AMI.
+Click Launch to start new instances using this Golden AMI.
+Configure the instance as needed (instance type, VPC, subnet, security groups, etc.).
+Example Script to Automate AMI Creation (AWS CLI)
+You can automate the creation of a Golden AMI using AWS CLI and a script:
+
+sh
+Copy code
+#!/bin/bash
+
+# Variables
+INSTANCE_ID="i-xxxxxxxx"
+IMAGE_NAME="Golden_AMI_$(date +%Y-%m-%d)"
+DESCRIPTION="Golden AMI with standard configuration"
+
+# Stop the instance (optional)
+aws ec2 stop-instances --instance-ids $INSTANCE_ID
+aws ec2 wait instance-stopped --instance-ids $INSTANCE_ID
+
+# Create the AMI
+IMAGE_ID=$(aws ec2 create-image --instance-id $INSTANCE_ID --name $IMAGE_NAME --description "$DESCRIPTION" --no-reboot --output text)
+
+# Wait for the AMI to be available
+aws ec2 wait image-available --image-ids $IMAGE_ID
+
+echo "AMI created with ID: $IMAGE_ID"
+
+# Optionally, restart the instance
+aws ec2 start-instances --instance-ids $INSTANCE_ID
+Additional Tips
+Version Control: Maintain version control for your Golden AMIs by using a naming convention that includes version numbers or dates.
+Security: Ensure your AMI adheres to your organization’s security policies and best practices.
+Documentation: Document the process and configurations included in your Golden AMI for future reference and compliance.
