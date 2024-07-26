@@ -128,6 +128,15 @@ if you create a instance  then we can create volume
 The Yellowdog Updater Modified (YUM) is a free and open-source command-line package-management utility for 
 computers running the Linux operating system using the RPM Package Manager.
 
+#################################################
+
+EBS Snapshots:
+
+An EBS snapshot is a point-in-time copy of an Amazon Elastic Block Store (EBS) volume. 
+AWS snapshots are used to back up EBS volumes, allowing you to restore your data in case of data loss or corruption. 
+Snapshots can be taken manually or automatically, and are stored in Amazon S3. You can create multiple snapshots of a single EBS volume, and have them stored for up to 30 days. 
+After this period, they'll be automatically deleted. Snapshots can also be used to create new EBS volumes, allowing you to quickly spin up new resources.
+
 
 
 
