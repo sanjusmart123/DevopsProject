@@ -117,3 +117,19 @@ as they are faster and cheaper but do not survive instance stops and starts.
 
 
 
+
+commands:
+lsblk ---> to check volumes
+df -Th ---> to check volume size,use
+
+we should create volume in same availabilty zone of instance
+if you create a instance  then we can create volume
+
+The Yellowdog Updater Modified (YUM) is a free and open-source command-line package-management utility for 
+computers running the Linux operating system using the RPM Package Manager.
+
+
+
+
+
+
