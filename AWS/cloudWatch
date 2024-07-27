@@ -1,0 +1,113 @@
+CloudWatch is a monitoring service provided by Amazon Web Services (AWS) that enables you to monitor and track your AWS resources and applications.
+It provides real-time data and insights on metrics such as CPU utilization, latency, and request counts. 
+CloudWatch can help you identify and troubleshoot issues, as well as set alarms and notifications for unusual activity. 
+You can use CloudWatch to monitor metrics for EC2 instances, RDS databases, S3 buckets, and more. 
+With CloudWatch, you can gain visibility into your application's performance and troubleshoot issues quickly, 
+ensuring high availability and reliability.
+
+The CloudWatch home page automatically displays metrics about every AWS service you use. 
+You can additionally create custom dashboards to display metrics about your custom applications,
+and display custom collections of metrics that you choose.
+
+You can create alarms that watch metrics and send notifications or automatically make changes to the resources 
+you are monitoring when a threshold is breached
+
+######################################################
+
+1.Log in to AWS Management Console
+Sign in to the AWS Management Console.
+Navigate to the CloudWatch Dashboard:
+You can find CloudWatch by typing "CloudWatch" in the AWS services search bar and selecting it.
+2. Create a CloudWatch Alarm
+To create an alarm that monitors a specific metric:
+
+Navigate to Alarms in the left-hand menu.
+
+Click on “Create alarm”.
+
+Select a metric:
+
+Click on “Select metric”.
+Choose the namespace and metric you want to monitor (e.g., EC2, RDS, etc.).
+For example, to monitor an EC2 instance's CPU usage, navigate to EC2 -> Per-Instance Metrics -> Select your instance and metric (e.g., CPUUtilization).
+Configure the alarm:
+
+Define the threshold (e.g., "CPUUtilization > 80% for 5 minutes").
+Set the period and data points to alarm (e.g., Period = 1 minute, Data points to alarm = 5 out of 5).
+Set actions:
+
+Define what actions should be taken when the alarm state is triggered.
+You can set up notifications via SNS (Simple Notification Service) to send emails, SMS, or trigger other actions like Lambda functions.
+Name and create the alarm:
+
+Provide a name and description for your alarm.
+Review your settings and click “Create alarm”.
+3. Create a CloudWatch Dashboard
+To create a dashboard to visualize metrics:
+
+Navigate to Dashboards in the left-hand menu.
+Click on “Create dashboard”.
+Enter a name for your dashboard and click “Create dashboard”.
+Add widgets:
+Click on “Add widget”.
+Select the type of widget (e.g., line graph, number, text, etc.).
+Select the metrics you want to visualize.
+Configure the widget settings and click “Create widget”.
+4. Set Up CloudWatch Logs
+To enable logging for your applications or AWS services:
+
+Navigate to Logs in the left-hand menu.
+
+Create a log group:
+
+Click on “Create log group”.
+Enter a name for the log group and click “Create log group”.
+Create log streams:
+
+Click on the log group you just created.
+Click on “Create log stream”.
+Enter a name for the log stream and click “Create log stream”.
+Configure logging for AWS services (e.g., EC2, Lambda):
+
+For EC2: Install and configure the CloudWatch Logs agent on your instance.
+For Lambda: Configure the Lambda function to output logs to CloudWatch.
+5. Monitor Custom Metrics
+To publish custom metrics from your applications:
+
+Use AWS SDKs or AWS CLI to publish custom metrics.
+
+Example using AWS CLI:
+sh
+Copy code
+aws cloudwatch put-metric-data --metric-name PageViews --namespace MyApp --value 1
+Visualize custom metrics:
+
+You can add these metrics to your CloudWatch dashboard or set alarms on them.
+Example: Create CloudWatch Alarm using AWS CLI
+Here's an example of how to create a CloudWatch alarm for an EC2 instance's CPU utilization using the AWS CLI:
+
+sh
+Copy code
+# Set variables
+INSTANCE_ID="i-xxxxxxxx"
+ALARM_NAME="HighCPUUtilization"
+ALARM_DESC="Alarm when CPU utilization exceeds 80%"
+SNS_TOPIC_ARN="arn:aws:sns:region:account-id:my-topic"
+
+# Create the alarm
+aws cloudwatch put-metric-alarm --alarm-name $ALARM_NAME \
+    --alarm-description "$ALARM_DESC" \
+    --metric-name CPUUtilization \
+    --namespace AWS/EC2 \
+    --statistic Average \
+    --period 300 \
+    --threshold 80 \
+    --comparison-operator GreaterThanThreshold \
+    --dimensions Name=InstanceId,Value=$INSTANCE_ID \
+    --evaluation-periods 1 \
+    --alarm-actions $SNS_TOPIC_ARN \
+    --unit Percent
+Additional Tips
+Integrate with other AWS Services: CloudWatch integrates with many AWS services like EC2, RDS, Lambda, ECS, etc.
+Cost Management: Be mindful of the costs associated with CloudWatch logs and custom metrics, especially if logging a high volume of data.
+Automation: Use AWS CloudFormation or Terraform to automate the creation and management of CloudWatch resources.
