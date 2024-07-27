@@ -3,7 +3,7 @@ This approach is suitable for applications that require consistent high performa
 AWS provides several instance types, each with varying levels of resources, allowing users to scale up or down as needed. 
 Additionally, AWS auto-scaling enables automatic scaling based on demand, ensuring optimal performance and cost-effectiveness.
 
-
+################################################
 Horizontal scaling is a common technique used to increase the capacity of a system or application.
 In Amazon Web Services (AWS), horizontal scaling can be achieved through several methods. One way is by using Elastic Load Balancers (ELBs), 
 which distribute incoming traffic across multiple EC2 instances. Another method is by using Auto Scaling, which automatically adds or removes EC2 instances based on demand. 
@@ -13,7 +13,14 @@ By scaling horizontally, you can handle increased traffic and improve the overal
 
 Horizontal scaling means that you scale by adding more ec2 machines into your pool of resources whereas Vertical scaling means 
 that you scale by adding more power (CPU, RAM) to an existing ec2 machine.
+#######################################################
 
 Good examples of horizontal scaling are Redis, MongoDB.
 
 Good example of vertical scaling is MySQL — Amazon RDS (The cloud version of MySQL).
+###########################################
+Schedule scalling:
+
+Scheduled Scaling in AWS allows you to automatically adjust the capacity of your AWS resources based on a schedule. 
+This is useful for handling predictable changes in traffic patterns, such as traffic increases during business hours or decreases during off-peak hours.
+Here’s how to set up scheduled scaling for an Auto Scaling group using the AWS Management Console:
