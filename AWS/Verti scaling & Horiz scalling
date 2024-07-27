@@ -9,3 +9,11 @@ In Amazon Web Services (AWS), horizontal scaling can be achieved through several
 which distribute incoming traffic across multiple EC2 instances. Another method is by using Auto Scaling, which automatically adds or removes EC2 instances based on demand. 
 Additionally, AWS provides services like Elastic Container Service (ECS) and Kubernetes, which support containerized applications and horizontal scaling.
 By scaling horizontally, you can handle increased traffic and improve the overall performance of your application.
+
+
+Horizontal scaling means that you scale by adding more ec2 machines into your pool of resources whereas Vertical scaling means 
+that you scale by adding more power (CPU, RAM) to an existing ec2 machine.
+
+Good examples of horizontal scaling are Redis, MongoDB.
+
+Good example of vertical scaling is MySQL — Amazon RDS (The cloud version of MySQL).
