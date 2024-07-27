@@ -1,0 +1,99 @@
+
+Amazon Elastic File System (Amazon EFS) provides serverless,
+Amazon Elastic File System (EFS) is a service from Amazon Web Services (AWS) that makes it easy to set up and manage file systems in the cloud. 
+It allows multiple EC2 instances to access a single file system, making it ideal for applications that require shared access to files, 
+such as big data analytics, content collaboration, and web servers. 
+EFS provides a scalable and highly available NFS file system that can be easily mounted by instances in the same AWS Availability Zone.
+It supports both Linux and Windows operating systems
+####################################################
+
+Amazon EFS supports the Network File System version 4 (NFSv4.1 and NFSv4.0) protocol,
+so the applications and tools that you use today work seamlessly with Amazon EFS. 
+Amazon EFS is accessible across most types of Amazon Web Services compute instances, including Amazon EC2, 
+Amazon ECS, Amazon EKS, AWS Lambda, and AWS Fargate.
+
+The service is designed to be highly scalable, highly available, and highly durable
+
+#######################################
+In windows:
+
+FSX (FastSite) is a fully managed, cloud-based service offered by AWS (Amazon Web Services) that allows users to create and manage 
+virtual machines (VMs) in the cloud. With FSX, you can easily migrate your on-premises file systems to the cloud, 
+providing a seamless experience for your users. FSX supports various file systems, including Windows File Server,
+Network File System (NFS), and Server Message Block (SMB). It also provides features like high availability, disaster recovery, 
+and scalability, making it an ideal solution for businesses that require a reliable and secure file storage solution.
+
+#####################################
+Step-by-Step Guide to Scheduled Scaling
+Log in to the AWS Management Console:
+
+Go to the AWS Management Console.
+Sign in with your AWS credentials.
+Navigate to the Auto Scaling Groups:
+
+In the services menu, select EC2.
+On the left-hand side, under Auto Scaling, click on Auto Scaling Groups.
+Select Your Auto Scaling Group:
+
+Choose the Auto Scaling group you want to set up scheduled scaling for.
+Create a Scheduled Action:
+
+With your Auto Scaling group selected, click on the Scheduled Actions tab.
+Click Create scheduled action.
+Configure the Scheduled Action:
+
+Name: Enter a name for your scheduled action.
+Recurrence: Specify the schedule using cron expressions or the frequency (e.g., every day, every week).
+Start Time: Set the time when the scaling action should start.
+End Time (optional): Set the time when the scaling action should end.
+Min Size: Set the minimum number of instances for the Auto Scaling group during the scheduled time.
+Max Size: Set the maximum number of instances for the Auto Scaling group during the scheduled time.
+Desired Capacity: Set the desired number of instances for the Auto Scaling group during the scheduled time.
+Save the Scheduled Action:
+
+Once all fields are configured, click Create to save the scheduled action.
+Example: Scaling Up During Business Hours
+Let's say you want to scale up your instances during business hours (9 AM to 5 PM) every weekday.
+
+Name: ScaleUpBusinessHours
+Recurrence: 0 9 * * 1-5 (Every weekday at 9 AM)
+Min Size: 4
+Max Size: 10
+Desired Capacity: 6
+For scaling down outside business hours:
+
+Name: ScaleDownOffHours
+Recurrence: 0 17 * * 1-5 (Every weekday at 5 PM)
+Min Size: 1
+Max Size: 2
+Desired Capacity: 1
+Verify Scheduled Actions
+After creating the scheduled actions, ensure they are listed under the Scheduled Actions tab of your Auto Scaling group.
+Check that the settings are correct and reflect your scaling needs.
+Using AWS CLI for Scheduled Scaling
+You can also create scheduled actions using the AWS CLI. Here’s an example command to create a scheduled action:
+
+sh
+Copy code
+aws autoscaling put-scheduled-update-group-action \
+    --auto-scaling-group-name my-asg \
+    --scheduled-action-name ScaleUpBusinessHours \
+    --recurrence "0 9 * * 1-5" \
+    --min-size 4 \
+    --max-size 10 \
+    --desired-capacity 6
+To scale down:
+
+sh
+Copy code
+aws autoscaling put-scheduled-update-group-action \
+    --auto-scaling-group-name my-asg \
+    --scheduled-action-name ScaleDownOffHours \
+    --recurrence "0 17 * * 1-5" \
+    --min-size 1 \
+    --max-size 2 \
+    --desired-capacity 1
+Additional Tips
+Monitoring: Use Amazon CloudWatch to monitor the performance of your Auto Scaling group and ensure that your scheduled actions are working as expected.
+Adjustments: Review and adjust your scheduled actions periodically based on the actual usage patterns and business needs.
+Notifications: Set up notifications to alert you about scaling activities using Amazon SNS.
