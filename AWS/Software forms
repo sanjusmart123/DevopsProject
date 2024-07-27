@@ -28,4 +28,11 @@ HyperText Transfer Protocol Secure, enables protected communication over the com
 TCP stands for Transmission Control Protocol, which is a transport-layer protocol in the Internet Protocol Suite (TCP/IP).
 It provides reliable, connection-oriented communication over IP networks, ensuring data delivery in the correct order and error-free
 #########################################
+VPC---virtual Private cloud
+VPC (Virtual Private Cloud) is a virtual network dedicated to your AWS account. 
+It allows you to configure a boundary around your resources in the cloud, providing a secure environment for your applications.
+A VPC is defined by a range of IP addresses and is isolated from other VPCs or the internet. 
+You can configure settings such as subnets, security groups, and network ACLs to control access and traffic flow within your VPC. 
+This provides a secure and scalable environment for running your applications in the cloud.
+#########################################
 
