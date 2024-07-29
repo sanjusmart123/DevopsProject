@@ -1,0 +1,9 @@
+A VPC, short for Virtual Private Cloud, is a virtual network dedicated to your AWS account. 
+It is a virtual version of a traditional network, logically isolated from other virtual networks in the same AWS account. 
+A VPC allows you to launch AWS resources, such as EC2 instances, RDS databases, and S3 buckets, in a virtual environment 
+that is separate from other AWS accounts or other VPCs. You can configure your VPC's IP address range, subnets, and routing to meet your specific network requirements. 
+VPCs are highly secure, scalable, and offer a high degree of customization.
+
+VPC (Virtual Private Cloud) is an essential AWS feature that enables customers to establish virtual networks within the cloud. 
+VPC protects and isolates EC2 instances, databases and load balancers while protecting from attack by outside forces such as hackers.
+
