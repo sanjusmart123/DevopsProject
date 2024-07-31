@@ -7,6 +7,23 @@ VPCs are highly secure, scalable, and offer a high degree of customization.
 VPC (Virtual Private Cloud) is an essential AWS feature that enables customers to establish virtual networks within the cloud. 
 VPC protects and isolates EC2 instances, databases and load balancers while protecting from attack by outside forces such as hackers.
 
+
+
+once we create vpc, automatically aws creates one route table ,default security group and one network ACL(Access control list).
+Then we need to create subnets and Internet gateway .
+then attach internet gateway to the vpc
+next our subnets are associted with main default route table then go to Route there is only one target local 
+when we launch our all instances are used to communicate each other by using local
+then we create public route table and private route table,so we can add our public subnets to public route table and
+add private subnets to private route table and we should select auto assign public ip to our public subnets.
+then enable DNS hostnames to our vpc and create flow in cloudwatch ,cloudwatch is easy to see the logs.
+After that we should create IAM policy for permission for flow flow logs role policy.
+then create a role ,select EC2 and give permission for policy and create.
+then edit trust policy to change ec2 to vpc flow logs.
+then go to cloudwatch and creeate one log group then go back to flow logs and edit destination log group here we should give log group name.
+then create flow log and then launch one instance in private subnet and launch one instance in public subnet in our vpc.
+then connect our instance to server by using RDP in windows or Linux in putty
+
 ########################################
 route table:
 
@@ -79,6 +96,10 @@ It allows you to mask the failure of an instance or instance replacement by prov
 EIPs are useful for DNS associations, load balancers, and applications that rely on static IP addresses. 
 You can associate an EIP with any instance in your account, and reassign it to a different instance if the first instance is terminated or interrupted. 
 This provides flexibility and reliability for your AWS-based applications.
+
+############################################################
+
+
 
 
 
