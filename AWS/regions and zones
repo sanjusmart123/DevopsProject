@@ -1,0 +1,12 @@
+difference between region and availability zone in aws
+
+In Amazon Web Services (AWS), a region and an Availability Zone (AZ) are two distinct concepts.
+
+A region is a geographic area where AWS resources, such as EC2 instances, S3 buckets, and databases, are available. Each region is isolated from other regions and has its own set of IP addresses. AWS currently has 25 regions worldwide, with multiple AZs within each region.
+
+An Availability Zone, on the other hand, is a separate logical data center within a region. 
+AZs are isolated from each other, but share the same region's IP address space. 
+AZs provide a level of redundancy and failover capabilities, so you can distribute your resources across multiple AZs for high availability
+
+Regions are collections of zones. Zones have high-bandwidth, low-latency network connections to other zones in the same region.
+In order to deploy fault-tolerant applications that have high availability, Google recommends deploying applications across multiple zones and multiple regions.
