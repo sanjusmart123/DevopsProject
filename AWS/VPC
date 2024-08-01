@@ -4,6 +4,16 @@ A VPC allows you to launch AWS resources, such as EC2 instances, RDS databases, 
 that is separate from other AWS accounts or other VPCs. You can configure your VPC's IP address range, subnets, and routing to meet your specific network requirements. 
 VPCs are highly secure, scalable, and offer a high degree of customization.
 
+It allows you to define your own networking topology, including your own IP address range, subnets, and routers. 
+VPCs can span across multiple Availability Zones (AZs) and regions. You can launch AWS resources, such as EC2 instances, RDS databases,
+and S3 buckets, into a VPC. VPCs provide a secure and isolated environment, helping to meet your networking and security requirements.
+You can configure VPC settings, including security groups, network ACLs, and route tables, to manage traffic and access to your resources.
+
+
+
+
+
+
 VPC (Virtual Private Cloud) is an essential AWS feature that enables customers to establish virtual networks within the cloud. 
 VPC protects and isolates EC2 instances, databases and load balancers while protecting from attack by outside forces such as hackers.
 
@@ -46,13 +56,43 @@ Subnets can be associated with Availability Zones (AZs) to ensure high availabil
 internet gateway:
 
 An Amazon Web Services (AWS) Internet Gateway is a virtual device that provides access to and from the AWS cloud. 
+A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet.
 It serves as a single entry and exit point for internet traffic to and from a VPC (Virtual Private Cloud) or a subnet.
 The Internet Gateway enables communication between AWS resources and the internet, as well as between AWS resources and other networks.
 It acts as a router, filtering and directing traffic based on route tables and network ACLs. 
 This ensures secure and controlled access to your AWS resources from the internet.
 
+###################################################
+
+endpoints:
+Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
+
+####################################################
+
+Peering connections
+Use a VPC peering connection to route traffic between the resources in two VPCs.
+
+##################################################
+
+Traffic Mirroring
+Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
+
+#################################################
+
+Transit gateways
+Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
+
 ###############################################
- Difference between public subnet and private subnet:
+
+VPC Flow Logs
+A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
+#################################################
+
+VPN connections
+Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
+
+###############################################
+Difference between public subnet and private subnet:
 
 In Amazon Web Services (AWS), public subnets and private subnets are two types of subnets that help organize IP addresses and define the accessibility of resources. 
 Public subnets are connected to the internet and allow inbound traffic, whereas private subnets are not directly accessible from the internet and only enable communication within the VPC or VPN.
