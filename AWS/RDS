@@ -1,0 +1,62 @@
+Amazon Relational Database Service (RDS) is a managed relational database service offered by Amazon Web Services (AWS).
+It allows users to set up, manage, and scale a relational database instance in the cloud. RDS supports various database engines, 
+including MySQL, PostgreSQL, Oracle, SQL Server, and Amazon Aurora. 
+With RDS, users can create a database instance with a choice of instance type, storage, and availability zone. 
+RDS provides features such as automatic backups, patching, and monitoring, freeing up users to focus on application development and maintenance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################
+kms keys in aws:
+
+AWS Key Management Service (KMS) is a managed service that enables you to create, use, and manage keys and fleets of keys for encryption and decryption. 
+You can create unique DNS names for your KMS keys, which allows you to use them to encrypt and decrypt data in your applications. 
+Keys can be created using the AWS Management Console, AWS CLI, or the AWS SDKs. 
+They can also be managed using AWS CloudFormation templates or AWS IAM policies. KMS keys can be used with other AWS services, such as Amazon S3, Amazon EC2, and Amazon DynamoDB.
+#################################
+
+A jump server is a secure gateway that allows authorized users to access and manage other servers or networks. 
+It acts as a middleman, connecting the user's system to the target server while maintaining secure connections. 
+Jump servers typically operate as SSH jump hosts, providing a secure entry point for administrators to access multiple servers without having to establish individual connections.
+This method enhances security by limiting the amount of information users can access and prevents direct access to sensitive systems, making it a crucial component of a secure IT infrastructure.
