@@ -1,0 +1,5 @@
+CloudFormation is a service offered by Amazon Web Services (AWS) that enables you to use templates to define and deploy infrastructure as code.
+This service helps you to create and manage a collection of resources, such as Amazon EC2 instances, S3 buckets, and RDS databases, 
+in a bug-free and repeatable manner. You can use CloudFormation to create and deploy infrastructure in a predictable and controlled manner,
+which reduces the risk of human error and improves collaboration among team members. Additionally, CloudFormation provides a version control system 
+for your infrastructure code, allowing you to track changes and roll back to previous versions if needed
