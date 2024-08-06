@@ -1,0 +1,22 @@
+cloudfront:
+
+CloudFront is a content delivery network (CDN) service operated by Amazon Web Services (AWS) that securely delivers website content, 
+such as videos, images, and HTML files, to users worldwide. With CloudFront, data is cached at edge locations,
+reducing latency and improving content delivery speeds. You can use CloudFront with Amazon S3, Elastic Load Balancer (ELB), and other AWS services. 
+CloudFront also supports custom SSL certificates, HTTP/2, and headers for geo-distribution and security. By distributing your content closer to users, 
+CloudFront can help reduce the latency and costs associated with delivering content across the globe.
+
+Amazon CloudFront is a web service that gives businesses and web application developers an easy and cost 
+effective way to distribute content with low latency and high data transfer speeds.
+
+#########################################################
+
+Latency:
+
+Latency in AWS refers to the delay between the time a request is made and the time the response is received. 
+This includes the time it takes for data to travel between your device and AWS services, as well as processing time within AWS. 
+Low latency is crucial for applications that require real-time processing, such as gaming, video conferencing, and online collaboration.
+AWS provides several tools and services to optimize latency, including Content Delivery Network (CDN), Lambda Functions, and Amazon Elastic Block Store (EBS). 
+Understanding latency in AWS is essential for designing and deploying high-performance applications.
+
+################################################################
