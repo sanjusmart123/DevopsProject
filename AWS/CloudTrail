@@ -1,0 +1,11 @@
+Here's more on cloudtrail in aws
+
+CloudTrail is a logging service provided by Amazon Web Services (AWS) that captures and stores log data from AWS services as events.
+These events provide a record of everything that occurs in an AWS account, including user interactions and API calls. 
+CloudTrail logs are stored in Amazon S3 buckets or Amazon CloudWatch logs. 
+This allows you to track down issues, troubleshoot problems, and ensure compliance with security policies. 
+You can also use CloudTrail to monitor and audit the activity of your AWS resources, as well as detect potential security threats.
+#############################################################
+CloudTrail provides visibility into user activity by recording actions taken on your account. 
+CloudTrail records important information about each action, including who made the request, the services used, 
+the actions performed, parameters for the actions, and the response elements returned by the AWS service.
