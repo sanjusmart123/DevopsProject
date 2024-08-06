@@ -1,0 +1,4 @@
+A query about AWS and lambda! Lambda is a serverless computing service offered by Amazon Web Services (AWS), allowing developers to run code without provisioning or managing servers.
+It's a highly scalable and flexible solution for handling spikes in application traffic or variable workload. 
+You can write code in various languages, including Node.js, Python, and Java, and AWS Lambda will automatically manage the infrastructure, 
+scaling your code up or down as needed. With Lambda, you only pay for the compute time consumed by your code, making it a cost-effective solution for many applications.
