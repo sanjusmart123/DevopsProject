@@ -20,3 +20,10 @@ AWS provides several tools and services to optimize latency, including Content D
 Understanding latency in AWS is essential for designing and deploying high-performance applications.
 
 ################################################################
+
+Web Application Firewall:
+
+You're referring to WAF (Web Application Firewall) in Amazon Web Services (AWS).
+WAF is a web application security layer that filters and blocks malicious traffic to your website or application. 
+It monitors HTTP requests and identifies the malicious traffic based on rules, such as IP addresses, HTTP headers, and query strings.
+AWS WAF integrates with AWS CloudFront, Amazon Elastic Load Balancer (ELB), and Amazon API Gateway to protect your web applications from common web exploits and attacks.
