@@ -34,3 +34,9 @@ in fast forward merge no other commit is create but in three way merge Git creat
 
 Git Conflict:
 Delete unwanted content and again we will add to staging and commit local repo with MC commit message
+
+
+
+git reflog:
+
+The git reflog command is a powerful tool in Git that allows you to view a history of changes to the commit references in your repository. This includes information about HEAD, branches, and tags. When you run git reflog, you'll see a list of commits, along with the date and time of each update, and the name of the branch or tag that was updated. This can be useful for tracking changes to your repository over time, and for identifying any unexpected commits or updates.
