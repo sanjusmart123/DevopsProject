@@ -1,0 +1,4 @@
+KMS stands for Key Management Service, a fully managed service that enables you to create, use, and rotate cryptographic keys for encrypting sensitive data,
+such as customer data in AWS databases, storage, or other applications. 
+It allows you to centrally manage and control access to encryption keys, ensuring consistent security and compliance across your organization. 
+With KMS, you can encrypt and decrypt data at rest and in transit, and integrate with other AWS services, such as S3, DynamoDB, and Lambda, to provide secure data encryption and decryption.
