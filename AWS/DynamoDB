@@ -11,6 +11,22 @@ This service is commonly used for big data, IoT, and real-time web applications,
 *There is no schema restrictions,so you can maintain diffrent types of of data in same column and attributes count coulld be 
 different in each row.
 *Its highly secured NoSql database.
+#####################################################
+Real Time in Devops:
+
+1.CI/CD Pipelines:
+
+Pipeline State Storage: DynamoDB can store the state of CI/CD pipelines, such as build status, deployment status, and logs.
+Artifact Metadata: Store metadata about build artifacts, versions, and dependencies.
+2.Monitoring and Logging:
+
+Custom Metrics and Logs: Store custom application metrics and logs for real-time monitoring and alerting.
+Audit Logs: Maintain audit logs for compliance and security purposes, leveraging DynamoDB's ability to handle large volumes of write operations.
+
+3.Job Scheduling and Task Queues:
+
+Job Queues: Implement task queues for background jobs, with DynamoDB storing job status and metadata.
+Scheduling: Store scheduled tasks and triggers, enabling event-driven executions based on DynamoDB data changes.
 
 
 
