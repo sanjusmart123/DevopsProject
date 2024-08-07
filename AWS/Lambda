@@ -20,6 +20,9 @@ Additionally, Lambda's automated scaling and cost-effective pricing make it an a
 
 Devops:
 
+Serverless architecture is a software design approach where developers can build and manage applications without managing the underlying architecture.
+Serverless applications still run on servers, but the cloud service provider is responsible for provisioning, managing, and scaling all the cloud infrastructure
+
 Continuous Integration and Continuous Deployment (CI/CD):
 
 Code Commit and Build Triggers: Running tests and deployments when code is committed to a repository.
