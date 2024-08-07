@@ -3,7 +3,16 @@ It's designed to handle large amounts of data and scale with your needs. DynamoD
 allowing for flexible schema design and scalability. With DynamoDB, you don't have to worry about provisioning or scaling servers, as AWS handles these tasks automatically. 
 This service is commonly used for big data, IoT, and real-time web applications, and is known for its high performance, low latency, and high availability.
 
-DynamoDB is a serverless cloud based NoSQL database.
+*DynamoDB is a serverless cloud based NoSQL database.
+*It automatically replicates data to multiple availability zones.
+*In case any failure happen in one AZ automatically the data the data will be fetched from another AZ.
+*Dynamo DB also supports cross region replication.which provides more safety to the data.
+*Provides very fast throughput with low latency.
+*There is no schema restrictions,so you can maintain diffrent types of of data in same column and attributes count coulld be 
+different in each row.
+*Its highly secured NoSql database.
+
+
 
 serverless:
 Not required to maintain servers or operating systems,no need to bother about security,its completely managed by service provider.
@@ -15,5 +24,7 @@ The term "NoSQL" refers to a type of database that doesn't use the traditional t
 and Microsoft SQL Server. Instead, NoSQL databases are designed to handle large amounts of unstructured or semi-structured data and provide a more flexible and scalable data storage option. 
 They often use keys for data retrieval, rather than SQL queries, and are used in big data and real-time web applications.
 Examples of NoSQL databases include MongoDB, Cassandra, and Redis.
+
+There is no schema restrictions,so you can maintain diffrent types of of data in same column and attributes count coulld be different in each row
 
 ###############################################
