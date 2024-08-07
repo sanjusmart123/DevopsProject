@@ -1,0 +1,6 @@
+A webhook allows an application to send real-time data to another application.
+In the context of Jenkins and GitHub, a webhook is a mechanism used by GitHub to notify Jenkins of repository changes.
+Jenkins will then automatically build and test the code in response to the webhook notification.
+
+In the context of CI/CD (Continuous Integration/Continuous Delivery), a Webhook is a mechanism that allows different systems or 
+services to communicate and trigger actions based on events or updates.
