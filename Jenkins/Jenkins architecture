@@ -1,0 +1,3 @@
+ Jenkins uses a master-slave architecture, where the master node is the central point responsible for task scheduling, monitoring,
+and managing build processes. The slave nodes, also known as agents, run the actual builds and perform the tasks assigned by the master node. 
+This architecture enables scalability, reliability, and ease of use for large-scale software development and deployment operations.
