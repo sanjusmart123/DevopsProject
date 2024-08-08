@@ -1,0 +1,3 @@
+Builds Periodically triggers builds as per the schedule (every 10 minutes) even if you haven't changed anything. 
+Poll SCM will check for changes before triggering any build, if there are changes to the previous version there only build will be triggered.
+Builds Periodically is not recommended.
