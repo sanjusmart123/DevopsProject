@@ -1,0 +1,6 @@
+Prometheus and Grafana are two popular open-source tools used in monitoring and observability.
+Prometheus is a monitoring system and time series database that collects metrics from applications and services. 
+It provides a query language (PromQL) for retrieving and aggregating data. 
+Grafana, on the other hand, is a visualization platform that uses Prometheus data to create dashboards, graphs, and charts. 
+While Prometheus focuses on collecting and storing data, Grafana focuses on visualizing and analyzing that data.
+In short, Prometheus is the data collector, and Grafana is the data viewer.
