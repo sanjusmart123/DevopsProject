@@ -8,8 +8,9 @@ git pull origin branchname
 git branch New_branchname
 git merge sourceBranch Destination Branch
 git merge --abort --to close the merge in the middle
-git fetch --
-
+git fetch -- a primary command used to download contents from a remote repository.
+git stash --->a stash is a temporary storage area for changes that are not yet committed to a branch.
+git cherry-pick --->cherry-picking is a way to apply a single commit from one branch to another, without including the history of the original commit. 
 
 
 
@@ -40,3 +41,12 @@ Delete unwanted content and again we will add to staging and commit local repo w
 git reflog:
 
 The git reflog command is a powerful tool in Git that allows you to view a history of changes to the commit references in your repository. This includes information about HEAD, branches, and tags. When you run git reflog, you'll see a list of commits, along with the date and time of each update, and the name of the branch or tag that was updated. This can be useful for tracking changes to your repository over time, and for identifying any unexpected commits or updates.
+
+
+
+In Git, a stash is a temporary storage area for changes that are not yet committed to a branch. When you stash changes, you are essentially setting aside a snapshot of your current state, allowing you to later apply or reset those changes. This is useful when you want to switch to a different branch or stage changes without committing them. You can stash changes using the git stash command, and later retrieve them with git stash apply or git stash pop. This feature allows for flexibility and control over the changes in your Git repository.
+
+
+
+In Git, cherry-picking is a way to apply a single commit from one branch to another, without including the history of the original commit. It allows you to selectively adopt specific changes from one branch without merging the entire commit history. This can be useful when you want to apply a fix to a different branch, without having to merge the entire commit history. Cherry-picking is done using the git cherry-pick command, which applies the specified commit to the current branch, prompting for conflicts resolution if necessary.
+
