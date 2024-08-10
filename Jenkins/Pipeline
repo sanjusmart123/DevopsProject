@@ -12,7 +12,7 @@ Jenkins Shared Libraries allow you to centralize common pipeline code and reuse 
 making your pipeline code more modular and maintainable. 
 A shared library in Jenkins is a reusable collection of Groovy scripts that can be used by multiple Jenkins jobs. 
 This allows you to share code and functionality between different jobs, which can make your builds more efficient and easier to maintain
-
+By leveraging Shared Libraries, teams can reduce code duplication, improve maintainability, and increase the overall efficiency of their Jenkins workflows.
 
 
 pipeline{
