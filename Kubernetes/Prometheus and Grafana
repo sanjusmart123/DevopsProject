@@ -3,4 +3,8 @@ Prometheus is a monitoring system and time series database that collects metrics
 It provides a query language (PromQL) for retrieving and aggregating data. 
 Grafana, on the other hand, is a visualization platform that uses Prometheus data to create dashboards, graphs, and charts. 
 While Prometheus focuses on collecting and storing data, Grafana focuses on visualizing and analyzing that data.
+
+It’s a powerful tool for creating real-time monitoring dashboards.
+Grafana connects to Prometheus as a data source and provides a flexible interface to visualize those metrics through dashboards.
+Together, they form a powerful combination for monitoring and observability, especially in cloud-native environments like Kubernetes.
 In short, Prometheus is the data collector, and Grafana is the data viewer.
