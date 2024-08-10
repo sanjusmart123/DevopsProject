@@ -46,7 +46,7 @@ Create docker file Commands:
 
 3. CMD --->it provide default Commands for an executing Container
 
-4. ENTRY POINT → Same as CMD, difference is replace Commands But Entrypoint ok Can in executing time in CMD. We Cant replace
+4. ENTRY POINT → Same as CMD, difference is replace Commands But Entrypoint ok Can in executing time in CMD. We Cant override
 
 5. WORK DIR -->To Sets the working directory.
 
