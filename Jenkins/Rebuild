@@ -1,0 +1,10 @@
+ what is rebuild in jenkins
+
+Rebuild is a feature in Jenkins that allows you to manually trigger a build process for a project.
+When you initiate a rebuild, Jenkins will recreate the latest version of the project's artifacts, such as ear, war, or jar files, based on the latest changes in the source code. 
+This feature is particularly useful when you need to override previous build results or when you want to ensure that the latest changes are correctly incorporated into the project's artifacts.
+To rebuild a project in Jenkins, navigate to the project's configuration page, click the "Rebuild" button, and select the desired build configuration.
+Rebuild, using the Rebuilder plugin allows a completed job to be re-executed while allowing you to change the parameters, assuming your job is parameterized
+
+
+
