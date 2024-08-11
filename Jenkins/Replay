@@ -1,0 +1,13 @@
+what is replay in jenkins:
+
+In Jenkins, Replay refers to a feature that allows users to replay a job or a set of jobs on demand.
+This feature is useful for debugging and testing purposes, as it enables you to simulate the execution of a job or a series of jobs without affecting the actual build results.
+Upon replay, Jenkins will run the specified jobs in the same environment as the original run, with the same input parameters and configurations. 
+This allows you to reproduce issues or verify fixes without affecting the production environment.
+
+Suppose you have a pipeline that failed due to a configuration issue in the Jenkinsfile.
+Instead of modifying the Jenkinsfile in your version control system, pushing the changes, and running a new build, you can use Replay to:
+
+Modify the script to fix the issue.
+Run the pipeline with the new script to verify the fix.
+Once confirmed, you can update the Jenkinsfile in version control with the fix.
