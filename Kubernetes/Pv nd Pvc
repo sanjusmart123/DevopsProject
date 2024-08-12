@@ -24,14 +24,24 @@ controlplane $ vi pvc.yml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: example-pv
+  name: my-pv
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
   hostPath:
     path: "/mnt/data"
+
+capacity: Specifies the size of the storage, in this case, 10Gi.
+accessModes: Defines how the volume can be accessed. ReadWriteOnce means it can be mounted as read-write by a single node.
+persistentVolumeReclaimPolicy: Determines what happens to the PV when the PVC is deleted.
+Retain means the data is retained after the PVC is deleted.
+storageClassName: Associates the PV with a storage class. If you don’t want to use storage classes, you can omit this or set it to "manual".
+hostPath: Defines the actual storage location on the host machine for testing purposes.
+In production, you might use other storage types like NFS, AWS EBS, GCE PD, etc.
 
 
 
@@ -39,7 +49,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc
+  name: my-pvc
 spec:
   accessModes:
     - ReadWriteOnce
@@ -47,7 +57,34 @@ spec:
     requests:
       storage: 5Gi
 
+Use the PVC in a Pod
+Once the PVC is bound to a PV, you can use the PVC in a pod to mount the storage.
 
+#######################################################
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: my-storage
+  volumes:
+  - name: my-storage
+    persistentVolumeClaim:
+      claimName: my-pvc
+
+
+
+accessModes: Should match one of the access modes specified in the PV.
+resources: Specifies the amount of storage requested. This should be equal to or less than the capacity of the PV.
+storageClassName: This should match the storageClassName defined in the PV.
+If storageClassName is not specified, it will bind to a PV without a storage class or to the default storage class.
+
+#####################################################################
 
 pv in kubernetes
 
