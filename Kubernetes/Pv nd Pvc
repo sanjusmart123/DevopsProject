@@ -47,4 +47,29 @@ spec:
     requests:
       storage: 5Gi
 
-~                          
+
+
+pv in kubernetes
+
+PV stands for Persistent Volumes in Kubernetes. 
+It is a resource that provides persistent storage to pods.
+PVs are managed by the cluster and are decoupled from pods, ensuring that when a pod is deleted or recreated, the data stored in the PV is preserved.
+PVs can be provisioned statically by cluster administrators or dynamically through storage classes.
+They can be attached to pods using Persistent Volume Claims (PVCs) and can be used for storing applications' data, logs, or other persistent data.
+
+pvc in kubernetes
+
+PVC (Persistent Volumes Claim) is a Kubernetes feature that allows you to request storage resources from a cluster.
+A PVC is a request for storage that is provisioned and managed by a cluster administrator. 
+Once a PVC is created, it can be bound to a Persistent Volume (PV), which is a resource in the cluster 
+that represents a piece of networked storage. PVCs provide a way to decouple storage from the deployment of an application, 
+allowing for more flexibility and scalability in the deployment of stateful applications.
+
+
+storage class in kubernetes
+
+In Kubernetes, a storage class is a way to request storage with specific characteristics, such as type and size, without explicitly specifying the underlying Persistent Volumes (PVs).
+When a Pod requests storage, Kubernetes creates a Persistent Volume Claim (PVC) and binds it to a matching PV.
+This decouples the application from the storage infrastructure, allowing for easier scaling and flexibility. 
+Storage classes can be used to provision storage from various sources, such as local disks, NFS, or object storage like Amazon S3. 
+They provide a standardized way to interact with storage resources in Kubernetes.
