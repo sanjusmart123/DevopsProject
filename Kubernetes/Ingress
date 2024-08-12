@@ -1,0 +1,11 @@
+ingress in kubernetes
+
+In Kubernetes, an Ingress is a centralized point of entry for incoming HTTP requests. 
+It allows multiple services to be accessed through a single IP and port. 
+The Ingress resource is responsible for routing incoming traffic to the relevant service, allowing for load balancing, SSL termination, 
+and hostname-based routing. An Ingress controller forwards incoming requests to the corresponding service within the cluster.
+This facilitates a scalable and maintainable way to manage incoming traffic in Kubernetes applications.
+
+Kubernetes Ingress is an API object that helps developers expose their applications and 
+manage external access by providing http/s routing rules to the services within a Kubernetes cluster.
+
