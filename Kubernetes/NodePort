@@ -1,0 +1,10 @@
+what is nodeport in kubernetes:
+
+In Kubernetes, a NodePort is a type of service that exposes a container's port on each machine (node) in a cluster. 
+It allows external traffic to access the service directly by using a static port number on each node. 
+NodePorts are typically used for development environments, testing, and demos. When a NodePort is created,
+Kubernetes allocates a unique port number on each node's exposed ports (30000-32767) and maps it to the container's port.
+This allows clients to access the service using the node's IP and the allocated port number.
+
+A NodePort is a type of service in Kubernetes that exposes your application on a specific port on each node in your cluster. 
+This allows external traffic to access your application by using the IP address of any node in the cluster along with the specified port.
