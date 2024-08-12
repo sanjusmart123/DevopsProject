@@ -1,0 +1,7 @@
+ClusterIP is the default service type in Kubernetes. 
+It exposes the service on an internal IP address within the Kubernetes cluster, making it accessible only from within the cluster.
+This is useful for internal services that do not need to be exposed to external traffic.
+
+How ClusterIP Works
+When you create a ClusterIP service, Kubernetes allocates an IP address for the service within the cluster. 
+This IP is only reachable from within the cluster, and the service routes traffic to the pods that match the service's selector.
