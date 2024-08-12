@@ -1,4 +1,29 @@
 controlplane $ vi deploy.yml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-api-deployment
+  labels:
+    app: my-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-api
+  template:
+    metadata:
+      labels:
+        app: my-api
+    spec:
+      containers:
+      - name: my-api-container
+        image: my-api-image:latest
+        ports:
+        - containerPort: 8080
+
+
+
 controlplane $ kubectl create -f deploy.yml
 deployment.apps/api-deployment created
 controlplane $ kubectl get pods
@@ -11,6 +36,31 @@ NAME                              READY   STATUS    RESTARTS   AGE
 api-deployment-867d7679cd-cz9n5   1/1     Running   0          12s
 api-deployment-867d7679cd-n5kst   1/1     Running   0          12s
 api-deployment-867d7679cd-vtzw6   1/1     Running   0          12s
+
+Exposing Your API with a Service
+To make your API accessible, you need to expose it using a Kubernetes Service.
+
+vi api-service.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-api-service
+spec:
+  selector:
+    app: my-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+
+
+kubectl create -f api-service.yml
+
+
+
+
 controlplane $ curl http://localhost:8001/version
 curl: (7) Failed to connect to localhost port 8001: Connection refused
 controlplane $ curl http://localhost:8001/Version
