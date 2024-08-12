@@ -7,3 +7,6 @@ NodePort exposes a service on a specific port on each node in the cluster, makin
 LoadBalancer, on the other hand, uses an external cloud provider's load balancer to distribute traffic across nodes. 
 NodePort is simpler to set up but provides less scalability and security, while LoadBalancer offers better scalability and security at the cost of more complex setup. 
 Choose NodePort for small-scale applications and LoadBalancer for large-scale, high-traffic deployments.
+
+ClusterIP is ideal for internal communication within the cluster, NodePort allows external access without a load balancer, 
+and LoadBalancer is suitable for publicly accessible applications.
