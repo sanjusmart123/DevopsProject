@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: webapp-deployment
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - name: webapp
+      - name: webapp-container
         image: richardchesterwood/k8s-fleetman-webapp-angular:release1
         env:
         - name: SPRING_PROFILES_ACTIVE
