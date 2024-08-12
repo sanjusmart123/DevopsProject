@@ -1,3 +1,13 @@
+what is pod in kubernetes:
+
+In Kubernetes, a Pod is the basic execution unit and deployable object that represents a single instance of a running application or service. 
+A Pod is made up of one or more Containers, which are run alongside each other in the same process space.
+Pods are ephemeral, meaning they can be removed and recreated as needed. 
+Each Pod has its own IP address and port numbers, allowing multiple Pods to run on the same node without conflicts.
+Pods are the smallest unit of scalability and fault tolerance in Kubernetes, making them a fundamental concept in containerized orchestration.
+if a pod (or the node it executes on) fails, Kubernetes can automatically create a new replica of that pod to continue operations.
+
+
 To create pod
 kubectl run nginx --image=nginx
 Get status of pod
@@ -73,5 +83,33 @@ kubectl delete deployment/pod_name
 kubectl get po --show-labels ----> display labels 
 kubectl exec -it mysql -- /bin/bash ----> to enter into specific container or pod
 kubectl delete cluster ${NAME} --yes ---> to delete a cluster
+
+
+
+
+selector:
+ it is used for grouping,we are having multiple deployment files and service file is supposed to be same 
+so how service file is identify the with the network access provide,
+then how would service know that on which deployment or pod we are supposed to provide network access,
+thats the reason selector is used it will match the labels inside the selector
+
+Template:
+
+Actually it is a blue print to create a pod.
+
+Specifications:
+
+spec contains details about the container
+
+containerPort:
+
+containerport that will be opened on the container that will be created inside he pod 
+
+nodePort:
+it will give accesss for over the outside the internet,
+for im going to deploy this deployment and service files from this nginx server is deployed,
+to access that server we will use this nodeport
+
+nodeport will be range between 30000 to 32768
 
 
