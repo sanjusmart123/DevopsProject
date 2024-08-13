@@ -1,0 +1,32 @@
+ls -  list directories
+pwd - display present working directory command in Linux
+cd - Linux command to change to directories
+mkdir - Command used to create directories in linux
+cp- copy our files to another folders
+mv-move or rename to our files
+touch -it will create new file
+ln-used to combine two files
+clear-clear the display
+cat -display the file content
+echo-print the text
+less-used to view (but not modify) the contents of a file or output from another command.
+man-this command gives detailed documentation about all the commands in linux
+uname:displays basic info about os
+whoami-display current username(directory)
+tar- It bundles multiple files into a single file without compressing them by default.
+tar -cvf archive.tar file1 file2 saidir/
+-c: Create a new archive.
+-v: Verbose mode; list files processed.
+-f: Specify the archive file name.
+
+tar -xvf archive.tar --extract files from archive,The extract operation refers to the process of unpacking or decompressing files from an archive. 
+zip-
+in Linux is used to create and manage ZIP archives. 
+ZIP archives are widely used for compressing and bundling multiple files and directories into a single file. 
+so we can easy to store, share, and transfer groups of files.
+
+zip archive.zip file1
+
+grep-search for a string irrespective of case sensitive
+     grep -i sai sai.txt
+    -i --ignore case sensive 
