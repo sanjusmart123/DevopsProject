@@ -85,3 +85,31 @@ It arranges the lines in a specified order, typically alphabetically or numerica
 and can handle various sorting requirements based on the options provided.
             sort -n num.txt ----> asc order to numbers
             sort -r file.txt ----> reverse the order
+
+The export command in Unix/Linux is used to set environment variables or make shell variables available to subprocesses.
+When a variable is "exported," it becomes part of the environment for child processes spawned from the shell,
+making it accessible to any program or script that runs in that shell session.
+         export my_var="sai"
+         echo $my_var -->we can see output here
+
+The unzip command in Unix/Linux is used to extract the contents of a ZIP archive. 
+ZIP files are a popular format for compressing and packaging files, and the unzip command allows you to access the files inside.
+         unzip archive.zip
+
+The ssh command in Unix/Linux is used to securely connect to a remote system or server over a network using the Secure Shell (SSH) protocol. 
+It allows you to log into another machine, execute commands remotely, transfer files, and even create secure tunnels for other types of network traffic.
+       ssh username@192.168.1.10
+To connect to a remote server with the username username at the IP address 192.168.1.10:
+
+The service command in Unix/Linux is used to manage services (also known as daemons) on the system.
+It provides a way to start, stop, restart, and check the status of services. 
+The service command is commonly used on older init-based systems like SysVinit, 
+but it's also supported on systems using the newer systemd init system for compatibility.
+
+     service serviceName action
+
+On newer systems that use systemd, the service command is often replaced by systemctl.
+While service can still be used for compatibility, systemctl is more powerful and provides more detailed control over services.
+
+    sudo systemctl start nginx
+
