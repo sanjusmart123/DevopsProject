@@ -1,3 +1,17 @@
+A StatefulSet is a Kubernetes resource that manages a set of replica pods with a stable network identifier. 
+This allows containers to maintain a unique identity across pod restarts and, if necessary, scaling. Unlike Deployments, which provide 
+rolling updates for stateless applications, StatefulSets are designed to manage stateful applications where data persists between pod restarts.
+A StatefulSet ensures that each pod has a unique identity and that the order of pod creation is preserved, 
+making it a crucial tool for applications that require persistent storage and consistent network connections.
+
+A StatefulSet named web is created with 3 replicas.
+Each pod in the StatefulSet will have a unique name (like web-0, web-1, web-2).
+Each pod is associated with a PersistentVolume that will store data even if the pod is restarted.
+it will create our pods one by one.first it will create web-0 once it is created then it will create web-1 otherwise it wont create web-1
+
+
+
+
 Initialising Kubernetes... done
 
 controlplane $ vi statefulsets.yml
@@ -164,4 +178,5 @@ spec:
   clusterIP: None
   selector:
     app: nginx
+
 
