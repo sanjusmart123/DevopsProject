@@ -1,16 +1,44 @@
-ls -  list directories
+ls -  list directories and files 
+List all entries, including hidden files (those starting with a dot)
+         ls -a
+ print sizes in human-readable format (e.g., KB, MB).
+          ls -lh
+Use a long listing format, showing detailed information about each file or directory.
+          ls -l
+The ls -lrt command is a combination of options used with ls to list files and directories in a specific format:
+
+-l: Long listing format, which provides detailed information about each file or directory, including permissions, number of links, owner, group, size, and modification date.
+
+-r: Reverse the order of the sort, so that the output is displayed in reverse order.
+
+-t: Sort by modification time, with the most recently modified files appearing first.
+                ls -lrt
+
 pwd - display present working directory command in Linux
+
 cd - Linux command to change to directories
+
 mkdir - Command used to create directories in linux
+
 cp- copy our files to another folders
+
 mv-move or rename to our files
+
 touch -it will create new file
+
 ln-used to combine two files
+
 clear-clear the display
-cat -display the file content
+
+cat -display the file content,it will append the data 
+ cat >> sai.txt then we can add data to existing file then we should use ctrl+D to save and exit file
+
 echo-print the text
+
 less-used to view (but not modify) the contents of a file or output from another command.
+
 man-this command gives detailed documentation about all the commands in linux
+
 uname:displays basic info about os
 whoami-display current username(directory)
 tar- It bundles multiple files into a single file without compressing them by default.
@@ -30,3 +58,30 @@ zip archive.zip file1
 grep-search for a string irrespective of case sensitive
      grep -i sai sai.txt
     -i --ignore case sensive 
+
+head -returns specified number of lines from the top 
+       head -n 20 file.txt
+
+tail-returns specified number of lines from the below
+      tail -n 20 file.txt
+
+The diff command in Unix/Linux is used to compare the contents of two files line by line. 
+It outputs the differences between the files, which can help identify changes, additions, or deletions. 
+The diff command is commonly used in software development, configuration management, and text processing.
+           diff -u file1.txt file2.txt
+
+The cmp command in Unix/Linux is used to compare two files byte by byte. 
+It is typically used to determine whether two files are identical. 
+Unlike the diff command, which focuses on line-by-line textual differences, cmp is lower-level and reports differences starting from the first mismatched byte.
+         cmp [options] file1 file2
+
+The comm command in Unix/Linux is used to compare two sorted files line by line.
+It outputs three columns of information, representing lines unique to each file and lines common to both files.
+This command is useful when working with sorted lists and needing to find differences or similarities between them.
+           comm [options] file1 file2
+
+The sort command in Unix/Linux is used to sort lines of text files or input data.
+It arranges the lines in a specified order, typically alphabetically or numerically,
+and can handle various sorting requirements based on the options provided.
+            sort -n num.txt ----> asc order to numbers
+            sort -r file.txt ----> reverse the order
