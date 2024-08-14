@@ -151,4 +151,19 @@ It’s commonly used to mount storage devices, network filesystems, and other ty
            mount filepath attach dir
            mount /root/sourcedir/file /root 
 
+To list all current environment variables
+       env
+Run a Command with Modified Environment Variables
+       env my_var="sai"
+Used to set or modify environment variables 
+       export my_var="sai
+to remove an environment variable
+
+      unset my_var
+uniq ---> it will give unique names inthe files
+     sort sai.txt | uniq
+
+
+
+
 
