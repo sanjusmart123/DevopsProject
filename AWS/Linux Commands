@@ -172,7 +172,7 @@ The find command in Linux is a powerful tool used to search for files and direct
 It allows you to locate files based on various criteria like name, type, size, modification time, permissions, and more. 
           find /var/log -name "*.log" ---> to find log files
           find /root -name sai.txt ---> to find text files
-          find path -name file/root/log name
+          find path -name file/dir/logname
 
 The awk command in Linux is a powerful text processing tool used to manipulate and analyze text files or streams of data.
 It allows you to perform tasks such as searching, extracting, formatting, and reporting data. 
@@ -181,6 +181,65 @@ awk is particularly well-suited for working with structured text data like CSV f
            awk '{print $1}' sai.txt  ----> to print first word in every line
            awk '{print $1,$2}' sai.txt ---> to print first and second line in a file
            awk -F ',' '{print $1,$2}' sai.txt ---> it remove , and print values
+
+ps ---> it will show you running processess with thier PIDs
+
+kill ---> by using PID we can terminate processess
+      kill PID
+
+killall firefox ---> terminate all instance in a process
+
+killall -u username process_name --->terminate process with specific user
+     
+kill -l ---> display all signals
+ps -ef ---> all processes with more info
+The apt command is a command-line utility in Debian-based Linux distributions, such as Ubuntu, for managing software packages,installing softwares
+       sudo apt install package_name
+       sudo apt remove package_name ---> remove package 
+       sudo apt update --->update packages
+
+The sudo command in Linux stands for "superuser do." 
+It allows a permitted user to execute a command as the superuser (root) or another user, as specified by the security policy.
+The sudo command is essential for performing administrative tasks that require elevated privileges, such as installing software, modifying system files, or managing user accounts.
+          sudo su --> switch to current user to root
+
+The yum command is a package management tool used in Red Hat-based Linux distributions such as CentOS, Fedora, and RHEL (Red Hat Enterprise Linux).
+It stands for "Yellowdog Updater, Modified" and is used to manage software packages, including installing, updating, and removing packages. 
+yum resolves dependencies automatically, making it a powerful and user-friendly tool for managing software on these systems.
+        sudo yum install package_name
+
+The rpm command is a low-level package management tool used in Red Hat-based Linux distributions, such as CentOS, Fedora, and RHEL (Red Hat Enterprise Linux).
+It stands for "Red Hat Package Manager" and is used for installing, removing, querying, and verifying RPM (Red Hat Package Manager) packages. 
+Unlike yum or dnf, rpm does not handle dependencies automatically, so it is often used for 
+managing individual packages or performing operations not directly related to package dependencies.
+        sudo rpm -i package_name.rpm
+
+The whereis command in Linux is used to locate the binary, source, and manual page files for a command.
+It helps you quickly find where a command is installed and related files on the system.
+      whereis ls
+      whereis -b gcc ---> show binary executable files
+
+The whatis command in Linux provides a brief description of a command or program.
+      whatis ls
+      whatis root --> describe what type of file or dir
+
+The top command in Linux provides a dynamic, real-time view of the system's processes and resource usage.
+It displays information about CPU and memory usage, running processes, and other system metrics, 
+allowing users to monitor and manage system performance.
+    top
+
+passwd - Create or update passwords for existing users
+        passwd
+
+The useradd command is used to create a new user account on a Linux system.
+        sudo useradd -m username
+
+The usermod command is used to modify an existing user account.
+        sudo usermod -l newname oldname --->change username
+        sudo usermod -aG group1,group2 username ---> change the users primary group
+
+
+    
 
 
 
