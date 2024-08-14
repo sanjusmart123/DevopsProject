@@ -11,6 +11,8 @@ The ls -lrt command is a combination of options used with ls to list files and d
 
 -r: Reverse the order of the sort, so that the output is displayed in reverse order.
 
+-h: Human-readable. Prints file sizes in a human-readable format (e.g., KB, MB, GB) instead of bytes.
+
 -t: Sort by modification time, with the most recently modified files appearing first.
                 ls -lrt
 
@@ -26,10 +28,13 @@ rm-To remove files or directories
       rm -r dirname --->delete dir and its files or subdirs
 
 cp- copy our files to another folders
+    cp file1.txt path(/root)
 
-mv-move or rename to our files
+mv --->move or rename to our files
+    mv file1.txt path
+    mv file1.txt file2.txt -->rename
 
-touch -it will create new file
+touch --->it will create new file
 
 ln-used to combine two files
 
@@ -163,6 +168,19 @@ to remove an environment variable
 uniq ---> it will give unique names inthe files
      sort sai.txt | uniq
 
+The find command in Linux is a powerful tool used to search for files and directories within a directory hierarchy.
+It allows you to locate files based on various criteria like name, type, size, modification time, permissions, and more. 
+          find /var/log -name "*.log" ---> to find log files
+          find /root -name sai.txt ---> to find text files
+          find path -name file/root/log name
+
+The awk command in Linux is a powerful text processing tool used to manipulate and analyze text files or streams of data.
+It allows you to perform tasks such as searching, extracting, formatting, and reporting data. 
+awk is particularly well-suited for working with structured text data like CSV files, logs.
+           awk '/error/ {print}' sai.txt ---> to print error word lines in a file
+           awk '{print $1}' sai.txt  ----> to print first word in every line
+           awk '{print $1,$2}' sai.txt ---> to print first and second line in a file
+           awk -F ',' '{print $1,$2}' sai.txt ---> it remove , and print values
 
 
 
