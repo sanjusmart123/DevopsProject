@@ -20,6 +20,11 @@ cd - Linux command to change to directories
 
 mkdir - Command used to create directories in linux
 
+rm-To remove files or directories
+      rm file.txt
+      rmdir directory name
+      rm -r dirname --->delete dir and its files or subdirs
+
 cp- copy our files to another folders
 
 mv-move or rename to our files
@@ -112,4 +117,38 @@ On newer systems that use systemd, the service command is often replaced by syst
 While service can still be used for compatibility, systemctl is more powerful and provides more detailed control over services.
 
     sudo systemctl start nginx
+
+journalctl ----> used to view logs
+       journalctl --since "YYYY-MM-DD HH:MM:SS" --until "YYYY-MM-DD HH:MM:SS"
+dig ---> used to get DNS server info
+     dig www.google.com
+
+nslookup --->used to get DNS servor info in short form
+     nslookup www.google.com
+
+curl ---> used to download the files from server,curl is used in secure websites
+
+wget ---> is used in all websites
+
+The sed (stream editor) command in Linux is a versatile tool used for parsing and transforming text in a file or input stream. 
+It allows you to perform a wide range of text manipulation tasks, such as finding and replacing text, deleting lines, and inserting or appending text
+              sed s/oldtext/newtext filename
+              sed '3d' filename ---> delete 3rd line in the file
+
+chown ---> It is used to change file/directory ownership
+           sudo chown newowner oldfile
+            sudo chown root sai.txt
+
+df --->disk free
+
+du ---> disk usage
+
+traceroute/ping -----> It is a network troubleshooting /This is useful for diagnosing network issues, checking connectivity, and understanding the route data takes across the network
+
+The mount command in Linux is used to attach a filesystem to a specified directory,
+making the filesystem accessible within the directory tree. 
+It’s commonly used to mount storage devices, network filesystems, and other types of filesystems. 
+           mount filepath attach dir
+           mount /root/sourcedir/file /root 
+
 
