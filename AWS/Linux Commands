@@ -5,6 +5,8 @@ List all entries, including hidden files (those starting with a dot)
           ls -lh
 Use a long listing format, showing detailed information about each file or directory.
           ls -l
+to see permission of each file
+         ls -al
 The ls -lrt command is a combination of options used with ls to list files and directories in a specific format:
 
 -l: Long listing format, which provides detailed information about each file or directory, including permissions, number of links, owner, group, size, and modification date.
