@@ -36,6 +36,34 @@ mv --->move or rename to our files
 
 touch --->it will create new file
 
+chmod
+ChatGPT said:
+ChatGPT
+The chmod command in Linux is used to change the permissions of files and directories. 
+Permissions determine who can read, write, or execute a file or directory.
+
+      chmod 777 file.txt ---> every one can access
+      chmod 755 file.txt --->Set read, write, and execute for the owner; read and execute for the group; and read only for others:
+      chmod u+x file.txt --->Give the owner execute permission
+           Each digit is the sum of the permissions:
+
+7 (4+2+1) = rwx
+6 (4+2) = rw-
+5 (4+1) = r-x
+4 (4) = r--
+3 (2+1) = -wx
+2 (2) = -w-
+1 (1) = --x
+0 (0) = ---
+
+
+he chown command in Linux is used to change the ownership of files and directories. 
+This command allows you to modify both the user (owner) and the group associated with a file or directory.
+       chown username file.txt--->change owner of a file
+       chown username /path/to/directory---> change owner of a dir
+
+
+
 ln-used to combine two files
 
 clear-clear the display
