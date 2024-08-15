@@ -1,0 +1,25 @@
+1.Variables and Data Types:
+Variables store data, and Python supports various data types like integers, strings, lists, and dictionaries.
+
+name = "sai"
+age = 24
+marks=[1,2,3,4]
+dic={a:1,b:2}
+
+2.Control Statements:
+Python supports if, else, elif for conditional logic, and loops like for and while for iterating over data.
+
+for i in range(10):
+    print(i)
+
+3.Functions:
+Functions are reusable blocks of code that can be called with different arguments.
+
+def greet(name):
+    print(f"Hello, {name}")
+
+greet("sai")
+
+
+
+
