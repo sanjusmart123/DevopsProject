@@ -111,6 +111,11 @@ It allows you to log into another machine, execute commands remotely, transfer f
        ssh username@192.168.1.10
 To connect to a remote server with the username username at the IP address 192.168.1.10:
 
+The scp (Secure Copy) command in Linux is used to securely transfer files
+and directories between a local host and a remote host, or between two remote hosts.
+It uses SSH (Secure Shell) for data transfer and provides the same level of security and authentication as SSH.
+       scp file.txt username@remotehost:path
+
 The service command in Unix/Linux is used to manage services (also known as daemons) on the system.
 It provides a way to start, stop, restart, and check the status of services. 
 The service command is commonly used on older init-based systems like SysVinit, 
