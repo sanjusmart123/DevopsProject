@@ -137,8 +137,27 @@ nslookup --->used to get DNS servor info in short form
      nslookup www.google.com
 
 curl ---> used to download the files from server,curl is used in secure websites
+           curl -I https://example.com
+           curl -O https://example.com/file.txt---> download a file
+
+-o filename: Write the output to a file instead of standard output.
+-O: Save the file with the same name as in the URL.
+-L: Follow redirects.
+-I: Fetch only the HTTP headers.
+-X: Specify a custom request method (e.g., GET, POST, PUT, DELETE).
+-d data: Send data in a POST request.
+-H: Add a custom header to the request.
+-u username:password: Use basic authentication.
+-k: Allow insecure connections (ignore SSL certificate errors).
+-F: Submit a form with multipart/form-data.
+-s: Silent mode (no progress bar or error messages).
+--data-urlencode: URL-encode the data before sending in a POST request.
 
 wget ---> is used in all websites
+      wget -r https://example.com/ --->download entire website recursively
+      wget  https://example.com/file.txt
+
+
 
 The sed (stream editor) command in Linux is a versatile tool used for parsing and transforming text in a file or input stream. 
 It allows you to perform a wide range of text manipulation tasks, such as finding and replacing text, deleting lines, and inserting or appending text
