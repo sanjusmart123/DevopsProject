@@ -179,6 +179,8 @@ making the filesystem accessible within the directory tree.
 It’s commonly used to mount storage devices, network filesystems, and other types of filesystems. 
            mount filepath attach dir
            mount /root/sourcedir/file /root 
+           umount /mnt --->detach file system
+
 
 To list all current environment variables
        env
