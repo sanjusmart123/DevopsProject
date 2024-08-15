@@ -207,9 +207,15 @@ awk is particularly well-suited for working with structured text data like CSV f
            awk -F ',' '{print $1,$2}' sai.txt ---> it remove , and print values
 
 ps ---> it will show you running processess with thier PIDs
+     ps ---> show you all processess
+    pgrep process_name ---> find a process
+
 
 kill ---> by using PID we can terminate processess
-      kill PID
+      kill -9 PID--> forcefully terminate
+      kill -STOP PID ---> stop a process
+      kill -CONT PID ---> resume
+    
 
 killall firefox ---> terminate all instance in a process
 
