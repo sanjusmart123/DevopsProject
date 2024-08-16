@@ -9,16 +9,84 @@ dic={a:1,b:2}
 2.Control Statements:
 Python supports if, else, elif for conditional logic, and loops like for and while for iterating over data.
 
-for i in range(10):
-    print(i)
+number = -10
+
+if number > 0:
+    print("The number is positive")
+elif number < 0:
+    print("The number is negative")
+else:
+    print("The number is zero")
 
 3.Functions:
 Functions are reusable blocks of code that can be called with different arguments.
 
-def greet(name):
-    print(f"Hello, {name}")
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+result = factorial(5)
+print(f"The factorial of 5 is {result}")
 
-greet("sai")
+
+4.Loops
+Loops (for, while) are used to execute a block of code repeatedly.
+
+for loop
+numbers = [1, 2, 3, 4, 5]
+for number in numbers:
+    print(f"Number: {number}")
+
+Using a while loop
+count = 0
+while count < 5:
+    print(f"Count is: {count}")
+    count += 1
+
+5.Lists and List Comprehensions
+Lists are ordered collections, and list comprehensions provide a concise way to create lists.
+
+
+squares = []
+for i in range(1, 6):
+    squares.append(i ** 2)
+
+squares_comprehension = [i ** 2 for i in range(1, 6)]
+print(squares_comprehension)
+
+6.Dictionaries
+Dictionaries are collections of key-value pairs, useful for mapping and lookup operations.
+
+person = {"name": "sai", "age": 25, "city": "Hyderabad"}
+print(f"{person['name']} is {person['age']} years old and lives in {person['city']}.")
+
+person["email"] = "saigulivindala9912@gmail.com"
+print(person)
+
+7.File Handling
+Python can read from and write to files using built-in functions.
+
+with open("sai.txt", "w") as file:
+    file.write("Hello, World!\n")
+
+with open("sai.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+8.Error Handling
+Python uses try, except, and finally to handle errors
+
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+finally:
+    print("This block always executes.")
+
+
+
+
 
 
 
