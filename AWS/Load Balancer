@@ -84,3 +84,9 @@ Monitoring: Use Amazon CloudWatch to monitor the health and performance of your 
 Using AWS CLI or SDKs
 If you prefer to use the AWS CLI or SDKs (e.g., Boto3 for Python), you can automate the creation of load balancers and related resources by writing scripts.
 
+
+What is the main function of NIC card?
+A NIC provides a computer with a dedicated, full-time connection to a network. 
+It implements the physical layer circuitry necessary for communicating with a data link layer standard, such as Ethernet or Wi-Fi.
+Each card represents a device and can prepare, transmit and control the flow of data on the network.
+
