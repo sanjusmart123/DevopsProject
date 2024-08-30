@@ -3,3 +3,50 @@ Developed by HashiCorp, Terraform allows users to define and version infrastruct
 which can then be used to create and manage virtual machines, networks, and other resources on various cloud and on-premises platforms. 
 Terraform supports a wide range of providers, including AWS, Azure, Google Cloud, and many others,
 making it a popular choice for organizations seeking to standardize and automate their infrastructure management processes.
+
+#######################################################################
+
+terraform variables
+
+Terraform variables are values that can be used to customize the behavior of Terraform configurations throughout a workspace.
+These values are stored in a variables.tf file and can be used to parameterize infrastructure as code. 
+There are two types of variables in Terraform: local and input. 
+Local variables are only accessible within the scope of the module or configuration they are declared in, while input variables are available throughout the entire workspace. 
+Terraform variables can be set through command-line options, environment variables, or a variables.tf file.
+
+
+#############################################################################
+
+StateFile:
+
+A Terraform state file is a JSON file that stores information about resources in your infrastructure, such as their IDs, 
+attributes, and dependencies. It's created after running terraform apply and is usually named terraform.
+tfstate and located in the same directory as Terraform. 
+
+Terraform uses the state file to: 
+Track resource state: Accurately account for the current state of your infrastructure 
+Manage resource dependencies: Understand how resources depend on each other 
+Plan and apply operations: Compare the desired state (your configuration) to the current state (the state file) 
+Improve performance: Optimize performance for large infrastructures 
+The state file contains information such as: 
+Resource information: Resource IDs, attributes (like IP addresses and security group rules), and dependencies 
+Metadata: Resource names, tags, and other configuration details 
+Version: The Terraform version 
+Serial: The serial 
+Lineage: The lineage 
+Outputs: The outputs 
+Some recommend storing state in HCP Terraform to version, encrypt, and securely share it with your team. 
+Terraform also uses a lock on the state file to prevent concurrent modifications that could lead to conflicts or data corruption.
+
+##################################################################
+
+Restoring statefile:
+
+If the statefile is deleted or corrupted ,we can restore it using Terraform import command.
+
+The terraform import command is used to import an existing infrastructure resource from a cloud or on-premises environment into a Terraform configuration. 
+This command allows you to manage existing resources alongside newly created ones within your Terraform state.
+The command syntax is terraform import <resource> <id>, where <resource> is the resource type and <id> is a unique identifier
+of the resource. For example, terraform import aws_instance.web i-abc123 would import an AWS EC2 instance with the ID i-abc123 into your Terraform configuration.
+
+     terraform import azurerm_subnet_network_security_group_association.association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/subnets/mysubnet1
