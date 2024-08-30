@@ -50,3 +50,28 @@ The command syntax is terraform import <resource> <id>, where <resource> is the 
 of the resource. For example, terraform import aws_instance.web i-abc123 would import an AWS EC2 instance with the ID i-abc123 into your Terraform configuration.
 
      terraform import azurerm_subnet_network_security_group_association.association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/subnets/mysubnet1
+
+######################################################################################
+
+Terraform remote backend or remote statefile:
+
+Terraform's remote backend and remote state are both ways to store Terraform state in a remote location, like a database or cloud object storage service.
+
+When working with Terraform, a remote backend allows you to store and manage your infrastructure state remotely,
+rather than on your local machine. This provides several benefits, including improved collaboration, version control, and disaster recovery.
+A remote state file is a file stored in the remote backend, which contains the current state of your infrastructure. 
+Popular remote backend options include AWS S3, Azure Blob Storage, and Google Cloud Storage. 
+By using a remote backend, you can ensure that your infrastructure state is always synchronized and accessible from anywhere.
+
+############################################################################################
+
+How do I store Terraform state file remotely?
+
+Here are the steps on how to store Terraform state file on Terraform cloud Remote:
+Create a Terraform Cloud organization and workspace.
+Create a configuration file that defines the resources you want to create.
+Initialize Terraform.
+Configure Terraform Cloud to store the state file.
+Authentication with Terraform Cloud.
+
+##############################################################################################
