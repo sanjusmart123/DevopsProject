@@ -8,6 +8,9 @@ making it a popular choice for organizations seeking to standardize and automate
 
 terraform variables
 
+Using variables in terraform configurations makes our deployment more dynamic.
+A separate file with name variables.tf needs to be created in the working directory to store all variables fro our used in main.tf configuration file.
+
 Terraform variables are values that can be used to customize the behavior of Terraform configurations throughout a workspace.
 These values are stored in a variables.tf file and can be used to parameterize infrastructure as code. 
 There are two types of variables in Terraform: local and input. 
