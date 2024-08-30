@@ -35,4 +35,10 @@ A VPC is defined by a range of IP addresses and is isolated from other VPCs or t
 You can configure settings such as subnets, security groups, and network ACLs to control access and traffic flow within your VPC. 
 This provides a secure and scalable environment for running your applications in the cloud.
 #########################################
+TLS(Transport layer security)
 
+The query term "allow_tls" likely refers to a configuration option in computing and networking. 
+In particular, it may pertain to the capability of allowing or enabling the use of Transport Layer Security (TLS) protocol,
+which is a cryptographic protocol used to provide secure communication over a computer network.
+TLS is widely used to secure website communications, ensuring a safe and encrypted connection between a user's browser and a website. 
+In this context, "allow_tls" might be a setting or parameter that enables the use of TLS, enhancing the security of network data transfers.
