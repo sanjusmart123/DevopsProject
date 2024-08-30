@@ -1,0 +1,5 @@
+Terraform is an open-source infrastructure as code (IaC) tool used for building and managing cloud and on-premises infrastructure.
+Developed by HashiCorp, Terraform allows users to define and version infrastructure configurations in human-readable configuration files,
+which can then be used to create and manage virtual machines, networks, and other resources on various cloud and on-premises platforms. 
+Terraform supports a wide range of providers, including AWS, Azure, Google Cloud, and many others,
+making it a popular choice for organizations seeking to standardize and automate their infrastructure management processes.
