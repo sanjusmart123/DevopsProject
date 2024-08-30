@@ -78,3 +78,17 @@ Configure Terraform Cloud to store the state file.
 Authentication with Terraform Cloud.
 
 ##############################################################################################
+Modules:
+
+Terraform modules are reusable packages of Terraform configuration that can encapsulate a specific combination of resources and dependencies.
+They allow you to break down large infrastructure configurations into smaller, more manageable pieces, making it easier to maintain and reuse code.
+Modules can be created and shared by the community, or created internally by your organization.
+They can also be used to create consistent infrastructure across multiple environments, such as development, staging, and production. 
+By using Terraform modules, you can speed up your infrastructure provisioning process and reduce errors.
+
+
+##################################################################################################
+
+
+
+
