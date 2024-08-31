@@ -42,3 +42,10 @@ In particular, it may pertain to the capability of allowing or enabling the use 
 which is a cryptographic protocol used to provide secure communication over a computer network.
 TLS is widely used to secure website communications, ensuring a safe and encrypted connection between a user's browser and a website. 
 In this context, "allow_tls" might be a setting or parameter that enables the use of TLS, enhancing the security of network data transfers.
+#####################################################
+
+EKS stands for Amazon Elastic Kubernetes Service. 
+It's a managed service that makes it easier to run Kubernetes on Amazon Web Services (AWS). 
+Kubernetes is an open-source system that automates the management, scaling, and deployment of containerized applications
+
+##########################################################
