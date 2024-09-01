@@ -108,3 +108,11 @@ A data source is used to query information from external systems or existing res
 It provides dynamic attributes that can be used to make our configurations context-aware and responsive to changes
 
 ########################################################################################
+locals in terraform
+
+In Terraform, locals are a way to define small, reusable blocks of code that can be used within a module or configuration.
+They are not stored on disk, unlike variables, and are only available during the planning and applying phases of the Terraform configuration.
+Locals can be used to simplify complex expressions, abstract away repetitive constructs, and make your configuration more readable.
+They are defined using the local keyword and can be used to store values that are computed or derived from other values in your configuration
+
+#############################################################################################
