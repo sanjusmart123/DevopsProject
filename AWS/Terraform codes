@@ -578,4 +578,26 @@ data "aws_instance" "foo" {
     values = ["instance-name-tag"]
   }
 }
-#################################################33
+#################################################
+LOcals:
+
+locals {
+  host        = aws_eks_cluster.example_0.endpoint
+  certificate = base64decode(aws_eks_cluster.example_0.certificate_authority.data)
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = local.host
+    cluster_ca_certificate = local.certificate
+    # exec allows for an authentication command to be run to obtain user
+    # credentials rather than having them stored directly in the file
+    exec {
+      api_version = "client.authentication.k8s.io/v1beta1"
+      args        = ["eks", "get-token", "--cluster-name", aws_eks_cluster.example_0.name]
+      command     = "aws"
+    }
+  }
+}
+
+######################################################
