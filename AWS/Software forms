@@ -49,3 +49,6 @@ It's a managed service that makes it easier to run Kubernetes on Amazon Web Serv
 Kubernetes is an open-source system that automates the management, scaling, and deployment of containerized applications
 
 ##########################################################
+CIDR stands for Classless Inter-Domain Routing. It's a method of assigning IP addresses to devices that connect to the internet,
+and it's used to improve the efficiency of data routing
+####################################################33
