@@ -96,6 +96,15 @@ It works by automatically locking the state for all operations that could write 
 
 In AWS S3 is used to store our statefile and DynamoDB is used for state lock
 
+###################################################################################################
+data sources in terraform
 
+In Terraform, data sources are used to retrieve information from external sources, such as AWS, Azure, or a local file.
+They allow you to store and retrieve data that's not easily captured by a Terraform resource. 
+Common data sources include AWS EC2 instance ids, Azure storage account names, and local files.
+To use a data source in Terraform, you declare it in your Terraform configuration file using the data keyword, followed by the type of data source and its arguments.
 
+A data source is used to query information from external systems or existing resources and incorporate that information into our Terraform configuration.
+It provides dynamic attributes that can be used to make our configurations context-aware and responsive to changes
 
+########################################################################################
