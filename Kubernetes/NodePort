@@ -8,3 +8,11 @@ This allows clients to access the service using the node's IP and the allocated 
 
 A NodePort is a type of service in Kubernetes that exposes your application on a specific port on each node in your cluster. 
 This allows external traffic to access your application by using the IP address of any node in the cluster along with the specified port.
+#####################################################
+
+What is a kube-proxy?
+Kube-Proxy and CNI: The Hidden Components of Kubernetes ...
+Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster.
+It is responsible for maintaining network connectivity between services and pods.
+Kube-Proxy does this by translating service definitions into actionable networking rules
+################################################################
