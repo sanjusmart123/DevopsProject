@@ -88,6 +88,13 @@ By using Terraform modules, you can speed up your infrastructure provisioning pr
 
 
 ##################################################################################################
+Terraform state lock:
+
+Terraform state locking is a safety mechanism that prevents data corruption and conflicts by ensuring 
+that only one user or process can modify the Terraform state file at a time. 
+It works by automatically locking the state for all operations that could write to it. 
+
+In AWS S3 is used to store our statefile and DynamoDB is used for state lock
 
 
 
