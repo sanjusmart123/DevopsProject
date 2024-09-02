@@ -665,3 +665,19 @@ resource "aws_instance" "web" {
 }
 
 ##############################################################
+Terraform workspaces:
+
+main.tf
+dev.tfvars
+prod.tfvars
+variables.tf
+
+to create new workspace ---->terraform workspace new dev
+and switched to dev 
+
+to show workspaces ---> terraform workspace list
+same for prod
+then terraform init
+terraform apply -var-file dev.tfvars
+
+####################################################################
