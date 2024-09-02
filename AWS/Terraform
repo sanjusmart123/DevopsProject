@@ -134,3 +134,23 @@ The file provisioner is typically used in combination with other provisioners, s
 There are two types of file provisioners: remote-exec and copy. 
 The remote-exec provisioner runs a command on the remote server to copy the file, 
 while the copy provisioner copies the file directly from the local file system to the remote server.
+
+################################################################
+ local-exec provisioner in terraform
+
+The local-exec provisioner in Terraform is a provisioner that runs a command locally on a machine. 
+It allows you to execute arbitrary shell commands after a resource has been created. 
+This is useful for tasks that require more control and customization than a provisioner like the remote-exec provisioner, which runs a command remotely on a machine.
+The local-exec provisioner can be used to perform tasks such as copying files, or starting services.
+You specify the command to run using the command argument.
+
+###################################################################
+remote-exec provisioner in terraform
+
+The remote-exec provisioner in Terraform is a powerful tool that allows you to execute arbitrary commands on a remote resource after it has been created.
+This can be useful for tasks such as configuring a newly created server, setting up a service, or installing software. 
+The provisioner takes a command to run as its value, and Terraform will execute this command on the remote resource after creation. 
+It also supports specifying a command timeout, and the option to run the command in a specific shell. 
+This provisioner is commonly used in.tf files to automate post-creation tasks.
+
+#########################################################################
