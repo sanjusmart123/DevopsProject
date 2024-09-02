@@ -677,6 +677,7 @@ and switched to dev
 
 to show workspaces ---> terraform workspace list
 same for prod
+swiches to another env ----> terraform workspace select dev
 then terraform init
 terraform apply -var-file dev.tfvars
 
