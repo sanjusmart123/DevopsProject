@@ -116,3 +116,21 @@ Locals can be used to simplify complex expressions, abstract away repetitive con
 They are defined using the local keyword and can be used to store values that are computed or derived from other values in your configuration
 
 #############################################################################################
+provisioners in terraform
+
+Provisioners in Terraform are a way to execute code on a machine after it has been created or updated by Terraform. 
+There are two types of provisioners: local-exec and file. 
+Local-exec provisioners allow the execution of arbitrary local code on the machine, 
+while file provisioners enable the copying of files to the machine. 
+Provisioners can be used to configure machines, install software, or perform other tasks.
+They can be specified at the resource level, allowing for varying provisioning behavior per resource or group of resources.
+
+##############################################################################################
+file provisioner in terraform
+
+A file provisioner in Terraform is a provisioner that copies files from the local file system to a remote server. 
+It is used to manage the deployment of files to remote servers, such as configuration files, scripts, or other sensitive data. 
+The file provisioner is typically used in combination with other provisioners, such as the script provisioner, to complete the deployment of a server.
+There are two types of file provisioners: remote-exec and copy. 
+The remote-exec provisioner runs a command on the remote server to copy the file, 
+while the copy provisioner copies the file directly from the local file system to the remote server.
