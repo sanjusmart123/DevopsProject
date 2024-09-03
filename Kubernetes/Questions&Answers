@@ -12,3 +12,13 @@ Pod management: Kubelet creates, destroys, or updates pods and their Docker cont
 Worker node registration: Kubelet is responsible for registering worker nodes in the Kubernetes cluster. 
 Discover Kubelet, and Why it's Important for Kubernetes ...
 Kubelet runs on each node of a cluster. It takes orders from the master node and transfers them to the worker nodes, which then execute the tasks.
+
+######################################################
+
+etcd role in Kubernetes
+The etcd stores all cluster information, such as its current state, desired state, configuration of resources, and runtime data.
+So DevOps can run single-node or multi-node clusters as etcd clusters, which interact with Kubernetes' etcd API to manage the clusters.
+
+In Kubernetes, etcd is a key-value store that manages configuration data, state data, and metadata for the cluster. 
+It's a critical component of the Kubernetes platform that ensures the system's reliability and consistency.
+etcd is responsible for storing and managing cluster state, including node identities, pod locations, and deployment configurations.
