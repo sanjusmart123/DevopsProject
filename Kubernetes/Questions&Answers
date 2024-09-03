@@ -1,0 +1,14 @@
+Kubelet:
+
+The kubelet is a critical component of the Kubernetes ecosystem, responsible for managing and running containers on a machine. 
+It is a service that runs on every machine (node) in your cluster.
+
+Kubelet is a key component of Kubernetes that manages containers and nodes in a cluster: 
+Communication: Kubelet acts as a node-level agent that communicates between the Kubernetes control plane and individual nodes. 
+Container management: Kubelet is responsible for container execution, resource management, and monitoring container health. 
+Container lifecycle: Kubelet manages container lifecycles. 
+Node status: Kubelet reports back to the control plane about the node's status. 
+Pod management: Kubelet creates, destroys, or updates pods and their Docker containers. 
+Worker node registration: Kubelet is responsible for registering worker nodes in the Kubernetes cluster. 
+Discover Kubelet, and Why it's Important for Kubernetes ...
+Kubelet runs on each node of a cluster. It takes orders from the master node and transfers them to the worker nodes, which then execute the tasks.
