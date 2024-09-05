@@ -29,4 +29,6 @@ kubectl run nginx --image=nginx123 --dry-run=client -o yaml ---directly it will 
 kubectl get roles -n namespace ---> get all roles in namespaces
 kubectl apply -f role.yml
 kubectl exec -it my-pod -- /bin/bash ---> very ueful command for troubleshooting
+kubectl scale rs replicasetName --replicas=5 --->update our pods to 5 pods in rs
+kubectl edit rs rsName ---> edit pods in yaml file
 
