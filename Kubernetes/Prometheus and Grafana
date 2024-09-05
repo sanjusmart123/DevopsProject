@@ -8,3 +8,22 @@ It’s a powerful tool for creating real-time monitoring dashboards.
 Grafana connects to Prometheus as a data source and provides a flexible interface to visualize those metrics through dashboards.
 Together, they form a powerful combination for monitoring and observability, especially in cloud-native environments like Kubernetes.
 In short, Prometheus is the data collector, and Grafana is the data viewer.
+
+Why is Observability Important?
+Proactive Monitoring: Detect and respond to issues before they impact users.
+Faster Troubleshooting: Identify the root cause of problems using detailed logs and traces.
+Performance Optimization: Analyze trends to optimize system performance and resource utilization.
+Business Insights: Understand the overall health of the system and its impact on business metrics like SLAs or SLOs.
+Key Tools for Observability:
+Prometheus (Metrics)
+
+For collecting and querying time-series data, such as CPU and memory usage.
+Grafana (Visualization)
+
+For visualizing data from various sources, including Prometheus, Elasticsearch, and others.
+Elasticsearch + Kibana (Logs)
+
+Elasticsearch for indexing and storing logs, Kibana for visualizing and analyzing them.
+Jaeger or Zipkin (Tracing)
+
+##########################################################################
