@@ -23,6 +23,9 @@ kubectl get pv
 kubectlctl get pvc
 kubectl delete pv pv name
 
+
+kubectl run nginx --image=nginx123 --dry-run=client -o yaml ---directly it will create yaml file
+
 kubectl get roles -n namespace ---> get all roles in namespaces
 kubectl apply -f role.yml
 kubectl exec -it my-pod -- /bin/bash ---> very ueful command for troubleshooting
