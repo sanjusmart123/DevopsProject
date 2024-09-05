@@ -33,4 +33,4 @@ kubectl scale rs replicasetName --replicas=5 --->update our pods to 5 pods in rs
 kubectl edit rs rsName ---> edit pods in yaml file
 
 kubectl create deployment my-deployment --image=nginx --replicas=3 --->create deployment by using imperative type
-
+kubectl rollout status deployment/deploymentName --->rollback to previous version
