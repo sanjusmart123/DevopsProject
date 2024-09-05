@@ -9,6 +9,7 @@ kubectl delete pod podName ---> to delete a pod
 kubectl logs podName ---> to get logs about pod
 kubectl exec -it podName -- /bin/bash/ --->execute command inside a pod
 kubectl get deployments ---> get all deployments
+kubectl rollout status deployment/deploymentName --->rollback to previous version
 kubectl rollout undo deployment deployment name ---> roll back to previous version of dep
 kubectl delete deployment deployment name
 kubectl get ns ---> availble namespaces
@@ -33,4 +34,5 @@ kubectl scale rs replicasetName --replicas=5 --->update our pods to 5 pods in rs
 kubectl edit rs rsName ---> edit pods in yaml file
 
 kubectl create deployment my-deployment --image=nginx --replicas=3 --->create deployment by using imperative type
-kubectl rollout status deployment/deploymentName --->rollback to previous version
+
+kubectl set image deployment my-deploy nginx=nginx:1.18-perl --record  ---> we can set or edit image in deplyments
