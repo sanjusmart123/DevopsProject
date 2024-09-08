@@ -38,9 +38,8 @@ mv --->move or rename to our files
 
 touch --->it will create new file
 
-chmod
-ChatGPT said:
-ChatGPT
+chmod:
+
 The chmod command in Linux is used to change the permissions of files and directories. 
 Permissions determine who can read, write, or execute a file or directory.
 
@@ -299,6 +298,9 @@ The useradd command is used to create a new user account on a Linux system.
 The usermod command is used to modify an existing user account.
         sudo usermod -l newname oldname --->change username
         sudo usermod -aG group1,group2 username ---> change the users primary group
+
+The set -ex command is used in Unix-like operating systems (such as Linux) within shell scripts or command-line interfaces (such as Bash) 
+to modify the behavior of the script's execution.
 
 
     
