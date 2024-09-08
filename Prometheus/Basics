@@ -1,1 +1,1 @@
-
+Prometheus collects metrics by sending http requests to /metrics end points to each target
