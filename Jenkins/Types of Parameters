@@ -1,0 +1,26 @@
+Common Parameter Types in Jenkins:
+
+String Parameter:
+Purpose: Accepts a simple text input.
+Use Case: Specifying the branch name, environment name, or any textual value.
+Example: BRANCH_NAME=main
+
+Boolean Parameter:
+Purpose: Provides a checkbox that the user can check or uncheck, representing true or false.
+Use Case: Enabling or disabling specific steps in a pipeline, such as whether to run tests.
+Example: RUN_TESTS=true
+
+Choice Parameter:
+Purpose: Allows the user to select a value from a predefined list of choices.
+Use Case: Selecting the deployment environment (e.g., Dev, Staging, Production).
+
+File Parameter:
+
+Purpose: Allows the user to upload a file as an input to the job.
+Use Case: Uploading configuration files, datasets, or other resources that the job needs to process.
+Example: CONFIG_FILE=config.yaml
+Password Parameter:
+
+Purpose: Provides a secure way to input sensitive data like passwords. The value is masked in the job configuration and logs.
+Use Case: Passing sensitive information like API keys or passwords to the job.
+Example: DB_PASSWORD=******
