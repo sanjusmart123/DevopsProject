@@ -302,6 +302,10 @@ The usermod command is used to modify an existing user account.
 The set -ex command is used in Unix-like operating systems (such as Linux) within shell scripts or command-line interfaces (such as Bash) 
 to modify the behavior of the script's execution.
 
+set -ex
+Debugging: It's particularly useful when debugging complex shell scripts, as it helps to trace the execution flow and quickly identify where the script might be failing.
+CI/CD Pipelines: In CI/CD environments, using set -ex can help ensure that any failure in the pipeline is caught early and that the exact point of failure is clear.
+
 
     
 
