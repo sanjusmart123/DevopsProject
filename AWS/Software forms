@@ -51,4 +51,9 @@ Kubernetes is an open-source system that automates the management, scaling, and 
 ##########################################################
 CIDR stands for Classless Inter-Domain Routing. It's a method of assigning IP addresses to devices that connect to the internet,
 and it's used to improve the efficiency of data routing
-####################################################33
+####################################################
+
+TCP (Transmission Control Protocol) is one of the core protocols of the Internet Protocol (IP) suite. 
+It is used for establishing and managing connections between devices on a network, ensuring reliable and orderly delivery of data.
+
+##########################################################3
