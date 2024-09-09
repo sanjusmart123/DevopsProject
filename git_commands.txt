@@ -14,6 +14,8 @@ git cherry-pick --->cherry-picking is a way to apply a single commit from one br
 
 git log --since=<date-from> --until=<date-to> ----> View commits between two dates
 
+Two-tier Flask app gi url --->https://github.com/nayanchafle46/two-tier-flask-app/blob/master/templates/index.html
+
 
 
 
