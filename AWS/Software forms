@@ -56,4 +56,9 @@ and it's used to improve the efficiency of data routing
 TCP (Transmission Control Protocol) is one of the core protocols of the Internet Protocol (IP) suite. 
 It is used for establishing and managing connections between devices on a network, ensuring reliable and orderly delivery of data.
 
-##########################################################3
+##########################################################
+
+The query term "TLS" stands for Transport Layer Security.
+It is a cryptographic protocol used to provide secure communication over a computer network, particularly to prevent eavesdropping, tampering, and message forgery.
+TLS is an improved version of the Secure Sockets Layer (SSL) protocol and is widely used to secure web communications, 
+including web browsing, email, and instant messaging. It ensures that data exchanged between a client and a server remains confidential and authentic.
