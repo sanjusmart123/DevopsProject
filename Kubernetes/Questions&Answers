@@ -15,6 +15,11 @@ Kubelet runs on each node of a cluster. It takes orders from the master node and
 
 ######################################################
 
+Etcd is a distributed key-value store that serves as a low-level storage mechanism for certain Kubernetes components, such as the cluster's state.
+It's used to store and manage cluster data, including node information, pod and service configurations, and persistent volume claims. 
+Etcd provides a consistent and fault-tolerant storage solution for Kubernetes, allowing it to scale and operate reliably in large, distributed environments. 
+It's a lightweight, flexible, and highly available solution that supports a wide range of data structures and makes it easy to store and retrieve cluster data.
+
 etcd role in Kubernetes
 The etcd stores all cluster information, such as its current state, desired state, configuration of resources, and runtime data.
 So DevOps can run single-node or multi-node clusters as etcd clusters, which interact with Kubernetes' etcd API to manage the clusters.
@@ -34,4 +39,15 @@ It also helps to manage node roles, network policies, and SSL certificates.
 Additionally, kubeadm supports various clustering scenarios, including HA (High Availability) and OpenShift deployments. 
 Its ease of use and flexibility make it a popular choice for setting up and managing Kubernetes clusters.
 
-###########################################################3
+###########################################################
+Difference between Docker and Containerd?
+
+Docker:
+Docker is a full containerization platform that simplifies the creation, management, and orchestration of containers.
+It includes a set of tools like the Docker CLI (Command-Line Interface), Docker Engine, and Docker Hub.
+Docker also handles building images, networking, volumes, and more. 
+It provides an end-to-end platform for developers to create and manage containers easily.
+
+containerd:
+containerd is a lower-level container runtime. It is responsible for the core operations of containers, such as starting, stopping, and managing container lifecycles.
+containerd is primarily focused on the container runtime aspect, and it does not include features for building container images or managing complex orchestration tasks.
