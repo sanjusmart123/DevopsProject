@@ -1,0 +1,9 @@
+Kube-apiserver is responsible for authenticating, validating requests, retrieving and Updating data in ETCD key-value store. 
+In fact kube-apiserver is the only component that interacts directly to the etcd datastore.
+The other components such as kube-scheduler, kube-controller-manager and kubelet uses the API-Server to update in the cluster in their respective areas.
+
+The Kube API Server is a primary component of the Kubernetes control plane, responsible for managing and exposing the Application Programming Interface (API) for cluster resources.
+It exposed the Kubernetes API to users and accepts CRUD (Create, Read, Update, Delete) operations from clients. 
+The API Server authenticates and authorizes users, validates and processes requests, and updates the etcd database.
+It's the entry point for most users and systems interacting with the cluster, allowing them to manage and manipulate cluster resources such as pods, services, and deployments
+
