@@ -1,0 +1,15 @@
+The Kube Controller Manager is a critical component of the Kubernetes control plane. 
+Its primary responsibility is to run and manage controllers, which are responsible for enforcing the desired state of the cluster. 
+These controllers manage various aspects of the cluster, such as node health, pod scheduling, and persistent storage. 
+The Controller Manager is responsible for creating and managing these controllers, ensuring they are running and functioning correctly.
+It also handles communication between controllers and other components, like the API Server, to ensure the cluster remains in a stable and secure state.
+
+In kubernetes terms, a controller is a process that continuously monitors the state of the components within the 
+system and works towards bringing the whole system to the desired functioning state.
+
+Node Controller
+Responsible for monitoring the state of the Nodes and taking necessary actions to keep the application running.
+
+Replication Controller
+It is responsible for monitoring the status of replicasets and ensuring that the desired number of pods are available at all time within the set.
+
