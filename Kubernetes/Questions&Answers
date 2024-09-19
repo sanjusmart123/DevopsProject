@@ -51,3 +51,17 @@ It provides an end-to-end platform for developers to create and manage container
 containerd:
 containerd is a lower-level container runtime. It is responsible for the core operations of containers, such as starting, stopping, and managing container lifecycles.
 containerd is primarily focused on the container runtime aspect, and it does not include features for building container images or managing complex orchestration tasks.
+
+##############################################################
+
+Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster.
+It is responsible for maintaining network connectivity between services and pods. 
+Kube-Proxy does this by translating service definitions into actionable networking rules.
+
+Kube-proxy is a daemon that runs on each node in a Kubernetes cluster, responsible for making incoming traffic reach the desired service.
+It's a network proxy that sits between the userspace and the Linux network stack, intercepting and forwarding traffic to the service's pod. 
+Kube-proxy uses IPTables or IPVS (depending on the platform) to redirect traffic to the service.
+It also handles load balancing, circuit breaking, and other networking features.
+Kube-proxy is an essential component of Kubernetes, enabling communication between pods and services.
+
+Kube-proxy is a networking component in Kubernetes that manages traffic routing and communication between services and pods within a cluster
