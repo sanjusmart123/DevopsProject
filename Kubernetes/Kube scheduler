@@ -1,0 +1,12 @@
+kube-scheduler is responsible for scheduling pods on nodes.
+The kube-scheduler is only responsible for deciding which pod goes on which node. 
+It doesn't actually place the pod on the nodes, that's the job of the kubelet.
+
+The Kube Scheduler is a primary component of the Kubernetes control plane that responsible for assigning containerized applications to available resources in a cluster.
+It is often referred to as the "traffic cop" for Kubernetes. 
+The Scheduler ensures that Pods are created on a suitable node with the necessary resources and availability.
+Upon receiving a Pod creation request, the Scheduler calculates a list of suitable nodes and assigns the Pod to the most suitable node based on factors such as resource availability, node affinity, and anti-affinity.
+
+
+
+
