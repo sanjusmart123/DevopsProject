@@ -5,3 +5,17 @@ This is useful for internal services that do not need to be exposed to external 
 How ClusterIP Works
 When you create a ClusterIP service, Kubernetes allocates an IP address for the service within the cluster. 
 This IP is only reachable from within the cluster, and the service routes traffic to the pods that match the service's selector.
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app  # Label selector to find the pods this service will expose
+  ports:
+    - protocol: TCP
+      port: 80        # Port to access the service
+      targetPort: 8080  # Port on the pod that the service will forward traffic to
+  type: ClusterIP  # The type of service (defaults to ClusterIP)
