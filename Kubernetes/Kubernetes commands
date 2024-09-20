@@ -39,3 +39,4 @@ kubectl set image deployment my-deploy nginx=nginx:1.18-perl --record  ---> we c
 
 kubectl replace -f replicasset.yml 
 kubectl scale --replicas=6 -f replicaset.yml ---> to update replicas
+kubectlctl scale --replicas=6 replicasset my-app replicaset --->
