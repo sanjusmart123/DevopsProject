@@ -1,6 +1,8 @@
 Replication Controller is the older technology that is being replaced by a ReplicaSet.
 ReplicaSet is the new way to setup replication.In Kubernetes, a ReplicaSet is a higher-level abstraction over a ReplicationController. 
 
+ Its primary function is to maintain a stable set of replica pods, automatically replacing any that fail or are deleted.
+
 A ReplicaSet's configuration defines the number of Pods required, and if a Pod fails or is evicted, it creates more Pods to make up for the loss. 
 Scaling
 You can scale an application up or down by changing the number of replicas in the configuration file or using the command line. 
