@@ -36,3 +36,6 @@ kubectl edit rs rsName ---> edit pods in yaml file
 kubectl create deployment my-deployment --image=nginx --replicas=3 --->create deployment by using imperative type
 
 kubectl set image deployment my-deploy nginx=nginx:1.18-perl --record  ---> we can set or edit image in deplyments
+
+kubectl replace -f replicasset.yml 
+kubectl scale --replicas=6 -f replicaset.yml ---> to update replicas
