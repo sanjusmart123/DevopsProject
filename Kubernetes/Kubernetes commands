@@ -40,3 +40,13 @@ kubectl set image deployment my-deploy nginx=nginx:1.18-perl --record  ---> we c
 kubectl replace -f replicasset.yml 
 kubectl scale --replicas=6 -f replicaset.yml ---> to update replicas
 kubectlctl scale --replicas=6 replicasset my-app replicaset --->
+
+kubectl get pods --namespace=kube-system --> to see the pods in the another namespace
+
+kubectl create -f pod.yml --namespace=dev ---> create a namespace in another namespace
+
+kubectl config set-context --current --namespace=<namespace> ---> to switch to another namespace
+
+kubectl run redis --image=redis -n sainamespace ---> create a pod in sainamespace
+
+
