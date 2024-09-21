@@ -65,3 +65,16 @@ It also handles load balancing, circuit breaking, and other networking features.
 Kube-proxy is an essential component of Kubernetes, enabling communication between pods and services.
 
 Kube-proxy is a networking component in Kubernetes that manages traffic routing and communication between services and pods within a cluster
+
+####################################################################
+
+imperative
+The user is responsible for providing explicit instructions to Kubernetes on how to manage resources and applications.
+This method is useful for quick changes and ad-hoc management, but it can be error-prone and difficult to maintain.
+
+Declarative
+The system is responsible for automatically applying the desired state of the resources and applications to the cluster. 
+This method is generally preferable for production use cases because it enables version control, reviewable changes, and reproducibility.
+
+##########################################################
+
