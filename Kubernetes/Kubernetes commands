@@ -49,4 +49,11 @@ kubectl config set-context --current --namespace=<namespace> ---> to switch to a
 
 kubectl run redis --image=redis -n sainamespace ---> create a pod in sainamespace
 
+kubectl set image deployment nginx nginx=nginx:1.18
+
+kubectl scale deployment nginx --replicas=5
+
+kubectl expose deployment nginx --port 80
+
+
 
