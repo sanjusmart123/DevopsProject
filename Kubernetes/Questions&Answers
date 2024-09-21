@@ -79,6 +79,8 @@ This method is generally preferable for production use cases because it enables 
 For example, using kubectl run is imperative, as you're explicitly telling Kubernetes to create a pod.
 In contrast, using a YAML file to describe a pod's configuration is declarative, as you're defining the desired state, and Kubernetes creates the pod accordingly.
 
+The imperative method is easy to use for ad-hoc operations, while the declarative approach promotes infrastructure-as-code and is better suited for production systems
+
 ##########################################################
 
 
