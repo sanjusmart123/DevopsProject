@@ -1,3 +1,11 @@
 In Kubernetes, Taints and Tolerations work together to control the scheduling of pods to nodes. 
 They help ensure that specific pods are either allowed or prevented from running on certain nodes,
 based on custom conditions or node-specific requirements.
+
+kubectl taint nodes node01 key=value:NoSchedule
+
+This means no pod will be scheduled on node1 unless it has a toleration for this taint
+
+Tolerations:
+A toleration is applied to pods to allow them to tolerate specific taints on nodes, 
+meaning they can be scheduled on nodes that have matching taints.
