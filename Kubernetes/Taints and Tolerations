@@ -1,0 +1,3 @@
+In Kubernetes, Taints and Tolerations work together to control the scheduling of pods to nodes. 
+They help ensure that specific pods are either allowed or prevented from running on certain nodes,
+based on custom conditions or node-specific requirements.
