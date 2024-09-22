@@ -55,5 +55,7 @@ kubectl scale deployment nginx --replicas=5
 
 kubectl expose deployment nginx --port 80
 
+kubectl taint nodes nodeName key=value:NoSchedule --->applied taint on a node
+
 
 
