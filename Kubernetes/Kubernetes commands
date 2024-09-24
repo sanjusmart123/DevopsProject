@@ -59,5 +59,9 @@ kubectl taint nodes nodeName key=value:NoSchedule --->applied taint on a node
 
 kubectl taint node nodeName taint status in describe command to add finally -  -->untainted
 
+kubectl label node node01 coor=blue ---> labeled
+
+kubectl create deployment blue --image=nginx --replicas=3 ---> deployment created
+
 
 
