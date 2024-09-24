@@ -1,0 +1,21 @@
+Node selector:
+
+A node selector in Kubernetes is a key-value pair that is used to schedule pods on specific nodes in a cluster. 
+It allows you to label nodes with specific attributes and then use those labels to select which nodes a pod should run on.
+This is useful for a variety of use cases, such as scheduling a pod on a node with a specific amount of memory or CPU, or 
+scheduling a pod on a node with a specific operating system. Node selectors are defined as part of a pod's configuration and 
+can be used in combination with other scheduling options to ensure that your pods are deployed to the right nodes.
+
+Node selectors in Kubernetes allow you to control which nodes your pods are scheduled on by defining specific label-based constraints. 
+By using node selectors, you can tell Kubernetes to run a pod only on nodes that match certain labels.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+spec:
+  containers:
+  - name: frontend
+    image: frontend-image
+  nodeSelector:
+    role: frontend
