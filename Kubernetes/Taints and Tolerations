@@ -30,3 +30,8 @@ tolerations:
   value: "value"
   effect: "NoSchedule"
 
+
+
+Taints are applied to nodes to control pod scheduling, either preventing pods from being scheduled or evicting them.
+Tolerations are applied to pods to allow them to bypass taints and run on nodes with specific taints.
+
