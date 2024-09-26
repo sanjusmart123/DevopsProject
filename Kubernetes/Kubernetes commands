@@ -63,5 +63,19 @@ kubectl label node node01 coor=blue ---> labeled
 
 kubectl create deployment blue --image=nginx --replicas=3 ---> deployment created
 
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git --->used to download metric server from the git
+
+cd kubernetes-metrics-server ---> change dir to 
+
+kubectl create -f . ---> deploy metrics server by creating all the components downloaded
+
+kubectl top node  ---> metrics server to start gathering data.
+
+kubectl top node ---> used to see the metrics of node
+
+kubectl get pod  ---> used to see the metrics of pod
+
+
+
 
 
