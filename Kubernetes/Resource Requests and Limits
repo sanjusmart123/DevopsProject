@@ -1,0 +1,37 @@
+In Kubernetes, resource requests and resource limits are used to manage the CPU and memory resources allocated to containers in a cluster.
+
+1. Resource Requests
+A resource request specifies the minimum amount of resources that a container is guaranteed to have available to it. 
+When a container is scheduled onto a node, Kubernetes ensures that the node has at least the requested amount of CPU and memory available.
+If a node doesn’t have the requested resources, the container won't be scheduled there.
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "500m"
+This means the container requests at least 256Mi of memory and 0.5 CPU cores.
+
+2. Resource Limits
+A resource limit specifies the maximum amount of resources that a container is allowed to use. If a container tries to exceed these limit.
+
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "1"
+This means the container can use a maximum of 512Mi of memory and up to 1 CPU core.
+############################################################
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-limits-example
+spec:
+  containers:
+  - name: mycontainer
+    image: myimage
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "1"
