@@ -75,6 +75,19 @@ kubectl top node ---> used to see the metrics of node
 
 kubectl get pod  ---> used to see the metrics of pod
 
+kubectl create configmap \ configmapName --from-literal=key=value \ --from-literal=app_color=blue --->created by using literal
+
+kubectl create configmap my-config --from-file=path/to/configfile ---> created from a file
+
+kubectl create secret generic my-secret --from-literal=username=admin --from-literal=password='s3cr3t' ---> create a secret from a literal
+
+kubectl create secret generic my-secret --from-file=path/to/secretfile --> create a secrete from a file
+
+kubectl replace --force -f yaml file ---> to delete a pod and replace a new changes 
+
+k describe cm configmapName --> to see the info of a cm
+
+
 
 
 
