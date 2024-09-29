@@ -13,6 +13,7 @@ This means the container requests at least 256Mi of memory and 0.5 CPU cores.
 
 2. Resource Limits
 A resource limit specifies the maximum amount of resources that a container is allowed to use. If a container tries to exceed these limit.
+When it comes to resource limits in Kubernetes, they refer to the maximum amount of a resource (such as CPU, memory, or disk space) that a container or pod can consume.
 
 resources:
   limits:
