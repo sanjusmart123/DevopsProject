@@ -83,4 +83,22 @@ The imperative method is easy to use for ad-hoc operations, while the declarativ
 
 ##########################################################
 
+The kubectl cordon command in Kubernetes is used to mark a node as unschedulable, meaning that no new pods can be scheduled on that node,
+but it does not affect the existing pods running on the node.
+This is useful when you want to prepare a node for maintenance (e.g., for upgrades or troubleshooting) but do not want to disrupt the currently running workloads.
+
+###############################################################
+
+The kubectl uncordon command is used in Kubernetes to mark a node as schedulable again after it has been drained or cordoned. 
+When a node is cordoned, it is marked as unschedulable, meaning no new pods can be scheduled on it. Once you’ve finished maintenance or updates (such as OS upgrades), 
+you can use the uncordon command to make the node available for scheduling again.
+
+###################################################################
+
+The kubectl drain command is used in Kubernetes to prepare a node for maintenance by safely evicting all running pods from the node.
+This command ensures that workloads are moved to other nodes in the cluster and the node is ready for upgrades, 
+configuration changes, or other administrative tasks.
+
+####################################################################
+
 
