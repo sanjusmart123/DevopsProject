@@ -1,0 +1,27 @@
+In Kubernetes, an Init Container is a special type of container that runs and completes its tasks before the main containers in a Pod start running.
+Init containers are often used to set up or initialize the environment for the main application.
+They can perform tasks such as pulling files, configuring settings, or ensuring certain conditions are met 
+(like checking for a service dependency) before the primary containers begin execution.
+
+1.Sequential Execution: Init containers run one after another in a specified order. A new Init container starts only after the previous one finishes successfully.
+2.Failure Handling: If an Init container fails, Kubernetes will restart the Pod until the Init containers succeed. The main application container won't start until all Init containers complete successfully.
+3.Different Image and Permissions: Init containers can use different images and configurations compared to the main containers. They can have different privileges or use tools that are not required by the main application.
+4.Non-persistent State: Init containers are ephemeral, meaning they don't persist after the initialization is done, so any state or files created in an Init container should be passed to the main container through shared volumes.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+spec:
+  initContainers:
+  - name: init-myservice
+    image: busybox
+    command: ['sh', '-c', 'echo Waiting for service... && sleep 10']
+  - name: init-db-setup
+    image: busybox
+    command: ['sh', '-c', 'echo Setting up database... && sleep 5']
+  containers:
+  - name: main-app
+    image: nginx
+    ports:
+    - containerPort: 80
