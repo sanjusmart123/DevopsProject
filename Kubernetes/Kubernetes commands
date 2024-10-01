@@ -1,36 +1,64 @@
 kubectl get all --->to get all info about present ns
+
 kubectl get cluster-info --->to get info about cluster
+
 kubectl get nodes ---> available pods nodes
+
 kubectl get pods ---> available pods
+
 kubectl get pods --all-namespaces ---> availble pods in all ns
+
 kubectl describe pod podName ---> info about specific pod
+
 kubectl apply -f pod.yml ---> create pod
+
 kubectl delete pod podName ---> to delete a pod
+
 kubectl logs podName ---> to get logs about pod
+
 kubectl exec -it podName -- /bin/bash/ --->execute command inside a pod
+
 kubectl get deployments ---> get all deployments
+
 kubectl rollout status deployment/deploymentName --->rollback to previous version
+
 kubectl rollout undo deployment/deployment name ---> roll back to previous version of dep
+
 kubectl delete deployment deployment name
+
 kubectl get ns ---> availble namespaces
+
 kubectl create namespace namespacename
+
 kubectl get pods -n namespace name --->Run a command in specific namespace
+
 kubectl create configmap configmap-name --from-literal=key=value 
+
 kubectl create secrete generic secrete name --from-literal=key=value
+
 kubectl describe resourcetype resourcename --->info about resource
+
 kubectl logs podNmae
+
 kubectl logs podName -c containerName ---> logs in container in a pod
+
 kubectl get pv
+
 kubectlctl get pvc
+
 kubectl delete pv pv name
 
 
 kubectl run nginx --image=nginx123 --dry-run=client -o yaml ---directly it will create yaml file
 
 kubectl get roles -n namespace ---> get all roles in namespaces
+
 kubectl apply -f role.yml
+
 kubectl exec -it my-pod -- /bin/bash ---> very ueful command for troubleshooting
+
 kubectl scale rs replicasetName --replicas=5 --->update our pods to 5 pods in rs
+
 kubectl edit rs rsName ---> edit pods in yaml file
 
 kubectl create deployment my-deployment --image=nginx --replicas=3 --->create deployment by using imperative type
@@ -38,7 +66,9 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --->create de
 kubectl set image deployment/my-deploy nginx=nginx:1.18-perl --record  ---> we can set or edit image in deplyments
 
 kubectl replace -f replicasset.yml 
+
 kubectl scale --replicas=6 -f replicaset.yml ---> to update replicas
+
 kubectlctl scale --replicas=6 replicasset my-app replicaset --->
 
 kubectl get pods --namespace=kube-system --> to see the pods in the another namespace
@@ -87,6 +117,7 @@ kubectl replace --force -f yaml file ---> to delete a pod and replace a new chan
 
 k describe cm configmapName --> to see the info of a cm
 
+kubectl -n elastic-stack logs kibana --->by inspecting kibana logs
 
 
 
