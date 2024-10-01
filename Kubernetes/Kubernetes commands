@@ -119,6 +119,11 @@ k describe cm configmapName --> to see the info of a cm
 
 kubectl -n elastic-stack logs kibana --->by inspecting kibana logs
 
+kubectl drain nodeName --ignore-daemonsets --->Draining a node moves all the running pods to other nodes in the cluster, preparing the node for maintenance
+
+kubectl uncordon nodeName ---> The maintenance tasks have been completed. Configure the node node01 to be schedulable again,After upgrading and rebooting, bring the node back into service using the kubectl uncordon
+
+kubectl cordon nodeName --> Kubernetes is used to mark a node as unschedulable, meaning that no new pods can be scheduled on that node.
 
 
 
