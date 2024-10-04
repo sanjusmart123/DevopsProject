@@ -125,6 +125,10 @@ kubectl uncordon nodeName ---> The maintenance tasks have been completed. Config
 
 kubectl cordon nodeName --> Kubernetes is used to mark a node as unschedulable, meaning that no new pods can be scheduled on that node.
 
+kubeadm upgrade plan ---> to check latest stable version for upgrade
+
+sudo kubeadm upgrade apply version name --->
+
 
 
 
