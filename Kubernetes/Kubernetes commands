@@ -127,7 +127,15 @@ kubectl cordon nodeName --> Kubernetes is used to mark a node as unschedulable, 
 
 kubeadm upgrade plan ---> to check latest stable version for upgrade
 
-sudo kubeadm upgrade apply version name --->
+sudo kubeadm upgrade apply version name ---> to apply the version
+
+kubectl describe pod etcd-controlplane  -n kube-system --->to check version of ETCD running on the cluster
+
+kubectl config get-clusters ---> to check no of clusters
+
+kubectl config use-context cluster1 ---> switched to cluster-1
+
+
 
 
 
