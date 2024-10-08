@@ -135,6 +135,12 @@ kubectl config get-clusters ---> to check no of clusters
 
 kubectl config use-context cluster1 ---> switched to cluster-1
 
+openssl genrsa -out tls.key 2048 --->to create private key
+
+openssl req -new -key tls.key -out tls.csr --->create certificate signing request(CSR)
+
+openssl x509 -req -in tls.csr -signkey tls.key -out tls.crt -days 365  --->self sign the certificate
+
 
 
 
