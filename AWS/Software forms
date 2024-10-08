@@ -62,3 +62,17 @@ The query term "TLS" stands for Transport Layer Security.
 It is a cryptographic protocol used to provide secure communication over a computer network, particularly to prevent eavesdropping, tampering, and message forgery.
 TLS is an improved version of the Secure Sockets Layer (SSL) protocol and is widely used to secure web communications, 
 including web browsing, email, and instant messaging. It ensures that data exchanged between a client and a server remains confidential and authentic.
+
+############################################################
+CSR:Certificate signing request
+CA:Certificate Authority
+SSL:Secure sockets layer
+TLS:Transaport Layer Security
+#########################################################
+
+SSL stands for Secure Sockets Layer. 
+It is a cryptographic protocol that was originally designed to provide secure communication over the internet. 
+SSL establishes an encrypted link between a web server and a browser, ensuring that all data passed between them remains private and protected.
+
+####################################################
+While SSL is now considered outdated and has been replaced by TLS (Transport Layer Security), the term SSL is still commonly used to refer to TLS protocols as well.
