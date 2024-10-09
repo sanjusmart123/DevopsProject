@@ -76,3 +76,7 @@ SSL establishes an encrypted link between a web server and a browser, ensuring t
 
 ####################################################
 While SSL is now considered outdated and has been replaced by TLS (Transport Layer Security), the term SSL is still commonly used to refer to TLS protocols as well.
+
+###########################################################
+Network Address Translation (NAT)
+###############################################
