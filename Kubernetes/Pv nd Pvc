@@ -102,6 +102,14 @@ Once a PVC is created, it can be bound to a Persistent Volume (PV), which is a r
 that represents a piece of networked storage. PVCs provide a way to decouple storage from the deployment of an application, 
 allowing for more flexibility and scalability in the deployment of stateful applications.
 
+PVs can be provisioned through the statically or dynamically.
+static provisioning involves creating PVs in advance,
+while dynamic provisioning allows Pvs to be created on-demand when requested by the application.
+
+Dynamic Provisioning of PVs facilitated through the use of storage classes
+
+when pvc created,kubernetes dynamically binds it to an available pv that matches the requirements specified in the claim
+
 
 storage class in kubernetes
 
