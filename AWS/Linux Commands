@@ -309,6 +309,9 @@ CI/CD Pipelines: In CI/CD environments, using set -ex can help ensure that any f
 The nslookup command in Linux is a network utility that allows users to query and retrieve information from Domain Name System (DNS) servers
 nsllokup www.google.com
 
+dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers. 
+It is basically used by network administrators. It is used for verifying and troubleshooting DNS problems and to perform DNS lookups.
+
     
 
 
