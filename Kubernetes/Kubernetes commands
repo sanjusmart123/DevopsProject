@@ -141,6 +141,10 @@ openssl req -new -key tls.key -out tls.csr --->create certificate signing reques
 
 openssl x509 -req -in tls.csr -signkey tls.key -out tls.crt -days 365  --->self sign the certificate
 
+ip netns add Red ---> create network namespace
+
+ip netns ---> show netns
+
 
 
 
