@@ -306,6 +306,8 @@ set -ex
 Debugging: It's particularly useful when debugging complex shell scripts, as it helps to trace the execution flow and quickly identify where the script might be failing.
 CI/CD Pipelines: In CI/CD environments, using set -ex can help ensure that any failure in the pipeline is caught early and that the exact point of failure is clear.
 
+The nslookup command in Linux is a network utility that allows users to query and retrieve information from Domain Name System (DNS) servers
+nsllokup www.google.com
 
     
 
