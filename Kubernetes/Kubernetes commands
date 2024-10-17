@@ -157,6 +157,8 @@ ip address show type bridge ---> to check interface or bridge in this host
 
 ip route --->to check routes
 
+ip link ---> The ip link command in Kubernetes is typically used within the container or pod to view or  manage network interfaces.
+
 
 
 
