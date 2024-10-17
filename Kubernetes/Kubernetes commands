@@ -145,6 +145,18 @@ ip netns add Red ---> create network namespace
 
 ip netns ---> show netns
 
+netstat -npl | grep -i schedular  ---> to check schedular listening on which port
+
+ip address ---> network interface for cluser connecivity
+
+ip address show eth0--->MAC address of the interface on the controlplane,eth0 is the network interface
+
+ssh node01 ---> to change to another node
+
+ip address show type bridge ---> to check interface or bridge in this host
+
+ip route --->to check routes
+
 
 
 
