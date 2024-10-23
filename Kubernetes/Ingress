@@ -9,3 +9,9 @@ This facilitates a scalable and maintainable way to manage incoming traffic in K
 Kubernetes Ingress is an API object that helps developers expose their applications and 
 manage external access by providing http/s routing rules to the services within a Kubernetes cluster.
 
+In Kubernetes, Ingress is an API object that manages external access to services within a cluster, typically HTTP and HTTPS routes. 
+It provides a way to expose multiple services over the same IP address and route traffic based on hostnames or paths. 
+Essentially, Ingress acts as a more flexible and powerful alternative to other options like NodePort or LoadBalancer services.
+
+
+
