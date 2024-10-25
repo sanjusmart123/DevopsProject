@@ -1,0 +1,18 @@
+In DevOps, Nexus plays a crucial role as a repository manager. 
+It helps in managing build artifacts and dependencies, making the entire software development lifecycle smoother. 
+Nexus is used to store, manage, and distribute artifacts (like JAR, WAR, and ZIP files). 
+It acts as a central repository for these components during the software build process.
+It supports various repository formats like Maven, npm, NuGet, Docker, and more.
+
+After successful builds, Nexus stores the artifacts (e.g., JAR, WAR files). 
+These artifacts can be stored in snapshot or release repositories, depending on the development or production phase.
+such as from a snapshot repository (development) to a release repository (production).
+
+Nexus integrates seamlessly with CI/CD tools like Jenkins to automatically upload build artifacts after a successful build.
+This ensures that the latest builds are readily available for deployment.
+Pipelines can be designed to fetch dependencies from Nexus during the build and push build outputs (artifacts) back to Nexus for further deployment or testing.
+
+Nexus provides role-based access control (RBAC), allowing organizations to control who has access to various repositories. 
+This ensures security and governance over critical software artifacts.
+It also supports artifact scanning to ensure that artifacts stored or used in the build process are free of vulnerabilities, 
+contributing to a more secure DevOps pipeline.
