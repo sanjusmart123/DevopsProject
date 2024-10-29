@@ -9,6 +9,8 @@ Docker has become a widely-used tool in modern software development, DevOps, and
 
 Docker is a software platform that allows you to build, test, and deploy applications quickly
 
+Containers package an application with all its dependencies (like libraries, binaries, and configuration files), allowing it to run consistently across different environments
+
 Docker is a containerization platform that allows developers to package, ship, and run applications in containers. 
 Containers are lightweight and portable, ensuring that applications run consistently across different environments.
 Docker provides a flexible way to manage dependencies, reduce conflicts, and increase collaboration among developers.
