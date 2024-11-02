@@ -1,0 +1,36 @@
+In Kubernetes, a Cluster Role is a set of permissions that define what actions a user or service account can perform within a cluster.
+It's essentially a collection of verbs (actions) that can be applied to a set of resource types, such as pods, services, or persistent volumes. 
+Cluster Roles are used to manage access control and ensure that resources are only accessed and modified by authorized entities. 
+They are often associated with Service Accounts, which are used to authenticate and authorize processes running within a pod.
+
+Cluster Role:
+#################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: read-all-pods-and-nodes
+rules:
+- apiGroups: [""]
+  resources: ["pods", "nodes"]
+  verbs: ["get", "list", "watch"]
+
+
+######################
+Cluster Role Binding:
+To assign this ClusterRole to a specific user, group, or service account, you use a ClusterRoleBinding.
+This binding allows you to specify who can use the defined permissions in the ClusterRole.
+######################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-all-pods-and-nodes-binding
+subjects:
+- kind: User
+  name: "jane"  # The user who will be granted access
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: read-all-pods-and-nodes
+  apiGroup: rbac.authorization.k8s.io
+
+###############################
