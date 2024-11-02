@@ -1,0 +1,42 @@
+In Kubernetes, Role-Based Access Control (RBAC) is a method of controlling access to cluster resources based on a user's identity and role. 
+It allows administrators to define roles and bind them to users or service accounts, granting specific permissions and privileges. 
+RBAC provides a way to manage fine-grained access control within the cluster, ensuring that users only have access to resources and actions they need to perform their tasks.
+RBAC can be used to enforce policies, monitor activity, and maintain the overall security and integrity of the cluster.
+Role-based access control (RBAC) is a method of protecting sensitive data from improper access, modification, addition, or deletion. 
+It allows employees to have access to the information required to fulfill their responsibilities.
+Role-based access control (RBAC) objects determine whether a user is allowed to perform a given action within a project. 
+Cluster administrators can use the cluster roles and bindings to control who has various access levels to the OpenShift Container Platform platform itself and all projects.
+####################
+
+Role:
+###############
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+
+########################
+
+Bind The Role to the user:
+#######################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods-binding
+  namespace: default
+subjects:
+- kind: User
+  name: "jane"  # This is the user to whom you're giving permissions
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+
+############################
+
