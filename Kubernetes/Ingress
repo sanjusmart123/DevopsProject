@@ -13,5 +13,50 @@ In Kubernetes, Ingress is an API object that manages external access to services
 It provides a way to expose multiple services over the same IP address and route traffic based on hostnames or paths. 
 Essentially, Ingress acts as a more flexible and powerful alternative to other options like NodePort or LoadBalancer services.
 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  namespace: default
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: example-service
+            port:
+              number: 80
+
+###############################################
+
+Egress:
+
+In Kubernetes, egress refers to the outbound traffic originating from pods within the cluster to external resources or services, either within or outside the cluster
+Egress traffic is used to access external services such as databases, APIs, and other services running outside of the cluster
+
+Egress in Kubernetes refers to the flow of traffic from a pod or service in a cluster to an external network, such as the internet or another Kubernetes cluster. 
+This can include accessing external services, making API calls, or communicating with other systems outside of the cluster.
+Egress traffic is typically managed by Kubernetes' network policies, which control what traffic is allowed to exit the cluster.
+By default, egress traffic is not restricted, but network policies can be used to limit or restrict egress traffic based on various criteria, such as IP addresses, ports, and protocols.
 
 
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: restrict-egress
+  namespace: default
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 203.0.113.0/24
+
+
+###############################################
