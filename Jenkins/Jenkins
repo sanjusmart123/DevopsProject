@@ -5,6 +5,12 @@ It supports a wide range of plugins for various programming languages, framework
 Jenkins is known for its ease of use, scalability, and customization capabilities, making it a popular choice among developers and DevOps teams.
  It's highly popular in DevOps practices due to its flexibility and powerful plugin ecosystem, which integrates with tools like Git, Maven, Docker, Kubernetes, and many others.
 
+When the developer commits the code to the source code repositorythe jenkins server detects the changes that have occured in the source code repository.
+Jenkins will detect and pull the changes and will start preparing for a new build.
+If build get failed ,developer will communicated about the failure of the build so that they can check the code at their end.
+If the build get successfull ,jenkins will deploy the build in test server.
+Jenkins will continue to check source code repository for any changes make in source code and keep on repeating the entire process.
+
 
 
 
