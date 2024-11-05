@@ -61,7 +61,11 @@ shared Pipeline:
 
 A shared pipeline in Jenkins allows you to define common steps or functions that can be reused across multiple Jenkinsfiles. 
 This helps in maintaining consistency, reducing redundancy, and simplifying the maintenance of your Jenkins pipelines. 
-Shared pipelines are typically implemented using Jenkins Shared Libraries
+Shared pipelines are typically implemented using Jenkins Shared Libraries.
+
+A shared pipeline in Jenkins is a reusable pipeline script, typically defined in a shared library, which can be used across multiple Jenkins jobs. 
+Instead of writing the same pipeline logic in each job's Jenkinsfile, a shared pipeline allows you to define the workflow once and then reference
+it in multiple jobs or projects, promoting standardization, efficiency, and ease of maintenance.
 
 def call(Map config = [:]) {
     pipeline {
