@@ -15,6 +15,22 @@ This allows you to share code and functionality between different jobs, which ca
 By leveraging Shared Libraries, teams can reduce code duplication, improve maintainability, and increase the overall efficiency of their Jenkins workflows.
 
 
+@Library('my-shared-library') _
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Call a function from the shared library
+                    buildProject()
+                }
+            }
+        }
+    }
+}
+############################
 pipeline{
     agent any
     environment{
