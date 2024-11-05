@@ -13,7 +13,12 @@ The Jenkins dashboard provides a web-based UI where users can configure jobs, vi
 The UI offers insights into build history, trends, and logs, and it can be customized per project needs.
 
 Jenkins integrates with code repositories like Git, SVN, or Mercurial for source code management.
-Once the build is complete, Jenkins can upload artifacts to a repository manager like Nexus or Artifactory for storage, versioning, and deployment.
+After a successful build, Jenkins can package the code into artifacts (e.g., .jar, .war, .zip files) suitable for deployment,
+Jenkins can upload artifacts to a repository manager like Nexus or Artifactory for storage, versioning, and deployment.
+
+Jenkins can deploy artifacts to a staging environment for further testing, especially if it’s part of a Continuous Deployment pipeline.
+Deployment to production may be manual or automated, depending on the pipeline configuration and approvals.
+Jenkins uses plugins or integrations with tools like Ansible, Docker, Kubernetes, or cloud providers (AWS, GCP, Azure) for deployment automation.
 
 Workflow
 A developer commits code to a source control repository (e.g., Git).
