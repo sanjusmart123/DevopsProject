@@ -1,3 +1,24 @@
- Jenkins uses a master-slave architecture, where the master node is the central point responsible for task scheduling, monitoring,
+Jenkins uses a master-slave architecture, where the master node is the central point responsible for task scheduling, monitoring,Recording and presenting the build results.
+Managing plugins, configurations,user permissions.
 and managing build processes. The slave nodes, also known as agents, run the actual builds and perform the tasks assigned by the master node. 
 This architecture enables scalability, reliability, and ease of use for large-scale software development and deployment operations.
+A single Jenkins node (slave) can have multiple executors to handle parallel jobs, allowing Jenkins to execute multiple builds simultaneously
+Jenkins manages a job queue where jobs wait until an executor is free on a suitable agent.
+The master assigns jobs based on resource availability, labels, and any specific requirements set in the job configuration
+
+Plugins are a crucial part of Jenkins architecture, adding features and integrations for source code management (e.g., Git), build tools (e.g., Maven), test frameworks, deployment platforms, and more.
+Jenkins has a rich ecosystem of plugins that can be installed and configured as needed
+
+The Jenkins dashboard provides a web-based UI where users can configure jobs, view job status, manage plugins, and set up build triggers. 
+The UI offers insights into build history, trends, and logs, and it can be customized per project needs.
+
+Jenkins integrates with code repositories like Git, SVN, or Mercurial for source code management.
+Once the build is complete, Jenkins can upload artifacts to a repository manager like Nexus or Artifactory for storage, versioning, and deployment.
+
+Workflow
+A developer commits code to a source control repository (e.g., Git).
+Jenkins is triggered to start a build (manual or automated trigger).
+The Jenkins master schedules the job and assigns it to an available slave based on job requirements.
+The slave executes the job, compiling the code, running tests, and producing artifacts.
+Results are sent back to the Jenkins master, which updates the dashboard and sends notifications if configured.
+Artifacts are stored in a repository manager, and the software can be deployed to production if it passes all tests and requirements.
