@@ -3,6 +3,10 @@ It's designed to handle large amounts of data and scale with your needs. DynamoD
 allowing for flexible schema design and scalability. With DynamoDB, you don't have to worry about provisioning or scaling servers, as AWS handles these tasks automatically. 
 This service is commonly used for big data, IoT, and real-time web applications, and is known for its high performance, low latency, and high availability.
 
+Amazon DynamoDB is a fully managed NoSQL database service provided by AWS, designed for high performance at any scale with low latency.
+It allows developers to store, retrieve, and query large amounts of structured data. 
+DynamoDB is particularly useful for applications that require consistent, single-digit millisecond response times and can handle workloads with variable or unpredictable traffic.
+
 *DynamoDB is a serverless cloud based NoSQL database.
 *It automatically replicates data to multiple availability zones.
 *In case any failure happen in one AZ automatically the data the data will be fetched from another AZ.
