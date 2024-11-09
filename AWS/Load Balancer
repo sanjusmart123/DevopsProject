@@ -13,6 +13,21 @@ AWS offers two types of load balancers: Application Load Balancer and Network Lo
 Application Load Balancer is designed for Layer 7 traffic and is suitable for web applications, 
 while Network Load Balancer is designed for Layer 4 traffic and is suitable for large-scale applications. 
 Both load balancers can be deployed in various regions and Availability Zones.
+
+######################################################################################
+
+Application Load Balancer (ALB):
+
+Best suited for HTTP/HTTPS traffic.
+Operates at Layer 7 (Application Layer) of the OSI model.
+Supports advanced routing features like URL-based routing, host-based routing, and path-based routing.
+Ideal for microservices and container-based applications, allowing routing to different services based on URL paths or domain names.
+Network Load Balancer (NLB):
+
+Best suited for TCP, UDP, and TLS traffic.
+Operates at Layer 4 (Transport Layer) of the OSI model.
+Handles millions of requests per second while maintaining ultra-low latencies.
+Suitable for applications requiring extreme performance and static IP addresses.
 #################################################################################
 Load balancers improve application performance by increasing response time and reducing network latency.
 
