@@ -88,3 +88,19 @@ AWS Snowball is primarily used to transfer data when internet speeds are too slo
 1. Order Amazon Snowball to your premises.
 
 ##################################################################
+
+what are the storage classes in aws s3
+
+The storage classes in AWS S3 are designed to provide a cost-effective and flexible way to store and manage data. The main storage classes in S3 are:
+
+Standard: For frequently accessed data, with high throughput and low latency.
+Intelligent Tiering: Automatically moves data to the most cost-effective tier based on access patterns.
+Infrequent Access (IA): For data that is less frequently accessed, with lower storage costs.
+Glacier: For long-term archival and backup storage, with very low storage costs.
+Glacier Deep Archive: The lowest-cost storage class, ideal for long-term data retention.
+These storage classes allow you to choose the best option for your specific use case and reduce costs.
+
+################################################################################################
+
+
+
