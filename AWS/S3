@@ -81,6 +81,10 @@ but then placed on hold for a specified retention period. This feature ensures d
 snowball:
 
 AWS Snowball is a service that accelerates transferring large amounts of data to and out of AWS using physical storage appliances. 
-Perform the following steps to transfer data in to AWS S3: 1. Order Amazon Snowball to your premises.
+Perform the following steps to transfer data in to AWS S3:
+AWS Snowball is a data transfer service that helps move large amounts of data into and out of AWS.
+It is part of the AWS Snow Family, which includes devices like AWS Snowball Edge and AWS Snowcone.
+AWS Snowball is primarily used to transfer data when internet speeds are too slow or too costly for large-scale data transfers
+1. Order Amazon Snowball to your premises.
 
 ##################################################################
