@@ -12,5 +12,15 @@ If the build get successfull ,jenkins will deploy the build in test server.
 Jenkins will continue to check source code repository for any changes make in source code and keep on repeating the entire process.
 
 
+how do you take backup of the jenkins server
+
+To take a backup of a Jenkins server, you can use the following methods:
+
+Jenkins Backup Plugin: Install the Jenkins Backup Plugin on your server, which allows you to schedule automatic backups of your Jenkins configuration, jobs, and other data.
+Export Jenkins Configuration: Use the Jenkins CLI (Command-Line Interface) to export your Jenkins configuration as a file using the jenkins export command.
+Jenkins API: Use the Jenkins API to create a backup of your server by making a GET request to the /backup endpoint.
+Manual Backup: Manually copy the Jenkins home directory and all its contents to a safe location, such as an external hard drive or cloud storage
+
+
 
 
