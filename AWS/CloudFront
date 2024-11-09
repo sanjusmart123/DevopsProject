@@ -27,3 +27,20 @@ You're referring to WAF (Web Application Firewall) in Amazon Web Services (AWS).
 WAF is a web application security layer that filters and blocks malicious traffic to your website or application. 
 It monitors HTTP requests and identifies the malicious traffic based on rules, such as IP addresses, HTTP headers, and query strings.
 AWS WAF integrates with AWS CloudFront, Amazon Elastic Load Balancer (ELB), and Amazon API Gateway to protect your web applications from common web exploits and attacks.
+
+######################################################################
+
+Network access controll list in aws
+
+To manage network access in AWS, you can use the Network Access Control List (NACL).
+A NACL is a virtual firewall that controls inbound and outbound traffic to and from instances in a VPC(subnet level).
+You can create and manage NACLs in the AWS Management Console, AWS CLI, or SDKs. 
+A NACL is composed of rules, which are evaluated in order to determine whether traffic is allowed or denied.
+You can create custom NACLs or use pre-configured ones to suit your network security needs. 
+This allows you to have fine-grained control over traffic flow in your VPC.
+###########################################################################
+
+
+
+
+
