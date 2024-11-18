@@ -1,0 +1,11 @@
+Bubble sort is a simple algorithm that sorts a list of numbers in ascending order by repeatedly comparing and swapping adjacent elements in the list.
+
+def bubble_sort(arr):
+    n=len(arr)
+    for i in range(arr):     #here iterating the array
+        for j in range(0,n-i-1):#here comparing the array
+            if arr[j] > arr[j+1]:
+                arr[j],arr[j+1] = arr[j+1],arr[j]   #swaping
+arr=[2,5,6,3,1,4]
+sorted_array=bubble_sort(arr)
+print("sorting numbers:",sorted_array)
