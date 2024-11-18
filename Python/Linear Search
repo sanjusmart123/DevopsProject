@@ -1,0 +1,14 @@
+In Python, a linear search, also known as a sequential search, is an algorithm that finds a specific value of index in a list by checking each item one by one.
+
+def linear_search(arr,target):
+    for i in range(len(arr)):
+        if arr[i] == target
+            return i
+    return -1
+arr=[1,2,5,6,7,8,3]
+target=8
+result = linear_search(arr,target)
+if result != -1:
+    print('element found at index:',result)
+else:
+    print("Not found")
