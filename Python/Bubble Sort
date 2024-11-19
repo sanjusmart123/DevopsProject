@@ -9,3 +9,17 @@ def bubble_sort(arr):
 arr=[2,5,6,3,1,4]
 sorted_array=bubble_sort(arr)
 print("sorting numbers:",sorted_array)
+
+###############################################################
+def bubble_sort(char):
+    items=list(char.items())
+    n=len(items)
+    for i in range(n-1):
+        for j in range(n-i-1):
+            
+            if items[j][1] > items[j+1][1]:
+                items[j],items[j+1]=items[j+1],items[j]
+    return items
+Name_with_rank={'a':2,'c':3,'b':1,'r':7}
+sorted_arr=bubble_sort(Name_with_rank)
+print("sorted array:",sorted_arr)
