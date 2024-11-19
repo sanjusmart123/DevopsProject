@@ -5,7 +5,8 @@ def bubble_sort(arr):
     for i in range(arr):     #here iterating the array
         for j in range(0,n-i-1):#here comparing the array
             if arr[j] > arr[j+1]:
-                arr[j],arr[j+1] = arr[j+1],arr[j]   #swaping
+                arr[j],arr[j+1] = arr[j+1],arr[j]#swaping
+     return arr
 arr=[2,5,6,3,1,4]
 sorted_array=bubble_sort(arr)
 print("sorting numbers:",sorted_array)
@@ -23,3 +24,37 @@ def bubble_sort(char):
 Name_with_rank={'a':2,'c':3,'b':1,'r':7}
 sorted_arr=bubble_sort(Name_with_rank)
 print("sorted array:",sorted_arr)
+
+###########################################################
+
+def bubble_sort_names(names):
+    """Sorts a list of names using Bubble Sort."""
+    n = len(names)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if names[j] > names[j + 1]:  # Compare alphabetically
+                names[j], names[j + 1] = names[j + 1], names[j]  # Swap
+    return names
+
+def find_name_by_rank(names, rank):
+    """
+    Finds the name with the given rank after sorting.
+    Rank starts from 1 for the smallest name.
+    """
+    sorted_names = bubble_sort_names(names)
+    if 1 <= rank <= len(sorted_names):  # Ensure rank is valid
+        return sorted_names[rank - 1]  # Rank is 1-based
+    else:
+        return "Invalid rank"
+
+# Example usage
+names = ["Zara", "Emily", "John", "Alice", "Bob"]
+rank = 3
+
+sorted_names = bubble_sort_names(names)
+print("Sorted Names:", sorted_names)
+
+name_with_rank = find_name_by_rank(names, rank)
+print(f"Name with rank {rank}:", name_with_rank)
+
+###############################################################
