@@ -70,12 +70,25 @@ By using a remote backend, you can ensure that your infrastructure state is alwa
 
 How do I store Terraform state file remotely?
 
+Storing Terraform state files remotely is a best practice for collaboration, security, and disaster recovery.
+Remote storage ensures that the state file is accessible to all team members and is safely stored away from local machines.
+
 Here are the steps on how to store Terraform state file on Terraform cloud Remote:
 Create a Terraform Cloud organization and workspace.
 Create a configuration file that defines the resources you want to create.
 Initialize Terraform.
 Configure Terraform Cloud to store the state file.
 Authentication with Terraform Cloud.
+
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state"
+    key            = "path/to/my-state-file/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks" # Optional for state locking
+  }
+}
+
 
 ##############################################################################################
 Modules:
