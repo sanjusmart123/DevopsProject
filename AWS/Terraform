@@ -264,4 +264,11 @@ What is a Terraform module? A Terraform module is a collection of standard confi
 Terraform modules encapsulate groups of resources dedicated to one task,
 reducing the amount of code you have to develop for similar infrastructure components.
 
+module "iam_iam-user" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.28.0"
+  # insert the 1 required variable here
+  name = "sai"
+}
+
 ################################################################################################
