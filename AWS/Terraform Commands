@@ -28,6 +28,9 @@ terraform destroy
 Destroys all resources defined in the configuration.
 Useful for cleaning up after testing or decommissioning infrastructure.
 
+This generates a plan where the ex,aws_instance.web resource is marked for destruction and recreation.
+terraform plan -replace="resource_type.resource_name
+
 terraform destroy
 terraform show
 
