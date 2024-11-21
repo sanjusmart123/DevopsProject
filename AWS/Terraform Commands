@@ -1,0 +1,97 @@
+terraform init
+
+Initializes a Terraform working directory.
+Downloads provider plugins and sets up the backend configuration.
+Run this command first when starting a project.
+
+terraform init
+terraform validate
+
+Validates the configuration files for syntax and structural correctness.
+Does not interact with infrastructure or state.
+
+terraform validate
+terraform plan
+
+Creates an execution plan, showing the changes Terraform will make to your infrastructure.
+A safe "dry-run" to review before applying changes.
+
+terraform plan
+terraform apply
+
+Applies the changes required to reach the desired state of your configuration.
+Prompts for confirmation unless a saved plan file is provided.
+
+terraform apply
+terraform destroy
+
+Destroys all resources defined in the configuration.
+Useful for cleaning up after testing or decommissioning infrastructure.
+
+terraform destroy
+terraform show
+
+Displays details of the current state or a saved execution plan.
+
+terraform show
+terraform output
+
+Extracts and displays values from the output section of your configuration.
+
+terraform output
+terraform fmt
+
+Formats Terraform configuration files to follow the standardized style.
+
+terraform fmt
+terraform state
+
+Manages the Terraform state file, enabling actions like moving, removing, or importing resources.
+Example:
+
+
+terraform state list   # Lists all resources in the state
+terraform state mv     # Moves resources within the state
+terraform import
+
+Brings an existing resource into Terraform management by adding it to the state file.
+
+terraform import <resource_name> <real_world_identifier>
+terraform refresh
+
+Updates the state file to match the real-world infrastructure without modifying resources.
+
+terraform refresh
+terraform workspace
+
+Manages workspaces (isolated state files) for managing multiple environments like dev, test, prod.
+
+terraform workspace list   # List workspaces
+terraform workspace new    # Create a new workspace
+terraform taint (Deprecated, use terraform apply -replace instead)
+Marks a resource for recreation during the next terraform apply.
+terraform untaint
+
+Removes the taint marking from a resource, so it won’t be recreated.
+
+terraform untaint <resource_name>
+terraform graph
+
+Generates a visual graph of the Terraform resources and their dependencies.
+bash
+Copy code
+terraform graph | dot -Tsvg > graph.svg
+terraform login
+
+Authenticates with Terraform Cloud or a private Terraform Enterprise instance.
+
+terraform login
+Initialization & Setup: terraform init
+Validation: terraform validate
+Preview Changes: terraform plan
+Apply Changes: terraform apply
+Destroy Resources: terraform destroy
+Manage State: terraform state
+Import Resources: terraform import
+Output Management: terraform output
+Formatting: terraform fmt
