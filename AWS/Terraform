@@ -119,7 +119,7 @@ They are defined using the local keyword and can be used to store values that ar
 provisioners in terraform
 
 Provisioners in Terraform are a way to execute code on a machine after it has been created or updated by Terraform. 
-There are two types of provisioners: local-exec and file. 
+There are 3 types of provisioners: local-exec,Remote-exec and file. 
 Local-exec provisioners allow the execution of arbitrary local code on the machine, 
 while file provisioners enable the copying of files to the machine. 
 Provisioners can be used to configure machines, install software, or perform other tasks.
@@ -135,14 +135,46 @@ There are two types of file provisioners: remote-exec and copy.
 The remote-exec provisioner runs a command on the remote server to copy the file, 
 while the copy provisioner copies the file directly from the local file system to the remote server.
 
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  key_name      = "my-key"
+
+  provisioner "file" {
+    source      = "my-script.sh"
+    destination = "/tmp/my-script.sh"
+
+    connection {
+      type     = "ssh"
+      user     = "ubuntu"
+      private_key = file("~/.ssh/my-key.pem")
+      host     = self.public_ip
+    }
+  }
+}
+
+
 ################################################################
  local-exec provisioner in terraform
 
 The local-exec provisioner in Terraform is a provisioner that runs a command locally on a machine. 
+The local-exec provisioner in Terraform is used to execute a command on the machine where Terraform is running. 
+It is often employed for tasks such as invoking scripts, running shell commands,
+or interacting with local systems during resource creation or destruction.
 It allows you to execute arbitrary shell commands after a resource has been created. 
 This is useful for tasks that require more control and customization than a provisioner like the remote-exec provisioner, which runs a command remotely on a machine.
 The local-exec provisioner can be used to perform tasks such as copying files, or starting services.
 You specify the command to run using the command argument.
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  provisioner "local-exec" {
+    command = "echo 'SubnetID ${self.subnetid} ' >> subnet_id.txt"
+  }
+}
+
 
 ###################################################################
 remote-exec provisioner in terraform
@@ -153,14 +185,47 @@ The provisioner takes a command to run as its value, and Terraform will execute 
 It also supports specifying a command timeout, and the option to run the command in a specific shell. 
 This provisioner is commonly used in.tf files to automate post-creation tasks.
 
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install -y nginx",
+      "sudo systemctl start nginx"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = file("~/.ssh/id_rsa")
+      host        = self.public_ip
+    }
+  }
+}
+
+
 #########################################################################
- workplaces in terraform
+ workspace in terraform
 
 In Terraform, a "workplace" refers to a shared environment for a specific project or organization. 
 It allows multiple team members to collaborate on infrastructure resources and configurations. 
 A workplace is essentially a container that holds all the Terraform configuration files, including state, variables, and outputs.
 Within a workplace, you can manage resources, apply configurations, and version control your infrastructure changes. 
 This enables teams to work together efficiently, maintaining a consistent and reproducible infrastructure setup.
+
+to view all  available workspaces
+terraform workspace list
+crete new workspace
+terraform workspace new <workspace_name>
+switching between
+terraform workspace select <workspace_name>
+display current ws
+terraform workspace show
+
+
+
 
 ###########################################################################
 service principal in terraform
