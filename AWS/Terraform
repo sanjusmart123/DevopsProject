@@ -90,16 +90,6 @@ terraform {
 }
 
 
-##############################################################################################
-Modules:
-
-Terraform modules are reusable packages of Terraform configuration that can encapsulate a specific combination of resources and dependencies.
-They allow you to break down large infrastructure configurations into smaller, more manageable pieces, making it easier to maintain and reuse code.
-Modules can be created and shared by the community, or created internally by your organization.
-They can also be used to create consistent infrastructure across multiple environments, such as development, staging, and production. 
-By using Terraform modules, you can speed up your infrastructure provisioning process and reduce errors.
-
-
 ##################################################################################################
 Terraform state lock:
 
@@ -277,7 +267,7 @@ resource "aws_instance" "example" {
 #########################################################################
  workspace in terraform
 
-In Terraform, a "workplace" refers to a shared environment for a specific project or organization. 
+In Terraform, a "workspace" refers to a shared environment for a specific project or organization. 
 It allows multiple team members to collaborate on infrastructure resources and configurations. 
 A workplace is essentially a container that holds all the Terraform configuration files, including state, variables, and outputs.
 Within a workplace, you can manage resources, apply configurations, and version control your infrastructure changes. 
@@ -292,9 +282,6 @@ terraform workspace select <workspace_name>
 display current ws
 terraform workspace show
 
-
-
-
 ###########################################################################
 service principal in terraform
 
@@ -308,7 +295,9 @@ This provides a secure way to manage Azure resources without hardcoding your cre
 #####################################################################################
 
 Terraform Modules:
-Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit. They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, promoting modularity and reusability. Examples of Terraform modules include:
+Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit.
+They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, 
+promoting modularity and reusability. Examples of Terraform modules include:
 
 A module for creating a virtual private cloud (VPC) with subnets and security groups
 A module for provisioning a database cluster with scaling and backup policies
@@ -318,6 +307,14 @@ By using Terraform modules, you can speed up your infrastructure deployments, re
 What is a Terraform module? A Terraform module is a collection of standard configuration files in a dedicated directory. 
 Terraform modules encapsulate groups of resources dedicated to one task,
 reducing the amount of code you have to develop for similar infrastructure components.
+
+
+Terraform modules are reusable packages of Terraform configuration that can encapsulate a specific combination of resources and dependencies.
+They allow you to break down large infrastructure configurations into smaller, more manageable pieces, making it easier to maintain and reuse code.
+Modules can be created and shared by the community, or created internally by your organization.
+They can also be used to create consistent infrastructure across multiple environments, such as development, staging, and production. 
+By using Terraform modules, you can speed up your infrastructure provisioning process and reduce errors.
+
 
 module "iam_iam-user" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-user"
