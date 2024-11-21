@@ -1,0 +1,488 @@
+Terraform is an open-source infrastructure as code (IaC) tool used for building and managing cloud and on-premises infrastructure.
+Developed by HashiCorp, Terraform allows users to define and version infrastructure configurations in human-readable configuration files,
+which can then be used to create and manage virtual machines, networks, and other resources on various cloud and on-premises platforms. 
+Terraform supports a wide range of providers, including AWS, Azure, Google Cloud, and many others,
+making it a popular choice for organizations seeking to standardize and automate their infrastructure management processes.
+
+#######################################################################
+
+terraform variables
+
+Using variables in terraform configurations makes our deployment more dynamic.
+A separate file with name variables.tf needs to be created in the working directory to store all variables fro our used in main.tf configuration file.
+
+Terraform variables are values that can be used to customize the behavior of Terraform configurations throughout a workspace.
+These values are stored in a variables.tf file and can be used to parameterize infrastructure as code. 
+There are two types of variables in Terraform: local and input. 
+Local variables are only accessible within the scope of the module or configuration they are declared in, while input variables are available throughout the entire workspace. 
+Terraform variables can be set through command-line options, environment variables, or a variables.tf file.
+
+
+#############################################################################
+
+StateFile:
+
+A Terraform state file is a JSON file that stores information about resources in your infrastructure, such as their IDs, 
+attributes, and dependencies. It's created after running terraform apply and is usually named terraform.
+tfstate and located in the same directory as Terraform. 
+
+Terraform uses the state file to: 
+Track resource state: Accurately account for the current state of your infrastructure 
+Manage resource dependencies: Understand how resources depend on each other 
+Plan and apply operations: Compare the desired state (your configuration) to the current state (the state file) 
+Improve performance: Optimize performance for large infrastructures 
+The state file contains information such as: 
+Resource information: Resource IDs, attributes (like IP addresses and security group rules), and dependencies 
+Metadata: Resource names, tags, and other configuration details 
+Version: The Terraform version 
+Serial: The serial 
+Lineage: The lineage 
+Outputs: The outputs 
+Some recommend storing state in HCP Terraform to version, encrypt, and securely share it with your team. 
+Terraform also uses a lock on the state file to prevent concurrent modifications that could lead to conflicts or data corruption.
+
+##################################################################
+
+Restoring statefile:
+
+If the statefile is deleted or corrupted ,we can restore it using Terraform import command.
+
+The terraform import command is used to import an existing infrastructure resource from a cloud or on-premises environment into a Terraform configuration. 
+This command allows you to manage existing resources alongside newly created ones within your Terraform state.
+The command syntax is terraform import <resource> <id>, where <resource> is the resource type and <id> is a unique identifier
+of the resource. For example, terraform import aws_instance.web i-abc123 would import an AWS EC2 instance with the ID i-abc123 into your Terraform configuration.
+
+     terraform import azurerm_subnet_network_security_group_association.association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/subnets/mysubnet1
+      terraform import resource name resource id
+######################################################################################
+
+Terraform remote backend or remote statefile:
+
+Terraform's remote backend and remote state are both ways to store Terraform state in a remote location, like a database or cloud object storage service.
+
+When working with Terraform, a remote backend allows you to store and manage your infrastructure state remotely,
+rather than on your local machine. This provides several benefits, including improved collaboration, version control, and disaster recovery.
+A remote state file is a file stored in the remote backend, which contains the current state of your infrastructure. 
+Popular remote backend options include AWS S3, Azure Blob Storage, and Google Cloud Storage. 
+By using a remote backend, you can ensure that your infrastructure state is always synchronized and accessible from anywhere.
+
+############################################################################################
+
+How do I store Terraform state file remotely?
+
+Storing Terraform state files remotely is a best practice for collaboration, security, and disaster recovery.
+Remote storage ensures that the state file is accessible to all team members and is safely stored away from local machines.
+
+Here are the steps on how to store Terraform state file on Terraform cloud Remote:
+Create a Terraform Cloud organization and workspace.
+Create a configuration file that defines the resources you want to create.
+Initialize Terraform.
+Configure Terraform Cloud to store the state file.
+Authentication with Terraform Cloud.
+
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state"
+    key            = "path/to/my-state-file/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks" # Optional for state locking
+  }
+}
+
+
+##################################################################################################
+Terraform state lock:
+
+Terraform state locking is a safety mechanism that prevents data corruption and conflicts by ensuring 
+that only one user or process can modify the Terraform state file at a time. 
+It works by automatically locking the state for all operations that could write to it. 
+
+In AWS S3 is used to store our statefile and DynamoDB is used for state lock
+
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state"
+    key            = "path/to/my-state-file/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks" # Optional for state locking
+  }
+}
+
+###################################################################################################
+data sources in terraform
+
+In Terraform, data sources are used to retrieve information from external sources, such as AWS, Azure, or a local file.
+They allow you to store and retrieve data that's not easily captured by a Terraform resource. 
+Common data sources include AWS EC2 instance ids, Azure storage account names, and local files.
+To use a data source in Terraform, you declare it in your Terraform configuration file using the data keyword, followed by the type of data source and its arguments.
+
+A data source is used to query information from external systems or existing resources and incorporate that information into our Terraform configuration.
+It provides dynamic attributes that can be used to make our configurations context-aware and responsive to changes.
+
+data "aws_vpc" "main" {
+  filter {
+    name   = "tag:Name"
+    values = ["main-vpc"]
+  }
+}
+
+output "vpc_id" {
+  value = data.aws_vpc.main.id
+}
+
+
+########################################################################################
+locals in terraform
+
+In Terraform, locals are a way to define small, reusable blocks of code that can be used within a module or configuration.
+They are not stored on disk, unlike variables, and are only available during the planning and applying phases of the Terraform configuration.
+Locals can be used to simplify complex expressions, abstract away repetitive constructs, and make your configuration more readable.
+They are defined using the local keyword and can be used to store values that are computed or derived from other values in your configuration.
+
+variable "environment" {
+  default = "production"
+}
+
+variable "owner" {
+  default = "DevOps Team"
+}
+
+locals {
+  aws_region    = "us-east-1"
+  common_tags   = {
+    Project     = "MyApp"
+    Environment = var.environment
+    Owner       = var.owner
+  }
+  instance_type = var.environment == "production" ? "t3.medium" : "t2.micro"
+}
+
+provider "aws" {
+  region = local.aws_region
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-12345678"
+  instance_type = local.instance_type
+
+  tags = local.common_tags
+}
+
+The expression evaluates whether the var.environment variable equals "production".
+If true, it assigns the value "t3.medium" to instance_type.
+If false, it assigns the value "t2.micro" to instance_type.
+
+
+#############################################################################################
+provisioners in terraform
+
+Provisioners in Terraform are a way to execute code on a machine after it has been created or updated by Terraform. 
+There are 3 types of provisioners: local-exec,Remote-exec and file. 
+Local-exec provisioners allow the execution of arbitrary local code on the machine, 
+while file provisioners enable the copying of files to the machine. 
+Provisioners can be used to configure machines, install software, or perform other tasks.
+They can be specified at the resource level, allowing for varying provisioning behavior per resource or group of resources.
+
+##############################################################################################
+file provisioner in terraform
+
+A file provisioner in Terraform is a provisioner that copies files from the local file system to a remote server. 
+It is used to manage the deployment of files to remote servers, such as configuration files, scripts, or other sensitive data. 
+The file provisioner is typically used in combination with other provisioners, such as the script provisioner, to complete the deployment of a server.
+There are two types of file provisioners: remote-exec and copy. 
+The remote-exec provisioner runs a command on the remote server to copy the file, 
+while the copy provisioner copies the file directly from the local file system to the remote server.
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  key_name      = "my-key"
+
+  provisioner "file" {
+    source      = "my-script.sh"
+    destination = "/tmp/my-script.sh"
+
+    connection {
+      type     = "ssh"
+      user     = "ubuntu"
+      private_key = file("~/.ssh/my-key.pem")
+      host     = self.public_ip
+    }
+  }
+}
+
+
+################################################################
+ local-exec provisioner in terraform
+
+The local-exec provisioner in Terraform is a provisioner that runs a command locally on a machine. 
+The local-exec provisioner in Terraform is used to execute a command on the machine where Terraform is running. 
+It is often employed for tasks such as invoking scripts, running shell commands,
+or interacting with local systems during resource creation or destruction.
+It allows you to execute arbitrary shell commands after a resource has been created. 
+This is useful for tasks that require more control and customization than a provisioner like the remote-exec provisioner, which runs a command remotely on a machine.
+The local-exec provisioner can be used to perform tasks such as copying files, or starting services.
+You specify the command to run using the command argument.
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  provisioner "local-exec" {
+    command = "echo 'SubnetID ${self.subnetid} ' >> subnet_id.txt"
+  }
+}
+
+
+###################################################################
+remote-exec provisioner in terraform
+
+The remote-exec provisioner in Terraform is a powerful tool that allows you to execute arbitrary commands on a remote resource after it has been created.
+This can be useful for tasks such as configuring a newly created server, setting up a service, or installing software. 
+The provisioner takes a command to run as its value, and Terraform will execute this command on the remote resource after creation. 
+It also supports specifying a command timeout, and the option to run the command in a specific shell. 
+This provisioner is commonly used in.tf files to automate post-creation tasks.
+
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install -y nginx",
+      "sudo systemctl start nginx"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = file("~/.ssh/id_rsa")
+      host        = self.public_ip
+    }
+  }
+}
+
+
+#########################################################################
+ workspace in terraform
+
+In Terraform, a "workspace" refers to a shared environment for a specific project or organization. 
+It allows multiple team members to collaborate on infrastructure resources and configurations. 
+A workplace is essentially a container that holds all the Terraform configuration files, including state, variables, and outputs.
+Within a workplace, you can manage resources, apply configurations, and version control your infrastructure changes. 
+This enables teams to work together efficiently, maintaining a consistent and reproducible infrastructure setup.
+
+to view all  available workspaces
+terraform workspace list
+crete new workspace
+terraform workspace new <workspace_name>
+switching between
+terraform workspace select <workspace_name>
+display current ws
+terraform workspace show
+
+###########################################################################
+service principal in terraform
+
+Here's the information you need about Service Principal in Terraform:
+
+A service principal is a secure way to authenticate with Azure services using Terraform.
+It's essentially an identity for your application or service that can be used to access Azure resources. 
+In Terraform, you can use the azurerm_service_principal resource to create and manage service principals.
+You can also use azurerm_client_config to configure and authenticate your Terraform workflow with a service principal. 
+This provides a secure way to manage Azure resources without hardcoding your credentials.
+#####################################################################################
+
+Terraform Modules:
+Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit.
+They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, 
+promoting modularity and reusability. Examples of Terraform modules include:
+
+A module for creating a virtual private cloud (VPC) with subnets and security groups
+A module for provisioning a database cluster with scaling and backup policies
+A module for deploying a load balancer with auto-scaling and SSL termination
+By using Terraform modules, you can speed up your infrastructure deployments, reduce errors, and improve maintainability.
+
+What is a Terraform module? A Terraform module is a collection of standard configuration files in a dedicated directory. 
+Terraform modules encapsulate groups of resources dedicated to one task,
+reducing the amount of code you have to develop for similar infrastructure components.
+
+
+Terraform modules are reusable packages of Terraform configuration that can encapsulate a specific combination of resources and dependencies.
+They allow you to break down large infrastructure configurations into smaller, more manageable pieces, making it easier to maintain and reuse code.
+Modules can be created and shared by the community, or created internally by your organization.
+They can also be used to create consistent infrastructure across multiple environments, such as development, staging, and production. 
+By using Terraform modules, you can speed up your infrastructure provisioning process and reduce errors.
+
+
+module "iam_iam-user" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.28.0"
+  # insert the 1 required variable here
+  name = "sai"
+}
+
+################################################################################################
+
+Terraform Functions:
+
+Terraform functions are built-in utilities that allow you to perform operations like string manipulation, arithmetic, and conditional logic within Terraform configurations. These functions enable more dynamic and reusable infrastructure definitions.
+
+Categories of Terraform Functions
+1. String Functions
+Work with and manipulate string values.
+
+Function	Description	Example
+chomp(string)	Removes trailing newline or carriage return.	chomp("Hello\n") → "Hello"
+
+join(separator, list)	Joins elements of a list into a single string.	join(",", ["a", "b", "c"]) → "a,b,c"
+
+length(string)	Returns the length of a string.	length("hello") → 5
+
+lower(string)	Converts a string to lowercase.	lower("Hello") → "hello"
+
+upper(string)	Converts a string to uppercase.	upper("hello") → "HELLO"
+
+replace(string, search, replace)	Replaces occurrences of a substring.	replace("foo/bar", "/", "-") → "foo-bar"
+
+split(separator, string)	Splits a string into a list.	split(",", "a,b,c") → ["a", "b", "c"]
+
+trimspace(string)	Removes leading and trailing whitespace.	trimspace(" hello ") → "hello"
+
+##########################################################################
+2. Numeric Functions
+Perform calculations and operations on numbers.
+
+Function	Description	Example
+abs(number)	Absolute value of a number.	abs(-5) → 5
+
+ceil(number)	Rounds up to the nearest integer.	ceil(3.1) → 4
+
+floor(number)	Rounds down to the nearest integer.	floor(3.9) → 3
+
+max(numbers...)	Returns the largest number.	max(1, 5, 10) → 10
+
+min(numbers...)	Returns the smallest number.	min(1, 5, 10) → 1
+
+round(number)	Rounds to the nearest integer.	round(3.5) → 4
+
+##############################################################################
+3. Collection Functions
+Operate on lists, maps, and other collections.
+
+Function	Description	Example
+concat(list1, list2)	Combines multiple lists into one.	concat([1, 2], [3, 4]) → [1, 2, 3, 4]
+
+contains(list, value)	Checks if a list contains a value.	contains(["a", "b"], "a") → true
+
+element(list, index)	Returns an element from a list by index.	element(["a", "b"], 1) → "b"
+
+keys(map)	Returns the keys of a map as a list.	keys({a = 1, b = 2}) → ["a", "b"]
+
+length(collection)	Returns the number of elements in a collection.	length(["a", "b"]) → 2
+
+lookup(map, key, default)	Fetches a value from a map or a default value.	lookup({a = 1}, "a", 0) → 1
+
+merge(map1, map2)	Merges two or more maps.	merge({a = 1}, {b = 2}) → {a = 1, b = 2}
+
+slice(list, start, end)	Returns a sublist from a list.	slice(["a", "b", "c"], 0, 2) → ["a", "b"]
+
+#######################################################################################
+4. Conditional Functions
+Evaluate conditions and return results.
+
+Function	Description	Example
+coalesce(values...)	Returns the first non-null value.	coalesce(null, "", "default") → "default"
+
+coalescelist(values...)	Returns the first non-empty list.	coalescelist([], [1], [2]) → [1]
+
+default(value, default)	Returns value if not null, else default.	default(null, "fallback") → "fallback"
+
+#############################################################################################
+5. File Functions
+Read and manipulate file contents.
+
+Function	Description	Example
+file(path)	Reads the content of a file as a string.	file("example.txt") → "file contents"
+
+filebase64(path)	Reads the file as base64-encoded string.	filebase64("image.png") → "base64-string"
+
+#################################################################################################
+6. IP and CIDR Functions
+Manage IP addresses and CIDR blocks.
+
+Function	Description	Example
+cidrhost(cidr, num)	Returns a specific IP address in a CIDR block.	cidrhost("10.0.0.0/16", 5) → "10.0.0.5"
+
+cidrsubnet(cidr, mask, num)	Splits a CIDR block into subnets.	cidrsubnet("10.0.0.0/16", 8, 1) → "10.1.0.0/24"
+
+#########################################################################################################
+7. Encoding Functions
+Work with base64 encoding.
+
+Function	Description	Example
+base64encode(string)	Encodes a string to Base64.	base64encode("hello") → "aGVsbG8="
+
+base64decode(string)	Decodes a Base64-encoded string.	base64decode("aGVsbG8=") → "hello"
+
+##########################################################################################################
+8. Date and Time Functions
+Handle time-related data.
+
+Function	Description	Example
+timestamp()	Returns the current UTC timestamp.	timestamp() → "2024-11-20T12:00:00Z"
+
+##############################################################################################################
+9. Hashing Functions
+Compute cryptographic hashes.
+
+Function	Description	Example
+md5(string)	Returns the MD5 hash of a string.	md5("hello") → "5d41402abc4b2a76b9719d911017c592"
+
+sha1(string)	Returns the SHA-1 hash of a string.	sha1("hello") → "aaf4c61ddcc5e8a2dabede0f3b482cd9ea9434d"
+
+################################################################################################################
+10. Type Conversion Functions
+Convert between different types.
+
+
+tostring(value)	Converts a value to a string.	tostring(123) → "123"
+
+tolist(value)	Converts a value to a list.	tolist([1, 2, 3]) → [1, 2, 3]
+
+tomap(value)	Converts a value to a map.	tomap({a = 1}) → {a = 1}
+
+######################################################################################################################
+Using Terraform Functions
+Functions can be combined within configurations for dynamic behavior. Example:
+
+
+variable "subnet_count" {
+  default = 3
+}
+
+resource "aws_subnet" "example" {
+  count       = var.subnet_count
+  cidr_block  = cidrsubnet("10.0.0.0/16", 8, count.index)
+  vpc_id      = aws_vpc.example.id
+  tags = {
+    Name = "subnet-${count.index}"
+  }
+}
+This uses cidrsubnet to dynamically create subnets based on the count.
+
+
+Combine Functions: Use multiple functions together for complex logic.
+
+,", ["a", "b", "c"]), ",", "-")  # Result: "a-b-c"
+Avoid Hardcoding: Use functions to calculate or derive values instead of hardcoding.
+
+Validate Output: Test with terraform console to debug function outputs:
+
+
+terraform console
+> join(",", ["a", "b", "c"])
+These functions make Terraform configurations more
+
+##############################################################################################################
