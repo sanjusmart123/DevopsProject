@@ -335,12 +335,19 @@ Work with and manipulate string values.
 
 Function	Description	Example
 chomp(string)	Removes trailing newline or carriage return.	chomp("Hello\n") → "Hello"
+
 join(separator, list)	Joins elements of a list into a single string.	join(",", ["a", "b", "c"]) → "a,b,c"
+
 length(string)	Returns the length of a string.	length("hello") → 5
+
 lower(string)	Converts a string to lowercase.	lower("Hello") → "hello"
+
 upper(string)	Converts a string to uppercase.	upper("hello") → "HELLO"
+
 replace(string, search, replace)	Replaces occurrences of a substring.	replace("foo/bar", "/", "-") → "foo-bar"
+
 split(separator, string)	Splits a string into a list.	split(",", "a,b,c") → ["a", "b", "c"]
+
 trimspace(string)	Removes leading and trailing whitespace.	trimspace(" hello ") → "hello"
 
 ##########################################################################
@@ -349,10 +356,15 @@ Perform calculations and operations on numbers.
 
 Function	Description	Example
 abs(number)	Absolute value of a number.	abs(-5) → 5
+
 ceil(number)	Rounds up to the nearest integer.	ceil(3.1) → 4
+
 floor(number)	Rounds down to the nearest integer.	floor(3.9) → 3
+
 max(numbers...)	Returns the largest number.	max(1, 5, 10) → 10
+
 min(numbers...)	Returns the smallest number.	min(1, 5, 10) → 1
+
 round(number)	Rounds to the nearest integer.	round(3.5) → 4
 
 ##############################################################################
@@ -361,12 +373,19 @@ Operate on lists, maps, and other collections.
 
 Function	Description	Example
 concat(list1, list2)	Combines multiple lists into one.	concat([1, 2], [3, 4]) → [1, 2, 3, 4]
+
 contains(list, value)	Checks if a list contains a value.	contains(["a", "b"], "a") → true
+
 element(list, index)	Returns an element from a list by index.	element(["a", "b"], 1) → "b"
+
 keys(map)	Returns the keys of a map as a list.	keys({a = 1, b = 2}) → ["a", "b"]
+
 length(collection)	Returns the number of elements in a collection.	length(["a", "b"]) → 2
+
 lookup(map, key, default)	Fetches a value from a map or a default value.	lookup({a = 1}, "a", 0) → 1
+
 merge(map1, map2)	Merges two or more maps.	merge({a = 1}, {b = 2}) → {a = 1, b = 2}
+
 slice(list, start, end)	Returns a sublist from a list.	slice(["a", "b", "c"], 0, 2) → ["a", "b"]
 
 #######################################################################################
@@ -375,7 +394,9 @@ Evaluate conditions and return results.
 
 Function	Description	Example
 coalesce(values...)	Returns the first non-null value.	coalesce(null, "", "default") → "default"
+
 coalescelist(values...)	Returns the first non-empty list.	coalescelist([], [1], [2]) → [1]
+
 default(value, default)	Returns value if not null, else default.	default(null, "fallback") → "fallback"
 
 #############################################################################################
@@ -384,6 +405,7 @@ Read and manipulate file contents.
 
 Function	Description	Example
 file(path)	Reads the content of a file as a string.	file("example.txt") → "file contents"
+
 filebase64(path)	Reads the file as base64-encoded string.	filebase64("image.png") → "base64-string"
 
 #################################################################################################
@@ -392,6 +414,7 @@ Manage IP addresses and CIDR blocks.
 
 Function	Description	Example
 cidrhost(cidr, num)	Returns a specific IP address in a CIDR block.	cidrhost("10.0.0.0/16", 5) → "10.0.0.5"
+
 cidrsubnet(cidr, mask, num)	Splits a CIDR block into subnets.	cidrsubnet("10.0.0.0/16", 8, 1) → "10.1.0.0/24"
 
 #########################################################################################################
@@ -400,6 +423,7 @@ Work with base64 encoding.
 
 Function	Description	Example
 base64encode(string)	Encodes a string to Base64.	base64encode("hello") → "aGVsbG8="
+
 base64decode(string)	Decodes a Base64-encoded string.	base64decode("aGVsbG8=") → "hello"
 
 ##########################################################################################################
@@ -415,6 +439,7 @@ Compute cryptographic hashes.
 
 Function	Description	Example
 md5(string)	Returns the MD5 hash of a string.	md5("hello") → "5d41402abc4b2a76b9719d911017c592"
+
 sha1(string)	Returns the SHA-1 hash of a string.	sha1("hello") → "aaf4c61ddcc5e8a2dabede0f3b482cd9ea9434d"
 
 ################################################################################################################
@@ -423,7 +448,9 @@ Convert between different types.
 
 
 tostring(value)	Converts a value to a string.	tostring(123) → "123"
+
 tolist(value)	Converts a value to a list.	tolist([1, 2, 3]) → [1, 2, 3]
+
 tomap(value)	Converts a value to a map.	tomap({a = 1}) → {a = 1}
 
 ######################################################################################################################
