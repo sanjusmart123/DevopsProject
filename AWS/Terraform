@@ -173,3 +173,17 @@ In Terraform, you can use the azurerm_service_principal resource to create and m
 You can also use azurerm_client_config to configure and authenticate your Terraform workflow with a service principal. 
 This provides a secure way to manage Azure resources without hardcoding your credentials.
 #####################################################################################
+
+Terraform Modules:
+Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit. They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, promoting modularity and reusability. Examples of Terraform modules include:
+
+A module for creating a virtual private cloud (VPC) with subnets and security groups
+A module for provisioning a database cluster with scaling and backup policies
+A module for deploying a load balancer with auto-scaling and SSL termination
+By using Terraform modules, you can speed up your infrastructure deployments, reduce errors, and improve maintainability.
+
+What is a Terraform module? A Terraform module is a collection of standard configuration files in a dedicated directory. 
+Terraform modules encapsulate groups of resources dedicated to one task,
+reducing the amount of code you have to develop for similar infrastructure components.
+
+################################################################################################
