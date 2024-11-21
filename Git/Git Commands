@@ -1,1 +1,175 @@
-w
+git status
+git log --oneline -5
+git add file1
+git commit -m "first commit"
+git checkout branch1
+git push origin branchname
+git pull origin branchname
+git branch New_branchname
+git merge sourceBranch Destination Branch
+git merge --abort --to close the merge in the middle
+git fetch -- a primary command used to download contents from a remote repository.
+git stash --->a stash is a temporary storage area for changes that are not yet committed to a branch.
+git cherry-pick --->cherry-picking is a way to apply a single commit from one branch to another, without including the history of the original commit. 
+
+git log --since=<date-from> --until=<date-to> ----> View commits between two dates
+
+Two-tier Flask app gi url --->https://github.com/nayanchafle46/two-tier-flask-app/blob/master/templates/index.html
+
+
+git init
+Initializes a new Git repository in the current directory.
+
+git clone <repository_url>
+Copies an existing repository from a remote server to your local machine.
+
+git status
+Shows the status of changes, staged files, and untracked files in your working directory.
+
+git add <file> or git add .
+Adds changes in a specific file or all files to the staging area.
+
+git commit -m "message"
+Commits the changes in the staging area to the repository with a message.
+
+git push origin <branch>
+Pushes commits from the local repository to the remote repository on the specified branch.
+
+git pull origin <branch>
+Fetches and merges changes from the remote branch to your local branch.
+
+git branch
+Lists all branches in the repository, highlighting the current branch.
+
+git branch <branch_name>
+Creates a new branch with the specified name.
+
+git checkout <branch_name>
+Switches to the specified branch.
+
+git merge <branch_name>
+Merges the specified branch into the current branch.
+
+git reset --soft <commit_id>
+Moves the HEAD to the specified commit without changing the working directory or the index.
+
+git reset --hard <commit_id>
+Moves the HEAD to the specified commit and resets the working directory and index to match that commit (destructive).
+
+git stash
+Saves changes temporarily and reverts the working directory to the previous commit.
+
+git stash pop
+Restores stashed changes and removes them from the stash list.
+
+git rebase <branch_name>
+Re-applies commits from the current branch on top of the specified branch.
+
+git log
+Shows the commit history.
+
+git show <commit_id>
+Displays the details of a specific commit.
+
+git commit --amend -m "new message"
+Edits the last commit message or includes newly staged changes in the previous commit.
+
+git cherry-pick <commit_id>
+Applies a commit from another branch or history to your current branch.
+
+git revert <commit_id>
+Reverts a specific commit by creating a new commit that undoes the changes.
+
+Working with Branches
+git branch -d <branch_name>
+Deletes a branch that has already been merged.
+
+git branch -D <branch_name>
+Force-deletes a branch, even if it hasn’t been merged.
+
+git merge --no-ff <branch_name>
+Merges a branch into the current branch with a merge commit (no fast-forwarding).
+
+Stashing
+git stash list
+Lists all stashed changes with identifiers.
+
+git stash apply <stash_id>
+Applies a specific stash without deleting it from the stash list.
+
+git stash drop <stash_id>
+Deletes a specific stash from the stash list.
+
+git stash clear
+Clears all stashed entries.
+
+Resetting and Cleaning
+git reset <file>
+Removes a file from the staging area but keeps the changes in the working directory.
+
+git reset --mixed <commit_id>
+Resets to the specified commit, moving changes back to the working directory but not committing.
+
+git clean -f
+Deletes untracked files in the working directory.
+
+git clean -fd
+Deletes untracked files and directories.
+
+Working with Remote Repositories
+git remote -v
+Shows remote repositories linked to your local repository.
+
+git remote add <name> <url>
+Adds a new remote repository with a specified name and URL.
+
+git fetch <remote>
+Downloads changes from the remote but does not apply them to your working directory.
+
+git push <remote> --delete <branch_name>
+Deletes a branch on the remote repository.
+
+Tagging
+git tag <tag_name>
+Creates a lightweight tag at the current commit.
+
+git tag -a <tag_name> -m "message"
+Creates an annotated tag with a message.
+
+git push origin <tag_name>
+Pushes a tag to the remote repository.
+
+git push origin --tags
+Pushes all tags to the remote repository.
+
+Rewriting History
+git rebase -i <commit_id>
+Interactively rebases commits, allowing you to squash, edit, or reorder commits.
+
+git filter-branch --tree-filter 'rm -rf <file>' HEAD
+Removes a file from the history of the entire repository (use carefully).
+
+Log and History Management
+git log --oneline
+Shows a concise commit history.
+
+git log --graph --oneline
+Displays a visual representation of branches and merges in the commit history.
+
+git log --author="<name>"
+Filters the log to show commits by a specific author.
+
+git log -p -n <number>
+Shows detailed changes for the last n commits.
+
+
+Git mege happend in two ways 
+1.Fast farward
+2.Threeway merge
+in fast forward merge no other commit is create but in three way merge Git create a merge commit 
+
+Git Conflict:
+Delete unwanted content and again we will add to staging and commit local repo with MC commit message
+
+View commits between two dates
+Using git log --since=<date-from> --until=<date-to> , you can view all commits between <date-from> and <date-to> . The dates can be specified in a variety of formats, such as YYYY-MM-DD , MM/DD/YYYY , or even relative terms like yesterday , 2 weeks ago , etc.
