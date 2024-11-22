@@ -17,3 +17,28 @@ The API Server can authenticate users and services using tokens, certificates, o
 After authentication, the API Server enforces RBAC (Role-Based Access Control) to ensure that only users or services with the correct permissions can access specific resources.
 API Server acting as the interface for managing cluster data stored in etcd.
 
+Kubernetes API Server Workflow
+Here’s a simplified overview of how the Kubernetes API Server works:
+
+Client Request: A user (or a system component like the Scheduler or Controller Manager) sends an API request (via kubectl or another client) to the API Server.
+
+Authentication: The API Server authenticates the request using tokens, certificates, or other authentication mechanisms.
+
+Authorization: The API Server checks the user’s permissions through RBAC to see if they are allowed to perform the requested action.
+
+Admission Control: The request is passed through admission controllers that validate or modify the request (e.g., applying security policies or limiting resource requests).
+
+Action Execution: The API Server performs the action, such as creating, updating, or deleting a resource. It interacts with etcd to store the new state.
+
+Response: The API Server sends a response back to the client with the outcome of the request, which may include data about the resource or a success/error message.
+
+Kubernetes API Server Components
+Kubelet: The Kubelet is responsible for managing the lifecycle of containers on each node. It communicates with the API Server to get the current state and desired state of Pods and then takes action to reconcile the two.
+
+Controllers: Controllers monitor the state of the cluster and make changes to ensure that the desired state matches the actual state. The API Server provides the interface for controllers to update resources in the cluster (e.g., ReplicaSet, Deployment, etc.).
+
+Scheduler: The Scheduler is responsible for assigning Pods to nodes based on available resources. The Scheduler interacts with the API Server to get the list of available nodes and schedules Pods to those nodes.
+
+etcd: A distributed key-value store that holds the cluster’s state, including information about Pods, Services, ConfigMaps, and other resources. The API Server reads and writes data to etcd to maintain the cluster state.
+
+
