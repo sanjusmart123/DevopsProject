@@ -38,9 +38,8 @@ spec:
       - name: my-api-container
         image: my-api-image:latest
         ports:
-        - containerPort: 8080
-
-
+        - containerPort: 80
+      
 
 apiVersion: v1
 kind: Service
@@ -54,3 +53,7 @@ spec:
     port: 80
     targetPort: 8080
   type: LoadBalancer
+
+
+An external load balancer is created.
+It forwards traffic from port 80 of the load balancer to port 8080 on the Pods matching the selector app: my-app.
