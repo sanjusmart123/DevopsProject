@@ -13,3 +13,6 @@ These requests could be about creating, updating, deleting, or retrieving resour
 Cluster State Management: The API Server maintains the state of all cluster resources by interacting with etcd, the distributed key-value store. 
 When changes occur (e.g., a new pod is created), the API Server updates the state in etcd, ensuring consistency and availability of cluster data.
 
+Authentication and Authorization: The API Server authenticates users and services to ensure that only authorized entities can make changes to the cluster.
+It integrates with external identity providers (e.g., OAuth, LDAP) and performs role-based access control (RBAC) checks to enforce fine-grained authorization.
+
