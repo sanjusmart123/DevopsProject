@@ -69,3 +69,10 @@ Access consists of:
 Access Key ID: Identifies the key.
 Secret Access Key: Used for signing API requests.
 
+Service Access:
+
+Assign an IAM role to an EC2 instance to allow it to access an S3 bucket securely.
+Cross-Account Access:
+
+Enable users in one AWS account to access resources in another account.
+
