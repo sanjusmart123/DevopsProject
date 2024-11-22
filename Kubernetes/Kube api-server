@@ -16,3 +16,5 @@ When changes occur (e.g., a new pod is created), the API Server updates the stat
 Authentication and Authorization: The API Server authenticates users and services to ensure that only authorized entities can make changes to the cluster.
 It integrates with external identity providers (e.g., OAuth, LDAP) and performs role-based access control (RBAC) checks to enforce fine-grained authorization.
 
+API Server acting as the interface for managing cluster data stored in etcd.
+
