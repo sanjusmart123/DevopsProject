@@ -1,7 +1,8 @@
 Docker version
 docker search centos  -   it will search images on centos
 docker apt-get update -- it will update file
-sudo docker run hello-world --- it will create container,image
+sudo docker -t build hello-world --- it will create image
+sudo docker -t run hello-world  ---- it will create a container
 docker ps ---> show u running containers
 docker ps -a ---> show u updates of all containers
 docker images ---> display images 
