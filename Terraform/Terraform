@@ -97,6 +97,11 @@ Terraform state locking is a safety mechanism that prevents data corruption and 
 that only one user or process can modify the Terraform state file at a time. 
 It works by automatically locking the state for all operations that could write to it. 
 
+In multi-user or automated environments where multiple processes may attempt to apply Terraform configurations simultaneously,
+a state lock ensures that only one operation modifies the state at a time.
+DynamoDB's atomic item locking capability makes it ideal for implementing this functionality. 
+Terraform uses the DynamoDB LockID to ensure that no two operations can lock the state simultaneously.
+
 In AWS S3 is used to store our statefile and DynamoDB is used for state lock
 
 terraform {
