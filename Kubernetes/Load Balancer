@@ -5,6 +5,19 @@ How LoadBalancer Works
 When you create a LoadBalancer service, Kubernetes requests a cloud provider to provision an external load balancer. 
 The load balancer receives incoming traffic and forwards it to the backend pods associated with the service.
 
+External Load Balancer:
+
+Typically provisioned by a cloud provider.
+Distributes traffic from external clients (e.g., the internet) to services running within the Kubernetes cluster.
+Example: AWS Elastic Load Balancer (ELB), Google Cloud Load Balancer, Azure Load Balancer.
+
+Internal Load Balancer:
+
+Distributes traffic within a private network or between services inside a cluster.
+Often used for communication between microservices.
+
+It automatically provisions an external load balancer when you create a Service of type LoadBalancer.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
