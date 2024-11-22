@@ -29,8 +29,11 @@ docker commit --->then we can push to registry
 docker pause,unpause,start,stop,kill 
 docker build ---> to build docker file
 sudo su - ---->convert to root server
-docker exec -it centos /bin/bash --->This command will give you an interactive bash shell inside the my-centos container. You can now run commands inside this container as if you were logged into a CentOS machine.
+docker exec -it centos /bin/bash --->This command will give you an interactive bash shell inside the my-centos container.
+You can now run commands inside this container as if you were logged into a CentOS machine.
 docker inspect dockerID -->display ip address
+docker exec -it <container_id or name> <command> ---Execute a command inside a running container
+
 
 
 
