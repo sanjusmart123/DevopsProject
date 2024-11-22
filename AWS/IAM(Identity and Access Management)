@@ -21,3 +21,51 @@ A policy is a document that specifies the permissions, and it's used to grant, d
 IAM policies are written in JSON (JavaScript Object Notation) and consist of a series of statements that define the permissions.
 Each statement specifies the actions, resources, and conditions that determine whether the permission is granted
 #########################
+
+Core Components of IAM
+1. Users
+Represent a person or application interacting with AWS.
+Each user can:
+Have a unique set of credentials.
+Be assigned permissions directly or through groups.
+Best Practice: Avoid using root credentials; create users with specific permissions.
+
+2. Groups
+A collection of users with common permissions.
+Example: A Developers group might have access to development resources but not production.
+
+3. Roles
+A role is a set of permissions assigned to entities.
+Use Cases:
+Allow an EC2 instance to interact with an S3 bucket.
+Enable cross-account access.
+Grant temporary permissions for federated users.
+
+4. Policies
+JSON documents that define permissions.
+Structure:
+Effect: Allow or Deny.
+Action: AWS service actions (e.g., s3:ListBucket).
+Resource: Resources affected (e.g., arn:aws:s3:::mybucket).
+Condition: Optional; specifies conditions for the policy.
+Example Policy:
+
+json
+Copy code
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::example-bucket"
+    }
+  ]
+}
+
+5. Access Keys
+Used by applications to interact with AWS APIs.
+Access consists of:
+Access Key ID: Identifies the key.
+Secret Access Key: Used for signing API requests.
+
