@@ -52,11 +52,24 @@ Create docker file Commands:
 
 6. COPY -->To Copy a directory from our to docker Container. Local machine,
 
-7. ADD -->To Copy files and folders from local machine! to docker
+7. ADD -->To Copy files and folders from local machine! to docker,ADD is also used to download data from th einternet
 
 8. EXPOSE -->In Containers, so many applications runs, expose displays the app port numbers
 
 9. ENV -->to set environment Variables.
+
+
+Use CMD:
+
+When you want a default command that users can easily override.
+For example: CMD ["nginx", "-g", "daemon off;"].
+Use ENTRYPOINT:
+
+When the container must always run a specific program regardless of user input.
+For example: ENTRYPOINT ["nginx"].
+Use both ENTRYPOINT and CMD:
+
+For flexibility, where the container runs a default executable (ENTRYPOINT) but allows default or user-specified arguments (CMD).
 
 
 
