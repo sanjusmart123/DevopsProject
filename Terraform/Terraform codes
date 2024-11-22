@@ -767,7 +767,9 @@ resource "aws_iam_user" "users" {
 #######################################################################
 Terraform Modules
 
-Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit. They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, promoting modularity and reusability. Examples of Terraform modules include:
+Terraform modules are reusable blocks of configuration that allow you to define and manage multiple infrastructure resources as a single unit. 
+They enable you to break down complex infrastructure deployments into smaller, more manageable pieces, promoting modularity and reusability.
+
 
 A module for creating a virtual private cloud (VPC) with subnets and security groups
 A module for provisioning a database cluster with scaling and backup policies
