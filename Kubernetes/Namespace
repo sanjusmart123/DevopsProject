@@ -4,7 +4,7 @@ This is especially useful for environments with multiple teams, projects, or app
 Separate resources of different teams, projects, or environments (e.g., development, staging, production).
 Apply Role-Based Access Control (RBAC) policies to restrict users' access to specific namespaces.
 
-Using Namespace in YAML:
+Using Namespace using YAML:
 apiVersion: v1
 kind: Pod
 metadata:
