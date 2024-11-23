@@ -1,4 +1,4 @@
-A Namespace in Kubernetes is a virtual cluster within a Kubernetes cluster. 
+A Namespace  is a logically portion of the cluster. 
 It provides a way to logically separate and organize resources such as Pods, Services, Deployments, and other Kubernetes objects. 
 This is especially useful for environments with multiple teams, projects, or applications running within the same Kubernetes cluster.
 
