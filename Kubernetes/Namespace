@@ -1,12 +1,8 @@
 A Namespace  is a logically portion of the cluster. 
 It provides a way to logically separate and organize resources such as Pods, Services, Deployments, and other Kubernetes objects. 
 This is especially useful for environments with multiple teams, projects, or applications running within the same Kubernetes cluster.
-
 Separate resources of different teams, projects, or environments (e.g., development, staging, production).
-
 Apply Role-Based Access Control (RBAC) policies to restrict users' access to specific namespaces.
-
-
 
 Using Namespace in YAML:
 apiVersion: v1
@@ -37,7 +33,6 @@ sainamespace         Active   5s
 
 switch to another namespace:
 kubectl config set-context --current --namespace=my-namespace
-
 
 controlplane $ vi namespace.yml
 controlplane $ kubectl create -f namespace.yml
