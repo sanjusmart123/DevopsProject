@@ -869,3 +869,144 @@ resource "aws_instance" "my_instance" {
 }
 
 ########################################################
+
+Create aws EKS by using Terraform 
+####################################
+main.tf
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_eks_cluster" "example" {
+  name     = "example"
+  role_arn = aws_iam_role.eksClusterRole.arn
+
+  vpc_config {
+    subnet_ids = ["subnet-0db93f133f15daf79", "subnet-0874af9b0c91fa50a"]
+  } 
+
+  # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
+  # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
+  depends_on = [
+    aws_iam_role_policy_attachment.example-AmazonEKSClusterPolicy,
+    aws_iam_role_policy_attachment.example-AmazonEKSVPCResourceController,
+  ]
+}
+
+output "endpoint" {
+  value = aws_eks_cluster.example.endpoint
+}
+
+output "kubeconfig-certificate-authority-data" {
+  value = aws_eks_cluster.example.certificate_authority[0].data
+}
+
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["eks.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+resource "aws_iam_role" "eksClusterRole" {
+  name               = "eksClusterRole"
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+}
+
+resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = aws_iam_role.eksClusterRole.name
+}
+
+# Optionally, enable Security Groups for Pods
+# Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
+resource "aws_iam_role_policy_attachment" "example-AmazonEKSVPCResourceController" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+  role       = aws_iam_role.eksClusterRole.name
+}
+
+
+
+#To install KUbectl to access EKS
+
+provider "null" {}
+
+resource "null_resource" "install_kubectl" {
+  provisioner "local-exec" {
+    command = <<EOT
+    # Define the current working directory
+    WORKING_DIR=$(pwd)
+
+    # Download the latest kubectl binary to the working directory
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+    # Make it executable
+    chmod +x kubectl
+
+    # Move it to the current working directory
+    mv kubectl $WORKING_DIR
+
+    # Verify the installation
+    ./kubectl version --client
+    EOT
+  }
+}
+
+#Then apply commands
+#terraform init 
+#terraform apply
+
+#Then  we should update kubeconfig by
+aws eks --region us-east-1 update-kubeconfig --name example
+#cat /etc/*release to check OS
+
+#if AWS CLI is not installed we should instal aws cli
+
+provider "null" {}
+
+resource "null_resource" "install_aws_cli" {
+  provisioner "local-exec" {
+    command = <<EOT
+    # Define the working directory (optional, typically /tmp or current dir)
+    WORKING_DIR=$(pwd)
+
+    # Download the AWS CLI installer (version 2)
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+    # Unzip the installer
+    unzip awscliv2.zip -d $WORKING_DIR
+
+    # Run the installer
+    sudo $WORKING_DIR/aws/install
+
+    # Verify the installation
+    aws --version
+    EOT
+  }
+}
+
+output "aws_cli_installation_status" {
+  value = "AWS CLI installed successfully"
+}
+
+
+
+############################################################################
+
