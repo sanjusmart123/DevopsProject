@@ -36,3 +36,83 @@ tolerations:
 Taints are applied to nodes to control pod scheduling, either preventing pods from being scheduled or evicting them.
 Tolerations are applied to pods to allow them to bypass taints and run on nodes with specific taints.
 
+############################################################################################################################
+Only pods which are tolerant to the particular taint on a node will get scheduled on that node.
+
+kubectl taint nodes node1 app=blue:NoSchedule
+
+To see this taint, run the below command
+kubectl describe node kubemaster |grep Taint
+
+Tolerations are added to pods by adding a tolerations section in pod definition
+
+
+The pod is assigned to node1,But for example avaiables nodes have same taint,in this case we should use node selectors
+
+kubectl label nodes node1 size=Large
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: myapp-pod
+spec:
+ containers:
+ - name: nginx-container
+   image: nginx
+ tolerations:
+ - key: "app"
+   operator: "Equal"
+   value: "blue"
+   effect: "NoSchedule"
+ nodeSelector:
+  size: Large
+
+This ensures the pod is scheduled only on nodes with the label size=Large.
+myapp-pod is assigned to node1  when match the taint and label ,but here there is a issue, for example e have 2 nodes both nodes also have same taints and node selctors,i
+in this case pod will assigned to available node
+
+but we should assign a pod to specific node,this is our main goal so here we should go with Node affinity
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: myapp-pod
+spec:
+ containers:
+ - name: nginx-container 
+   image: nginx
+ tolerations:
+ - key: "app"
+   operator: "Equal"
+   value: "blue"
+   effect: "NoSchedule"
+ nodeSelector:
+  size: Large
+ affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions: 
+        - key: node-ip
+          operator: In
+          values: 
+          - 192.7.54.6 
+
+Here we have specified ip address of our specific node so this pod will assigned to specific node 
+if this ip address is not matched to any node the pod is on pending state
+
+requiredDuringSchedulingIgnoredDuringExecution
+This is a hard constraint: the pod must be scheduled on a node that satisfies the condition.
+If no nodes meet the criteria, the pod won't be scheduled.
+
+preferredDuringSchedulingIgnoredDuringExecution
+This is a soft constraint: the scheduler will prefer nodes that satisfy the condition but will still schedule the pod on other nodes if none meet the criteria.           
+
+
+
+
+
+
+
+
+
