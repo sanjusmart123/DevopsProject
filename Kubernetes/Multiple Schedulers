@@ -1,0 +1,13 @@
+In Kubernetes, a multiple scheduler refers to the ability to run multiple scheduler components simultaneously to manage and schedule containerized applications. 
+This allows for more efficient resource utilization, improved scalability, and increased flexibility. With multiple schedulers, 
+you can configure different scheduling strategies for different workloads, such as using one scheduler for batch jobs and another for stateful applications. 
+Additionally, multiple schedulers can help improve high availability and redundancy by providing a fallback option in case one scheduler becomes unavailable.
+
+Some common use cases for multiple schedulers in Kubernetes include:
+Running a primary scheduler for production workloads and a secondary scheduler for development or testing environments
+Using one scheduler for stateless applications and another for stateful applications
+Implementing a canary deployment strategy using multiple
+
+
+
+
