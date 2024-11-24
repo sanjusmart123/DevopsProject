@@ -142,4 +142,77 @@ An external load balancer is created.
 It forwards traffic from port 80 of the load balancer to port 8080 on the Pods matching the selector app: my-app.
 
 #######################################################################
+External Name:
 
+Description: Maps a Service to an external DNS name.
+Use Case: For redirecting traffic to services outside the Kubernetes cluster.
+Access: Resolves to the specified external DNS name.
+Example:
+yaml
+Copy code
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-externalname-service
+spec:
+  type: ExternalName
+  externalName: example.com
+
+Does not define a Pod selector.
+Useful for integrating with external databases or third-party services.
+
+#####################################################################
+Headless Service:
+
+A Headless Service in Kubernetes is a specialized type of Service that does not assign a ClusterIP. 
+Instead, it provides direct access to the individual Pods associated with it. 
+This is typically used for stateful applications or scenarios where you need Pods to be accessed directly by their DNS names or IP addresses.
+
+Statefulset yaml file:
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-app
+spec:
+  serviceName: my-headless-service
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: my-app-image
+        ports:
+        - containerPort: 8080
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-service
+  labels:
+    app: my-app
+spec:
+  clusterIP: None
+  selector:
+    app: my-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+
+For applications where each instance (Pod) must be uniquely addressable, such as databases or message brokers.
+Commonly paired with StatefulSets to manage stateful applications, like databases (e.g., Cassandra, MySQL, Elasticsearch), where each Pod has a unique identity.
+Unlike standard Services, Kubernetes does not use kube-proxy to route traffic for a Headless Service.
+Unlike regular Services, a Headless Service does not load-balance requests across Pods.
+Instead, it provides direct DNS resolution to the Pods behind it.
+You specify clusterIP: None in the Service definition to create a Headless Service.
+Each Pod in a Headless Service gets its own unique DNS record.
+################################################################################################################
