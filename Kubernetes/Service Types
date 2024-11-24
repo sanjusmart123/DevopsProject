@@ -72,13 +72,6 @@ spec:
       nodePort: 30007
 
 #####################################################
-
-What is a kube-proxy?
-Kube-Proxy and CNI: The Hidden Components of Kubernetes ...
-Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster.
-It is responsible for maintaining network connectivity between services and pods.
-Kube-Proxy does this by translating service definitions into actionable networking rules
-################################################################
 Load Balancer:
 
 A LoadBalancer service in Kubernetes is used to expose a service to external traffic by provisioning a load balancer provided by the underlying cloud infrastructure (like AWS, Google Cloud, Azure, etc.).
