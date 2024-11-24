@@ -1,4 +1,52 @@
-what is nodeport in kubernetes:
+There are 5 types of services:
+ClusterIP
+NodePort
+LoadBalancer
+External Name
+Headless
+
+ClusterIP:
+
+ClusterIP is the default service type in Kubernetes. 
+It exposes the service on an internal IP address within the Kubernetes cluster, making it accessible only from within the cluster.
+This is useful for internal services that do not need to be exposed to external traffic.
+
+How ClusterIP Works
+When you create a ClusterIP service, Kubernetes allocates an IP address for the service within the cluster. 
+This IP is only reachable from within the cluster, and the service routes traffic to the pods that match the service's selector.
+
+Pod yaml file:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.21
+    ports:
+    - containerPort: 80
+
+############################################
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: nginx  # Label selector to find the pods this service will expose
+  ports:
+    - protocol: TCP
+      port: 80        # Port to access the service
+      targetPort: 8080  # Port on the pod that the service will forward traffic to
+  type: ClusterIP  # The type of service (defaults to ClusterIP)
+
+####################################################
+NodePort:
 
 In Kubernetes, a NodePort is a type of service that exposes a container's port on each machine (node) in a cluster. 
 It allows external traffic to access the service directly by using a static port number on each node. 
@@ -31,3 +79,5 @@ Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster.
 It is responsible for maintaining network connectivity between services and pods.
 Kube-Proxy does this by translating service definitions into actionable networking rules
 ################################################################
+
+
