@@ -1,0 +1,14 @@
+Manual scheduling in Kubernetes refers to the process of directly assigning a Pod to a specific node in the cluster without relying on Kubernetes' default scheduler. 
+This approach bypasses the automated decision-making of the scheduler and is useful for testing, debugging, or scenarios where precise control is required.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeName: node1
+The Pod will be scheduled directly on the node named node1.
+If node1 is unavailable or does not have sufficient resources, the Pod will remain in a Pending state.
