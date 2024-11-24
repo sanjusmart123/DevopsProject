@@ -8,6 +8,21 @@ This allows clients to access the service using the node's IP and the allocated 
 
 A NodePort is a type of service in Kubernetes that exposes your application on a specific port on each node in your cluster. 
 This allows external traffic to access your application by using the IP address of any node in the cluster along with the specified port.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  type: NodePort
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30007
+
 #####################################################
 
 What is a kube-proxy?
