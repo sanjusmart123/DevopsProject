@@ -8,6 +8,8 @@ kubectl get pods ---> available pods
 
 kubectl get pods --all-namespaces ---> availble pods in all ns
 
+ k get pods --selector env=dev ---> to check how many pods exist in dev env 
+
 kubectl describe pod podName ---> info about specific pod
 
 kubectl apply -f pod.yml ---> create pod
