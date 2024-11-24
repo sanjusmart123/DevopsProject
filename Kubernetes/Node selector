@@ -9,7 +9,7 @@ can be used in combination with other scheduling options to ensure that your pod
 Node selectors in Kubernetes allow you to control which nodes your pods are scheduled on by defining specific label-based constraints. 
 By using node selectors, you can tell Kubernetes to run a pod only on nodes that match certain labels.
 
-kubectl label nodes node1 hardware=gpu
+kubectl label nodes node1 size=Large
 
 
 apiVersion: v1
@@ -21,7 +21,10 @@ spec:
   - name: frontend
     image: frontend-image
   nodeSelector:
-    role: frontend
+    size: Large
+
+The nodeSelector field specifies key-value pairs (e.g., size=Large).
+Kubernetes will only schedule the pod on nodes with both labels.
 
 
 ###########################################################################################################
