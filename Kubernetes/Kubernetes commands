@@ -8,7 +8,11 @@ kubectl get pods ---> available pods
 
 kubectl get pods --all-namespaces ---> availble pods in all ns
 
- k get pods --selector env=dev ---> to check how many pods exist in dev env 
+k get pods --selector env=dev ---> to check how many pods exist in dev env 
+
+k get all --selector env=prod ---> To get all pods ,ns,replicasets in env=prod
+
+k get all --selector env=prod,bu=finance,tier=frontend  ----> POD which is part of the prod environment, the finance BU and of frontend tie
 
 kubectl describe pod podName ---> info about specific pod
 
