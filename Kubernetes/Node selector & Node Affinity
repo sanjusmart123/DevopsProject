@@ -24,6 +24,7 @@ spec:
     role: frontend
 
 
+###########################################################################################################
 Node affinity is a feature in Kubernetes that allows you to specify an affinity between a pod and a node. 
 This feature is particularly useful when you want to deploy pods to specific nodes based on certain criteria.
 Node affinity is similar to pod affinity, but it operates at the node level instead of the pod level. 
