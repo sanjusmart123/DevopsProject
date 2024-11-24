@@ -1,0 +1,49 @@
+A DaemonSet is a type of Kubernetes object that ensures a copy of a pod is running on every node in a cluster.
+It is used to run a service on every node, such as a monitoring agent, a logging collector, or a network daemon.
+DaemonSets are useful for running long-running tasks that require access to the node's resources, like disk storage or network interfaces.
+They can also be used to maintain a consistent state across all nodes in the cluster. DaemonSets are created by submitting a DaemonSet manifest to the Kubernetes API.
+
+Runs Pods on Every Node:
+
+A DaemonSet automatically schedules one pod on every eligible node in the cluster.
+Dynamic Updates:
+
+If new nodes are added to the cluster, the DaemonSet automatically schedules the pod on those nodes.
+Similarly, if a node is removed, its associated pod is deleted.
+Selectors for Node Targeting:
+
+DaemonSets can target specific nodes using node selectors, node affinity, or taints and tolerations.
+Immutable Updates:
+
+Updating a DaemonSet (e.g., changing its image) requires rolling out changes to all nodes.
+
+Monitoring and Logging Agents:
+
+Tools like Prometheus Node Exporter, Fluentd, or Datadog that collect node-specific metrics or logs.
+Networking and Security:
+
+Services like CNI plugins, VPN agents, or firewall configurations.
+Cluster Administration:
+
+System-level tasks like garbage collection, resource monitoring, or node-level configuration.
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-daemonset
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
