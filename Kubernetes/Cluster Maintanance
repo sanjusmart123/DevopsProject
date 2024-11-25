@@ -20,3 +20,109 @@ Second one is to upgrade one node at a time.
 
 Third one would be to add new nodes to the cluster
 
+
+kubeadm - Upgrade master node
+kubeadm has an upgrade command that helps in upgrading clusters.
+
+kubeadm upgrade plan 
+
+Upgrade kubeadm from v1.11 to v1.12
+
+$ apt-get upgrade -y kubeadm=1.12.0-00
+Upgrade the cluster
+
+$ kubeadm upgrade apply v1.12.0
+If you run the 'kubectl get nodes' command, you will see the older version. This is because in the output of the command it is showing the versions of kubelets on each of these nodes registered with the API Server and not the version of API Server itself
+
+$ kubectl get nodes
+
+Upgrade 'kubelet' on the master node
+
+$ apt-get upgrade kubelet=1.12.0-00
+Restart the kubelet
+
+$ systemctl restart kubelet
+Run 'kubectl get nodes' to verify
+
+$ kubectl get nodes
+
+kubeadm - Upgrade worker nodes
+From master node, run 'kubectl drain' command to move the workloads to other nodes
+
+$ kubectl drain node-1
+Upgrade kubeadm and kubelet packages
+
+$ apt-get upgrade -y kubeadm=1.12.0-00
+$ apt-get upgrade -y kubelet=1.12.0-00
+Update the node configuration for the new kubelet version
+
+$ kubeadm upgrade node config --kubelet-version v1.12.0
+Restart the kubelet service
+
+$ systemctl restart kubelet
+Mark the node back to schedulable
+$ kubectl uncordon node-1
+
+Upgrade all worker nodes in the same way
+
+
+#################################################################################################
+
+steps to Update an EKS Cluster
+1. Check the Current EKS Cluster Version
+Run the following command to check the current Kubernetes version of your cluster:
+
+aws eks describe-cluster --name <cluster-name> --query "cluster.version" --output text
+
+2. Check Available Updates
+List available Kubernetes versions for your region:
+
+aws eks describe-addon-versions --query "addons[].kubernetesVersions" --output text
+
+3. Update the Control Plane
+To update the EKS control plane to the latest version:
+
+aws eks update-cluster-version --name <cluster-name> --kubernetes-version <target-version>
+
+4. Update Node Groups
+a. Update Managed Node Groups
+For managed node groups, update the node group's Kubernetes version:
+
+aws eks update-nodegroup-version --cluster-name <cluster-name> --nodegroup-name <node-group-name> --kubernetes-version <target-version>
+
+kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data
+
+5. Update Add-ons
+After updating the cluster and nodes, update the EKS add-ons (e.g., CoreDNS, kube-proxy).
+
+Check Add-ons Versions
+bash
+Copy code
+aws eks describe-cluster --name <cluster-name> --query "cluster.addons" --output json
+Update Add-ons
+For example, to update CoreDNS:
+
+aws eks update-addon --cluster-name <cluster-name> --addon-name coredns --addon-version <target-version>
+Monitor the add-on update:
+
+aws eks describe-addon --cluster-name <cluster-name> --addon-name coredns --query "addon.status" --output text
+
+6. Verify the Update
+After all updates:
+Confirm the Kubernetes version:
+kubectl version --short
+Check node readiness:
+
+kubectl get nodes
+Validate add-ons:
+
+kubectl get pods -n kube-system
+
+#####################################################################################################################
+
+
+
+
+
+
+
