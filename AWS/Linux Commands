@@ -312,6 +312,9 @@ nsllokup www.google.com
 dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers. 
 It is basically used by network administrators. It is used for verifying and troubleshooting DNS problems and to perform DNS lookups.
 
+
+####################################################################################################################################
+
     
 
 
