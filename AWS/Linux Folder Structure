@@ -1,0 +1,79 @@
+Directory	Description
+/bin	Essential binary executables needed for booting and basic functionality (e.g., ls, cat).
+
+/boot	Files required for the boot process, including the Linux kernel (vmlinuz) and bootloader files.
+
+/dev	Device files representing hardware devices like disks (/dev/sda), terminals, and printers.
+
+/etc	System-wide configuration files (e.g., passwd, hosts, nginx.conf).
+
+/home	Home directories for non-root users (e.g., /home/user1).
+
+/lib	Shared libraries required by system programs and binaries in /bin and /sbin.
+
+/media	Temporary mount points for removable media like USB drives and CDs.
+
+/mnt	General-purpose mount point for temporarily mounting filesystems.
+
+/opt	Optional software packages or add-on application files installed by the user.
+
+/proc	Virtual filesystem providing process and system information (e.g., /proc/cpuinfo).
+
+/root	Home directory for the root user.
+
+/run	Holds runtime data for processes since the last boot (e.g., process IDs, sockets).
+
+/sbin	System administration binaries (e.g., ip, iptables, reboot) intended for superusers.
+
+/srv	Data served by the system (e.g., web server files for Apache or Nginx).
+
+
+
+1. /bin
+Stores essential user commands needed in single-user mode or for system recovery.
+Examples: bash, cp, mv, grep, chmod.
+
+2. /etc
+Contains system configuration files.
+Examples:
+/etc/passwd: User account information.
+/etc/hosts: Static hostname resolution.
+
+3. /home
+Stores personal files and settings for each user.
+Example: /home/john for the user john.
+
+4. /var
+Houses dynamic data like logs and spool files.
+Examples:
+/var/log: Log files (e.g., syslog, auth.log).
+/var/www: Web server files for Apache or Nginx.
+
+5. /proc
+A virtual filesystem containing information about running processes and the system.
+Examples:
+/proc/cpuinfo: CPU information.
+/proc/meminfo: Memory usage details.
+
+6. /usr
+Contains user-space applications and libraries.
+Subdirectories:
+/usr/bin: Non-essential user binaries.
+/usr/lib: Libraries for /usr/bin and /usr/sbin.
+/usr/local: Locally installed software.
+
+7. /tmp
+Used for storing temporary files created by applications or processes.
+Automatically cleared on system reboot.
+
+8. /opt
+Reserved for optional software or third-party applications.
+Example: /opt/google/chrome for Google Chrome.
+
+9. /dev
+Contains device files representing physical or virtual devices.
+Examples:
+/dev/sda: First hard disk.
+/dev/tty: Terminal devices.
+
+
