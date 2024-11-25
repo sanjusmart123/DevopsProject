@@ -150,6 +150,47 @@ envFrom:
 - configMapRef:
     name: my-config
 
+kubectl create configmap app-config --from-literal=APP_COLOR=blue --from-literal=APP_MODE=prod
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: app-config
+data:
+ APP_COLOR: blue
+ APP_MODE: prod
+
+Create a config map definition file and run the 'kubectl create` command to deploy it.
+kubectl create -f config-map.yaml
+
+ kubectl get configmaps (or)
+ kubectl get cm
+
+kubectl describe configmaps
+##################################
+Inject configmap in pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp-color
+spec:
+ containers:
+ - name: simple-webapp-color
+   image: simple-webapp-color
+   ports:
+   - containerPort: 8080
+   envFrom:
+   - configMapRef:
+       name: app-config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MODE: prod
+kubectl create -f pod-definition.yaml
+
 #####################################
 
 Secretes:
@@ -198,3 +239,77 @@ volumes:
       secretName: my-secret
 
 ###################################################################################################################
+Multi-container-Pods:
+
+In Kubernetes, multi-container pods are used to deploy multiple containers within the same pod. 
+Each container in the pod shares the same network namespace (i.e., they can communicate with each other via localhost), 
+and they are co-located, sharing resources like volumes, which makes multi-container pods useful for specific use cases where containers need to work together. 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp
+  labels:
+    name: simple-webapp
+spec:
+  containers:
+  - name: simple-webapp
+    image: simple-webapp
+    ports:
+    - ContainerPort: 8080
+  - name: log-agent
+    image: log-agent
+##################################
+
+Sidecar Pattern
+Description: The sidecar pattern involves running a helper container alongside the main application container. 
+The sidecar container provides supplementary functionality, such as logging, monitoring, or proxying, which supports the main application.
+Use Case: A typical use case is running a logging agent (like Fluentd or Filebeat) alongside a web application container.
+The logging container collects logs and forwards them to a logging service or stores them in a centralized system.
+
+Example: A pod with a main web application and a sidecar logging container:
+
+yaml
+Copy code
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-logging
+spec:
+  containers:
+  - name: app-container
+    image: my-app
+  - name: logging-agent
+    image: fluentd
+    volumeMounts:
+    - name: logs
+      mountPath: /var/log
+  volumes:
+  - name: logs
+    emptyDir: {}
+
+####################################################################################################
+Init Containers:
+
+Init Containers in Kubernetes are specialized containers that run before the main application containers in a pod.
+They allow you to perform initialization tasks that must complete before the main containers start running.
+Init containers run sequentially, and each init container must finish successfully before the next one starts. 
+If any init container fails, Kubernetes will restart the pod until the initialization succeeds.
+
+Use Case: For example, you might need to set up a configuration file or initialize a database schema before the main application container can start handling traffic.
+Benefit: This ensures that the main container only starts once all the necessary initialization tasks have been completed successfully.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-db-init
+spec:
+  initContainers:
+  - name: db-init
+    image: db-init-image
+    command: ["sh", "-c", "echo 'CREATE DATABASE mydb;' | mysql -h db_host"]
+  containers:
+  - name: main-app
+    image: my-app
+
+###########################################################################################################
