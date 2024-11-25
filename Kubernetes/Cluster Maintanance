@@ -1,0 +1,12 @@
+We need to take node01 out for maintenance. Empty the node of all applications and mark it unschedulable.
+kubectl drain node01 --ignore-daemonsets
+This command:
+Evicts all pods from the node (except DaemonSet pods).
+Ensures that no new pods are scheduled on the node
+
+kubectl cordon node01 --->no new pods assigned to node01 until it set to uncordon state
+
+kubectl uncordon node01  --->The maintenance tasks have been completed. Configure the node node01 to be schedulable again
+
+Why are the pods placed on the controlplane node? ----> Controlplane does not have taints
+
