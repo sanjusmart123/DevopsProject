@@ -118,3 +118,83 @@ Environment variables are a flexible and powerful way to control the configurati
 They allow you to decouple the configuration from your application code, support different environments, manage secrets securely, and provide fine-grained control over application behavior.
 
 ##########################################################################################################################
+
+ConfigMaps in Kubernetes are used to store configuration data as key-value pairs. 
+Storing configuration data such as environment variables, config files, command-line arguments
+
+
+kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key2=value2
+
+kubectl create configmap my-config --from-file=path/to/configfile --> created from a file
+
+from yml file:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: webapp-color
+  name: webapp-color
+  namespace: default
+spec:
+  containers:
+  - env:
+    - name: APP_COLOR
+      value: green
+    image: kodekloud/webapp-color
+    name: webapp-color
+
+Accessing Configmap:
+
+envFrom:
+- configMapRef:
+    name: my-config
+
+#####################################
+
+Secretes:
+
+A Secret is used to store sensitive information, such as passwords, tokens, or keys. While data in a Secret is also stored as key-value pairs, it is base64-encoded, not encrypted by default (though encryption at rest can be enabled).
+
+Use case: Storing sensitive data like database credentials, API keys, SSL certificates, etc.
+Format: Base64-encoded data, though you should treat it as confidential information.
+
+kubectl create secret generic my-secret --from-literal=username=admin --from-literal=password='s3cr3t'
+
+kubectl create secret generic my-secret --from-file=path/to/secretfile
+
+Yaml file:
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  username: YWRtaW4=   # base64 encoded value of 'admin'
+  password: c2VjcmV0   # base64 encoded value of 'secret'
+
+
+echo -n 'admin' | base64
+echo -n 'secrete' | base64   --->to convert encoded
+
+echo -n 'serty45' | base64 --decode
+
+
+Accessing secrete from env:
+
+env:
+- name: SECRET_USERNAME
+  valueFrom:
+    secretKeyRef:
+      name: my-secret
+      key: username
+
+from Volumes:
+
+volumes:
+  - name: secret-volume
+    secret:
+      secretName: my-secret
+
+###################################################################################################################
