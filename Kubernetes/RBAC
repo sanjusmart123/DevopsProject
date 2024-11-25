@@ -19,6 +19,23 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "list", "watch"]
+#####################################
+API group with an empty string ("") refers to the core API.
+Resources in the core API include:
+pods
+services
+nodes
+configmaps
+namespaces
+
+Named API Groups:
+
+Non-core resources are part of named API groups.
+Named groups help modularize Kubernetes by separating features into logical domains.
+Example API groups include:
+apps (e.g., Deployments, StatefulSets)
+rbac.authorization.k8s.io (e.g., Roles, RoleBindings)
+batch (e.g., Jobs, CronJobs)
 
 ########################
 The next step is to link the user to that role.
