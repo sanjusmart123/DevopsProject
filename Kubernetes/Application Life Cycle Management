@@ -1,0 +1,120 @@
+Rolling Updates and Rollbacks in Deployments:
+
+A Rolling Update is a deployment strategy that allows you to update the application in a way that replaces old versions of the application with new versions gradually,
+without causing downtime. The key idea is to update pods one at a time or in small batches, ensuring that the application remains available throughout the update process
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          # Allow one additional pod to be created during the update
+      maxUnavailable: 25%  # Allow 25% of the pods to be unavailable during the update
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app-container
+          image: my-app:v2
+          ports:
+            - containerPort: 8080
+
+maxSurge: 1: Allows one extra pod to be created during the update, which helps minimize downtime.
+maxUnavailable: 25%: Allows up to 25% of the pods to be unavailable during the update process.
+
+Kubernetes starts by creating the new version of the application and scaling up the new pods (subject to the maxSurge setting).
+The old version of the application continues running during the update process, ensuring that the number of available pods is maintained.
+Once the new pod(s) are healthy (according to readiness/liveness checks), Kubernetes scales down the old version (subject to the maxUnavailable setting).
+The process continues until all the old pods are replaced by the new version.
+This process ensures that the application remains available and responsive during the update.
+
+####################################################################################################
+
+A Rollback is a process of reverting to a previous version of a deployment if something goes wrong during the rolling update or if the new version causes issues in production.
+
+How Rollbacks Work:
+Automatic Rollback: Kubernetes supports automatic rollbacks if the health checks (readiness/liveness probes) fail or if the deployment doesn't proceed as expected.
+It will revert the deployment to the previous stable version.
+Manual Rollback: You can also manually trigger a rollback to a specific version using the kubectl rollout undo command.
+
+Check the Deployment History: Kubernetes keeps a history of previous deployments, 
+and you can use the kubectl rollout history command to view the history of a deployment and find the previous revision.
+
+kubectl rollout history deployment/my-app
+
+Rollback to Previous Version: Use the kubectl rollout undo command to roll back to the previous revision.
+kubectl rollout undo deployment/my-app
+
+If you want to roll back to a specific revision:
+kubectl rollout undo deployment/my-app --to-revision=2
+
+##########################################################################################################
+
+Sleep command:
+Pod Lifecycle Testing: You can use sleep to test Kubernetes Pod scheduling, rolling updates, and termination behaviors. 
+A long sleep period helps test how the system handles Pods that run for an extended time or are stuck in a state (for example, simulating a "hanging" container).
+Kubernetes Readiness and Liveness Probes: During testing, sleep can be useful for verifying the effectiveness of Kubernetes health checks. 
+You can experiment with liveness and readiness probes by configuring them to check the container's state while it sleeps for a long period.
+
+Background or Asynchronous Jobs: In many production environments, certain jobs run in the background, such as batch processing, cron jobs, or other asynchronous tasks.
+The sleep command can simulate this scenario, where a container stays idle but doesn't exit until it is manually terminated or the sleep duration ends.
+Workload Simulation: If you want to simulate background workloads that don’t have a predefined end, sleep can be a simple placeholder while you work on building or testing a more complex service.
+
+apiVersion: v1                # API version used to define the object.
+kind: Pod                      # The kind of resource; in this case, a Pod.
+metadata:
+  name: ubuntu-sleeper-3       # Name of the Pod, you can reference it within the Kubernetes cluster.
+spec:
+  containers:                  # Specifies the container configuration within the Pod.
+  - name: ubuntu               # The name of the container inside the Pod.
+    image: ubuntu              # The Docker image to be used for the container, here it's the official Ubuntu image.
+    command:                   # The command to run inside the container (overrides the default command in the image).
+      - "sleep"                # The command that runs when the container starts.
+      - "2000"                 # The argument passed to the sleep command; the container will sleep for 2000 seconds.
+
+###############################################################################################################################
+
+Configure Environment Variables In Applications:
+
+Environment variables (often abbreviated as env) are crucial in Kubernetes, Docker, and many application deployments. They are used to configure application behavior, store sensitive information,
+Configuration Management:
+
+Externalize Configuration: Store configuration settings such as database URLs, API keys, or application parameters in environment variables to keep them separate from the application code. 
+This makes it easier to modify configurations without changing the codebase.
+
+env:
+  - name: DATABASE_URL
+    value: "postgres://user:password@host/dbname
+
+Environment-Specific Configuration: 
+Use environment variables to distinguish between different environments (development, testing, production). For instance, use APP_ENV to define the environment type and load different settings accordingly.
+
+env:
+  - name: APP_ENV
+    value: "production"
+
+Security & Sensitive Information:
+
+Store Secrets: Rather than hard-coding sensitive information (such as passwords, API tokens, or private keys) directly in the application or source code, you can store them as environment variables. Kubernetes has a built-in resource type called Secrets for this purpose, which can be mapped to environment variables.
+Example: Using Kubernetes secrets to inject sensitive data.
+
+env:
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: mysecret
+        key: password
+
+Environment variables are a flexible and powerful way to control the configuration, behavior, and security of your applications in Kubernetes. 
+They allow you to decouple the configuration from your application code, support different environments, manage secrets securely, and provide fine-grained control over application behavior.
+
+##########################################################################################################################
