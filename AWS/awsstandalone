@@ -1,0 +1,2896 @@
+An auto scaling group (ASG) in AWS is a group of identical EC2 instances that AWS Auto Scaling manages as a single unit. 
+You can use ASGs to quickly and reliably respond to changes in application traffic or computer workload. 
+ASGs can automatically add or remove EC2 instances based on specified scaling policies, such as "add 2 instances when CPU utilization reaches 50%.
+" This helps maintain a consistent application performance and cost efficiency. 
+ASGs also support launch configurations, scaling settings, and lifecycle hooks for more granular control over the scaling process.
+Cloud computing is a model of delivering computing services over the internet, where resources such as servers, storage, databases, software,
+and applications are provided as a service to users on-demand. Instead of having to manage and maintain physical hardware and software, 
+users can access these resources on a pay-as-you-go basis, allowing for greater flexibility, scalability, and cost savings. 
+This enables organizations to focus on their core business activities rather than managing IT infrastructure. 
+Cloud computing has become a popular solution for many industries, including business, education, and healthcare.
+
+There are 4  types of Cloud computing services
+1.infrastructure as a service (IaaS), 
+2.platform as a service (PaaS), 
+3.software as a service (SaaS), 
+4.serverless computing.
+
+Advantages:
+1.Cloud computing offers numerous advantages, including scalability, flexibility, and reduced costs.
+2.With cloud computing, users can access computing resources on-demand, eliminating the need for upfront capital expenditures on hardware and software. 
+3.Additionally, cloud computing enables on-the-go access to data and applications, making it an ideal solution for remote teams and mobile workers. 
+4.Another significant advantage is the automatic software updates, which ensure that systems are always running with the latest security patches and features. 
+5.Furthermore, cloud computing allows for increased collaboration, with team members able to access and share files seamlessly from anywhere.
+
+Disadvantages:
+
+1.One major disadvantage is the reliance on a third-party provider, which can lead to data security and management concerns. 
+2.Additionally, cloud computing often requires a high-speed internet connection, which can be a challenge in areas with limited connectivity. 
+3.Furthermore, the risk of data loss or corruption due to external factors is higher in cloud computing. 
+4.Lastly, cloud computing can be expensive, especially for small or medium-sized businesses.
+
+##################################################
+1.Iaas:
+
+*In cloud computing, Infrastructure as a Service (IaaS) refers to a cloud delivery model where clients can rent virtual servers, storage, and networking components from a provider. 
+*Users have full control over the configuration and deployment of resources, but are responsible for managing and maintaining them. 
+*IaaS providers install and maintain the underlying infrastructure, and clients can scale resources up or down as needed. 
+*This model offers flexibility, scalability, and cost-effectiveness, making it suitable for businesses that require significant computational power and storage. 
+*Examples of IaaS providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+
+2.Paas:
+*PAAS, also known as Platform as a Service, is a cloud computing model that enables users to deploy applications without managing the underlying infrastructure. 
+*In a PAAS environment, the cloud service provider manages the hardware, security, and infrastructure, while users can focus on developing, testing, and deploying their applications. 
+*Popular PAAS providers include Heroku, Microsoft Azure, and Google App Engine. PAAS is particularly useful for applications that require a specific platform or runtime environment, such as Ruby on Rails or Python. 
+*It provides a high level of scalability, flexibility, and cost-effectiveness.
+
+3.Saas:
+*Saas, or Software as a Service, is a cloud computing model where a third-party provider hosts and manages an application, making it accessible to users over the internet.
+*In a SaaS model, the provider is responsible for maintaining and updating the application, as well as ensuring its security and scalability. 
+*This approach eliminates the need for users to install, configure, and maintain the application on their own devices or servers. 
+*SaaS is popular among businesses and individuals alike, as it offers flexibility, cost savings, and ease of use.
+*Examples of SaaS applications include Microsoft Office 365 and Salesforce
+################################################################################
+
+
+
+
+
+
+
+
+
+CloudFormation is a service offered by Amazon Web Services (AWS) that enables you to use templates to define and deploy infrastructure as code.
+This service helps you to create and manage a collection of resources, such as Amazon EC2 instances, S3 buckets, and RDS databases, 
+in a bug-free and repeatable manner. You can use CloudFormation to create and deploy infrastructure in a predictable and controlled manner,
+which reduces the risk of human error and improves collaboration among team members. Additionally, CloudFormation provides a version control system 
+for your infrastructure code, allowing you to track changes and roll back to previous versions if needed
+
+AWS CloudFormation is an Infrastructure as Code (IaC) service that lets you define and manage AWS resources through code. 
+Instead of manually creating and managing resources like EC2 instances, S3 buckets, or RDS databases,
+you can use CloudFormation templates to define and deploy these resources in a structured and repeatable way
+cloudfront:
+
+CloudFront is a content delivery network (CDN) service operated by Amazon Web Services (AWS) that securely delivers website content, 
+such as videos, images, and HTML files, to users worldwide. With CloudFront, data is cached at edge locations,
+reducing latency and improving content delivery speeds. You can use CloudFront with Amazon S3, Elastic Load Balancer (ELB), and other AWS services. 
+CloudFront also supports custom SSL certificates, HTTP/2, and headers for geo-distribution and security. By distributing your content closer to users, 
+CloudFront can help reduce the latency and costs associated with delivering content across the globe.
+
+Amazon CloudFront is a web service that gives businesses and web application developers an easy and cost 
+effective way to distribute content with low latency and high data transfer speeds.
+
+#########################################################
+
+Latency:
+
+Latency in AWS refers to the delay between the time a request is made and the time the response is received. 
+This includes the time it takes for data to travel between your device and AWS services, as well as processing time within AWS. 
+Low latency is crucial for applications that require real-time processing, such as gaming, video conferencing, and online collaboration.
+AWS provides several tools and services to optimize latency, including Content Delivery Network (CDN), Lambda Functions, and Amazon Elastic Block Store (EBS). 
+Understanding latency in AWS is essential for designing and deploying high-performance applications.
+
+################################################################
+
+Web Application Firewall:
+
+You're referring to WAF (Web Application Firewall) in Amazon Web Services (AWS).
+WAF is a web application security layer that filters and blocks malicious traffic to your website or application. 
+It monitors HTTP requests and identifies the malicious traffic based on rules, such as IP addresses, HTTP headers, and query strings.
+AWS WAF integrates with AWS CloudFront, Amazon Elastic Load Balancer (ELB), and Amazon API Gateway to protect your web applications from common web exploits and attacks.
+
+######################################################################
+
+Network access controll list in aws
+
+To manage network access in AWS, you can use the Network Access Control List (NACL).
+A NACL is a virtual firewall that controls inbound and outbound traffic to and from instances in a VPC(subnet level).
+You can create and manage NACLs in the AWS Management Console, AWS CLI, or SDKs. 
+A NACL is composed of rules, which are evaluated in order to determine whether traffic is allowed or denied.
+You can create custom NACLs or use pre-configured ones to suit your network security needs. 
+This allows you to have fine-grained control over traffic flow in your VPC.
+###########################################################################
+
+
+
+
+
+Here's more on cloudtrail in aws
+
+CloudTrail is a logging service provided by Amazon Web Services (AWS) that captures and stores log data from AWS services as events.
+These events provide a record of everything that occurs in an AWS account, including user interactions and API calls. 
+CloudTrail logs are stored in Amazon S3 buckets or Amazon CloudWatch logs. 
+This allows you to track down issues, troubleshoot problems, and ensure compliance with security policies. 
+You can also use CloudTrail to monitor and audit the activity of your AWS resources, as well as detect potential security threats.
+#############################################################
+CloudTrail provides visibility into user activity by recording actions taken on your account. 
+CloudTrail records important information about each action, including who made the request, the services used, 
+the actions performed, parameters for the actions, and the response elements returned by the AWS service.
+
+##########################################################
+CloudWatch monitors applications and infrastructure performance in the AWS environment. 
+CloudTrail monitors actions in the AWS environment.
+CloudWatch is a monitoring service provided by Amazon Web Services (AWS) that enables you to monitor and track your AWS resources and applications.
+It provides real-time data and insights on metrics such as CPU utilization, latency, and request counts. 
+CloudWatch can help you identify and troubleshoot issues, as well as set alarms and notifications for unusual activity. 
+You can use CloudWatch to monitor metrics for EC2 instances, RDS databases, S3 buckets, and more. 
+With CloudWatch, you can gain visibility into your application's performance and troubleshoot issues quickly, 
+ensuring high availability and reliability.
+
+The CloudWatch home page automatically displays metrics about every AWS service you use. 
+You can additionally create custom dashboards to display metrics about your custom applications,
+and display custom collections of metrics that you choose.
+
+You can create alarms that watch metrics and send notifications or automatically make changes to the resources 
+you are monitoring when a threshold is breached
+
+######################################################
+
+1.Log in to AWS Management Console
+Sign in to the AWS Management Console.
+Navigate to the CloudWatch Dashboard:
+You can find CloudWatch by typing "CloudWatch" in the AWS services search bar and selecting it.
+2. Create a CloudWatch Alarm
+To create an alarm that monitors a specific metric:
+
+Navigate to Alarms in the left-hand menu.
+
+Click on “Create alarm”.
+
+Select a metric:
+
+Click on “Select metric”.
+Choose the namespace and metric you want to monitor (e.g., EC2, RDS, etc.).
+For example, to monitor an EC2 instance's CPU usage, navigate to EC2 -> Per-Instance Metrics -> Select your instance and metric (e.g., CPUUtilization).
+Configure the alarm:
+
+Define the threshold (e.g., "CPUUtilization > 80% for 5 minutes").
+Set the period and data points to alarm (e.g., Period = 1 minute, Data points to alarm = 5 out of 5).
+Set actions:
+
+Define what actions should be taken when the alarm state is triggered.
+You can set up notifications via SNS (Simple Notification Service) to send emails, SMS, or trigger other actions like Lambda functions.
+Name and create the alarm:
+
+Provide a name and description for your alarm.
+Review your settings and click “Create alarm”.
+3. Create a CloudWatch Dashboard
+To create a dashboard to visualize metrics:
+
+Navigate to Dashboards in the left-hand menu.
+Click on “Create dashboard”.
+Enter a name for your dashboard and click “Create dashboard”.
+Add widgets:
+Click on “Add widget”.
+Select the type of widget (e.g., line graph, number, text, etc.).
+Select the metrics you want to visualize.
+Configure the widget settings and click “Create widget”.
+4. Set Up CloudWatch Logs
+To enable logging for your applications or AWS services:
+
+Navigate to Logs in the left-hand menu.
+
+Create a log group:
+
+Click on “Create log group”.
+Enter a name for the log group and click “Create log group”.
+Create log streams:
+
+Click on the log group you just created.
+Click on “Create log stream”.
+Enter a name for the log stream and click “Create log stream”.
+Configure logging for AWS services (e.g., EC2, Lambda):
+
+For EC2: Install and configure the CloudWatch Logs agent on your instance.
+For Lambda: Configure the Lambda function to output logs to CloudWatch.
+5. Monitor Custom Metrics
+To publish custom metrics from your applications:
+
+Use AWS SDKs or AWS CLI to publish custom metrics.
+
+Example using AWS CLI:
+sh
+Copy code
+aws cloudwatch put-metric-data --metric-name PageViews --namespace MyApp --value 1
+Visualize custom metrics:
+
+You can add these metrics to your CloudWatch dashboard or set alarms on them.
+Example: Create CloudWatch Alarm using AWS CLI
+Here's an example of how to create a CloudWatch alarm for an EC2 instance's CPU utilization using the AWS CLI:
+
+sh
+Copy code
+# Set variables
+INSTANCE_ID="i-xxxxxxxx"
+ALARM_NAME="HighCPUUtilization"
+ALARM_DESC="Alarm when CPU utilization exceeds 80%"
+SNS_TOPIC_ARN="arn:aws:sns:region:account-id:my-topic"
+
+# Create the alarm
+aws cloudwatch put-metric-alarm --alarm-name $ALARM_NAME \
+    --alarm-description "$ALARM_DESC" \
+    --metric-name CPUUtilization \
+    --namespace AWS/EC2 \
+    --statistic Average \
+    --period 300 \
+    --threshold 80 \
+    --comparison-operator GreaterThanThreshold \
+    --dimensions Name=InstanceId,Value=$INSTANCE_ID \
+    --evaluation-periods 1 \
+    --alarm-actions $SNS_TOPIC_ARN \
+    --unit Percent
+Additional Tips
+Integrate with other AWS Services: CloudWatch integrates with many AWS services like EC2, RDS, Lambda, ECS, etc.
+Cost Management: Be mindful of the costs associated with CloudWatch logs and custom metrics, especially if logging a high volume of data.
+Automation: Use AWS CloudFormation or Terraform to automate the creation and management of CloudWatch resources.
+DynamoDB is a fast, fully managed NoSQL database service offered by Amazon Web Services (AWS).
+It's designed to handle large amounts of data and scale with your needs. DynamoDB stores data in a key-value or document-oriented format, 
+allowing for flexible schema design and scalability. With DynamoDB, you don't have to worry about provisioning or scaling servers, as AWS handles these tasks automatically. 
+This service is commonly used for big data, IoT, and real-time web applications, and is known for its high performance, low latency, and high availability.
+
+Amazon DynamoDB is a fully managed NoSQL database service provided by AWS, designed for high performance at any scale with low latency.
+It allows developers to store, retrieve, and query large amounts of structured data. 
+DynamoDB is particularly useful for applications that require consistent, single-digit millisecond response times and can handle workloads with variable or unpredictable traffic.
+
+*DynamoDB is a serverless cloud based NoSQL database.
+*It automatically replicates data to multiple availability zones.
+*In case any failure happen in one AZ automatically the data the data will be fetched from another AZ.
+*Dynamo DB also supports cross region replication.which provides more safety to the data.
+*Provides very fast throughput with low latency.
+*There is no schema restrictions,so you can maintain diffrent types of of data in same column and attributes count coulld be 
+different in each row.
+*Its highly secured NoSql database.
+#####################################################
+Real Time in Devops:
+
+1.CI/CD Pipelines:
+
+Pipeline State Storage: DynamoDB can store the state of CI/CD pipelines, such as build status, deployment status, and logs.
+Artifact Metadata: Store metadata about build artifacts, versions, and dependencies.
+2.Monitoring and Logging:
+
+Custom Metrics and Logs: Store custom application metrics and logs for real-time monitoring and alerting.
+Audit Logs: Maintain audit logs for compliance and security purposes, leveraging DynamoDB's ability to handle large volumes of write operations.
+
+3.Job Scheduling and Task Queues:
+
+Job Queues: Implement task queues for background jobs, with DynamoDB storing job status and metadata.
+Scheduling: Store scheduled tasks and triggers, enabling event-driven executions based on DynamoDB data changes.
+
+
+
+serverless:
+Not required to maintain servers or operating systems,no need to bother about security,its completely managed by service provider.
+
+#################################################
+NoSQL:
+
+The term "NoSQL" refers to a type of database that doesn't use the traditional table-based relational model used in relational databases such as MySQL, Oracle, 
+and Microsoft SQL Server. Instead, NoSQL databases are designed to handle large amounts of unstructured or semi-structured data and provide a more flexible and scalable data storage option. 
+They often use keys for data retrieval, rather than SQL queries, and are used in big data and real-time web applications.
+Examples of NoSQL databases include MongoDB, Cassandra, and Redis.
+
+There is no schema restrictions,so you can maintain diffrent types of of data in same column and attributes count coulld be different in each row
+
+###############################################
+Elastic Block Store (EBS):
+#############################
+*Elastic Block Store (EBS) is a web service offered by Amazon Web Services (AWS) that provides block-level storage volumes for use with Amazon Elastic Compute Cloud (EC2) instances. 
+*EBS volumes are stored on the AWS storage infrastructure, and are designed to provide high levels of availability, durability, and performance.
+*EBS is suitable for applications that require high throughput, low latency, and high storage capacity. 
+*Some common use cases for EBS include database storage, file servers, and virtualized servers. 
+*EBS provides snapshotting and volume migration features, making it easier to manage and maintain data.
+*These volumes can be used to store data, including the operating system of the instance, 
+and persist independently from the life of the instance.
+
+1.Persistent Storage:
+
+EBS volumes persist independently of the life of the EC2 instance, ensuring that your data is retained even if the instance is stopped or terminated.
+
+2.Scalable and Flexible:
+
+Volumes can be resized, and you can increase their capacity, performance, or change their type with no downtime.
+
+3.Encryption:
+
+EBS volumes support encryption to protect your data at rest. Encryption is provided by AWS Key Management Service (KMS).
+
+4.High Availability and Durability:
+
+EBS volumes are designed for 99.999% availability and automatically replicate within an Availability Zone to protect against hardware failure.
+
+5.Snapshots:
+
+Create point-in-time snapshots of EBS volumes, which are stored in Amazon S3. Snapshots can be used to create new EBS volumes or to back up data.
+
+Types of Volumes:
+
+1.General Purpose SSD (gp3, gp2): Balanced price and performance for a wide variety of workloads.
+2.Provisioned IOPS SSD (io2, io1): High-performance SSDs designed for critical applications requiring sustained IOPS performance.
+3.Throughput Optimized HDD (st1): Low-cost HDD designed for frequently accessed, throughput-intensive workloads.
+4.Cold HDD (sc1): Lowest-cost HDD designed for less frequently accessed workloads.
+
+
+
+
+1. Creating an EBS Volume:
+Open the Amazon EC2 Console:
+
+Log in to the AWS Management Console and navigate to the EC2 Dashboard.
+Create Volume:
+
+In the left-hand navigation pane, click on Volumes under Elastic Block Store.
+Click the Create Volume button.
+Configure Volume:
+
+Select the volume type (e.g., gp2 for General Purpose SSD).
+Specify the size of the volume.
+Choose the Availability Zone where the volume will be created (must match the Availability Zone of the EC2 instance you want to attach it to).
+Configure additional settings such as encryption if needed.
+Click Create Volume.
+2. Attaching an EBS Volume to an EC2 Instance:
+Select Volume:
+
+In the Volumes section of the EC2 Dashboard, select the volume you created.
+Attach Volume:
+
+Click the Actions dropdown and select Attach Volume.
+Choose the instance to attach the volume to.
+Specify the device name (e.g., /dev/xvdf).
+Click Attach Volume.
+3. Making the Volume Available on the EC2 Instance:
+Connect to the Instance:
+
+SSH into the EC2 instance where the volume was attached.
+Format the Volume (if new):
+
+Create a filesystem on the volume (if it’s a new volume). For example, to format as ext4:
+sh:
+
+sudo mkfs -t ext4 /dev/xvdf
+Mount the Volume:
+
+Create a mount point and mount the volume:
+sh:
+
+sudo mkdir /mnt/myebs
+sudo mount /dev/xvdf /mnt/myebs
+Update /etc/fstab (Optional):
+
+To mount the volume automatically at boot, you can add an entry to the /etc/fstab file:
+sh:
+
+/dev/xvdf /mnt/myebs ext4 defaults,nofail 0 2
+4. Creating and Using EBS Snapshots:
+Create a Snapshot:
+
+In the Volumes section, select the volume.
+Click Actions and select Create Snapshot.
+Provide a description and click Create Snapshot.
+Restore from a Snapshot:
+
+In the Snapshots section, select the snapshot.
+Click Actions and select Create Volume from Snapshot.
+Configure the volume settings and click Create Volume.
+Best Practices for Using EBS:
+Regular Snapshots:
+
+Regularly create snapshots of your EBS volumes to ensure you have backups of your data.
+Monitor Performance:
+
+Use Amazon CloudWatch to monitor EBS metrics and adjust volume types or sizes based on performance needs.
+Use EBS-Optimized Instances:
+
+Consider using EBS-optimized EC2 instances to ensure dedicated throughput between EC2 and EBS.
+Encryption:
+
+Encrypt sensitive data stored on EBS volumes.
+Instance Store for Temporary Data:
+
+Use instance store volumes for temporary data that does not require persistence, 
+as they are faster and cheaper but do not survive instance stops and starts.
+
+
+
+
+commands:
+lsblk ---> to check volumes
+df -Th ---> to check volume size,use
+
+we should create volume in same availabilty zone of instance
+if you create a instance  then we can create volume
+
+The Yellowdog Updater Modified (YUM) is a free and open-source command-line package-management utility for 
+computers running the Linux operating system using the RPM Package Manager.
+
+#################################################
+
+EBS Snapshots:
+
+An EBS snapshot is a point-in-time copy of an Amazon Elastic Block Store (EBS) volume. 
+AWS snapshots are used to back up EBS volumes, allowing you to restore your data in case of data loss or corruption. 
+Snapshots can be taken manually or automatically, and are stored in Amazon S3. 
+You can create multiple snapshots of a single EBS volume, and have them stored for up to 30 days. 
+After this period, they'll be automatically deleted. Snapshots can also be used to create new EBS volumes, 
+allowing you to quickly spin up new resources.
+
+EBS snapshots are stored in S3 bucket,not our S3 bucket stored in Aws s3 bucket
+
+############################################
+
+What is the difference between EBS backup and snapshot?
+Snapshot: EBS snapshots are specific to EBS volumes and do not cover backups of other AWS services. 
+Backup: AWS Backup supports a wide range of AWS services, allowing you to manage backups for different resources through a single service.
+#############################################
+
+Can you encrypt an unencrypted EBS volume?
+You cannot directly encrypt existing unencrypted volumes or snapshots. 
+However, you can create encrypted volumes or snapshots from unencrypted volumes or snapshots. 
+If you enable encryption by default, Amazon EBS automatically encrypts new volumes and snapshots using your default KMS key for EBS encryption.
+################################################
+We cant share un encripted shapshots to another acount
+##################################################
+DLM:
+
+Automating with AWS Data Lifecycle Manager (DLM) allows you to manage the lifecycle of your AWS resources, 
+including Amazon S3 buckets, Amazon Elastic File System (EFS) file systems, and Amazon Elastic Block Store (EBS) volumes. 
+DLM enables you to automate the creation, rotation, and deletion of these resources, 
+while also enforcing compliance and security policies. This helps you maintain scalability, reduce manual errors, and improve overall resource management efficiency. 
+By automating these tasks, you can focus on higher-level tasks and ensure that your AWS resources are properly configured and managed.
+
+Policies:
+
+With Amazon Data Lifecycle Manager, you create policies to define your backup creation and retention requirements. These policies typically specify the following:
+
+Policy type — Defines the type of backup resources that the policy manages (snapshots or EBS-backed AMIs).
+
+Target resources — Defines the type of resources that are targeted by the policy (instances or EBS volumes).
+
+Creation frequency — Defines how often the policy runs and creates snapshots or AMIs.
+
+Retention threshold — Defines how long the policy retains snapshots or AMIs after creation.
+
+Additional actions — Defines additional actions that the policy should perform, such as cross-Region copying, archiving, or resource tagging.
+
+Amazon Data Lifecycle Manager offers default policies and custom policies.
+
+Default policies:
+
+Default policies back up all volumes and instances in a Region that do not have recent backups. 
+You can optionally exclude volumes and instances by specifying exclusion parameters.
+
+Custom policies
+Custom policies target specific resources based on their assigned tags and support advanced features, such as fast snapshot restore, snapshot archiving, cross-account copying, and pre and post scripts. A custom policy can include up to 4 schedules, where each schedule can have its own creation frequency, retention threshold, and advanced feature configuration.
+
+Amazon Data Lifecycle Manager supports the following custom policies:
+
+EBS snapshot policy — Targets volumes or instances and automates the creation, retention, and deletion of EBS snapshots.
+
+EBS-backed AMI policy — Targets instances and automates the creation, retention, and deregistration of EBS-backed AMIs.
+
+Cross-account copy event policy — Automates cross-Region copy actions for snapshots that are shared with you.
+
+###########################################################
+what is your ec2 instance backup strategy in aws:
+
+By using Tag we can filter the instances automatically,AWS Backup supports both instance-level backups as AMIs and volume-level backups as separate snapshots: 
+For a full backup of all EBS volumes on the instance, create an AMI of the EC2 instance running on Linux or Windows. 
+When you want to roll back, use the launch instance wizard to create an instance.
+
+Automated Snapshots:
+AWS Backup by using DLM: Use AWS Backup to automate the backup of your EBS volumes. AWS Backup allows you to create backup plans that specify when and how frequently backups should be created.
+Create a Backup Plan: Define the frequency (e.g., daily, weekly) and retention period.
+Assign Resources: Attach your EBS volumes to the backup plan.
+Manual Snapshots:
+Create Snapshots Manually: If you prefer more control, you can manually create snapshots of your EBS volumes using the AWS Management Console or AWS CLI.
+Console: Go to EC2 > Volumes, select the volume, and choose Create Snapshot.
+
+##################################################################3
+
+
+
+
+
+
+EC2(Elastic Compute Cloud)
+
+EC2, short for Elastic Compute Cloud, is a service offered by Amazon Web Services (AWS) that provides scalable computing capacity in the cloud. 
+With EC2, you can launch virtual machines, known as instances, with a variety of operating systems, including Windows, Linux, and more.
+Each instance is a virtual server that can be configured to suit your specific needs, with options for CPU, memory, storage, and networking. 
+EC2 is a popular choice for deploying web applications, running batch processing jobs, and hosting relational databases, making it a versatile and powerful tool for cloud computing.
+
+ It allows you to launch and manage virtual servers, known as EC2 instances, with a variety of operating systems, CPU, memory, and storage configurations. 
+ EC2 offers secure, resizable compute capacity with the broadest choice of processor, storage, networking, OS, and purchase model, enabling you to configure capacity with minimal friction.
+
+It also allows the user to configure their instances as per their requirements i.e. allocate the RAM, ROM, and storage according to the need of the current task. 
+Even the user can dismantle the virtual device once its task is completed and it is no more required. 
+For providing, all these scalable resources AWS charges some bill amount at the end of every month, the bill amount is entirely dependent on your usage. 
+EC2 allows you to rent virtual computers. The provision of servers on AWS Cloud is one of the easiest ways in EC2.
+EC2 has resizable capacity. EC2 offers security, reliability, high performance, and cost-effective infrastructure so as to meet the demanding business needs.
+
+Pricing of AWS EC2 (Elastic Compute Cloud) Instance
+The pricing of AWS EC2-instance is mainly going to depend upon the type of instance you are going to choose. The following are the pricing charges on some of the EC2-Instances.
+
+1.On-Demand Instances: The On-Demand instance is like a pay-as-you-go model where you have to pay only for the time you are going to use if the instance is stopped then the billing for that instance will be stopped when it was in the running state then you are going to be charged.
+The billing will be done based on the time EC2-Instance is running.
+2.Reserved Instances: Reversed Instance is like you are going to give the commitment to the AWS by buying the instance for one year or more than one year by the requirement to your organization.
+Because you are giving one year of Commitment to the AWS they will discount the price on that instance.
+3.Spot Instances: You have to bid the instances and who will win the bid they are going to get the instance for use but you can’t save the data which is used in this type of instance.
+
+
+AWS EC2 Instance Types
+Different Amazon EC2 instance types are designed for certain activities. Consider the unique requirements of your workloads and applications when choosing an instance type. This might include needs for computing, memory, or storage.
+
+The AWS EC2 Instance types are as follow:
+
+General Purpose Instances
+Compute Optimized Instances
+Memory-Optimized Instances
+Storage Optimized Instances
+Accelerated Computing Instances
+
+1. General Purpose Instances
+It provides the balanced resources for a wide range of workloads.
+It is suitable for web servers, development environments, and small databases.
+Examples: T3, M5 instances.
+
+2. Compute Optimized Instances
+It provides high-performance processors for compute-intensive applications.
+It will be Ideal for high-performance web servers, scientific modeling, and batch processing.
+Examples: C5, C6g instances.
+
+3. Memory-Optimized Instances
+High memory-to-CPU ratios for large data sets.
+Perfect for in-memory databases, real-time big data analytics, and high-performance computing (HPC).
+Examples: R5, X1e instances.
+
+4. Storage Optimized Instances
+It provides optimized resource of instance for high, sequential read and write access to large data sets.
+Best for data warehousing, Hadoop, and distributed file systems.
+Examples: I3, D2 instances.
+
+5. Accelerated Computing Instances
+It facilitates with providing hardware accelerators or co-processors for graphics processing and parallel computations.
+It is ideal for machine learning, gaming, and 3D rendering.
+ex:P3,G4 instances
+
+
+
+
+
+To install and launch an EC2 instance in AWS, follow these steps:
+
+
+In the EC2 Dashboard, click on the Launch Instance button.
+Choose an Amazon Machine Image (AMI):
+
+Select an AMI from the list. Amazon Linux 2 AMI is commonly used for general purposes.
+Click the Select button next to the desired AMI.
+
+
+Choose an Instance Type:
+
+Select an instance type based on your requirements. The t2.micro instance type is eligible for the free tier.
+Click the Next: Configure Instance Details button.
+Configure Instance Details:
+
+Network setings and set vpc
+then set Firwall security groups(create security group)
+then Alow RDP traffic form it wil conect your instance
+then set source type and storage for windows 30 gib gp2
+
+
+Configure your instance settings. For most users, the default settings are sufficient.
+Click the Next: Add Storage button.
+Add Storage:
+
+Configure the storage for your instance. By default, 8 GB of General Purpose SSD (gp2) storage is allocated.
+Adjust the storage size if necessary, then click Next: Add Tags.
+Add Tags:
+
+Add any tags to your instance for easier identification. Tags are key-value pairs.
+Click the Next: Configure Security Group button.
+Configure Security Group:
+
+Create a new security group or select an existing one.
+Add rules to allow specific traffic to your instance (e.g., SSH for Linux instances on port 22).
+Click the Review and Launch button.
+Review and Launch:
+
+Review your instance configuration.
+Click the Launch button.
+Select a Key Pair:
+
+Select an existing key pair or create a new one.
+If creating a new key pair, download the .pem file and store it securely. You will need this file to connect to your instance.
+Confirm by checking the acknowledgment box and click Launch Instances.
+View Launch Status:
+
+Click the View Instances button to go to the Instances Dashboard.
+Your instance will be in a pending state initially. Once it is running, the state will change to running.
+Connect to Your EC2 Instance
+Locate the Public IP Address:
+
+In the EC2 Dashboard, select your running instance.
+Note the public IP address or the public DNS name of your instance.
+Connect via SSH (Linux/Mac) or PuTTY (Windows):
+
+For Linux/Mac:
+
+Open a terminal window.
+Navigate to the directory where your .pem file is located.
+Run the following SSH command:
+sh
+Copy code
+ssh -i "your-key-pair.pem" ec2-user@your-instance-public-ip
+Replace "your-key-pair.pem" with the path to your key pair file and your-instance-public-ip with the instance's public IP address.
+For Windows (using PuTTY):
+
+Download and install PuTTY.
+Use PuTTYgen to convert the .pem file to a .ppk file.
+Open PuTTY and enter the public IP address of your instance in the Host Name field.
+Under Connection -> SSH -> Auth, browse and select the .ppk file.
+Click Open to connect to your instance.
+Log in as ec2-user.
+
+Amazon Elastic File System (Amazon EFS) provides serverless,
+Amazon Elastic File System (EFS) is a service from Amazon Web Services (AWS) that makes it easy to set up and manage file systems in the cloud. 
+ It allows you to store and access files from multiple EC2 instances.
+EFS is designed for use with Amazon EC2 instances and is ideal for applications that require a shared file storage system across multiple instances,
+such as web servers, content management systems, and big data analytics workloads
+It allows multiple EC2 instances to access a single file system, making it ideal for applications that require shared access to files, 
+such as big data analytics, content collaboration, and web servers. 
+EFS provides a scalable and highly available NFS file system that can be easily mounted by instances in the same AWS Availability Zone.
+It supports both Linux and Windows operating systems
+Users can use EFS to manage large files, such as videos and images, and can also use it to store and share sensitive data.
+####################################################
+
+Amazon EFS supports the Network File System version 4 (NFSv4.1 and NFSv4.0) protocol,
+so the applications and tools that you use today work seamlessly with Amazon EFS. 
+Amazon EFS is accessible across most types of Amazon Web Services compute instances, including Amazon EC2, 
+Amazon ECS, Amazon EKS, AWS Lambda, and AWS Fargate.
+
+The service is designed to be highly scalable, highly available, and highly durable
+
+
+
+Elastic File System (EFS) is a cloud-based file system offered by Amazon Web Services (AWS) that provides scalable and durable storage for applications. 
+Here are some real-life examples of EFS usage:
+
+1.Media companies using EFS to store vast amounts of video and image files, and stream them to users.
+2.Gaming companies leveraging EFS to store game data, enabling fast loading times and seamless gameplay.
+3.Financial institutions utilizing EFS for secure storage of sensitive financial data and transaction records.
+4.Software development teams using EFS as a central repository for code, allowing for easy collaboration and version control.
+5.AWS EFS is well-suited for data analytics and big data processing use cases. 
+ It offers high levels of Input/output operations per second (IOPS) and aggregate throughput, which are important for applications that require high-speed data access.
+
+#######################################
+In windows:
+
+FSX (FastSite) is a fully managed, cloud-based service offered by AWS (Amazon Web Services) that allows users to create and manage 
+virtual machines (VMs) in the cloud. With FSX, you can easily migrate your on-premises file systems to the cloud, 
+providing a seamless experience for your users. FSX supports various file systems, including Windows File Server,
+Network File System (NFS), and Server Message Block (SMB). It also provides features like high availability, disaster recovery, 
+and scalability, making it an ideal solution for businesses that require a reliable and secure file storage solution.
+
+#####################################
+Step-by-Step Guide to Scheduled Scaling
+Log in to the AWS Management Console:
+
+Go to the AWS Management Console.
+Sign in with your AWS credentials.
+Navigate to the Auto Scaling Groups:
+
+In the services menu, select EC2.
+On the left-hand side, under Auto Scaling, click on Auto Scaling Groups.
+Select Your Auto Scaling Group:
+
+Choose the Auto Scaling group you want to set up scheduled scaling for.
+Create a Scheduled Action:
+
+With your Auto Scaling group selected, click on the Scheduled Actions tab.
+Click Create scheduled action.
+Configure the Scheduled Action:
+
+Name: Enter a name for your scheduled action.
+Recurrence: Specify the schedule using cron expressions or the frequency (e.g., every day, every week).
+Start Time: Set the time when the scaling action should start.
+End Time (optional): Set the time when the scaling action should end.
+Min Size: Set the minimum number of instances for the Auto Scaling group during the scheduled time.
+Max Size: Set the maximum number of instances for the Auto Scaling group during the scheduled time.
+Desired Capacity: Set the desired number of instances for the Auto Scaling group during the scheduled time.
+Save the Scheduled Action:
+
+Once all fields are configured, click Create to save the scheduled action.
+Example: Scaling Up During Business Hours
+Let's say you want to scale up your instances during business hours (9 AM to 5 PM) every weekday.
+
+Name: ScaleUpBusinessHours
+Recurrence: 0 9 * * 1-5 (Every weekday at 9 AM)
+Min Size: 4
+Max Size: 10
+Desired Capacity: 6
+For scaling down outside business hours:
+
+Name: ScaleDownOffHours
+Recurrence: 0 17 * * 1-5 (Every weekday at 5 PM)
+Min Size: 1
+Max Size: 2
+Desired Capacity: 1
+Verify Scheduled Actions
+After creating the scheduled actions, ensure they are listed under the Scheduled Actions tab of your Auto Scaling group.
+Check that the settings are correct and reflect your scaling needs.
+Using AWS CLI for Scheduled Scaling
+You can also create scheduled actions using the AWS CLI. Here’s an example command to create a scheduled action:
+
+sh
+Copy code
+aws autoscaling put-scheduled-update-group-action \
+    --auto-scaling-group-name my-asg \
+    --scheduled-action-name ScaleUpBusinessHours \
+    --recurrence "0 9 * * 1-5" \
+    --min-size 4 \
+    --max-size 10 \
+    --desired-capacity 6
+To scale down:
+
+sh
+Copy code
+aws autoscaling put-scheduled-update-group-action \
+    --auto-scaling-group-name my-asg \
+    --scheduled-action-name ScaleDownOffHours \
+    --recurrence "0 17 * * 1-5" \
+    --min-size 1 \
+    --max-size 2 \
+    --desired-capacity 1
+Additional Tips
+Monitoring: Use Amazon CloudWatch to monitor the performance of your Auto Scaling group and ensure that your scheduled actions are working as expected.
+Adjustments: Review and adjust your scheduled actions periodically based on the actual usage patterns and business needs.
+Notifications: Set up notifications to alert you about scaling activities using Amazon SNS.
+Elastic Beanstalk is a service for deploying and scaling web applications and services. 
+Upload your code and Elastic Beanstalk automatically handles the deployment—from capacity provisioning, load balancing, and auto scaling 
+to application health monitoring.
+Elastic Beanstalk is a Platform as a Service (PaaS) that simplifies the deployment and scaling of applications.
+
+Elastic Beanstalk supports applications developed in Go, Java, .NET, Node.js, PHP, Python, and Ruby. 
+When you deploy your application, Elastic Beanstalk builds the selected supported platform version and provisions one or more AWS resources, 
+such as Amazon EC2 instances, to run your application
+
+To use Elastic Beanstalk, you create an application, upload an application version in the form of an application source bundle (for example, a Java .war file) to Elastic Beanstalk, 
+and then provide some information about the application. Elastic Beanstalk automatically launches an environment and creates and configures the AWS resources needed to run your code. 
+After your environment is launched, you can then manage your environment and deploy new application versions. 
+
+AWS Elastic Beanstalk simplifies the process of deploying, managing, and scaling applications in the cloud. 
+By abstracting much of the infrastructure management, it allows developers to focus on writing code and delivering features.
+Whether you’re deploying a simple web app or a complex microservices architecture, Elastic Beanstalk provides the flexibility and 
+ease of use to get your applications up and running quickly.
+
+#################################################################
+
+1. Create an Application
+Log in to the AWS Management Console and navigate to Elastic Beanstalk.
+Click on "Create Application".
+Provide application details:
+Application name: Enter a unique name for your application.
+Description: Optionally, provide a description of your application.
+2. Configure the Environment
+Select the platform:
+
+Choose the platform that matches your application (e.g., Node.js, Python, Java, etc.).
+Select the platform branch and version.
+Configure more options:
+
+You can either go with the default settings or customize the environment (e.g., instance type, database configuration, VPC settings).
+3. Deploy Your Application
+Upload the application code:
+
+Click on "Choose file" and upload your application code (ZIP file, WAR file, etc.).
+Alternatively, you can connect your application to a GitHub repository for direct deployment.
+Review and launch:
+
+Review your configuration settings.
+Click on "Create environment" to launch the environment.
+4. Monitor and Manage the Application
+Dashboard:
+
+The Elastic Beanstalk dashboard provides an overview of your application's health, recent events, and other key metrics.
+Logs and Monitoring:
+
+You can view logs and monitor application performance through the CloudWatch metrics integrated into Elastic Beanstalk.
+Environment Management:
+
+Manage environment settings, perform rolling updates, and apply configuration changes as needed.
+5. Scaling and Load Balancing
+Auto-scaling:
+
+Elastic Beanstalk automatically scales your application based on demand.
+You can configure auto-scaling rules to adjust the number of instances.
+Load Balancing:
+
+Elastic Beanstalk includes an Elastic Load Balancer (ELB) to distribute incoming traffic across instances.
+Example: Deploying a Node.js Application
+Here’s a step-by-step guide to deploying a Node.js application using AWS Elastic Beanstalk:
+
+Prepare Your Node.js Application:
+
+Ensure your application is ready for deployment (e.g., package.json is correctly configured).
+Zip your application files.
+Create an Application and Environment:
+
+Follow the steps above to create a new application.
+Choose the Node.js platform.
+Deploy the Application:
+
+Upload your zipped application file.
+Click "Create environment" and wait for the environment to be set up.
+Access Your Application:
+
+Once the environment is ready, Elastic Beanstalk will provide a URL to access your application.
+You can now access and test your application.
+CLI Deployment with EB CLI
+The Elastic Beanstalk Command Line Interface (EB CLI) allows you to manage Elastic Beanstalk applications from the terminal.
+
+Install the EB CLI:
+
+sh
+Copy code
+pip install awsebcli
+Initialize Your Application:
+
+sh
+Copy code
+eb init
+Create an Environment and Deploy:
+
+sh
+Copy code
+eb create my-environment
+eb deploy
+View Environment Status:
+
+sh
+Copy code
+eb status
+Golden AMI or Custom AMI(Amazon machine Image):
+
+In Amazon Web Services (AWS), a Custom AMI (also known as a Golden AMI) is an Amazon Machine Image that is custom-built by a user. 
+It allows users to create a copy of an existing Amazon AMI and modify it to suit their specific needs, such as installing and configuring specific software or patches. 
+Custom AMIs can be used to launch multiple instances with the same configuration, making it easier to manage and maintain a consistent environment across multiple machines. 
+This provides more flexibility and control over the instances launched in AWS.
+
+
+
+Create Golden AMI:
+Create the AMI
+Go to the EC2 Dashboard.
+Select Instances.
+Choose Your Instance.
+Create Image:
+Actions > Image > Create Image.
+Provide a name and description for the image.
+Choose whether to include any additional volumes.
+Click Create Image.
+5. Use the Golden AMI
+Launch New Instances:
+Navigate to the AMIs section in the EC2 Dashboard.
+Select your newly created AMI.
+Click Launch to start new instances using this Golden AMI.
+Configure the instance as needed (instance type, VPC, subnet, security groups, etc.).
+Example Script to Automate AMI Creation (AWS CLI)
+You can automate the creation of a Golden AMI using AWS CLI and a script:
+
+sh
+Copy code
+#!/bin/bash
+
+# Variables
+INSTANCE_ID="i-xxxxxxxx"
+IMAGE_NAME="Golden_AMI_$(date +%Y-%m-%d)"
+DESCRIPTION="Golden AMI with standard configuration"
+
+# Stop the instance (optional)
+aws ec2 stop-instances --instance-ids $INSTANCE_ID
+aws ec2 wait instance-stopped --instance-ids $INSTANCE_ID
+
+# Create the AMI
+IMAGE_ID=$(aws ec2 create-image --instance-id $INSTANCE_ID --name $IMAGE_NAME --description "$DESCRIPTION" --no-reboot --output text)
+
+# Wait for the AMI to be available
+aws ec2 wait image-available --image-ids $IMAGE_ID
+
+echo "AMI created with ID: $IMAGE_ID"
+
+# Optionally, restart the instance
+aws ec2 start-instances --instance-ids $INSTANCE_ID
+Additional Tips
+Version Control: Maintain version control for your Golden AMIs by using a naming convention that includes version numbers or dates.
+Security: Ensure your AMI adheres to your organization’s security policies and best practices.
+Documentation: Document the process and configurations included in your Golden AMI for future reference and compliance.
+IAM(Identity and Access Management)
+#######################
+AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. 
+It enables you to manage users and groups, and their corresponding access to specific AWS resources and services.
+With IAM, you can create and manage IAM users, roles, and groups, as well as set permissions for each entity. 
+This helps to ensure that each entity has the necessary permissions to access the resources they need to perform their job, 
+while preventing unauthorized access and ensuring the security of your AWS resources.
+
+Identity and access management is for making sure that only the right people can access an organization's data and resources. 
+It's a cybersecurity practice that enables IT administrators to restrict access to organizational resources so that only the people who need access have access.
+
+IAM provides a real-life example of how IAM is used in AWS to manage user access and permissions. 
+It explains how IAM allows you to control who can access your AWS resources and what actions they can perform, 
+ensuring the security of your AWS environment.
+IAM in AWS is a powerful tool for managing access to your AWS resources securely and efficiently. 
+#######################
+IAM Policy:
+
+An IAM policy in AWS defines the permissions that a user, group, or role has to use Amazon Web Services (AWS) resources.
+A policy is a document that specifies the permissions, and it's used to grant, deny, or revoke access to resources. 
+IAM policies are written in JSON (JavaScript Object Notation) and consist of a series of statements that define the permissions.
+Each statement specifies the actions, resources, and conditions that determine whether the permission is granted
+#########################
+KMS stands for Key Management Service, a fully managed service that enables you to create, use, and rotate cryptographic keys for encrypting sensitive data,
+AWS Key Management Service (KMS) is a managed service that helps you create, manage, and control cryptographic keys to encrypt and secure data across AWS services and applications. 
+It integrates with various AWS services (e.g., Amazon S3, EBS, RDS, DynamoDB)
+such as customer data in AWS databases, storage, or other applications. 
+It allows you to centrally manage and control access to encryption keys, ensuring consistent security and compliance across your organization. 
+With KMS, you can encrypt and decrypt data at rest and in transit, and integrate with other AWS services, such as S3, DynamoDB, and Lambda, to provide secure data encryption and decryption.
+A query about AWS and lambda! Lambda is a serverless computing service offered by Amazon Web Services (AWS), allowing developers to run code without provisioning or managing servers.
+It's a highly scalable and flexible solution for handling spikes in application traffic or variable workload. 
+You can write code in various languages, including Node.js, Python, and Java, and AWS Lambda will automatically manage the infrastructure, 
+scaling your code up or down as needed. With Lambda, you only pay for the compute time consumed by your code, making it a cost-effective solution for many applications.
+Its serverless nature allows for rapid development and deployment.
+You are charged based on the number of requests for your functions and the time your code executes, making it cost-effective for varying workloads.
+Automatically cleaning up unused resources to reduce costs and manage environment hygiene.
+
+
+#############################################
+
+AWS Lambda is a serverless compute service that plays a significant role in DevOps. 
+It's often used in deployment pipelines to automate tasks, such as building, testing, and deploying applications. 
+In a DevOps scenario, Lambda functions can be triggered by code changes, enabling automated continuous integration and continuous delivery (CI/CD) workflows. 
+This removes the need for infrastructure provisioning and scaling, allowing developers to focus on writing code rather than managing servers.
+Additionally, Lambda's automated scaling and cost-effective pricing make it an attractive choice for handling high-traffic and variable workloads.
+
+
+#####################################################
+
+Devops:
+
+Serverless architecture is a software design approach where developers can build and manage applications without managing the underlying architecture.
+Serverless applications still run on servers, but the cloud service provider is responsible for provisioning, managing, and scaling all the cloud infrastructure
+
+Continuous Integration and Continuous Deployment (CI/CD):
+
+Code Commit and Build Triggers: Running tests and deployments when code is committed to a repository.
+Deployments: Triggering deployment workflows in AWS CodePipeline or integrating with other CI/CD tools.
+Monitoring and Logging:
+
+Log Processing: Analyzing and transforming logs from AWS CloudWatch or other logging services.
+Alerts: Triggering alerts and notifications based on specific log events or metrics.
+Security and Compliance:
+
+Automated Security Checks: Running security compliance scripts and checks periodically or on specific events.
+Responding to Threats: Automatically responding to security incidents, such as shutting down compromised instances.
+Event-Driven Automation:
+
+Event Triggers: Automating workflows in response to AWS CloudWatch Events, S3 bucket events, DynamoDB streams, etc.
+Service Integrations: Integrating various AWS services seamlessly using event-driven functions.
+Infrastructure as Code (IaC):
+
+CloudFormation Custom Resources: Extending AWS CloudFormation capabilities by creating custom resources.
+Terraform Automation: Using Lambda functions to perform specific tasks in Terraform workflows.
+Testing and Validation:
+
+Automated Testing: Running unit, integration, and end-to-end tests.
+Validation: Validating configuration changes or deployments automatically.
+ls -  list directories and files 
+List all entries, including hidden files (those starting with a dot)
+         ls -a
+ print sizes in human-readable format (e.g., KB, MB).
+          ls -lh
+Use a long listing format, showing detailed information about each file or directory.
+          ls -l
+to see permission of each file
+         ls -al
+The ls -lrt command is a combination of options used with ls to list files and directories in a specific format:
+
+-l: Long listing format, which provides detailed information about each file or directory, including permissions, number of links, owner, group, size, and modification date.
+
+-r: Reverse the order of the sort, so that the output is displayed in reverse order.
+
+-h: Human-readable. Prints file sizes in a human-readable format (e.g., KB, MB, GB) instead of bytes.
+
+-t: Sort by modification time, with the most recently modified files appearing first.
+                ls -lrt
+
+pwd - display present working directory command in Linux
+
+cd - Linux command to change to directories
+
+mkdir - Command used to create directories in linux
+
+rm-To remove files or directories
+      rm file.txt
+      rmdir directory name
+      rm -r dirname --->delete dir and its files or subdirs
+
+cp- copy our files to another folders
+    cp file1.txt path(/root)
+
+mv --->move or rename to our files
+    mv file1.txt path
+    mv file1.txt file2.txt -->rename
+
+touch --->it will create new file
+
+chmod:
+
+The chmod command in Linux is used to change the permissions of files and directories. 
+Permissions determine who can read, write, or execute a file or directory.
+
+      chmod 777 file.txt ---> every one can access
+      chmod 755 file.txt --->Set read, write, and execute for the owner; read and execute for the group; and read only for others:
+      chmod u+x file.txt --->Give the owner execute permission
+           Each digit is the sum of the permissions:
+
+7 (4+2+1) = rwx
+6 (4+2) = rw-
+5 (4+1) = r-x
+4 (4) = r--
+3 (2+1) = -wx
+2 (2) = -w-
+1 (1) = --x
+0 (0) = ---
+
+
+he chown command in Linux is used to change the ownership of files and directories. 
+This command allows you to modify both the user (owner) and the group associated with a file or directory.
+       chown username file.txt--->change owner of a file
+       chown username /path/to/directory---> change owner of a dir
+
+
+
+ln-used to combine two files
+
+clear-clear the display
+
+cat -display the file content,it will append the data 
+ cat >> sai.txt then we can add data to existing file then we should use ctrl+D to save and exit file
+
+echo-print the text
+
+less-used to view (but not modify) the contents of a file or output from another command.
+
+man-this command gives detailed documentation about all the commands in linux
+
+uname:displays basic info about os
+whoami-display current username(directory)
+tar- It bundles multiple files into a single file without compressing them by default.
+tar -cvf archive.tar file1 file2 saidir/
+-c: Create a new archive.
+-v: Verbose mode; list files processed.
+-f: Specify the archive file name.
+
+tar -xvf archive.tar --extract files from archive,The extract operation refers to the process of unpacking or decompressing files from an archive. 
+zip-
+in Linux is used to create and manage ZIP archives. 
+ZIP archives are widely used for compressing and bundling multiple files and directories into a single file. 
+so we can easy to store, share, and transfer groups of files.
+
+zip archive.zip file1
+
+grep-search for a string irrespective of case sensitive
+     grep -i sai sai.txt
+    -i --ignore case sensive 
+
+head -returns specified number of lines from the top 
+       head -n 20 file.txt
+
+tail-returns specified number of lines from the below
+      tail -n 20 file.txt
+
+The diff command in Unix/Linux is used to compare the contents of two files line by line. 
+It outputs the differences between the files, which can help identify changes, additions, or deletions. 
+The diff command is commonly used in software development, configuration management, and text processing.
+           diff -u file1.txt file2.txt
+
+The cmp command in Unix/Linux is used to compare two files byte by byte. 
+It is typically used to determine whether two files are identical. 
+Unlike the diff command, which focuses on line-by-line textual differences, cmp is lower-level and reports differences starting from the first mismatched byte.
+         cmp [options] file1 file2
+
+The comm command in Unix/Linux is used to compare two sorted files line by line.
+It outputs three columns of information, representing lines unique to each file and lines common to both files.
+This command is useful when working with sorted lists and needing to find differences or similarities between them.
+           comm [options] file1 file2
+
+The sort command in Unix/Linux is used to sort lines of text files or input data.
+It arranges the lines in a specified order, typically alphabetically or numerically,
+and can handle various sorting requirements based on the options provided.
+            sort -n num.txt ----> asc order to numbers
+            sort -r file.txt ----> reverse the order
+
+The export command in Unix/Linux is used to set environment variables or make shell variables available to subprocesses.
+When a variable is "exported," it becomes part of the environment for child processes spawned from the shell,
+making it accessible to any program or script that runs in that shell session.
+         export my_var="sai"
+         echo $my_var -->we can see output here
+
+The unzip command in Unix/Linux is used to extract the contents of a ZIP archive. 
+ZIP files are a popular format for compressing and packaging files, and the unzip command allows you to access the files inside.
+         unzip archive.zip
+
+The ssh command in Unix/Linux is used to securely connect to a remote system or server over a network using the Secure Shell (SSH) protocol. 
+It allows you to log into another machine, execute commands remotely, transfer files, and even create secure tunnels for other types of network traffic.
+       ssh username@192.168.1.10
+To connect to a remote server with the username username at the IP address 192.168.1.10:
+
+The scp (Secure Copy) command in Linux is used to securely transfer files
+and directories between a local host and a remote host, or between two remote hosts.
+It uses SSH (Secure Shell) for data transfer and provides the same level of security and authentication as SSH.
+       scp file.txt username@remotehost:path
+
+The service command in Unix/Linux is used to manage services (also known as daemons) on the system.
+It provides a way to start, stop, restart, and check the status of services. 
+The service command is commonly used on older init-based systems like SysVinit, 
+but it's also supported on systems using the newer systemd init system for compatibility.
+
+     service serviceName action
+
+On newer systems that use systemd, the service command is often replaced by systemctl.
+While service can still be used for compatibility, systemctl is more powerful and provides more detailed control over services.
+
+    sudo systemctl start nginx
+
+journalctl ----> used to view logs
+       journalctl --since "YYYY-MM-DD HH:MM:SS" --until "YYYY-MM-DD HH:MM:SS"
+dig ---> used to get DNS server info
+     dig www.google.com
+
+nslookup --->used to get DNS servor info in short form
+     nslookup www.google.com
+
+curl ---> used to download the files from server,curl is used in secure websites
+           curl -I https://example.com
+           curl -O https://example.com/file.txt---> download a file
+
+-o filename: Write the output to a file instead of standard output.
+-O: Save the file with the same name as in the URL.
+-L: Follow redirects.
+-I: Fetch only the HTTP headers.
+-X: Specify a custom request method (e.g., GET, POST, PUT, DELETE).
+-d data: Send data in a POST request.
+-H: Add a custom header to the request.
+-u username:password: Use basic authentication.
+-k: Allow insecure connections (ignore SSL certificate errors).
+-F: Submit a form with multipart/form-data.
+-s: Silent mode (no progress bar or error messages).
+--data-urlencode: URL-encode the data before sending in a POST request.
+
+wget ---> is used in all websites
+      wget -r https://example.com/ --->download entire website recursively
+      wget  https://example.com/file.txt
+
+
+
+The sed (stream editor) command in Linux is a versatile tool used for parsing and transforming text in a file or input stream. 
+It allows you to perform a wide range of text manipulation tasks, such as finding and replacing text, deleting lines, and inserting or appending text
+              sed s/oldtext/newtext filename
+              sed '3d' filename ---> delete 3rd line in the file
+
+chown ---> It is used to change file/directory ownership
+           sudo chown newowner oldfile
+            sudo chown root sai.txt
+
+df --->disk free
+
+du ---> disk usage
+
+traceroute/ping -----> It is a network troubleshooting /This is useful for diagnosing network issues, checking connectivity, and understanding the route data takes across the network
+
+The mount command in Linux is used to attach a filesystem to a specified directory,
+making the filesystem accessible within the directory tree. 
+It’s commonly used to mount storage devices, network filesystems, and other types of filesystems. 
+           mount filepath attach dir
+           mount /root/sourcedir/file /root 
+           umount /mnt --->detach file system
+
+
+To list all current environment variables
+       env
+Run a Command with Modified Environment Variables
+       env my_var="sai"
+Used to set or modify environment variables 
+       export my_var="sai
+to remove an environment variable
+
+      unset my_var
+uniq ---> it will give unique names inthe files
+     sort sai.txt | uniq
+
+The find command in Linux is a powerful tool used to search for files and directories within a directory hierarchy.
+It allows you to locate files based on various criteria like name, type, size, modification time, permissions, and more. 
+          find /var/log -name "*.log" ---> to find log files
+          find /root -name sai.txt ---> to find text files
+          find path -name file/dir/logname
+
+The awk command in Linux is a powerful text processing tool used to manipulate and analyze text files or streams of data.
+It allows you to perform tasks such as searching, extracting, formatting, and reporting data. 
+awk is particularly well-suited for working with structured text data like CSV files, logs.
+           awk '/error/ {print}' sai.txt ---> to print error word lines in a file
+           awk '{print $1}' sai.txt  ----> to print first word in every line
+           awk '{print $1,$2}' sai.txt ---> to print first and second line in a file
+           awk -F ',' '{print $1,$2}' sai.txt ---> it remove , and print values
+
+ps ---> it will show you running processess with thier PIDs
+     ps ---> show you all processess
+    pgrep process_name ---> find a process
+
+
+kill ---> by using PID we can terminate processess
+      kill -9 PID--> forcefully terminate
+      kill -STOP PID ---> stop a process
+      kill -CONT PID ---> resume
+    
+
+killall firefox ---> terminate all instance in a process
+
+killall -u username process_name --->terminate process with specific user
+     
+kill -l ---> display all signals
+ps -ef ---> all processes with more info
+The apt command is a command-line utility in Debian-based Linux distributions, such as Ubuntu, for managing software packages,installing softwares
+       sudo apt install package_name
+       sudo apt remove package_name ---> remove package 
+       sudo apt update --->update packages
+
+The sudo command in Linux stands for "superuser do." 
+It allows a permitted user to execute a command as the superuser (root) or another user, as specified by the security policy.
+The sudo command is essential for performing administrative tasks that require elevated privileges, such as installing software, modifying system files, or managing user accounts.
+          sudo su --> switch to current user to root
+
+The yum command is a package management tool used in Red Hat-based Linux distributions such as CentOS, Fedora, and RHEL (Red Hat Enterprise Linux).
+It stands for "Yellowdog Updater, Modified" and is used to manage software packages, including installing, updating, and removing packages. 
+yum resolves dependencies automatically, making it a powerful and user-friendly tool for managing software on these systems.
+        sudo yum install package_name
+
+The rpm command is a low-level package management tool used in Red Hat-based Linux distributions, such as CentOS, Fedora, and RHEL (Red Hat Enterprise Linux).
+It stands for "Red Hat Package Manager" and is used for installing, removing, querying, and verifying RPM (Red Hat Package Manager) packages. 
+Unlike yum or dnf, rpm does not handle dependencies automatically, so it is often used for 
+managing individual packages or performing operations not directly related to package dependencies.
+        sudo rpm -i package_name.rpm
+
+The whereis command in Linux is used to locate the binary, source, and manual page files for a command.
+It helps you quickly find where a command is installed and related files on the system.
+      whereis ls
+      whereis -b gcc ---> show binary executable files
+
+The whatis command in Linux provides a brief description of a command or program.
+      whatis ls
+      whatis root --> describe what type of file or dir
+
+The top command in Linux provides a dynamic, real-time view of the system's processes and resource usage.
+It displays information about CPU and memory usage, running processes, and other system metrics, 
+allowing users to monitor and manage system performance.
+    top
+
+passwd - Create or update passwords for existing users
+        passwd
+
+The useradd command is used to create a new user account on a Linux system.
+        sudo useradd -m username
+
+The usermod command is used to modify an existing user account.
+        sudo usermod -l newname oldname --->change username
+        sudo usermod -aG group1,group2 username ---> change the users primary group
+
+The set -ex command is used in Unix-like operating systems (such as Linux) within shell scripts or command-line interfaces (such as Bash) 
+to modify the behavior of the script's execution.
+
+set -ex
+Debugging: It's particularly useful when debugging complex shell scripts, as it helps to trace the execution flow and quickly identify where the script might be failing.
+CI/CD Pipelines: In CI/CD environments, using set -ex can help ensure that any failure in the pipeline is caught early and that the exact point of failure is clear.
+
+The nslookup command in Linux is a network utility that allows users to query and retrieve information from Domain Name System (DNS) servers
+nsllokup www.google.com
+
+dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers. 
+It is basically used by network administrators. It is used for verifying and troubleshooting DNS problems and to perform DNS lookups.
+
+    
+
+
+
+
+A load balancer in AWS is a service that distributes incoming traffic across multiple targets, such as EC2 instances, containers, or lambda functions.
+This helps to improve the reliability, scalability, and performance of your application by ensuring that no single instance or resource is overwhelmed with traffic. 
+AWS offers three types of load balancers: Application Load Balancer (ALB), Network Load Balancer (NLB), and Classic Load Balancer (CLB). 
+Each type is designed for specific use cases and can be used to route traffic to different types of targets.
+
+A load balancer serves as the single point of contact for clients.
+The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. 
+This increases the availability of your application. You add one or more listeners to your load balancer.
+
+A load balancer in AWS is a service that helps distribute traffic across multiple servers to improve the responsiveness and availability of a website or application.
+It ensures that no single server becomes overwhelmed, reducing the risk of downtime and errors. 
+AWS offers two types of load balancers: Application Load Balancer and Network Load Balancer. 
+Application Load Balancer is designed for Layer 7 traffic and is suitable for web applications, 
+while Network Load Balancer is designed for Layer 4 traffic and is suitable for large-scale applications. 
+Both load balancers can be deployed in various regions and Availability Zones.
+
+######################################################################################
+
+Application Load Balancer (ALB):
+
+Best suited for HTTP/HTTPS traffic.
+Operates at Layer 7 (Application Layer) of the OSI model.
+Supports advanced routing features like URL-based routing, host-based routing, and path-based routing.
+Ideal for microservices and container-based applications, allowing routing to different services based on URL paths or domain names.
+Network Load Balancer (NLB):
+
+Best suited for TCP, UDP, and TLS traffic.
+Operates at Layer 4 (Transport Layer) of the OSI model.
+Handles millions of requests per second while maintaining ultra-low latencies.
+Suitable for applications requiring extreme performance and static IP addresses.
+#################################################################################
+Load balancers improve application performance by increasing response time and reducing network latency.
+
+Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, 
+containers, and IP addresses, in one or more Availability Zones.
+
+#####################################################
+
+Top 4 open-source load balancers:
+
+Traefik. Traefik is a popular open-source edge router and load balancer that makes it easy to expose applications and services running in a network to the internet. ...
+Nginx. NGINX is a popular open-source web server and reverse proxy that can also be used as a load balancer. ...
+Seesaw. ...
+HAProxy.
+
+########################################################
+
+
+Steps to Create an Application Load Balancer (ALB)
+1. Log in to the AWS Management Console
+Open the AWS Management Console.
+
+2. Navigate to the EC2 Dashboard
+In the AWS Management Console, type "EC2" in the search bar and select EC2.
+
+3. Open the Load Balancers Page
+In the left-hand navigation pane, under Load Balancing, select Load Balancers.
+
+4. Create a New Load Balancer
+Click the Create Load Balancer button.
+
+5. Select Load Balancer Type
+Choose Application Load Balancer and click Create.
+
+6. Configure Basic Settings
+Name: Enter a name for your load balancer.
+Scheme: Choose whether you want an Internet-facing or internal load balancer.
+IP address type: Select either IPv4 or Dualstack (IPv4 and IPv6).
+
+7. Configure Listeners and Availability Zones
+Listeners: By default, a listener on port 80 (HTTP) is created. You can add an HTTPS listener if needed.
+Availability Zones: Select the VPC and the Availability Zones where you want the load balancer to route traffic.
+
+8. Configure Security Settings
+If you added an HTTPS listener, you need to select an SSL/TLS certificate. You can use AWS Certificate Manager (ACM) to manage your certificates.
+
+9. Configure Security Groups
+Select an existing security group or create a new one to control traffic to the load balancer.
+
+10. Configure Routing
+Target group: Create a new target group or select an existing one.
+Target group name: Enter a name for the target group.
+Protocol: Choose HTTP or HTTPS.
+Target type: Choose between instance, IP, or Lambda function.
+Health checks: Configure health check settings to monitor the health of your targets.
+
+11. Register Targets
+Add the instances you want to include in the target group.
+
+12. Review and Create
+Review your settings and click Create.
+
+13. Test the Load Balancer
+After the load balancer is created, note the DNS name. You can use this DNS name to test the load balancer by accessing it in your web browser.
+Additional Considerations
+Auto Scaling: Consider setting up an Auto Scaling group to automatically add or remove instances based on demand.
+HTTPS Termination: If you are using HTTPS, ensure that you properly configure SSL termination and that your certificates are correctly installed.
+Monitoring: Use Amazon CloudWatch to monitor the health and performance of your load balancer.
+Using AWS CLI or SDKs
+If you prefer to use the AWS CLI or SDKs (e.g., Boto3 for Python), you can automate the creation of load balancers and related resources by writing scripts.
+
+
+What is the main function of NIC card?
+A NIC provides a computer with a dedicated, full-time connection to a network. 
+It implements the physical layer circuitry necessary for communicating with a data link layer standard, such as Ethernet or Wi-Fi.
+Each card represents a device and can prepare, transmit and control the flow of data on the network.
+
+Amazon Relational Database Service (RDS) is a managed relational database service offered by Amazon Web Services (AWS).
+RDS supports various database engines, 
+including MySQL, PostgreSQL, Oracle, SQL Server, and Amazon Aurora. 
+With RDS, you can create, scale, and manage your databases in the cloud, without worrying about provisioning or patching.
+You can choose from different database instance sizes and performance options to suit your application's needs. 
+Additionally, RDS provides features like backup and restore, read replicas, and automated patching to ensure high availability and data consistency.
+With RDS, users can create a database instance with a choice of instance type, storage, and availability zone. 
+RDS provides features such as automatic backups, patching, and monitoring, freeing up users to focus on application development and maintenance
+
+Microservices: RDS makes it easier to deploy databases for individual microservices, with each microservice getting a dedicated database.
+
+To create an RDS instance in AWS, you can follow these steps through the AWS Management Console:
+
+Step 1: Go to the RDS Console
+Sign in to your AWS Management Console.
+Navigate to the RDS service by typing "RDS" in the search bar or selecting it from the "Services" menu.
+Step 2: Choose a Database Creation Option
+Click on Create Database.
+Choose a database creation method:
+Standard Create: Allows more customization of database configurations.
+Easy Create: Provides simplified settings for quick setup.
+Step 3: Select the Database Engine
+Choose a database engine (e.g., MySQL, PostgreSQL, Amazon Aurora, MariaDB, Oracle, or SQL Server).
+Select the engine version you want to use.
+Step 4: Choose a Template
+Select a template based on your requirements:
+Production: Sets Multi-AZ deployment and automatic backups.
+Dev/Test: Lower-cost, single-AZ configurations with basic backup options.
+Free Tier: Limited configurations for free-tier eligible accounts.
+Step 5: Configure Database Settings
+DB Instance Class: Choose the instance class for CPU and memory based on your workload (e.g., db.t3.micro for small loads or db.m5.large for larger workloads).
+
+Storage:
+
+Specify the storage type (General Purpose SSD, Provisioned IOPS SSD, or Magnetic).
+Set the allocated storage (in GB).
+Optionally enable Storage Auto Scaling to increase storage size automatically if needed.
+DB Instance Identifier: Provide a unique name for your RDS instance.
+
+Master Username and Password:
+
+Specify a master username.
+Set a strong password and confirm it.
+Step 6: Configure Advanced Settings
+VPC and Subnet: Choose a VPC and subnet group for network configuration.
+
+Public Access: Choose whether to allow public access to the database instance.
+
+VPC Security Groups: Select or create a security group to control access to the instance.
+
+Availability Zone:
+
+If you selected Multi-AZ, AWS will automatically create a secondary instance in another Availability Zone for failover.
+Database Options:
+
+Database name: Provide an optional initial database name.
+Port: Specify the database port (e.g., 3306 for MySQL).
+Backup:
+
+Enable automated backups and specify the retention period.
+Choose a backup window for when backups should occur.
+Monitoring:
+
+Enable enhanced monitoring for more detailed metrics.
+Set up Amazon CloudWatch alarms if needed.
+Maintenance:
+
+Enable auto minor version upgrade for automatic patching.
+Set a preferred maintenance window for updates.
+Step 7: Review and Launch
+Review all the configurations.
+Click on Create Database to launch the RDS instance.
+AWS will now create your RDS instance, which may take a few minutes. Once it's ready, you’ll see it listed in your RDS dashboard.
+
+Step 8: Connect to the Database
+Go to your RDS dashboard and select your database instance.
+Under Connectivity & security, copy the endpoint.
+Use the endpoint, along with the database port, username, and password, to connect to the database from your application or database client.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################
+kms keys in aws:
+
+AWS Key Management Service (KMS) is a managed service that enables you to create, use, and manage keys and fleets of keys for encryption and decryption. 
+You can create unique DNS names for your KMS keys, which allows you to use them to encrypt and decrypt data in your applications. 
+Keys can be created using the AWS Management Console, AWS CLI, or the AWS SDKs. 
+They can also be managed using AWS CloudFormation templates or AWS IAM policies. KMS keys can be used with other AWS services, such as Amazon S3, Amazon EC2, and Amazon DynamoDB.
+#################################
+
+A jump server is a secure gateway that allows authorized users to access and manage other servers or networks. 
+It acts as a middleman, connecting the user's system to the target server while maintaining secure connections. 
+Jump servers typically operate as SSH jump hosts, providing a secure entry point for administrators to access multiple servers without having to establish individual connections.
+This method enhances security by limiting the amount of information users can access and prevents direct access to sensitive systems, making it a crucial component of a secure IT infrastructure.
+difference between region and availability zone in aws
+
+In Amazon Web Services (AWS), a region and an Availability Zone (AZ) are two distinct concepts.
+
+A region is a geographic area where AWS resources, such as EC2 instances, S3 buckets, and databases, are available. Each region is isolated from other regions and has its own set of IP addresses. AWS currently has 25 regions worldwide, with multiple AZs within each region.
+
+An Availability Zone, on the other hand, is a separate logical data center within a region. 
+AZs are isolated from each other, but share the same region's IP address space. 
+AZs provide a level of redundancy and failover capabilities, so you can distribute your resources across multiple AZs for high availability
+
+Regions are collections of zones. Zones have high-bandwidth, low-latency network connections to other zones in the same region.
+In order to deploy fault-tolerant applications that have high availability, Google recommends deploying applications across multiple zones and multiple regions.
+Route 53 is a highly available and scalable Domain Name System (DNS) service offered by Amazon Web Services (AWS). 
+It allows you to route end-users to applications and APIs by translating human-readable domain names into IP addresses.
+With Route 53, you can manage DNS records, monitor domain health, and route traffic to your applications.
+It also provides advanced features such as geolocation routing, latency-based routing, and weighted routing. 
+Additionally, Route 53 integrates with other AWS services, such as Amazon Elastic Load Balancer and Amazon CloudFront, to provide a comprehensive cloud-based infrastructure.
+
+
+
+
+
+
+
+
+
+Why is it called Route 53?
+The name for our service (Route 53) comes from the fact that DNS servers respond to queries on port 53 
+and provide answers that route end users to your applications on the Internet.
+
+How to create Route 53 in AWS?
+Sign in to the AWS Management Console and open the Route 53 console at https://console.aws.amazon.com/route53/ .
+If you're new to Route 53, choose Get started under DNS management. ...
+Choose Create hosted zone.
+we should purchase domain in diffrent sites such as GoDaddy,namecheap.com etc..
+In the Create Hosted Zone pane, enter the name of the domain that you want to route traffic for.
+
+
+
+
+
+
+Simple Routing Policy:
+
+In Amazon Web Services (AWS), a simple routing policy is a type of routing policy used in Route 53, a highly available and scalable Domain Name System (DNS) service.
+This policy directs internet traffic to a specific resource, such as a website, based on the recommended root domain or a user-defined routing behavior. 
+Simple routing policies are useful for routing traffic to a single resource, without considering factors like health checks, latency, or geolocation.
+You can create a simple routing policy in the AWS Route 53 console by choosing the "Simple" routing policy option when you create a routing policy.
+
+
+
+
+How to Use Amazon Route 53
+1. Register a Domain
+Log in to the AWS Management Console and navigate to the Route 53 dashboard.
+Click on "Registered Domains" and then "Register Domain".
+Search for the domain name you want to register, and if it’s available, add it to your cart.
+Provide contact details as required by ICANN (the governing body for domain names).
+Review and complete the registration process.
+2. Create a Hosted Zone
+A hosted zone is a container for DNS records for a specific domain.
+
+In the Route 53 dashboard, click on "Hosted Zones".
+Click "Create Hosted Zone".
+Enter the domain name for the hosted zone and an optional comment.
+Click "Create".
+3. Add DNS Records
+DNS records define how to route traffic for your domain.
+
+Select the hosted zone you created.
+Click "Create Record".
+Choose the type of record (e.g., A, AAAA, CNAME, MX).
+Enter the required information such as record name, value, and TTL (time to live).
+Click "Create Records".
+4. Configure Health Checks
+Health checks ensure traffic is routed only to healthy resources.
+
+In the Route 53 dashboard, click on "Health Checks" and then "Create Health Check".
+Specify the endpoint to be monitored (e.g., an IP address, domain name, or CloudWatch alarm).
+Configure the health check settings, such as protocol, port, and path.
+Click "Create Health Check".
+5. Routing Policies
+Route 53 supports various routing policies to control how traffic is directed to your resources.
+
+Simple Routing: Routes traffic to a single resource.
+Weighted Routing: Distributes traffic across multiple resources based on assigned weights.
+Latency-Based Routing: Routes traffic to the region with the lowest latency.
+Failover Routing: Routes traffic to a primary resource unless it is unhealthy, in which case it fails over to a secondary resource.
+Geolocation Routing: Routes traffic based on the geographic location of the user.
+Multi-Value Answer Routing: Returns multiple values, such as IP addresses, for each DNS query.
+Example: Setting Up a Simple DNS Record
+Register a domain in Route 53 or use an existing one.
+Create a hosted zone for the domain.
+Add an A record to route traffic to an IP address.
+Record name: www
+Record type: A
+Value: 192.0.2.1
+TTL: 300 (seconds)
+Save the record and update the domain’s name servers to use Route 53 (if not done during registration).
+Conclusion
+Amazon Route 53 is a powerful DNS service that provides a wide range of features to manage your domain names and route traffic effectively. 
+Whether you're looking to simply manage DNS records or implement complex routing policies, Route 53 offers the flexibility and reliability needed for modern web applications.
+Its integration with other AWS services further enhances its capabilities, making it an essential tool for any AWS-based infrastructure.
+S3 stands for Simple Storage Service, which is a cloud-based object storage service provided by Amazon Web Services (AWS). 
+It allows users to store and retrieve data as objects, such as images, videos, and documents, in a scalable and fault-tolerant manner. 
+S3 provides a highly available and durable storage solution, with data replicated across multiple Availability Zones in a region. 
+Users can access S3 through APIs, SDKs, or the AWS Management Console, and it is commonly used for static website hosting, data archiving, and big data analytics.
+You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere.
+
+#########################################
+
+Versioning:
+Versioning in Amazon S3 is a means of keeping multiple variations of an object in the same bucket. 
+You can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets. 
+Versioning-enabled buckets can help you recover objects from accidental deletion or overwrite
+############################################
+
+When versioning is enabled for a bucket, every time an object is updated, S3 creates a new version of the object. 
+This means that you can retain previous versions of an object, in case you need to revert to a previous version. 
+Versioning can be useful for tracking changes to objects, such as documents or images, and for meeting regulatory requirements that require retention of previous versions
+
+##############################################
+
+Replication:
+This feature helps protect against data loss in the event of a region outage or data center failure. 
+With S3 Replication, you can configure replicas in different regions or across different availability zones,
+ensuring that your data is always accessible and secure. 
+This feature is particularly useful for organizations that require high data availability, regulatory compliance, or disaster recovery capabilities.
+
+###################################################
+
+How to generate s3 bucket policies:
+
+Generating an S3 bucket policy involves specifying permissions for resource access and defining the conditions under which those permissions apply.
+Here are the general steps to follow:
+
+Identify the S3 bucket and its resources you want to protect (e.g., objects, folders).
+Determine the IAM roles and users that need access to these resources.
+Define the permissions you want to grant or deny for each role/user.
+Specify any conditions, such as IP address ranges or specific services.
+For example, you can use AWS Policy Simulator to help you generate a policy that meets your requirements. 
+You can also use AWS CloudFormation templates or AWS SDKs to automate policy creation.
+
+AWS Policy Generator
+The AWS Policy Generator is a tool that enables you to create policies that control access to Amazon Web Services (AWS) products and resources.
+
+######################################################
+Inbound traffic rules control incoming traffic to the instances, and outbound rules control outgoing traffic
+#######################################################
+
+s3 buckett life cycle rule:
+
+An S3 bucket's lifecycle rule is a configuration that defines how Amazon Simple Storage Service (S3) automatically transitions an object's storage class or deletes the object at a later point in time.
+This feature helps manage object longevity, reduce storage costs, and ensure compliance with retention policies.
+A rule consists of a filter specifying the objects to apply the rule to, an action (e.g., transition to a different storage class or delete), 
+and a transition or expiration date. S3 provides built-in storage classes, such as Glacier and Glacier Deep Archive, which offer long-term archiving and data retrieval capabilities.
+#########################################################
+
+Simple notification service:
+
+When an object is uploaded to an S3 bucket, a notification can be triggered to inform other AWS services, such as SNS, about the event. 
+SNS is a publish-subscribe messaging service that enables real-time notification and messaging between applications. 
+When an S3 bucket is modified, SNS can send notifications to subscribers, such as Amazon Lambda, SQS, or email addresses, via topics.
+
+###########################################################
+what is s3 buckets monitoring with cloudwatch:
+
+S3 buckets monitoring with CloudWatch is a way to track the performance and activity of Amazon Simple Storage Service (S3) buckets. 
+CloudWatch collects and monitors metrics such as request latency, error rates, and data transfer patterns. 
+This allows you to identify potential issues, such as slow uploads, high error rates, or unauthorized access. 
+You can set up alarms and receive notifications when thresholds are exceeded, enabling quick response to issues. 
+Additionally, CloudWatch provides detailed logs and metrics, helping you to optimize S3 bucket performance and ensure data security and integrity.
+
+
+#############################################################
+s3 bucket object lock:
+
+S3 Bucket Object Lock is a feature in Amazon S3 that enables you to protect your objects from accidental or intentional changes or deletions by implementing versioning and retention policies at the object level. 
+It provides two types of protection: Write-Once-Read-Many (WORM) and Literary Hold. 
+WORM objects can be written once and then read and protected for a specified period, while Literary Hold objects can be written and modified,
+but then placed on hold for a specified retention period. This feature ensures data integrity, compliance, and retrieval of data in a timely manner.
+##################################################################
+
+snowball:
+
+AWS Snowball is a service that accelerates transferring large amounts of data to and out of AWS using physical storage appliances. 
+Perform the following steps to transfer data in to AWS S3:
+AWS Snowball is a data transfer service that helps move large amounts of data into and out of AWS.
+It is part of the AWS Snow Family, which includes devices like AWS Snowball Edge and AWS Snowcone.
+AWS Snowball is primarily used to transfer data when internet speeds are too slow or too costly for large-scale data transfers
+1. Order Amazon Snowball to your premises.
+
+##################################################################
+
+what are the storage classes in aws s3
+
+The storage classes in AWS S3 are designed to provide a cost-effective and flexible way to store and manage data. The main storage classes in S3 are:
+
+Standard: For frequently accessed data, with high throughput and low latency.
+Intelligent Tiering: Automatically moves data to the most cost-effective tier based on access patterns.
+Infrequent Access (IA): For data that is less frequently accessed, with lower storage costs.
+Glacier: For long-term archival and backup storage, with very low storage costs.
+Glacier Deep Archive: The lowest-cost storage class, ideal for long-term data retention.
+These storage classes allow you to choose the best option for your specific use case and reduce costs.
+
+################################################################################################
+
+
+
+The full form of IIS is Internet Information Services. :
+
+Internet Information Services is an extensible web server software for the Windows server, created by Microsoft to be 
+used with the Windows NT family. It supports HTTPS, HTTP, HTTP/2, FTPS, FTP, NNTP, and SMTP.
+####################
+The Yellowdog Updater Modified (YUM) :
+is a free and open-source command-line package-management utility for computers running the 
+Linux operating system using the RPM Package Manager.
+######################
+ sudo (Super User DO) - 
+Is an application that allows certain users to be able to run programs as if they were the root user on a Linux system.
+#####################
+RDP (Remote Desktop Protocol):
+is a network communications protocol developed by Microsoft, which allows users to connect to another computer from a remote location.
+######################
+RPM stands for Red Hat Package Manager :
+It was developed by Red Hat and is primarily used on Red Hat-based Linux operating systems (Fedora, CentOS, RHEL, etc.).
+An RPM package uses the . rpm extension and is a bundle (a collection) of different files.
+########################
+DMK--->Default Master Key
+#######################
+KMS---> Key Management Service
+############################
+The Full Form of HTTPS is HyperText Transfer Protocol Secure. 
+HTTP Secure (HTTPS) is a secure HTTP encrypted using the Secure Sockets Layer or Transport Layer Security (SSL/TLS) convention. 
+HyperText Transfer Protocol Secure, enables protected communication over the computer network.
+###################################
+TCP stands for Transmission Control Protocol, which is a transport-layer protocol in the Internet Protocol Suite (TCP/IP).
+It provides reliable, connection-oriented communication over IP networks, ensuring data delivery in the correct order and error-free
+#########################################
+VPC---virtual Private cloud
+VPC (Virtual Private Cloud) is a virtual network dedicated to your AWS account. 
+It allows you to configure a boundary around your resources in the cloud, providing a secure environment for your applications.
+A VPC is defined by a range of IP addresses and is isolated from other VPCs or the internet. 
+You can configure settings such as subnets, security groups, and network ACLs to control access and traffic flow within your VPC. 
+This provides a secure and scalable environment for running your applications in the cloud.
+#########################################
+TLS(Transport layer security)
+
+The query term "allow_tls" likely refers to a configuration option in computing and networking. 
+In particular, it may pertain to the capability of allowing or enabling the use of Transport Layer Security (TLS) protocol,
+which is a cryptographic protocol used to provide secure communication over a computer network.
+TLS is widely used to secure website communications, ensuring a safe and encrypted connection between a user's browser and a website. 
+In this context, "allow_tls" might be a setting or parameter that enables the use of TLS, enhancing the security of network data transfers.
+#####################################################
+
+EKS stands for Amazon Elastic Kubernetes Service. 
+It's a managed service that makes it easier to run Kubernetes on Amazon Web Services (AWS). 
+Kubernetes is an open-source system that automates the management, scaling, and deployment of containerized applications
+
+##########################################################
+CIDR stands for Classless Inter-Domain Routing. It's a method of assigning IP addresses to devices that connect to the internet,
+and it's used to improve the efficiency of data routing
+####################################################
+
+TCP (Transmission Control Protocol) is one of the core protocols of the Internet Protocol (IP) suite. 
+It is used for establishing and managing connections between devices on a network, ensuring reliable and orderly delivery of data.
+
+##########################################################
+
+The query term "TLS" stands for Transport Layer Security.
+It is a cryptographic protocol used to provide secure communication over a computer network, particularly to prevent eavesdropping, tampering, and message forgery.
+TLS is an improved version of the Secure Sockets Layer (SSL) protocol and is widely used to secure web communications, 
+including web browsing, email, and instant messaging. It ensures that data exchanged between a client and a server remains confidential and authentic.
+
+############################################################
+CSR:Certificate signing request
+CA:Certificate Authority
+SSL:Secure sockets layer
+TLS:Transaport Layer Security
+#########################################################
+
+SSL stands for Secure Sockets Layer. 
+It is a cryptographic protocol that was originally designed to provide secure communication over the internet. 
+SSL establishes an encrypted link between a web server and a browser, ensuring that all data passed between them remains private and protected.
+
+####################################################
+While SSL is now considered outdated and has been replaced by TLS (Transport Layer Security), the term SSL is still commonly used to refer to TLS protocols as well.
+
+###########################################################
+Network Address Translation (NAT)
+###############################################
+CRI-Container Runtime Interface
+CNI-Conatiner Network Interface
+CSI-Conatainer Sorage Interface
+#####################################
+.
+Terraform is an open-source infrastructure as code (IaC) tool used for building and managing cloud and on-premises infrastructure.
+Developed by HashiCorp, Terraform allows users to define and version infrastructure configurations in human-readable configuration files,
+which can then be used to create and manage virtual machines, networks, and other resources on various cloud and on-premises platforms. 
+Terraform supports a wide range of providers, including AWS, Azure, Google Cloud, and many others,
+making it a popular choice for organizations seeking to standardize and automate their infrastructure management processes.
+
+#######################################################################
+
+terraform variables
+
+Using variables in terraform configurations makes our deployment more dynamic.
+A separate file with name variables.tf needs to be created in the working directory to store all variables fro our used in main.tf configuration file.
+
+Terraform variables are values that can be used to customize the behavior of Terraform configurations throughout a workspace.
+These values are stored in a variables.tf file and can be used to parameterize infrastructure as code. 
+There are two types of variables in Terraform: local and input. 
+Local variables are only accessible within the scope of the module or configuration they are declared in, while input variables are available throughout the entire workspace. 
+Terraform variables can be set through command-line options, environment variables, or a variables.tf file.
+
+
+#############################################################################
+
+StateFile:
+
+A Terraform state file is a JSON file that stores information about resources in your infrastructure, such as their IDs, 
+attributes, and dependencies. It's created after running terraform apply and is usually named terraform.
+tfstate and located in the same directory as Terraform. 
+
+Terraform uses the state file to: 
+Track resource state: Accurately account for the current state of your infrastructure 
+Manage resource dependencies: Understand how resources depend on each other 
+Plan and apply operations: Compare the desired state (your configuration) to the current state (the state file) 
+Improve performance: Optimize performance for large infrastructures 
+The state file contains information such as: 
+Resource information: Resource IDs, attributes (like IP addresses and security group rules), and dependencies 
+Metadata: Resource names, tags, and other configuration details 
+Version: The Terraform version 
+Serial: The serial 
+Lineage: The lineage 
+Outputs: The outputs 
+Some recommend storing state in HCP Terraform to version, encrypt, and securely share it with your team. 
+Terraform also uses a lock on the state file to prevent concurrent modifications that could lead to conflicts or data corruption.
+
+##################################################################
+
+Restoring statefile:
+
+If the statefile is deleted or corrupted ,we can restore it using Terraform import command.
+
+The terraform import command is used to import an existing infrastructure resource from a cloud or on-premises environment into a Terraform configuration. 
+This command allows you to manage existing resources alongside newly created ones within your Terraform state.
+The command syntax is terraform import <resource> <id>, where <resource> is the resource type and <id> is a unique identifier
+of the resource. For example, terraform import aws_instance.web i-abc123 would import an AWS EC2 instance with the ID i-abc123 into your Terraform configuration.
+
+     terraform import azurerm_subnet_network_security_group_association.association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/subnets/mysubnet1
+      terraform import resource name resource id
+######################################################################################
+
+Terraform remote backend or remote statefile:
+
+Terraform's remote backend and remote state are both ways to store Terraform state in a remote location, like a database or cloud object storage service.
+
+When working with Terraform, a remote backend allows you to store and manage your infrastructure state remotely,
+rather than on your local machine. This provides several benefits, including improved collaboration, version control, and disaster recovery.
+A remote state file is a file stored in the remote backend, which contains the current state of your infrastructure. 
+Popular remote backend options include AWS S3, Azure Blob Storage, and Google Cloud Storage. 
+By using a remote backend, you can ensure that your infrastructure state is always synchronized and accessible from anywhere.
+
+############################################################################################
+
+How do I store Terraform state file remotely?
+
+Here are the steps on how to store Terraform state file on Terraform cloud Remote:
+Create a Terraform Cloud organization and workspace.
+Create a configuration file that defines the resources you want to create.
+Initialize Terraform.
+Configure Terraform Cloud to store the state file.
+Authentication with Terraform Cloud.
+
+##############################################################################################
+Modules:
+
+Terraform modules are reusable packages of Terraform configuration that can encapsulate a specific combination of resources and dependencies.
+They allow you to break down large infrastructure configurations into smaller, more manageable pieces, making it easier to maintain and reuse code.
+Modules can be created and shared by the community, or created internally by your organization.
+They can also be used to create consistent infrastructure across multiple environments, such as development, staging, and production. 
+By using Terraform modules, you can speed up your infrastructure provisioning process and reduce errors.
+
+
+##################################################################################################
+Terraform state lock:
+
+Terraform state locking is a safety mechanism that prevents data corruption and conflicts by ensuring 
+that only one user or process can modify the Terraform state file at a time. 
+It works by automatically locking the state for all operations that could write to it. 
+
+In AWS S3 is used to store our statefile and DynamoDB is used for state lock
+
+###################################################################################################
+data sources in terraform
+
+In Terraform, data sources are used to retrieve information from external sources, such as AWS, Azure, or a local file.
+They allow you to store and retrieve data that's not easily captured by a Terraform resource. 
+Common data sources include AWS EC2 instance ids, Azure storage account names, and local files.
+To use a data source in Terraform, you declare it in your Terraform configuration file using the data keyword, followed by the type of data source and its arguments.
+
+A data source is used to query information from external systems or existing resources and incorporate that information into our Terraform configuration.
+It provides dynamic attributes that can be used to make our configurations context-aware and responsive to changes
+
+########################################################################################
+locals in terraform
+
+In Terraform, locals are a way to define small, reusable blocks of code that can be used within a module or configuration.
+They are not stored on disk, unlike variables, and are only available during the planning and applying phases of the Terraform configuration.
+Locals can be used to simplify complex expressions, abstract away repetitive constructs, and make your configuration more readable.
+They are defined using the local keyword and can be used to store values that are computed or derived from other values in your configuration
+
+#############################################################################################
+provisioners in terraform
+
+Provisioners in Terraform are a way to execute code on a machine after it has been created or updated by Terraform. 
+There are two types of provisioners: local-exec and file. 
+Local-exec provisioners allow the execution of arbitrary local code on the machine, 
+while file provisioners enable the copying of files to the machine. 
+Provisioners can be used to configure machines, install software, or perform other tasks.
+They can be specified at the resource level, allowing for varying provisioning behavior per resource or group of resources.
+
+##############################################################################################
+file provisioner in terraform
+
+A file provisioner in Terraform is a provisioner that copies files from the local file system to a remote server. 
+It is used to manage the deployment of files to remote servers, such as configuration files, scripts, or other sensitive data. 
+The file provisioner is typically used in combination with other provisioners, such as the script provisioner, to complete the deployment of a server.
+There are two types of file provisioners: remote-exec and copy. 
+The remote-exec provisioner runs a command on the remote server to copy the file, 
+while the copy provisioner copies the file directly from the local file system to the remote server.
+
+################################################################
+ local-exec provisioner in terraform
+
+The local-exec provisioner in Terraform is a provisioner that runs a command locally on a machine. 
+It allows you to execute arbitrary shell commands after a resource has been created. 
+This is useful for tasks that require more control and customization than a provisioner like the remote-exec provisioner, which runs a command remotely on a machine.
+The local-exec provisioner can be used to perform tasks such as copying files, or starting services.
+You specify the command to run using the command argument.
+
+###################################################################
+remote-exec provisioner in terraform
+
+The remote-exec provisioner in Terraform is a powerful tool that allows you to execute arbitrary commands on a remote resource after it has been created.
+This can be useful for tasks such as configuring a newly created server, setting up a service, or installing software. 
+The provisioner takes a command to run as its value, and Terraform will execute this command on the remote resource after creation. 
+It also supports specifying a command timeout, and the option to run the command in a specific shell. 
+This provisioner is commonly used in.tf files to automate post-creation tasks.
+
+#########################################################################
+ workplaces in terraform
+
+In Terraform, a "workplace" refers to a shared environment for a specific project or organization. 
+It allows multiple team members to collaborate on infrastructure resources and configurations. 
+A workplace is essentially a container that holds all the Terraform configuration files, including state, variables, and outputs.
+Within a workplace, you can manage resources, apply configurations, and version control your infrastructure changes. 
+This enables teams to work together efficiently, maintaining a consistent and reproducible infrastructure setup.
+
+###########################################################################
+service principal in terraform
+
+Here's the information you need about Service Principal in Terraform:
+
+A service principal is a secure way to authenticate with Azure services using Terraform.
+It's essentially an identity for your application or service that can be used to access Azure resources. 
+In Terraform, you can use the azurerm_service_principal resource to create and manage service principals.
+You can also use azurerm_client_config to configure and authenticate your Terraform workflow with a service principal. 
+This provides a secure way to manage Azure resources without hardcoding your credentials.
+#####################################################################################
+main.tf file
+##################
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-west-2"
+}
+provider "aws" {
+  alias = "west"
+  region     = "us-west-2"
+  #access_key = "AKIAW3MEAISABWULLWUG"
+  secret_key = "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"
+}
+
+resource "aws_vpc" "my_vpc" {
+    cidr_block = "10.0.0.0/16"
+}
+resource "aws_subnet" "my_subnet" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-west-2a"
+}
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.my_vpc.id
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [aws_vpc.my_vpc.cidr_block]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_network_interface" "my_nic" {
+  subnet_id       = aws_subnet.my_subnet.id
+  private_ips     = ["10.0.1.50"]
+  security_groups = [aws_security_group.allow_tls.id]
+}
+
+resource "aws_instance" "my_instance" {
+  ami           = "ami-005e54dee72cc1d00" 
+  instance_type = "t2.micro"
+
+  network_interface {
+    network_interface_id = aws_network_interface.my_nic.id
+    device_index         = 0
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+###################################3
+terraform.tfstate 
+###################
+
+    }
+  ],
+  "check_results": null
+}
+{
+  "version": 4,
+  "terraform_version": "1.5.0",
+  "serial": 6,
+  "lineage": "56644c67-16e3-b96c-25f2-c3bdb6f8d45e",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "my_instance",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-005e54dee72cc1d00",
+            "arn": "arn:aws:ec2:us-west-2:851725482328:instance/i-0a540ef16ade96733",
+            "associate_public_ip_address": false,
+            "availability_zone": "us-west-2a",
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "open",
+                "capacity_reservation_target": []
+              }
+            ],
+            "cpu_core_count": 1,
+            "cpu_options": [
+              {
+                "amd_sev_snp": "",
+                "core_count": 1,
+                "threads_per_core": 1
+              }
+            ],
+            "cpu_threads_per_core": 1,
+            "credit_specification": [
+              {
+                "cpu_credits": "unlimited"
+              }
+            ],
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_block_device": [],
+            "ebs_optimized": false,
+            "enclave_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": "",
+            "host_resource_group_arn": null,
+            "iam_instance_profile": "",
+            "id": "i-0a540ef16ade96733",
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_lifecycle": "",
+            "instance_market_options": [],
+            "instance_state": "running",
+            "instance_type": "t2.micro",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "",
+            "launch_template": [],
+            "maintenance_options": [
+              {
+                "auto_recovery": "default"
+              }
+            ],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_protocol_ipv6": "disabled",
+                "http_put_response_hop_limit": 1,
+                "http_tokens": "optional",
+                "instance_metadata_tags": "disabled"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [
+              {
+                "delete_on_termination": false,
+                "device_index": 0,
+                "network_card_index": 0,
+                "network_interface_id": "eni-00439511f7d52b854"
+              }
+            ],
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "placement_partition_number": 0,
+            "primary_network_interface_id": "eni-00439511f7d52b854",
+            "private_dns": "ip-10-0-1-50.us-west-2.compute.internal",
+            "private_dns_name_options": [
+              {
+                "enable_resource_name_dns_a_record": false,
+                "enable_resource_name_dns_aaaa_record": false,
+                "hostname_type": "ip-name"
+              }
+            ],
+            "private_ip": "10.0.1.50",
+            "public_dns": "",
+            "public_ip": "",
+            "root_block_device": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/sda1",
+                "encrypted": false,
+                "iops": 100,
+                "kms_key_id": "",
+                "tags": {},
+                "tags_all": {},
+                "throughput": 0,
+                "volume_id": "vol-03eeb0fe11431199c",
+                "volume_size": 8,
+                "volume_type": "gp2"
+              }
+            ],
+            "secondary_private_ips": [],
+            "security_groups": [],
+            "source_dest_check": true,
+            "spot_instance_request_id": "",
+            "subnet_id": "subnet-0c5c66612bf9496df",
+            "tags": null,
+            "tags_all": {},
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": null,
+            "user_data_base64": null,
+            "user_data_replace_on_change": false,
+            "volume_tags": null,
+            "vpc_security_group_ids": [
+              "sg-0ec595bf37a90fbda"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwicmVhZCI6OTAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_network_interface.my_nic",
+            "aws_security_group.allow_tls",
+            "aws_subnet.my_subnet",
+            "aws_vpc.my_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_network_interface",
+      "name": "my_nic",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-west-2:851725482328:network-interface/eni-00439511f7d52b854",
+            "attachment": [],
+            "description": "",
+            "id": "eni-00439511f7d52b854",
+            "interface_type": "interface",
+            "ipv4_prefix_count": 0,
+            "ipv4_prefixes": [],
+            "ipv6_address_count": 0,
+            "ipv6_address_list": [],
+            "ipv6_address_list_enabled": false,
+            "ipv6_addresses": [],
+            "ipv6_prefix_count": 0,
+            "ipv6_prefixes": [],
+            "mac_address": "06:19:52:08:63:c1",
+            "outpost_arn": "",
+            "owner_id": "851725482328",
+            "private_dns_name": "",
+            "private_ip": "10.0.1.50",
+            "private_ip_list": [
+              "10.0.1.50"
+            ],
+            "private_ip_list_enabled": false,
+            "private_ips": [
+              "10.0.1.50"
+            ],
+            "private_ips_count": 0,
+            "security_groups": [
+              "sg-0ec595bf37a90fbda"
+            ],
+            "source_dest_check": true,
+            "subnet_id": "subnet-0c5c66612bf9496df",
+            "tags": null,
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_security_group.allow_tls",
+            "aws_subnet.my_subnet",
+            "aws_vpc.my_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "allow_tls",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-west-2:851725482328:security-group/sg-0ec595bf37a90fbda",
+            "description": "Allow TLS inbound traffic and all outbound traffic",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0ec595bf37a90fbda",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "10.0.0.0/16"
+                ],
+                "description": "TLS from VPC",
+                "from_port": 443,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 443
+              }
+            ],
+            "name": "allow_tls",
+            "name_prefix": "",
+            "owner_id": "851725482328",
+            "revoke_rules_on_delete": false,
+            "tags": null,
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_id": "vpc-0596e12b409f8c5f3"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "aws_vpc.my_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "my_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-west-2:851725482328:subnet/subnet-0c5c66612bf9496df",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-west-2a",
+            "availability_zone_id": "usw2-az2",
+            "cidr_block": "10.0.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0c5c66612bf9496df",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "851725482328",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": null,
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_id": "vpc-0596e12b409f8c5f3"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_vpc.my_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_vpc",
+      "name": "my_vpc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-west-2:851725482328:vpc/vpc-0596e12b409f8c5f3",
+            "assign_generated_ipv6_cidr_block": false,
+            "cidr_block": "10.0.0.0/16",
+            "default_network_acl_id": "acl-04cd693f6eda975a3",
+            "default_route_table_id": "rtb-0d7e11d3a8cddf457",
+            "default_security_group_id": "sg-0ecd747e181956f25",
+            "dhcp_options_id": "dopt-0d9b83a2c5a8ac141",
+            "enable_dns_hostnames": false,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "id": "vpc-0596e12b409f8c5f3",
+            "instance_tenancy": "default",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_network_border_group": "",
+            "ipv6_ipam_pool_id": "",
+            "ipv6_netmask_length": 0,
+            "main_route_table_id": "rtb-0d7e11d3a8cddf457",
+            "owner_id": "851725482328",
+            "tags": null,
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+
+
+#####################################################################################
+variable.tf ,this file for modules
+##################
+variable "rgname" {
+    type = string
+    description = "used for naming resource group"
+}
+
+variable "location" {
+    type = string 
+    description = "used for selecting location"
+}
+
+variable "prefix" {
+    type = string
+    description = "The prefix used for all resources in this example"
+}
+
+variable "my_vpc" {
+    type = string
+    description = "this variable defines vpc"
+}
+
+variable "my_subnet" {
+    type = string
+    description = "defines subnet"
+}
+
+#########################################################
+modules
+dev.tf
+###################
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+
+module "module_dev" {
+    location = "west-us-2"
+    source = "./modules"
+    prefix = "dev"
+    my_vpc = "10.0.0.0/16"
+    my_subnet = "10.0.1.0/24"
+    rgname = "DevRG"
+    
+    
+}
+
+##########################3
+prod.tf
+#################
+
+module "module_prod" {
+    location = "west-us-2"
+    source = "./modules"
+    prefix = "prod"
+    rgname = "ProdRG"
+     my_vpc = "10.30.0.0/16"
+    my_subnet = "10.30.1.0/24"
+}
+
+###########################
+uat.tf
+######################
+
+module "module_uat" {
+    location = "west-us-2"
+    source = "./modules"
+    prefix = "Uat"
+    rgname = "UatRG"
+    my_vpc = "10.40.0.0/16"
+    my_subnet = "10.40.1.0/24"
+}
+
+#######################################
+Backend or Remote state
+
+terraform {
+  backend "s3" {
+    bucket = "mybucket"
+    key    = "path/to/my/key"
+    region = "us-east-1"
+  }
+}
+#########################################
+Create S3 bucket
+
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+###############################################
+DynamoDB table:
+
+resource "aws_dynamodb_table" "basic-dynamodb-table" {
+  name           = "Statelock"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = true
+  }
+
+  global_secondary_index {
+    name               = "GameTitleIndex"
+    hash_key           = "GameTitle"
+    range_key          = "TopScore"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
+############################################################
+Data sources
+
+data "aws_instance" "foo" {
+  instance_id = "i-instanceid"
+
+  filter {
+    name   = "image-id"
+    values = ["ami-xxxxxxxx"]
+  }
+
+  filter {
+    name   = "tag:Name"
+    values = ["instance-name-tag"]
+  }
+}
+#################################################
+LOcals:
+
+locals {
+  host        = aws_eks_cluster.example_0.endpoint
+  certificate = base64decode(aws_eks_cluster.example_0.certificate_authority.data)
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = local.host
+    cluster_ca_certificate = local.certificate
+    # exec allows for an authentication command to be run to obtain user
+    # credentials rather than having them stored directly in the file
+    exec {
+      api_version = "client.authentication.k8s.io/v1beta1"
+      args        = ["eks", "get-token", "--cluster-name", aws_eks_cluster.example_0.name]
+      command     = "aws"
+    }
+  }
+}
+
+######################################################
+File Provisioner:
+#####
+resource "aws_instance" "web" {
+  # ...
+
+  # Copies the myapp.conf file to /etc/myapp.conf
+  provisioner "file" {
+    source      = "conf/myapp.conf"
+    destination = "/etc/myapp.conf"
+  }
+
+  # Copies the string in content into /tmp/file.log
+  provisioner "file" {
+    content     = "ami used: ${self.ami}"
+    destination = "/tmp/file.log"
+  }
+
+  # Copies the configs.d folder to /etc/configs.d
+  provisioner "file" {
+    source      = "conf/configs.d"
+    destination = "/etc"
+  }
+
+  # Copies all files and folders in apps/app1 to D:/IIS/webapp1
+  provisioner "file" {
+    source      = "apps/app1/"
+    destination = "D:/IIS/webapp1"
+  }
+}
+#######################################################
+Local-exec Provisioner
+
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_ips.txt"
+  }
+}
+
+###############################################################
+Remote-exec Provisioner
+
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+
+##############################################################
+Terraform workspaces:
+
+main.tf
+dev.tfvars
+prod.tfvars
+variables.tf
+
+to create new workspace ---->terraform workspace new dev
+and switched to dev 
+
+to show workspaces ---> terraform workspace list
+same for prod
+swiches to another env ----> terraform workspace select dev
+then terraform init
+terraform apply -var-file dev.tfvars
+
+####################################################################
+Vertical scaling, also known as scaling up, is an AWS practice that increases the power of a virtual machine (EC2 instance) by adjusting its computing resources, such as the number of CPU cores, memory, and storage capacity. 
+This approach is suitable for applications that require consistent high performance and suitable for workloads that don't fluctuate greatly. 
+AWS provides several instance types, each with varying levels of resources, allowing users to scale up or down as needed. 
+Additionally, AWS auto-scaling enables automatic scaling based on demand, ensuring optimal performance and cost-effectiveness.
+
+################################################
+Horizontal scaling is a common technique used to increase the capacity of a system or application.
+In Amazon Web Services (AWS), horizontal scaling can be achieved through several methods. One way is by using Elastic Load Balancers (ELBs), 
+which distribute incoming traffic across multiple EC2 instances. Another method is by using Auto Scaling, which automatically adds or removes EC2 instances based on demand. 
+Additionally, AWS provides services like Elastic Container Service (ECS) and Kubernetes, which support containerized applications and horizontal scaling.
+By scaling horizontally, you can handle increased traffic and improve the overall performance of your application.
+
+
+Horizontal scaling means that you scale by adding more ec2 machines into your pool of resources whereas Vertical scaling means 
+that you scale by adding more power (CPU, RAM) to an existing ec2 machine.
+#######################################################
+
+Good examples of horizontal scaling are Redis, MongoDB.
+
+Good example of vertical scaling is MySQL — Amazon RDS (The cloud version of MySQL).
+###########################################
+Schedule scalling:
+
+Scheduled Scaling in AWS allows you to automatically adjust the capacity of your AWS resources based on a schedule. 
+This is useful for handling predictable changes in traffic patterns, such as traffic increases during business hours or decreases during off-peak hours.
+Here’s how to set up scheduled scaling for an Auto Scaling group using the AWS Management Console:
+A VPC, short for Virtual Private Cloud, is a virtual network dedicated to your AWS account. 
+It is a virtual version of a traditional network, logically isolated from other virtual networks in the same AWS account. 
+A VPC allows you to launch AWS resources, such as EC2 instances, RDS databases, and S3 buckets, in a virtual environment 
+that is separate from other AWS accounts or other VPCs. You can configure your VPC's IP address range, subnets, and routing to meet your specific network requirements. 
+VPCs are highly secure, scalable, and offer a high degree of customization.
+
+It allows you to define your own networking topology, including your own IP address range, subnets, and routers. 
+VPCs can span across multiple Availability Zones (AZs) and regions. You can launch AWS resources, such as EC2 instances, RDS databases,
+and S3 buckets, into a VPC. VPCs provide a secure and isolated environment, helping to meet your networking and security requirements.
+You can configure VPC settings, including security groups, network ACLs, and route tables, to manage traffic and access to your resources.
+
+
+
+
+
+
+VPC (Virtual Private Cloud) is an essential AWS feature that enables customers to establish virtual networks within the cloud. 
+VPC protects and isolates EC2 instances, databases and load balancers while protecting from attack by outside forces such as hackers.
+
+
+
+once we create vpc, automatically aws creates one route table ,default security group and one network ACL(Access control list).
+Then we need to create subnets and Internet gateway .
+then attach internet gateway to the vpc
+next our subnets are associted with main default route table then go to Route there is only one target local 
+when we launch our all instances are used to communicate each other by using local
+then we create public route table and private route table,so we can add our public subnets to public route table and
+add private subnets to private route table and we should select auto assign public ip to our public subnets.
+then enable DNS hostnames to our vpc and create flow in cloudwatch ,cloudwatch is easy to see the logs.
+After that we should create IAM policy for permission for flow flow logs role policy.
+then create a role ,select EC2 and give permission for policy and create.
+then edit trust policy to change ec2 to vpc flow logs.
+then go to cloudwatch and creeate one log group then go back to flow logs and edit destination log group here we should give log group name.
+then create flow log and then launch one instance in private subnet and launch one instance in public subnet in our vpc.
+then connect our instance to server by using RDP in windows or Linux in putty
+
+########################################
+route table:
+
+A route table is a fundamental component in Amazon Web Services (AWS) that helps to determine the routing of network traffic within a VPC.
+It is a set of rules that define where network traffic destined for a particular destination should be routed. 
+Each route table is associated with a specific VPC, and it can be used by multiple subnets within that VPC. 
+You can create, modify, and manage route tables in the AWS Management Console, AWS CLI, or AWS SDKs.
+Route tables can be used to route traffic between subnets, to the Internet, or to directly to another VPC.
+###########################################
+
+subnet:
+
+In Amazon Web Services (AWS), a subnet is a range of IP addresses within a VPC (Virtual Private Cloud). 
+It's a logically isolated section of the VPC's IPv4 or IPv6 address space. 
+Subnets can be used to organize and segment resources within a VPC, aiding in network management and security. 
+You can create multiple subnets in a VPC, each with its own set of IP addresses and routing configuration. 
+Subnets can be associated with Availability Zones (AZs) to ensure high availability and redundancy for your applications.
+##########################################
+
+internet gateway:
+
+An Amazon Web Services (AWS) Internet Gateway is a virtual device that provides access to and from the AWS cloud. 
+A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet.
+It serves as a single entry and exit point for internet traffic to and from a VPC (Virtual Private Cloud) or a subnet.
+The Internet Gateway enables communication between AWS resources and the internet, as well as between AWS resources and other networks.
+It acts as a router, filtering and directing traffic based on route tables and network ACLs. 
+This ensures secure and controlled access to your AWS resources from the internet.
+
+###################################################
+
+endpoints:
+Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
+
+####################################################
+
+Peering connections
+Use a VPC peering connection to route traffic between the resources in two VPCs.
+
+##################################################
+
+Traffic Mirroring
+Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
+
+#################################################
+
+Transit gateways
+Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
+
+###############################################
+
+VPC Flow Logs
+A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
+#################################################
+
+VPN connections
+Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
+
+###############################################
+Difference between public subnet and private subnet:
+
+In Amazon Web Services (AWS), public subnets and private subnets are two types of subnets that help organize IP addresses and define the accessibility of resources. 
+Public subnets are connected to the internet and allow inbound traffic, whereas private subnets are not directly accessible from the internet and only enable communication within the VPC or VPN.
+Public subnets are suitable for hosting public-facing applications, while private subnets are ideal for hosting backend services, databases, and internal applications.
+Both public and private subnets can coexist in the same Virtual Private Cloud (VPC) to create a secure and isolated network architecture.
+
+#######################################################
+
+
+network access control list in aws
+
+A Network Access Control List (NACL) in AWS is a set of access controls that filters traffic to and from the subnets. 
+It provides an additional layer of security by allowing you to define standards and rules for inbound and outbound traffic. 
+NACLs are particularly useful for controlling traffic between subnets, servers, and applications in a VPC. 
+You can create custom NACLs to permit or deny specific traffic based on source and destination IP addresses, ports, and protocols. 
+AWS provides a default NACL for each subnet, and you can also create custom NACLs to meet specific security requirements.
+
+############################################################
+
+security groups in vpc aws
+
+Security Groups (SGs) are a crucial network security feature in Amazon Virtual Private Cloud (VPC) AWS. 
+An SG acts as a virtual firewall that regulates inbound and outbound traffic to and from instances within a VPC.
+You can create security groups to allow or deny specific traffic based on IP addresses, port numbers, and protocols. 
+SGs are associated with instances and can be used to implement network access control, restrict traffic to and from instances, 
+and prevent unauthorized access. This helps maintain the security and integrity of your AWS resources.
+
+##################################################
+
+isolated vpc
+
+An isolated VPC (Virtual Private Cloud) is a type of VPC that is not directly reachable from the internet and is not peered with other VPCs. 
+Isolated VPCs are ideal for sensitive workloads that require maximum security and isolation. They can only be accessed through launch configurations or peered with other VPCs. 
+Isolated VPCs are also known as "private" or "invisible" VPCs.
+They provide an additional layer of security and segregation for your resources, making them more secure and difficult to access without proper authorization.
+
+########################################################
+
+Elastic IP (EIP) is a static public IP address in Amazon Web Services (AWS). 
+It allows you to mask the failure of an instance or instance replacement by providing a fixed public IP address that remains even if the underlying instance changes.
+EIPs are useful for DNS associations, load balancers, and applications that rely on static IP addresses. 
+You can associate an EIP with any instance in your account, and reassign it to a different instance if the first instance is terminated or interrupted. 
+This provides flexibility and reliability for your AWS-based applications.
+
+############################################################
+
+
+
+
+
+
+
+
