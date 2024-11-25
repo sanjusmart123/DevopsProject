@@ -108,3 +108,16 @@ The browser or client should trust the certificate if it's issued by a trusted C
 or you may need to add the self-signed certificate to the trusted store
 
 
+Use Cases for TLS Certificates in Kubernetes
+API Server Authentication:
+The Kubernetes API server uses TLS certificates for securing communications with clients (e.g., kubectl) and nodes (e.g., kubelet).
+Service-to-Service Communication:
+Pods and services within the cluster can use mutual TLS (mTLS) to authenticate and encrypt communication between each other.
+Ingress Controllers:
+TLS certificates are used to secure external access to services exposed via Ingress controllers.
+etcd Encryption:
+etcd, the Kubernetes cluster state store, uses TLS for secure communication between nodes and the API server.
+Kubelet and API Server Communication:
+TLS certificates authenticate and encrypt communication between the kubelet and the Kubernetes API server.
+
+
