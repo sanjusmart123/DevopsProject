@@ -139,3 +139,41 @@ $ kubectl config view
 Set or modify the kubeconfig file:
 You can specify a custom kubeconfig file using the --kubeconfig flag:
 kubectl --kubeconfig=/path/to/your/kubeconfig get pods
+
+#########################################################################################################
+Cluster Roles:
+
+Roles and Rolebindings are namespaced meaning they are created within namespaces.
+Namespaces
+Can you group or isolate nodes within a namespace?
+
+No, those are cluster wide or cluster scoped resources. They cannot be associated to any particular namespace.
+So the resources are categorized as either namespaced or cluster scoped.
+
+To see namespaced resources
+
+ kubectl api-resources --namespaced=true
+ To see non-namespaced resources
+ kubectl api-resources --namespaced=false  ---> Clusterscoped
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-administrator
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["nodes"]
+  verbs: ["get", "list", "delete", "create"]
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-admin-role-binding
+subjects:
+- kind: User
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-administrator
+  apiGroup: rbac.authorization.k8s.io
