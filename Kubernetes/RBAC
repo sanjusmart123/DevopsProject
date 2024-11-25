@@ -21,7 +21,8 @@ rules:
   verbs: ["get", "list", "watch"]
 
 ########################
-
+The next step is to link the user to that role.
+For this we create another object called RoleBinding. This role binding object links a user object to a role.
 Bind The Role to the user:
 #######################
 apiVersion: rbac.authorization.k8s.io/v1
@@ -39,4 +40,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ############################
+View RBAC:
+
+To list roles
+ kubectl get roles
+To list rolebindings
+kubectl get rolebindings
+kubectl describe rolebinding read-podsbinding --->describe the role binding
 
