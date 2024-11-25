@@ -10,3 +10,13 @@ kubectl uncordon node01  --->The maintenance tasks have been completed. Configur
 
 Why are the pods placed on the controlplane node? ----> Controlplane does not have taints
 
+#################################################################################################
+
+Upgrading a cluster involves 2 major steps
+There are different strategies that are available to upgrade the worker nodes
+One is to upgrade all at once. But then your pods will be down and users will not be able to access the applications.
+
+Second one is to upgrade one node at a time.
+
+Third one would be to add new nodes to the cluster
+
