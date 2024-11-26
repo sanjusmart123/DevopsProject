@@ -4,6 +4,10 @@ perform actions such as creating persistent volumes, deploying applications, and
 They help enforce security by restricting what the application can access within the cluster.
 Each namespace has a default service account that is automatically attached to pods if no other service account is specified.
 
+A Service Account in Kubernetes is an identity used by processes running inside a pod to interact with the Kubernetes API server.
+By default, Kubernetes assigns the default Service Account to all pods unless you specify otherwise. 
+You can create and assign custom Service Accounts to pods to grant specific permissions based on RBAC policies.
+
 Using Service Acount in a Pod:
 
 apiVersion: v1
