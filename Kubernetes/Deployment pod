@@ -177,7 +177,7 @@ controlplane $
 
 
 
-
+kubectl get pods webapp-daemonset-79m8x -o jsonpath='{.spec.containers[*].name}' ---->To get a container name inside a pod
 
 
 vi deploy.yml
