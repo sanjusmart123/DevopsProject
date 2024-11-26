@@ -1,28 +1,28 @@
-!#/bin/bash
+#!/bin/bash
 set -ex
-k create -f Deployment.yml
-sleep 15
-k create -f Service.yml
-sleep 15
-k create -f config.yml
-sleep 15
-k create -f secretes.yml
-sleep 15
-k create -f ingress.yml
-sleep 15
-k create -f eggress.yml
-sleep 15
-k create -f pv.yml
-sleep 15
-k create -f pvc.yml
-sleep 15
-k create -f role.yml
-sleep 15
-k create -f rolebinding.yml
-sleep 15
-k create -f serviceacount.yml
-sleep 15
-k create -f statefulset.yml
-sleep 15
-k create -f daemonset.yml
-sleep 15
+kubectl apply -f Deployment.yml
+sleep 10
+kubectl apply -f Service.yml
+sleep 10
+kubectl apply -f configmap.yml
+sleep 10
+kubectl apply -f secretes.yml
+sleep 10
+kubectl apply -f ingress.yml
+sleep 10
+kubectl apply -f eggress.yml
+sleep 10
+kubectl apply -f pv.yml
+sleep 10
+kubectl apply -f pvc.yml
+sleep 10
+kubectl apply -f role.yml
+sleep 10
+kubectl apply -f rolebinding.yml
+sleep 10
+kubectl apply -f serviceacount.yml
+sleep 10
+kubectl apply -f statefulset.yml
+sleep 10
+kubectl apply -f daemonset.yml
+sleep 10
