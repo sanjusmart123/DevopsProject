@@ -127,47 +127,19 @@ kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key
 
 kubectl create configmap my-config --from-file=path/to/configfile --> created from a file
 
-from yml file:
 
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    name: webapp-color
-  name: webapp-color
-  namespace: default
-spec:
-  containers:
-  - env:
-    - name: APP_COLOR
-      value: green
-    image: kodekloud/webapp-color
-    name: webapp-color
+##################################
+Inject configmap in pod
 
-Accessing Configmap:
-
-envFrom:
-- configMapRef:
-    name: my-config
-
-kubectl create configmap app-config --from-literal=APP_COLOR=blue --from-literal=APP_MODE=prod
 apiVersion: v1
 kind: ConfigMap
 metadata:
- name: app-config
+  name: app-config
 data:
- APP_COLOR: blue
- APP_MODE: prod
+  APP_COLOR: blue
+  APP_MODE: prod
+kubectl create -f pod-definition.yaml
 
-Create a config map definition file and run the 'kubectl create` command to deploy it.
-kubectl create -f config-map.yaml
-
- kubectl get configmaps (or)
- kubectl get cm
-
-kubectl describe configmaps
-##################################
-Inject configmap in pod
 
 apiVersion: v1
 kind: Pod
@@ -182,14 +154,15 @@ spec:
    envFrom:
    - configMapRef:
        name: app-config
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-data:
-  APP_COLOR: blue
-  APP_MODE: prod
-kubectl create -f pod-definition.yaml
+
+Create a config map definition file and run the 'kubectl create` command to deploy it.
+kubectl create -f config-map.yaml
+
+ kubectl get configmaps (or)
+ kubectl get cm
+
+kubectl describe configmaps
+
 
 #####################################
 
