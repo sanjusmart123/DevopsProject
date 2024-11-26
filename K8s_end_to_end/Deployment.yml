@@ -1,18 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: my-webapp-deployment
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          # Allow one additional pod to be created during the update
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: webapp
-  
   template:
     metadata:
       labels:
         app: webapp
     spec:
+      serviceAccountName: webapp-service-account
       containers:
       - name: webapp-container
         image: nginx
+        env:
+        # Environment variables from ConfigMap
+        - name: WELCOME_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: welcome_message
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: log_level
+        # Environment variables from Secret
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secret
+              key: db_username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secret
+              key: db_password
+        volumeMounts:
+        - name: storage
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-pvc
