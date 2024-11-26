@@ -10,6 +10,8 @@ kubectl get pods --all-namespaces ---> availble pods in all ns
 
 k get pods --selector env=dev ---> to check how many pods exist in dev env 
 
+kubectl get pods webapp-daemonset-79m8x -o jsonpath='{.spec.containers[*].name}' ---->To get a container name inside a pod
+
 k get all --selector env=prod ---> To get all pods ,ns,replicasets in env=prod
 
 k get all --selector env=prod,bu=finance,tier=frontend  ----> POD which is part of the prod environment, the finance BU and of frontend tie
