@@ -11,7 +11,8 @@ Prometheus collects metrics from applications and systems via HTTP endpoints tha
 Metrics are usually in the form of a time series (values recorded against timestamps).
 
 2.Pull-Based Model:
-Prometheus uses a pull-based model where it periodically scrapes metrics from target endpoints.
+Prometheus uses majorly pull-based model where it periodically scrapes metrics from target endpoints.
+Push based method is minorly uses due to load and connectivities issues.
 
 3.Multi-Dimensional Data Model:
 Metrics are identified using a unique metric name and labels (key-value pairs) for dimensional data.
@@ -72,3 +73,45 @@ Prometheus evaluates defined alerting rules. When conditions are met, it trigger
 Metrics data is visualized using tools like Grafana or Prometheus’ built-in UI to create dashboards for monitoring system health and performance.
 
 ##############################################################################################################################
+Prometheus collects metrics in four primary types:
+Each metric type serves a specific purpose and determines how data is stored, queried, and visualized.
+
+1. Counter
+Definition: A counter represents a monotonic increasing value. It can only increase or reset to zero (e.g., at process restart).
+Use Case:
+Tracking events over time, such as requests served, errors encountered, or tasks completed.
+Example:
+http_requests_total: Counts the total number of HTTP requests received by a service.
+
+2. Gauge
+Definition: A gauge represents a value that can go up and down, such as a measurement at a specific moment.
+Use Case:
+Monitoring system resources (e.g., memory usage, CPU load) or states (e.g., number of active connections).
+Example:
+memory_usage_bytes: Tracks current memory usage in bytes.
+temperature_celsius: Reports the current temperature.
+
+3. Histogram
+Definition: A histogram samples observations (e.g., request durations or sizes) and counts them in buckets.
+Use Case:
+Measuring distributions, such as request latencies or response sizes.
+Components:
+<metric>_bucket: Contains counts for each bucket.
+<metric>_sum: Tracks the sum of all observations.
+<metric>_count: Counts the total number of observations.
+Example:
+http_request_duration_seconds_bucket: Buckets for request durations.
+
+4. Summary
+Definition: A summary also samples observations (e.g., request durations) but provides quantiles directly.
+Use Case:
+Calculating specific quantiles like 95th percentile latency.
+Components:
+<metric>_sum: Sum of all observations.
+<metric>_count: Total number of observations.
+Pre-computed quantiles (e.g., quantile="0.95").
+Example:
+http_request_duration_seconds_sum: Sum of request durations.
+http_request_duration_seconds_count: Total number of requests.
+
+
