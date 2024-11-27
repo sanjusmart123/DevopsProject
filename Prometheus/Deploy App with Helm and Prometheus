@@ -1,0 +1,131 @@
+Deploying an Application with Helm and Integrating Prometheus Monitoring
+To deploy an application using Helm and set up Prometheus monitoring, follow these steps:
+
+1. Prerequisites
+Kubernetes Cluster: Ensure you have a running Kubernetes cluster.
+Helm Installed: Install Helm on your local machine (helm version to confirm).
+Prometheus Operator: Ensure Prometheus is deployed in your cluster (e.g., via the kube-prometheus-stack Helm chart).
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/kube-prometheus-stack
+
+2. Create Helm Chart for Your Application
+Generate Helm Chart:
+helm create my-app
+cd my-app
+
+Define Deployment and Service: Update the templates/deployment.yaml and templates/service.yaml to define your application.
+#########################
+deployment.yaml:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-app
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+##########################################
+service.yaml:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-app
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: {{ .Chart.Name }}
+
+###############################################
+Update Values File: Configure default values in values.yaml:
+replicaCount: 2
+image:
+  repository: my-app-image
+  tag: latest
+
+############################################
+3. Add Prometheus Integration
+Expose Metrics in the Application: Ensure your application exposes metrics at a /metrics endpoint using a Prometheus client library (e.g., for Python, Java, etc.).
+
+Add a ServiceMonitor: Create a ServiceMonitor resource in the Helm chart to enable Prometheus scraping.
+
+templates/servicemonitor.yaml:
+##################################################
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-app-monitor
+  labels:
+    release: prometheus
+    app: {{ .Chart.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+Ensure the Prometheus Operator is configured to discover ServiceMonitors with the release: prometheus label.
+######################################################
+Update service.yaml to Include the Metrics Port:
+ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  - name: metrics
+    port: 9100
+    targetPort: 9100
+######################################################
+4. Deploy the Helm Chart
+Package and Install the Chart:
+
+helm package .
+helm install my-app ./my-app
+Verify Deployment:
+
+kubectl get pods
+kubectl get servicemonitor
+########################################################
+5. View Metrics in Prometheus and Grafana
+Access Prometheus Targets:
+
+Navigate to the Prometheus UI: http://<prometheus-url>:9090.
+Check if your application appears under Targets.
+View Metrics in Grafana:
+
+Add Prometheus as a data source in Grafana.
+Create a dashboard to visualize your application metrics.
+Final Notes
+Ensure the ServiceMonitor labels match Prometheus' configuration for target discovery.
+Use Grafana for better visualization and dashboards.
+Regularly validate the /metrics endpoint to ensure it exposes meaningful metrics for monitoring.
+
+########################################################
