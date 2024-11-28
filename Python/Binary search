@@ -24,3 +24,8 @@ if result != -1:
     print("Element is present at index",result)
 else:
     print("Not found")
+
+
+Aspect	Linear Search	Binary Search
+Methodology	Checks each element sequentially until a match is found.	Divides the dataset into halves and eliminates half with each comparison.
+Data Requirement	Works on unsorted or sorted datasets.	Requires the dataset to be sorted.
