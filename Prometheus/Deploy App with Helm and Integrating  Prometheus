@@ -16,60 +16,91 @@ cd my-app
 
 Define Deployment and Service: Update the templates/deployment.yaml and templates/service.yaml to define your application.
 #########################
-deployment.yaml:
-
+# templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-app
+  name: {{ .Release.Name }}-nginx
   labels:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}-nginx
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: {{ .Release.Name }}-nginx
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: {{ .Release.Name }}-nginx
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8080
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8080
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
 ##########################################
 service.yaml:
 
+# templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-app
+  name: {{ .Release.Name }}-nginx
   labels:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}-nginx
 spec:
+  type: {{ .Values.service.type }}
   ports:
-    - port: 8080
-      targetPort: 8080
-      protocol: TCP
+    - port: {{ .Values.service.port }}
+      targetPort: 80
   selector:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}-nginx
+
 
 ###############################################
-Update Values File: Configure default values in values.yaml:
+#Values.yml
 replicaCount: 2
+
 image:
-  repository: my-app-image
-  tag: latest
+  repository: nginx
+  tag: "1.25.2"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+  requests:
+    cpu: "200m"
+    memory: "128Mi"
+
+ingress:
+  enabled: false
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
 
 ############################################
 3. Add Prometheus Integration
@@ -79,31 +110,26 @@ Add a ServiceMonitor: Create a ServiceMonitor resource in the Helm chart to enab
 
 templates/servicemonitor.yaml:
 ##################################################
+
+Ensure the Prometheus Operator is configured to discover ServiceMonitors with the release: prometheus label.
+######################################################
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ .Release.Name }}-app-monitor
+  name: {{ .Release.Name }}-nginx-monitor
   labels:
-    release: prometheus
-    app: {{ .Chart.Name }}
+    release: {{ .Release.Name }}
+    app: nginx
 spec:
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: nginx
+      release: {{ .Release.Name }}
   endpoints:
     - port: http
-      path: /metrics
       interval: 30s
-Ensure the Prometheus Operator is configured to discover ServiceMonitors with the release: prometheus label.
-######################################################
-Update service.yaml to Include the Metrics Port:
-ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-  - name: metrics
-    port: 9100
-    targetPort: 9100
+      path: /metrics
+      scheme: http
 ######################################################
 4. Deploy the Helm Chart
 Package and Install the Chart:
