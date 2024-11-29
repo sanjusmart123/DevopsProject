@@ -12,3 +12,19 @@ if result != -1:
     print('element found at index:',result)
 else:
     print("Not found")
+
+##################################################
+def linear_search(arr,target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return target
+    return -1
+arr=[1,2,5,6,7,8,3]
+target=8
+result = linear_search(arr,target)
+if result != -1:
+    print('element found at index:',result)
+else:
+    print("Not found")
+
+Here find target exist in the arr
