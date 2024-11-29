@@ -27,10 +27,6 @@ Creating a list
 To create a list, you use the square brackets and add elements into it accordingly. 
 If you do not pass any elements inside the square brackets, you get an empty list as the output.
 
-1
-2
-3
-4
 my_list = [] #create empty list
 print(my_list)
 my_list = [1, 2, 3, 'example', 3.132] #creating list with data
@@ -45,14 +41,7 @@ Adding the elements in the list can be achieved using the append(), extend() and
 The append() function adds all the elements passed to it as a single element.
 The extend() function adds the elements one-by-one into the list.
 The insert() function adds the element passed to the index value and increase the size of the list too.
-1
-2
-3
-4
-5
-6
-7
-8
+
 my_list = [1, 2, 3]
 print(my_list)
 my_list.append([555, 12]) #add as a single element
@@ -82,15 +71,7 @@ If you want the element back, you use the pop() function which takes the index v
 To remove an element by its value, you use the remove() function.
 Example:
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
+
 my_list = [1, 2, 3, 'example', 3.132, 10, 30]
 del my_list[5] #delete element at index 5
 print(my_list)
@@ -109,13 +90,7 @@ Popped Element: 2 List remaining: [1, 3, 3.132, 30]
 Accessing Elements
 Accessing elements is the same as accessing Strings in Python. You pass the index values and hence can obtain the values as needed.
 
-1
-2
-3
-4
-5
-6
-7
+
 my_list = [1, 2, 3, 'example', 3.132, 10, 30]
 for element in my_list: #access elements one by one
     print(element)
@@ -143,13 +118,7 @@ The len() function returns to us the length of the list.
 The index() function finds the index value of value passed where it has been encountered the first time.
 The count() function finds the count of the value passed to it.
 The sorted() and sort() functions do the same thing, that is to sort the values of the list. The sorted() has a return type whereas the sort() modifies the original list.
-1
-2
-3
-4
-5
-6
-7
+
 my_list = [1, 2, 3, 10, 30, 10]
 print(len(my_list)) #find length of list
 print(my_list.index(10)) #find index of element that occurs first
@@ -221,19 +190,7 @@ Example: Creating, Modifying, and Adding Elements to a bytearray
 
 # Creating a bytearray from a string
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
+
 data = bytearray("Hello", 'utf-8')
 print("Original bytearray:", data.decode('utf-8')) 
 # Output: Hello
@@ -256,17 +213,10 @@ Final bytearray: Jello! World
 
 This example covers the creation, modification, and addition of elements to a bytearray.
 
- 
-
-Collections Module:
-
- 
-
+ Collections Module:
 The collections module in Python provides specialized container data types that extend the functionality of built-in types like lists, dictionaries, and tuples.
 
 Here are some key data structures from the collections module, along with code examples and its output:
-
- 
 
 Counter
 
@@ -276,9 +226,6 @@ from collections import Counter
 
 # Example: Count frequencies of characters in a string
 
-1
-2
-3
 data = "apple"
 counter = Counter(data)
 print(counter)
@@ -299,11 +246,6 @@ from collections import OrderedDict
 
 # Example: Create an ordered dictionary
 
-1
-2
-3
-4
-5
 ordered_dict = OrderedDict()
 ordered_dict['first'] = 1
 ordered_dict['second'] = 2
@@ -323,10 +265,6 @@ from collections import defaultdict
 
 # Example: defaultdict with int (default value 0)
 
-1
-2
-3
-4
 dd = defaultdict(int)
 dd['a'] += 1
 dd['b'] += 2
@@ -345,11 +283,6 @@ from collections import ChainMap
 
 # Example: Chain two dictionaries
 
-1
-2
-3
-4
-5
 dict1 = {'a': 1, 'b': 2}
 dict2 = {'b': 3, 'c': 4}
 chain_map = ChainMap(dict1, dict2)
@@ -361,9 +294,7 @@ Output:
 
 4
 
- 
-
-NamedTuple
+ NamedTuple
 
 NamedTuple is a lightweight, immutable object that provides named fields for accessing data like a class.
 
@@ -371,9 +302,7 @@ from collections import named tuple
 
 # Example: Create a named tuple for a point in 2D space
 
-1
-2
-3
+
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(10, 20)
 print(p.x, p.y)
@@ -384,17 +313,8 @@ Output:
  
 
 Dict
-
 dict is the built-in Python dictionary, a mutable data type used to store key-value pairs.
-
- 
-
 # Example: Basic dictionary usage
-
-1
-2
-3
-4
 dict_example = {'name': 'Alice', 'age': 25}
 print(dict_example['name'])
 dict_example['age'] = 26
@@ -406,29 +326,14 @@ Alice
 {‘name’: ‘Alice’, ‘age’: 26}
 
 These are some of the most commonly used data structures from the collections module in 
-
- 
-
 Python. Each offers specialized functionality to simplify certain tasks in Python programming.
-
- 
-
 UserDict
 
 UserDict is a wrapper around the regular dictionary (dict) that makes it easier to subclass and customize dictionary behavior.
-
- 
-
 from collections import UserDict
 
 # Example: Custom dictionary that converts keys to uppercase
 
-1
-2
-3
-4
-5
-6
 class MyDict(UserDict):
 def __setitem__(self, key, value):
 super().__setitem__(key.upper(), value)
@@ -444,21 +349,10 @@ Output:
 UserList
 
 UserList is a wrapper around the standard list that allows you to modify list behavior when subclassing.
-
- 
-
 from collections import UserList
 
 # Example: Custom list that prevents adding negative numbers
 
-1
-2
-3
-4
-5
-6
-7
-8
 class MyList(UserList):
 def append(self, item):
 if item >= 0:
@@ -471,24 +365,13 @@ Output:
 
 [10]
 
- 
-
 UserString
 
 UserString is a wrapper around the standard string (str) that makes it easier to subclass and extend string behavior.
-
- 
-
 from collections import UserString
 
 # Example: Custom string that converts to lowercase
 
-Programming & Frameworks Training
-1
-2
-3
-4
-5
 class MyString(UserString):
 def __init__(self, data):
 super().__init__(data.lower())
@@ -497,9 +380,6 @@ print(my_string)
 Output:
 
 hello world
-
- 
-
 These classes make it easier to create custom objects that behave like built-in data types but with added functionality.
 
 Dictionary
@@ -508,10 +388,6 @@ Dictionaries are used to store key-value pairs. To understand better, think of a
 Creating a Dictionary
 Dictionaries can be created using the flower braces or using the dict() function. You need to add the key-value pairs whenever you work with dictionaries.
 
-1
-2
-3
-4
 my_dict = {} #empty dictionary
 print(my_dict)
 my_dict = {1: 'Python', 2: 'Java'} #dictionary with elements
@@ -523,12 +399,6 @@ Output:
 Changing and Adding key, value pairs
 To change the values of the dictionary, you need to do that using the keys. So, you firstly access the key and then change the value accordingly. To add values, you simply just add another key-value pair as shown below.
 
-1
-2
-3
-4
-5
-6
 my_dict = {'First': 'Python', 'Second': 'Java'}
 print(my_dict)
 my_dict['Second'] = 'C++' #changing element
@@ -544,15 +414,7 @@ Deleting key, value pairs
 To delete the values, you use the pop() function which returns the value that has been deleted.
 To retrieve the key-value pair, you use the popitem() function which returns a tuple of the key and value.
 To clear the entire dictionary, you use the clear() function.
-1
-2
-3
-4
-5
-6
-7
-8
-9
+
 my_dict = {'First': 'Python', 'Second': 'Java', 'Third': 'Ruby'}
 a = my_dict.pop('Third') #pop element
 print('Value:', a)
@@ -588,11 +450,6 @@ Java
 Other Functions
 You have different functions which return to us the keys or the values of the key-value pair accordingly to the keys(), values(), items() functions accordingly.
 
-1
-2
-3
-4
-5
 my_dict = {'First': 'Python', 'Second': 'Java', 'Third': 'Ruby'}
 print(my_dict.keys()) #get keys
 print(my_dict.values()) #get values
@@ -621,13 +478,6 @@ Output:
 Accessing Elements
 Accessing elements is the same as it is for accessing values in lists.
 
-1
-2
-3
-4
-5
-6
-7
 my_tuple2 = (1, 2, 3, 'edureka') #access elements
 for x in my_tuple2:
     print(x)
@@ -648,9 +498,6 @@ e
 Appending Elements
 To append the values, you use the ‘+’ operator which will take another tuple to be appended to it.
 
-1
-2
-3
 my_tuple = (1, 2, 3)
 my_tuple = my_tuple + (4, 5, 6) #add elements
 print(my_tuple)
@@ -660,11 +507,6 @@ Output:
 Other Functions
 These functions are the same as they are for lists.
 
-1
-2
-3
-4
-5
 my_tuple = (1, 2, 3, ['hindi', 'python'])
 my_tuple[3][0] = 'english'
 print(my_tuple)
@@ -692,9 +534,7 @@ Output:
 Adding elements
 To add elements, you use the add() function and pass the value to it.
 
-1
-2
-3
+
 my_set = {1, 2, 3}
 my_set.add(4) #add element to set
 print(my_set)
@@ -704,14 +544,6 @@ Output:
 Operations in sets
 The different operations on set such as union, intersection and so on are shown below.
 
-1
-2
-3
-4
-5
-6
-7
-8
 my_set = {1, 2, 3, 4}
 my_set_2 = {3, 4, 5, 6}
 print(my_set.union(my_set_2), '----------', my_set | my_set_2)
@@ -755,8 +587,6 @@ Example:
 frozen1 = frozenset([1, 2, 3])
 
 frozen2 = frozenset([3, 4, 5])
-
- 
 
 # Union
 
