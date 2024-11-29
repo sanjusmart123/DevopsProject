@@ -2,7 +2,7 @@ Bubble sort is a simple algorithm that sorts a list of numbers in ascending orde
 
 def bubble_sort(arr):
     n=len(arr)
-    for i in range(arr):     #here iterating the array
+    for i in range(n):     #here iterating the array
         for j in range(0,n-i-1):#here comparing the array
             if arr[j] > arr[j+1]:
                 arr[j],arr[j+1] = arr[j+1],arr[j]#swaping
