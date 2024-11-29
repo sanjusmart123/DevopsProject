@@ -11,6 +11,10 @@ arr=[2,5,6,3,1,4]
 sorted_array=bubble_sort(arr)
 print("sorting numbers:",sorted_array)
 
+0: The starting index of the range.
+n - i - 1: The ending index (exclusive). 
+It decreases with each pass because the largest elements "settle" at the end of the array and do not need further comparison.
+
 ###############################################################
 def bubble_sort(char):
     items=list(char.items())
