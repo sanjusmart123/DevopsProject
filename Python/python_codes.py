@@ -154,11 +154,11 @@ def trigger_jenkins_job(job_name, jenkins_url, token):
         print(f"Failed to trigger job: {response.status_code}")
 
 trigger_jenkins_job("my-job", "http://jenkins.example.com", "my-token")
-'''jenkins_url: The base URL of the Jenkins server (e.g., http://jenkins.example.com).
-token: A token used for authentication to trigger the job. 
+'''1.jenkins_url: The base URL of the Jenkins server (e.g., http://jenkins.example.com).
+2.token: A token used for authentication to trigger the job. 
 This is typically generated within Jenkins for security.
-Jenkins' REST API provides a way to trigger jobs via the /build endpoint
-requests.post(): Sends a POST request to the URL to trigger the Jenkins job.
+3.Jenkins' REST API provides a way to trigger jobs via the /build endpoint
+4.requests.post(): Sends a POST request to the URL to trigger the Jenkins job.
 requests is a popular Python library for making HTTP requests.'''
 ###########################################
 def create_terraform_tfvars(instance_data):
@@ -214,6 +214,31 @@ with statement:
 Ensures automatic resource management.
 The file is automatically closed once the block of code under with is done, even if an error occurs.
  This prevents issues like leaving a file open accidentally, which could lead to resource leaks or file corruption.'''
+##############################################
+#sarbitary_arguments
+def deploy_apps(*apps):
+    for app in apps:
+        print(f"Deploying application: {app}...")
+        
+        print(f"Application {app} deployed successfully ")
+
+deploy_apps("web-app", "api-server", "worker")
+##########################################
+#skeyword_arguments
+def deploy_pod(namespace, image,pod_name):
+    print(f"Deploying pod '{pod_name}' in namespace '{namespace}' using image '{image}'.")
+    
+deploy_pod(pod_name="my-app", namespace="dev", image="nginx:latest")
+##############################################
+#sarbitary_keyword_arguments
+def configure_container(**config):
+    print(f"Container configuration:")
+    for key, value in config.items():
+        print(f"  {key}: {value}")
+
+configure_container(image="nginx:latest", port="8080", env="production", name="web-server")
+
+
 
 
 ##########################################
