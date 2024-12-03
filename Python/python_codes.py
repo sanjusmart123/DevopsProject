@@ -160,6 +160,62 @@ This is typically generated within Jenkins for security.
 Jenkins' REST API provides a way to trigger jobs via the /build endpoint
 requests.post(): Sends a POST request to the URL to trigger the Jenkins job.
 requests is a popular Python library for making HTTP requests.'''
+###########################################
+def create_terraform_tfvars(instance_data):
+    
+    tfvars_content = ""
+    for data in instance_data:
+        tfvars_content += f"""
+instance_type = "{data['instance_type']}"
+ami_id        = "{data['ami_id']}"
+"""
+    
+    
+    with open("terraform.tfvars", "w") as file:
+        file.write(tfvars_content)
+
+
+instance_data = [
+    {"instance_type": "t2.micro", "ami_id": "ami-123385646"},
+    {"instance_type": "t2.small", "ami_id": "ami-3648026249"},
+    {"instance_type": "t2.medium", "ami_id": "ami-845232103"}
+]
+
+
+create_terraform_tfvars(instance_data)
+
+'''1.tfvars_content = "":
+
+Initializes an empty string called tfvars_content.
+This string will accumulate the Terraform variable definitions for each instance in the instance_data list.
+2.for data in instance_data::
+
+Starts a loop that iterates over each item in instance_data.
+data represents one dictionary from the list, which contains keys like instance_type and ami_id.
+
+3.Formatted String (f"""):
+Creates a multi-line string using an f-string, which allows the insertion of values directly into the string using placeholders ({}).
+4.Appending to tfvars_content:
+Each iteration appends a new block of text to tfvars_content.
+{data['instance_type']}:
+5.Replaces {data['instance_type']} with the value of the instance_type key from the data dictionary.
+{data['ami_id']}:
+Replaces {data['ami_id']} with the value of the ami_id key from the data dictionary
+
+6. with open("terraform.tfvars", "w") as file:
+open():
+Opens or creates the file terraform.tfvars.
+The first argument, "terraform.tfvars", is the name of the file you want to open.
+"w" mode:
+The second argument "w" stands for write mode. This means:
+If the file already exists, it will be overwritten (its previous content will be erased).
+If the file doesn't exist, it will be created.
+with statement:
+Ensures automatic resource management.
+The file is automatically closed once the block of code under with is done, even if an error occurs.
+ This prevents issues like leaving a file open accidentally, which could lead to resource leaks or file corruption.'''
+
+
 ##########################################
 def greet(name):
     message = f"Good Morning, {name}"
