@@ -133,6 +133,34 @@ while cpu_usage < 90:
 
 
 #3.	Functions and Scope
+#sfunctions
+import math
+print(dir(math))
+help(math)
+##########################################
+import inspect
+import module_name
+
+print(inspect.getmembers(module_name))
+##########################################
+import requests
+
+def trigger_jenkins_job(job_name, jenkins_url, token):
+    url = f"{jenkins_url}/job/{job_name}/build?token={token}"
+    response = requests.post(url)
+    if response.status_code == 201:
+        print("Jenkins job triggered successfully.")  
+    else:
+        print(f"Failed to trigger job: {response.status_code}")
+
+trigger_jenkins_job("my-job", "http://jenkins.example.com", "my-token")
+'''jenkins_url: The base URL of the Jenkins server (e.g., http://jenkins.example.com).
+token: A token used for authentication to trigger the job. 
+This is typically generated within Jenkins for security.
+Jenkins' REST API provides a way to trigger jobs via the /build endpoint
+requests.post(): Sends a POST request to the URL to trigger the Jenkins job.
+requests is a popular Python library for making HTTP requests.'''
+##########################################
 def greet(name):
     message = f"Good Morning, {name}"
     return message
@@ -140,7 +168,7 @@ def greet(name):
 print(greet("sai"))
 print(greet("sai gulivindala"))
 
-
+###############################################
 
 #4.	Data Structures
 list=["sai","Gulivindala",2,3.5]
