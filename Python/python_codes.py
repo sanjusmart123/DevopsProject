@@ -124,16 +124,15 @@ while cpu_usage < 90:
 
 
 ########################################
-
-
-
-
-
-    
-
-
 #3.	Functions and Scope
 #sfunctions
+def greet(name):
+    message = f"Good Morning, {name}"
+    return message
+
+print(greet("sai"))
+print(greet("sai gulivindala"))
+##########################################
 import math
 print(dir(math))
 help(math)
@@ -238,16 +237,60 @@ def configure_container(**config):
 
 configure_container(image="nginx:latest", port="8080", env="production", name="web-server")
 
-
-
-
 ##########################################
-def greet(name):
-    message = f"Good Morning, {name}"
-    return message
+#sfunctionsinsidenestedfor
+import requests
 
-print(greet("sai"))
-print(greet("sai gulivindala"))
+def scrape_prometheus_metrics(exporters, environments):
+    for exporter in exporters:
+        for env in environments:
+            
+            url = f"http://{exporter}-{env}.example.com:9090/metrics"
+            print(f"Scraping metrics from Prometheus exporter: {url}...")
+            
+            response = requests.get(url)
+            
+            if response.status_code == 200:
+                print(f"Metrics successfully scraped from {url}.")
+            else:
+                print(f"Failed to scrape metrics from {url}, Status code: {response.status_code}")
+
+scrape_prometheus_metrics(
+    ["api-exporter", "web-exporter"], 
+    ["staging", "production"]
+)
+###############################################
+#sfunction_inside_nestedif_and _nestedfor
+def check_pod_health(namespaces, pods_status):
+    for namespace in namespaces:
+        print(f"\nChecking pods in namespace: {namespace}...")
+        for pod, status in pods_status[namespace].items():
+            if status.get("running"):  
+                if status.get("ready"):  
+                    print(f"Pod {pod} is running and ready.")
+                else:
+                    print(f"Pod {pod} is running but not ready.")
+            else:
+                print(f"Pod {pod} is not running.")
+
+
+pods_status = {
+    "namespace1": {
+        "pod1": {"running": True, "ready": True},
+        "pod2": {"running": True, "ready": False},
+        "pod3": {"running": False, "ready": False}
+    },
+    "namespace2": {
+        "pod4": {"running": True, "ready": True},
+        "pod5": {"running": False, "ready": False}
+    }
+}
+
+
+namespaces = ["namespace1", "namespace2"]
+
+check_pod_health(namespaces, pods_status)
+
 
 ###############################################
 
