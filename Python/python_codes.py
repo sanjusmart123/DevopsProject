@@ -290,6 +290,43 @@ pods_status = {
 namespaces = ["namespace1", "namespace2"]
 
 check_pod_health(namespaces, pods_status)
+###############################################
+sfunctioninsidewhile
+import requests
+import time
+
+def send_health_alert(app_name):
+    print(f"ALERT: {app_name} is down!")
+
+def monitor_app_health(app_name, health_url, poll_interval=10):
+    while True:
+        
+        response = requests.get(health_url)
+        
+        if response.status_code == 200:
+            print(f"{app_name} is healthy.")
+        else:
+            send_health_alert(app_name)
+            break
+        
+        time.sleep(poll_interval)
+
+
+monitor_app_health("MyApp", "http://myapp.example.com/health", poll_interval=5)
+
+################################################
+#sternaryoperatorfunction
+import boto3; boto3.client('s3').upload_file('local_file.txt', 'my-bucket', 's3_file.txt')
+########################################################
+#slambdafunction
+import boto3
+list_s3_buckets = lambda: [print(bucket['Name']) for bucket in boto3.client('s3').list_buckets()['Buckets']]
+list_s3_buckets()
+###########################################################################################################
+import boto3
+list_iam_users = lambda: [print(user['UserName']) for user in boto3.client('iam').list_users()['Users']]
+list_iam_users()
+
 
 
 ###############################################
