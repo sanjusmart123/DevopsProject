@@ -424,5 +424,3 @@ p1.getvalue()
 #19. Version Control with Git
 #20. Advanced Topics
 #21. Python Tools and Best Practices
-
-
