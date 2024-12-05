@@ -259,6 +259,18 @@ scrape_prometheus_metrics(
     ["api-exporter", "web-exporter"], 
     ["staging", "production"]
 )
+'''Scraping metrics from Prometheus exporter: http://api-exporter-staging.example.com:9090/metrics...
+Failed to scrape metrics from http://api-exporter-staging.example.com:9090/metrics, Status code: 404
+
+Scraping metrics from Prometheus exporter: http://api-exporter-production.example.com:9090/metrics...
+Metrics successfully scraped from http://api-exporter-production.example.com:9090/metrics.
+
+Scraping metrics from Prometheus exporter: http://web-exporter-staging.example.com:9090/metrics...
+Failed to scrape metrics from http://web-exporter-staging.example.com:9090/metrics, Status code: 500
+
+Scraping metrics from Prometheus exporter: http://web-exporter-production.example.com:9090/metrics...
+Metrics successfully scraped from http://web-exporter-production.example.com:9090/metrics.'''
+
 ###############################################
 #sfunction_inside_nestedif_and _nestedfor
 def check_pod_health(namespaces, pods_status):
@@ -290,8 +302,18 @@ pods_status = {
 namespaces = ["namespace1", "namespace2"]
 
 check_pod_health(namespaces, pods_status)
+
+'''Checking pods in namespace: namespace1...
+Pod pod1 is running and ready.
+Pod pod2 is running but not ready.
+Pod pod3 is not running.
+
+Checking pods in namespace: namespace2...
+Pod pod4 is running and ready.
+Pod pod5 is not running.'''
+
 ###############################################
-sfunctioninsidewhile
+#sfunctioninsidewhile
 import requests
 import time
 
@@ -313,7 +335,10 @@ def monitor_app_health(app_name, health_url, poll_interval=10):
 
 
 monitor_app_health("MyApp", "http://myapp.example.com/health", poll_interval=5)
-
+'''MyApp is healthy.
+MyApp is healthy.
+ALERT: MyApp is down!
+'''
 ################################################
 #sternaryoperatorfunction
 import boto3; boto3.client('s3').upload_file('local_file.txt', 'my-bucket', 's3_file.txt')
@@ -337,34 +362,102 @@ print(list)
 list.pop(2)
 print(list)
 
+#slists
+import random
+import time
+
+servers = ["192.168.1.1", "192.168.1.2", "192.168.1.3", "192.168.1.4", "192.168.1.5"]
+
+for server in servers:
+    print(f"Pinging server: {server}...")
+    
+    success = random.choice([True, False])
+    
+    if success:
+        print(f"Server {server} is reachable.")
+    else:
+        print(f"Failed to reach server {server}.")
+    
+    time.sleep(1)
+
+print("Ping operation completed for all servers.")
+'''Pinging server: 192.168.1.1...
+Server 192.168.1.1 is reachable.
+Pinging server: 192.168.1.2...
+Failed to reach server 192.168.1.2.
+Pinging server: 192.168.1.3...
+Server 192.168.1.3 is reachable.
+Pinging server: 192.168.1.4...
+Failed to reach server 192.168.1.4.
+Pinging server: 192.168.1.5...
+Server 192.168.1.5 is reachable.
+Ping operation completed for all servers.
+'''
+##############################################
+#stuples
 tuple1=("sai","Gulivindala",2,3.5,3+5j)
 print(tuple1)
 #tuple1[]
 print(tuple1[1])
-
+####################################################
 Database_login = ("gmail","username","password")
 Database_login.add("aadhar")
 Database_login.remove("password") #if the user add additional data or remove existing data will get error
 print(Database_login)
+######################################################
+# Tuple representing the immutable configuration of a Kubernetes deployment
+k8s_deployment_config = ("default", "my-app-deployment", "nginx:latest")
 
+# Accessing elements from the tuple
+namespace, deployment_name, container_image = k8s_deployment_config
+
+print(f"Kubernetes Deployment Configuration:")
+print(f"Namespace: {namespace}")
+print(f"Deployment Name: {deployment_name}")
+print(f"Container Image: {container_image}")
+
+# Trying to modify the tuple will raise an error
+# k8s_deployment_config[0] = "production"  # Uncommenting this will raise a TypeError
+##########################################################
+#ssetdatastructure
 container1 = {"nginx","busybox","nginx","grafana"}
 container2 = {"nginx","helm","prometheus"}
 #print(containers_create)#if want to create same name container it will take one container it deletes the duplicate one
 containers_soft_both = container1 | container2
-#print(common_soft)
+print(containers_soft_both)
 containers_soft_common = container1 & container2
 print(containers_soft_common)
-print(containers_soft_both)
+diffrence_containers = container1 - container2
+print(diffrence_containers)
 
-#dict = {"username": "saig","password":"Saigulivindala"}
+############################################################
+unique_ips = {"192.168.1.1", "192.168.1.2"}
+unique_ips.add("192.168.1.3")
+unique_ips.add("192.168.1.1")  # Duplicate, won't be added
 
-#print(dict)
+print(f"UniqueIPs: {unique_ips}")
+################################################################
+#sdictionarydatstructure
+dict = {"username": "saig","password":"Saigulivindala"}
 
+print(dict)
+##############################################################
 server_status = {"aws":"running","jenkins": "stopped","kubernetes":"running"}
 
 print(server_status["jenkins"])
 server_status["jenkins"] = "running"
 print(server_status["jenkins"])
+####################################################################
+branch_name = input()
+
+git_branches = {
+    "main": "a1b2c3d4e5f67890abcdef1234567890",
+    "develop": "f0e1d2c3b4a5c6e7d8e9f0b1c2345678",
+    "feature-branch": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8g9"
+}
+print(f"The latest commit on {branch_name} is: {git_branches[branch_name]}")
+
+
 
 
 #5.	Classes and Objects (OOP)
