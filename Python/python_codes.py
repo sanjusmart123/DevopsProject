@@ -361,7 +361,7 @@ list=["sai","Gulivindala",2,3.5]
 print(list)
 list.pop(2)
 print(list)
-###################################################################
+
 #slists
 import random
 import time
@@ -456,7 +456,52 @@ git_branches = {
     "feature-branch": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8g9"
 }
 print(f"The latest commit on {branch_name} is: {git_branches[branch_name]}")
-#################################################################################
+
+#########################################################################
+#squeueds
+from queue import Queue
+import time
+deployment_queue = Queue()
+
+deployment_queue.put("Service-A")
+deployment_queue.put("Service-B")
+deployment_queue.put("Service-C")
+
+while not deployment_queue.empty():
+    service = deployment_queue.get()
+    print(f"Deploying: {service}")
+    time.sleep(2)  
+    deployment_queue.task_done()
+
+print("All deployments complete.")
+###################################################################################
+#sstackds
+from queue import LifoQueue
+import time
+
+# Create a stack for configuration changes
+config_stack = LifoQueue()
+
+def apply_change(resource, config_change):
+    print(f"Applying change to {resource}: {config_change}")
+    time.sleep(1)
+    config_stack.put((resource, config_change))
+    
+apply_change("ConfigMap", "added one config data")
+apply_change("Deployment", "Update image to v2.0")
+apply_change("Service", "Add new endpoint")
+
+def undo_changes():
+    while not config_stack.empty():
+        resource, config_change = config_stack.get()
+        print(f"Undoing change on {resource}: {config_change}")
+        time.sleep(1)
+    print("All changes undone.")
+print("\nError detected! Undoing changes...\n")
+undo_changes()
+
+
+
 
 
 #5.	Classes and Objects (OOP)
