@@ -499,6 +499,42 @@ def undo_changes():
     print("All changes undone.")
 print("\nError detected! Undoing changes...\n")
 undo_changes()
+######################################################################
+#slinkedlistds
+import time
+class Pipeline:
+    def __init__(self):
+        self.stages = []  
+
+    def add_stage(self, name, action):
+        self.stages.append((name, action))
+
+    def execute(self):
+        for name, action in self.stages:
+            print(f"Executing stage: {name}")
+            action()
+            
+        print("Pipeline execution complete.")
+
+# Define actions
+def build_action():
+    print("Building the application...")
+    time.sleep(3)
+def test_action():
+    print("Running tests...")
+    time.sleep(3)
+def deploy_action():
+    print("Deploying the application...")
+    time.sleep(3)
+# Create and execute the pipeline
+jenkins_pipeline = Pipeline()
+jenkins_pipeline.add_stage("Build", build_action)
+jenkins_pipeline.add_stage("Test", test_action)
+jenkins_pipeline.add_stage("Deploy", deploy_action)
+
+jenkins_pipeline.execute()
+
+
 
 
 
