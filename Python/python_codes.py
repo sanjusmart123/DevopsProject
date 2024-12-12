@@ -558,8 +558,8 @@ p1.getvalue()
 p2=person()
 name = input()
 age = int(input())
-p1.setvalue(name,age)
-p1.getvalue()
+p2.setvalue(name,age)
+p2.getvalue()
 
 class person:
     def __init__(self,name,age):
@@ -578,8 +578,106 @@ name = input()
 age = int(input())
 p2=person(name,age)
 p1.getvalue()
+#######################################################################
+class CICDPipeline:
+    def __init__(self, repo_url, branch, environment):
+        """
+        Initialize the pipeline configuration with repository URL, branch, and deployment environment.
+        """
+        self.repo_url = repo_url
+        self.branch = branch
+        self.environment = environment
 
-        
+    def checkout_code(self):
+        """
+        Simulate code checkout from the repository.
+        """
+        print(f"Checking out branch '{self.branch}' from repository '{self.repo_url}'.")
+
+    def deploy_code(self):
+        """
+        Simulate deploying code to the specified environment.
+        """
+        print(f"Deploying code from branch '{self.branch}' to '{self.environment}' environment.")
+
+    def run_tests(self):
+        """
+        Simulate running tests in the deployment environment.
+        """
+        print(f"Running tests on '{self.environment}' environment.")
+
+# Example usage
+pipeline = CICDPipeline(
+    repo_url="https://github.com/example/myapp.git",
+    branch="main",
+    environment="production"
+)
+
+# Call methods to simulate pipeline tasks
+pipeline.checkout_code()
+pipeline.deploy_code()
+pipeline.run_tests()
+'''OUTPUT
+Checking out branch 'main' from repository 'https://github.com/example/myapp.git'.
+Deploying code from branch 'main' to 'production' environment.
+Running tests on 'production' environment.
+'''
+#####################################################################
+'''OOPs Concepts in Python
+Inheritance
+Polymorphism 
+Encapsulation 
+Data Abstraction'''
+#sInheritance
+# Base class for Kubernetes resources
+class K8sResource:
+    def __init__(self, name, namespace):
+        """
+        Initialize the Kubernetes resource with name and namespace.
+        """
+        self.name = name
+        self.namespace = namespace
+
+    def get_details(self):
+        """
+        Simulate retrieving resource details.
+        """
+        return f"Resource: {self.name}, Namespace: {self.namespace}"
+
+# Derived class for Deployment management
+class Deployment(K8sResource):
+    def scale(self, replicas):
+        """
+        Simulate scaling the deployment.
+        """
+        print(f"Scaling deployment '{self.name}' to {replicas} replicas in namespace '{self.namespace}'.")
+
+# Derived class for Service management
+class Service(K8sResource):
+    def expose(self, port):
+        """
+        Simulate exposing the service on a specific port.
+        """
+        print(f"Exposing service '{self.name}' on port {port} in namespace '{self.namespace}'.")
+
+# Example usage
+# Create a Deployment instance
+deployment = Deployment(name="my-app", namespace="production")
+print(deployment.get_details())
+deployment.scale(replicas=3)
+
+# Create a Service instance
+service = Service(name="my-app-service", namespace="production")
+print(service.get_details())
+service.expose(port=8080)
+
+'''OUTPUT:
+Resource: my-app, Namespace: production
+Scaling deployment 'my-app' to 3 replicas in namespace 'production'.
+Resource: my-app-service, Namespace: production
+Exposing service 'my-app-service' on port 8080 in namespace 'production'.
+'''
+############################################################################       
 
 #6.	Modules and Packages
 #7.	Error Handling and Exceptions
