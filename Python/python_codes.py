@@ -541,7 +541,7 @@ jenkins_pipeline.execute()
 
 
 #5.	Classes and Objects (OOP)
-
+#s__init__
 class person:
     def setvalue(self,name,age):
         self.name = name
