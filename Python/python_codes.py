@@ -533,13 +533,6 @@ jenkins_pipeline.add_stage("Test", test_action)
 jenkins_pipeline.add_stage("Deploy", deploy_action)
 
 jenkins_pipeline.execute()
-
-
-
-
-
-
-
 #5.	Classes and Objects (OOP)
 #s__init__
 class person:
@@ -678,7 +671,37 @@ Resource: my-app-service, Namespace: production
 Exposing service 'my-app-service' on port 8080 in namespace 'production'.
 '''
 ############################################################################       
+#spolymorphism
+class CloudProvider:
+    def deploy_instance(self):
+        raise NotImplementedError
 
+class AWSProvider(CloudProvider):
+    def deploy_instance(self):
+        return "Launching EC2 instance in AWS"
+
+class AzureProvider(CloudProvider):
+    def deploy_instance(self):
+        return "Launching Virtual Machine in Azure"
+
+class GCPProvider(CloudProvider):
+    def deploy_instance(self):
+        return "Launching Compute Engine instance in GCP"
+
+def provision_cloud_instance(provider: CloudProvider):
+    print(provider.deploy_instance())
+
+# Real-time polymorphism
+providers = [AWSProvider(), AzureProvider(), GCPProvider()]
+for provider in providers:
+    provision_cloud_instance(provider)
+    
+
+'''OUTPUT
+Launching EC2 instance in AWS
+Launching Virtual Machine in Azure
+Launching Compute Engine instance in GCP
+'''
 #6.	Modules and Packages
 #7.	Error Handling and Exceptions
 #8.	File Handling
