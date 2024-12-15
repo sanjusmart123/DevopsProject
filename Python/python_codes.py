@@ -102,6 +102,71 @@ print(my_tuple.index(3))
 #unpacking
 a,b,c,d= my_tuple
 print(a,b,c,d)
+#####################################
+#ssets
+my_set = {1,2,3,4,4}
+print(my_set)
+my_set2=set()
+my_set3=set([1,2,3,4,4])
+print(my_set3)
+my_set4={"A","B","C"}
+my_set.add(5)
+print(my_set)
+my_set.update([6,7],(8,9,8))
+print(my_set)
+my_set.remove(7)
+print(my_set)
+my_set.discard(0)
+print(my_set)
+my_set.pop()
+print(my_set)
+#my_set.clear()
+print(my_set)
+
+my_set4.pop()
+print(my_set4) #randing item pop
+
+union_sets=my_set | my_set4 #Both combine sets
+print(union_sets)
+
+Both_sets = my_set.union(my_set4)
+print(Both_sets)
+
+intersection_sets=my_set & my_set3 #common items in both sets 
+print(intersection_sets)
+
+Both_sets=my_set.intersection(my_set3)
+print(Both_sets)
+
+difference_sets=my_set - my_set3  #sets contain elements first set not in but not in second set
+print(difference_sets)
+
+Both_sets=my_set.difference(my_set3)
+print(Both_sets)
+
+symmetric_diffrence_sets = my_set ^ my_set3 #avoid common items and print remaining items in both sets
+print(symmetric_diffrence_sets)
+
+Both_sets = my_set.symmetric_difference(my_set3)
+print(Both_sets)
+
+
+print(len(my_set))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
