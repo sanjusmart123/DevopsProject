@@ -23,6 +23,95 @@
 '''
 
 #1.	Basics of Python
+#slists
+my_list = [1,2.5,"sai",True,1+3j,6]
+my_list.append(4)
+my_list.insert(2,5)
+my_list.extend([6,7,8])
+my_list.remove(2.5)
+item=my_list.pop(2)
+print(item)
+del my_list[3]
+#del my_list
+#my_list.clear()		
+print(my_list)
+#####################
+#indexing
+print(my_list[2])
+print(my_list[1:2])
+print(my_list[:2])
+print(my_list[::-1])
+#my_list.sort()
+print(my_list)
+
+new_list=sorted(my_list)
+print(new_list)
+print(my_list)
+my_list.reverse()
+print(my_list)
+print(my_list.index(6))
+print(my_list.count(6))
+
+sai_list = my_list.copy()
+print(sai_list)
+####################
+#modification
+sai_list[1] = 13
+print(sai_list)
+####################
+#checking nd len
+print(len(sai_list))
+print(2 in sai_list)
+print(8 in sai_list)
+#######################
+#list comprehensions
+squared_list = [x **2 for x in sai_list]
+print(squared_list)
+even_numbers=[x for x in sai_list if x%2 == 0]
+print(even_numbers)
+######################
+#nested list
+nest_list=[[1,2],[3,4],[5,6]]
+print(nest_list[1])
+print(nest_list[1][0])
+###############################
+#stuple
+my_tuple=(1,2,3,4)
+#indexing
+print(my_tuple[3])
+print(my_tuple[1:3])
+print(my_tuple[:: -1])
+print(my_tuple[-1])
+
+#concate
+your_tuple=(5,6,7,8)
+both_tuple=my_tuple+your_tuple
+print(both_tuple)
+
+repeated_tuple= my_tuple *3
+print(repeated_tuple)
+
+#checking
+print(4 in my_tuple)
+print(2 not in my_tuple)
+
+#len
+print(len(my_tuple))
+print(my_tuple.count(2))
+print(my_tuple.index(3))
+#unpacking
+a,b,c,d= my_tuple
+print(a,b,c,d)
+
+
+
+
+
+
+
+
+
+
 #2.	Control Flow Statements
 #sif elif else :
 lastball = 4
@@ -44,13 +133,14 @@ if branch_name == "develop":
         print("build failed,Not deploying to staging")
 elif branch_name == "master":
     if build_status == "success":
-        print("deploying to production")
+        print("deploying to production env")
     else:
         print("build failed,Not deploying to production")
         
 else:
     print("deploying to feature branch,no deployment triggered")
-######################################################################   
+######################################################################  
+#sternoryoperator 
 import os
 print("File exists") if os.path.exists("/home/usr/sai.txt") else print("File does not exist")
 #Checks if the file exists at the specified path.
@@ -61,7 +151,7 @@ for file_path in ["/home/usr/devops.txt","/home/usr/aws.txt","/home/usr/kubenern
 import os
 print("all files exists") if all(os.path.exists(file) for file in ["/home/usr/pyhton.txt","/home/usr/devops.txt","/home/usr/aws.txt"]) else print("some files missing")
 
-#soneline_if_elif_else
+#sternary operator if elif else
 server_status = int(input())
 status = "up" if server_status ==1 else "down" if server_status ==0 else "unknown"
 print(status)
@@ -476,11 +566,11 @@ while not deployment_queue.empty():
 print("All deployments complete.")
 ###################################################################################
 #sstackds
-from queue import LifoQueue
+from queue import LifoQueue as config_stack
 import time
 
 # Create a stack for configuration changes
-config_stack = LifoQueue()
+#config_stack = LifoQueue()
 
 def apply_change(resource, config_change):
     print(f"Applying change to {resource}: {config_change}")
@@ -514,7 +604,7 @@ class Pipeline:
             print(f"Executing stage: {name}")
             action()
             
-        print("Pipeline execution complete.")
+        print("Pipeline execution completed.")
 
 # Define actions
 def build_action():
@@ -572,6 +662,7 @@ age = int(input())
 p2=person(name,age)
 p1.getvalue()
 #######################################################################
+#s__init__
 class CICDPipeline:
     def __init__(self, repo_url, branch, environment):
         """
