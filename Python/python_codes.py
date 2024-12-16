@@ -23,6 +23,257 @@
 '''
 
 #1.	Basics of Python
+#svariable
+Variables are containers for storing data values.
+Python has no command for declaring a variable.
+A variable is created the moment you first assign a value to it.
+x = 5
+y = "sai"
+print(x)
+print(y)
+Python allows you to assign values to multiple variables in one line:
+
+x, y, z = "Orange", "Banana", "Cherry"
+print(x) #Orange
+print(y) #Banana
+print(z)#Cherry
+
+The Python print() function is often used to output variables.
+x = "Python is awesome"
+print(x)#Python is awesome
+###############################################
+The best way to output multiple variables in the print() function 
+is to separate them with commas, which even support different data types:
+
+x = 5
+y = "John"
+print(x, y)
+##############################
+#sglobal Variables
+Variables that are created outside of a function (as in all of the examples in the previous pages) are known as global variables.
+Global variables can be used by everyone, both inside of functions and outside.
+
+a="sai"
+def greet():
+    print(f"good morning {a}")
+greet()
+
+when we create a same variable inside the function it takes inside the variable not outside the variable.
+Normally, when you create a variable inside a function, that variable is local, and can only be used inside that function.
+
+To create a global variable inside a function, you can use the global keyword.
+def greet():
+    global a
+    a="sanju"
+    print(f"good morning {a}")
+greet()
+
+Also, use the global keyword if you want to change a global variable inside a function.
+a="sai"
+def greet():
+    global a
+    a="sanju"
+    print(f"good morning {a}")
+greet()
+
+#################################
+#slocalvariable
+A local variable is a variable declared inside a function, and its scope is limited to that function. 
+It is created when the function is called and destroyed when the function terminates.
+ = 20  # Global variable
+
+def example():
+    x = 10  # Local variable
+    print(f"x inside the function: {x}")
+
+example()
+print(f"x outside the function: {x}")  # Global variable remains unchanged
+
+##############################
+#casting
+Casting
+If you want to specify the data type of a variable, this can be done with casting.
+
+Example
+x = str(4)    # x will be '5'
+y = int(5)    # y will be 5
+z = float(3)  # z will be 3.0
+################################
+You can get the data type of a variable with the type() function.
+x = 5
+y = "sai"
+print(type(x)) #integer
+print(type(y)) #string
+#################################
+Case-Sensitive
+Variable names are case-sensitive.
+This will create two variables:
+a = 4
+A = "Gulivindala"
+###############################
+#text type
+#string data type
+x=str("sai")
+print(x)       
+print(type(x))
+#############################################
+#These 3 types are numeric type
+#integer,float,complex data types 
+x=int(20)
+print(x)      
+print(type(x))
+
+x=float(12.0)
+print(x)             
+print(type(x))
+
+x=complex(20+1j)
+print(x)
+print(type(x))
+#we can convert int to float datatype or viceversa and complext data type
+###############################################
+#sequence type
+#list,tuple,range
+my_list=[1,2,2.3,1+2j,{"name": "sai"},{1}]
+my_list2=list((1,2,2.3,1+2j,{"name": "sai"}))
+print(my_list)
+print(my_list2)
+
+my_tuple=(1,3,2.4,1+2j,{"name": "guli"},{3})
+my_tuple2=tuple((1,4,2.3,1+2j,{"name": "python"}))
+print(my_tuple)
+print(my_tuple2)         
+
+x=range(10)
+print(x)
+print(type(x))
+#######################################################
+#set type
+#set and frozenset
+my_set = {1,2,3,1+4j,2.5,2}
+print(type(my_set))
+my_set2 = set((1,2,3,1+4j,2.5,2,(2,4)))
+print(my_set2)
+
+my_frozenset=frozenset({1,2,3,1+4j,2.5,2,(2,4)})
+print(my_frozenset)
+print(type(my_frozenset))
+###################################################
+#boolean type
+a = True
+b = False
+
+print(a and b)  # False
+print(a or b)   # True
+print(not a)    # False
+
+######################################################
+
+
+
+
+
+
+
+###############################
+#soperators
+1.Arthemetic Operators
++,-,*,/,//,%,**
+x=5
+y=3
+
+print(x+y)#8
+print(x-y)#2
+print(x*y)#15
+print(x/y)#1.6666
+print(x//y)#1
+print(x%y)#2
+print(x**y)#125
+
+
+2.Assignment operators
+x = 5x += 5
+x=x+5
+
+x -= 5
+x=x-5
+
+x *= 5
+x=x*5
+
+x /= 5
+x=x/5
+
+x //= 5
+x = x//5
+
+x %= 5
+x=x%5
+
+x **= 5
+x=x**5
+
+3.Comparision opearators
+==
+5==5 True
+
+!=
+5!=4 True
+
+>
+5 > 7 False
+
+<
+5 < 9 True
+
+>=
+5 >= 5 True
+
+<=
+5 <= 3 False
+
+4.Logical Operators
+
+and   #returns True if both expressions true
+5 > 2 and 4 < 7
+
+or   #returns True if one is True
+10 < 20 or 10 > 20
+
+not  #reverse the result
+not(7 < 10)  False
+
+5.Bitwise operators
+&(AND), `,^(XOR),~(Not),<<(left shift),>>(right shift)
+
+6.Identity opearators
+is       #if both objects same name
+x=[1,2,3]
+y=[1,2,4]
+print(x is y)
+false
+
+is not   #True if objects are not same  
+x=[1,2,3]
+y=[1,2,4]
+print(x is not y)
+True
+
+7.Membership opearator
+in     #used to check items in sequences like lists,tuples,strings
+x=[1,2,3]
+print(2 in x)
+print(7 in x)
+
+not in    #returns True if value does not exist
+print("a" not in "sai") #False
+print("k" not in "sai")#True
+
+8.Ternary Operator
+age=18
+status="adult" if age >= 18 else "minor"
+print(status)
+###########################################################
 #slists
 my_list = [1,2.5,"sai",True,1+3j,6]
 my_list.append(4)
@@ -150,28 +401,76 @@ print(symmetric_diffrence_sets)
 Both_sets = my_set.symmetric_difference(my_set3)
 print(Both_sets)
 
-
 print(len(my_set))
+####################################
+#sdictionary
+#dictionary
+my_dict = {"name": "sai","age":24}
+print(my_dict)
 
+my_dict2 = dict(name = "Python",version = 3.10)
+print(my_dict2)
 
+my_dict["phno"] = 9392751509
 
+my_dict.update({"gmail": "saig@","Pass": 9392751509})
+print(my_dict)
 
+my_dict2["usrname"] = "saigulivindala"
+print(my_dict2)
 
+my_dict2.update({"datatype": "list","datatype2": "tuple"})
+print(my_dict2)
 
+#new_removed = my_dict.pop("age")
+#print(new_removed)
+my_dict21=(1,2,3,4,5,4)
+ram=my_dict21[3]
 
+print(ram)
 
+sai=my_dict["name"]
+print(sai)
 
+del my_dict["name"]
+print(my_dict)
 
+#del my_dict
+removed_item = my_dict.pop("age")
+print(removed_item)
 
+pop_item = my_dict.popitem()
+print(my_dict)
 
+#my_dict.clear()
+print(my_dict)
 
+print("name" in my_dict)
+print("phno" in my_dict)
 
+print("saig@" in my_dict.values())
+print(my_dict)
 
+for key in my_dict:
+    print(key)
 
+for value in my_dict.values():
+    print(value)
+    
+for key,value in my_dict.items():
+    print(key,":",value)
+    
+sai_dict = my_dict.copy()
+print(sai_dict)
+print(my_dict)
+##################
+import copy
+nested_dict = {"language": {"name":"java","version": 3.15}}
+g_dict = copy.deepcopy(nested_dict)
+print(g_dict)
+print(len(my_dict))
 
-
-
-
+########################################################
 
 
 
@@ -220,16 +519,22 @@ print("all files exists") if all(os.path.exists(file) for file in ["/home/usr/py
 server_status = int(input())
 status = "up" if server_status ==1 else "down" if server_status ==0 else "unknown"
 print(status)
-
+########################################################################
 #sfor loop
-sai=75
-for memory in range(sai):
-    if memory >= 70:
-        break
-    elif memory < 70:
-        print("its ok")
+sai=110
+for sa in range(100):
+    if sai >= 70 and sai <= 100:
+        print("not ok")
         break
         
+    elif sai <70:
+        print("its ok")
+        break
+    else:
+        print("notvalid")
+        break
+        
+##############################################################        
 n=10
 for i in range(n):
     if i <= 25:
