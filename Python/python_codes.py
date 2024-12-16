@@ -127,7 +127,7 @@ x=float(12.0)
 print(x)             
 print(type(x))
 
-x=complex(20+1j)
+x=complex(1j)
 print(x)
 print(type(x))
 #we can convert int to float datatype or viceversa and complext data type
@@ -402,6 +402,33 @@ Both_sets = my_set.symmetric_difference(my_set3)
 print(Both_sets)
 
 print(len(my_set))
+####################################
+#sfrozenset
+
+my_frozenset = frozenset([1, 2, 3])
+# my_frozenset.add(4)  # Error: 'frozenset' object has no attribute 'add'
+# my_frozenset.remove(2)  # Error: 'frozenset' object has no attribute 'remove'
+
+# Frozensets can be used as dictionary keys
+
+my_frozenset=frozenset({1,2,3,1+4j,2.5,2,(2,4)})
+print(my_frozenset)
+print(type(my_frozenset))
+
+'''output
+frozenset({1, 2.5, 3, 2, (2, 4), (1+4j)})
+<class 'frozenset'>
+'''
+
+Use set when:
+
+we need a mutable collection of unique elements.
+The set will undergo frequent updates (add/remove operations).
+
+Use frozenset when:
+we need an immutable collection of unique elements.
+The set is used as a key in a dictionary or an element in another set.
+
 ####################################
 #sdictionary
 #dictionary
