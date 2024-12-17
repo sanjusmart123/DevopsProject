@@ -113,9 +113,103 @@ A = "Gulivindala"
 ###############################
 #text type
 #string data type
+single line strings are form with single or double quotes
+a='sai'
+Multiline Strings
+You can assign a multiline string to a variable by using three quotes:
+a='''sai,gulivindala,python,java'''
+print(a)
+
 x=str("sai")
 print(x)       
 print(type(x))
+
+#concatenation
+a="sai"
+b="Gulivindala"
+c=a+b
+d=a+" "+b
+print(d)#sai Gulivindala
+##########################################
+To specify a string as an f-string, simply put an f in front of the string literal, 
+and add curly brackets {} as placeholders for variables and other operations.
+name="sai"
+print(f"my name is {name}")
+#############################################
+Placeholders and Modifiers
+A placeholder can contain variables, operations, functions, and modifiers to format the value.
+txt=f"price is {10 * 10}rs"
+print(txt)
+##############################################
+price=20
+txt=f"The Book price is {price:.2f} dollars"
+print(txt) #The Book price is 20.00 dollars
+############################################
+The escape character allows you to use double quotes when you normally would not be allowed:
+a="python is a \"programming\" language"
+print(a)  #python is a "programming" language
+################################################
+#sstringmethods
+a='python is a "programming" language'
+print(a.capitalize())   #convert first character uppercase
+
+a='python is a "programming" language'
+print(a.count("i")) #Returns the number of times a specified value occurs in a string
+
+a='python is a "programming" language'
+print(a.find("r")) #return position of r
+
+a='python is a "programm1ing" language'
+print(a.isalnum()) #False
+
+a="saigulivindala"
+print(a.isalpha()) #True
+
+a="sai gulivindala"
+print(a.isalpha()) #False
+
+a="abc123"
+print(a.isalnum()) #True
+
+a="123"
+print(a.isdigit()) #True
+
+a="my name is sai gulivindala"
+print(a.title()) 
+
+
+#############################################
+#sslicing
+Slicing
+You can return a range of characters by using the slice syntax.
+
+Specify the start index and the end index, separated by a colon, to return a part of the string.
+
+a='Sai, gulivindala '
+print(a[1:7])#
+print(a[:7])
+print(a[::-1])#reverse
+print(a[-1:]) #a
+print(a[:-1])#sai gulivindal
+print(a[:])#total string
+print(a[:-2])#last 2 remove
+print(a[:-15])#empty
+print(a[-2:])#la
+print(a[-15:])#sai gulivindala
+
+print(a.upper())
+print(a.lower())
+print(a.strip())#remove whitespaces 
+print(a.replace("g","G"))
+
+#The split() method splits the string into substrings if it finds instances of the separator
+print(a.split(","))#['Sai', ' gulivindala ']
+
+#remove the whitespace inside the string
+result=a.strip().replace(" ","")
+print(result)
+####################################################
+
 #############################################
 #These 3 types are numeric type
 #integer,float,complex data types 
@@ -166,18 +260,86 @@ b = False
 print(a and b)  # False
 print(a or b)   # True
 print(not a)    # False
+####################
+print(1 < 10) #T
+print(10 == 5)#F
+print(4 > 2)#T
+print(10 != 6)#T
+print(5 <= 5)#T
+print(7 >= 5)#T
+####################
+a=10
+b=20
+
+if a > b:
+    print("a is greater than b")
+else:
+    print("a is less than b")
+#################################
+print(bool(123))   # Output: True
+print(bool("sai")) # Output: True
+print(bool())      # Output: False
+
+bool(123): Any non-zero number is considered True in Python.
+bool("sai"): Any non-empty string is considered True in Python.
+bool(): Without any argument, the bool() function returns False.
+
+
+bool(False)
+bool(None)
+bool(0)
+bool("")      #All are False
+bool(())
+bool([])
+bool({})
+##########################################
+def myFun():
+    return False
+if myFun():
+    print("YES")
+else:
+    print("NO")
 
 ######################################################
+#stypeconversion
+Type Conversion
+we can convert from one type to another with the int(), float(), and complex() methods:
+
+x=12
+y=2.5
+z=1+3j
+
+a=float(x)
+b=int(2.5)
+c=complex(y)
+#d=int(z) #we canot convert complex to int
+e=str(y) #12
+print(a)
+print(b)
+print(c)
+#print(d)
+print(e)
+print(type(e))
+import random
+
+print(random.randrange(1,10))
 
 
 
+######################################
+#srandomnumber
+Random Number
+Python does not have a random() function to make a random number, 
+but Python has a built-in module called random that can be used to make random numbers:
+import random
 
+print(random.randrange(1,10))
 
 
 
 ###############################
 #soperators
-1.Arthemetic Operators
+#sarthemeticoperators
 +,-,*,/,//,%,**
 x=5
 y=3
@@ -189,31 +351,36 @@ print(x/y)#1.6666
 print(x//y)#1
 print(x%y)#2
 print(x**y)#125
+#####################
+#sassignmentoperators
+x=10
 
-
-2.Assignment operators
-x = 5x += 5
-x=x+5
+x += 10
+print(x)  #20
 
 x -= 5
-x=x-5
+print(x) #15
 
 x *= 5
-x=x*5
-
-x /= 5
-x=x/5
+print(x)  #75
 
 x //= 5
-x = x//5
+print(x) #15
+
+x /= 5
+print(x)  #3.0
 
 x %= 5
-x=x%5
+print(x)   #x = x%5
 
 x **= 5
-x=x**5
+print(x)  #power
 
-3.Comparision opearators
+print(a := 7)
+ x=7
+ print(x)
+##############################
+#comparisionopearators
 ==
 5==5 True
 
@@ -232,7 +399,7 @@ x=x**5
 <=
 5 <= 3 False
 
-4.Logical Operators
+#logicaloperators
 
 and   #returns True if both expressions true
 5 > 2 and 4 < 7
@@ -243,23 +410,26 @@ or   #returns True if one is True
 not  #reverse the result
 not(7 < 10)  False
 
-5.Bitwise operators
+#bitwiseoperators
 &(AND), `,^(XOR),~(Not),<<(left shift),>>(right shift)
 
-6.Identity opearators
+#identityopearators
 is       #if both objects same name
 x=[1,2,3]
 y=[1,2,4]
-print(x is y)
-false
+print(x is y)#False
+
 
 is not   #True if objects are not same  
 x=[1,2,3]
 y=[1,2,4]
-print(x is not y)
-True
+print(x is not y)#False
 
-7.Membership opearator
+x=[1,2,3]
+y=[1,2,4]
+print(x == y) #True
+#here it checks data inside the variable 
+#membershipopearator
 in     #used to check items in sequences like lists,tuples,strings
 x=[1,2,3]
 print(2 in x)
@@ -269,12 +439,68 @@ not in    #returns True if value does not exist
 print("a" not in "sai") #False
 print("k" not in "sai")#True
 
-8.Ternary Operator
+#ternaryoperator
 age=18
 status="adult" if age >= 18 else "minor"
 print(status)
 ###########################################################
 #slists
+
+my_list=[True,False,True]
+my_list2=list((1,2,"sai",{3},{"name":"python"}))
+print(my_list2)
+
+print(my_list2[-1:]) #[{'name': 'python'}]
+print(my_list2[-1])  #{'name': 'python'}
+print(my_list2[:-1])  #[1, 2, 'sai', {3}]
+print(my_list2[-5:])  #[1, 2, 'sai', {3}, {'name': 'python'}]
+# print(my_list2[:-5])  #[]
+
+if "sai" in my_list2:
+    print("sai is exist")
+else:
+    print("not exist item")
+#updating value   
+my_list[2]=False
+print(my_list)
+
+my_list[0:2]= [False,True]
+print(my_list)
+
+my_list[0:2]= [False]
+print(my_list)
+
+my_list2.insert(2, "gulivindala")
+print(my_list2)
+
+my_list.extend(my_list2)
+print(my_list)
+
+my_list2.extend([3,5])
+print(my_list2)
+
+my_tuple=(1,2,3,4)
+my_list2.extend(my_tuple)
+print(my_list2)
+
+my_list.pop(2)
+print(my_list)
+
+del my_list2[3]
+print(my_list2)
+
+#del my_list2
+#print(my_list2)
+
+my_list.clear()
+print(my_list)
+
+for i in range(len(my_list2)):
+    print(my_list2[i])
+
+
+
+
 my_list = [1,2.5,"sai",True,1+3j,6]
 my_list.append(4)
 my_list.insert(2,5)
@@ -328,13 +554,13 @@ print(nest_list[1][0])
 ###############################
 #stuple
 my_tuple=(1,2,3,4)
-#indexing
+#sindexing
 print(my_tuple[3])
 print(my_tuple[1:3])
-print(my_tuple[:: -1])
+print(my_tuple[::-1])
 print(my_tuple[-1])
 
-#concate
+#sconcate
 your_tuple=(5,6,7,8)
 both_tuple=my_tuple+your_tuple
 print(both_tuple)
