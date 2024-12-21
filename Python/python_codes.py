@@ -497,9 +497,37 @@ print(my_list)
 
 for i in range(len(my_list2)):
     print(my_list2[i])
-
-
-
+######################################
+my_list5=["sai","Python","java"]
+i=0
+while i < len(my_list5):
+    print(my_list5[i])
+    i += 1
+###########################################
+my_list5=["sai","Python","java"]
+[print(i) for i in my_list5]
+######################################
+my_list=["sai","python","java"]
+sai_list=[]
+for i in my_list:
+    if "a" in i:
+     sai_list.append(i)
+print(sai_list)
+######################################
+my_list=["sai","python","java"]
+sai_list=[x for x in my_list if "a" in x]
+print(sai_list)
+######################################
+#set all values to new_list to "sai"
+my_list=["python","Java","Devops"]
+new_list=["sai" for x in my_list]
+print(new_list)
+########################################
+#replace JAva with C++
+my_list=["python","Java","Devops"]
+new_list=[x if x != "Java" else "C++" for x in my_list]
+print(new_list)
+#########################################
 
 my_list = [1,2.5,"sai",True,1+3j,6]
 my_list.append(4)
@@ -553,12 +581,49 @@ print(nest_list[1])
 print(nest_list[1][0])
 ###############################
 #stuple
+'''
+Tuples are used to store multiple items in a single variable.
+Tuple is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Set, and Dictionary, all with different qualities and usage.
+A tuple is a collection which is ordered and unchangeable.
+Tuples are written with round brackets.'''
 my_tuple=(1,2,3,4)
 #sindexing
-print(my_tuple[3])
+print(my_tuple[3]) #4
 print(my_tuple[1:3])
 print(my_tuple[::-1])
 print(my_tuple[-1])
+print(my_tuple[-1:-3])
+#################################
+#we know tuple is immutable ,if we need to update the tuple first tuple convert to list 
+#and update or remove or add items and again convert to tuple
+my_tuple=("python","Devops")
+my_list=list(my_tuple)
+my_list[1]="SQL"
+print(my_list) #['python', 'SQL']
+#################################
+#unpacking tuple
+my_tuple=("python","Devops")
+(OOPS,Jenkins) = my_tuple
+print(OOPS)
+##################################
+#Add Asterisk* tuple
+my_tuple=("python","Devops","AWS")
+(OOPS,*Jenkins) = my_tuple
+print(OOPS)    #python
+print(Jenkins) #['Devops', 'AWS']
+####################################
+#for loop
+my_tuple=("python","Devops","AWS")
+for i in range(len(my_tuple)):
+    print(my_tuple[i])
+#####################################
+#while loops
+my_tuple=("python","Devops","AWS")
+i=0
+while i < len(my_tuple):
+    print(my_tuple[i])
+    i += 1
+###################################
 
 #sconcate
 your_tuple=(5,6,7,8)
@@ -579,8 +644,41 @@ print(my_tuple.index(3))
 #unpacking
 a,b,c,d= my_tuple
 print(a,b,c,d)
+######################################
+#type
+my_tuple=("python",)
+print(type(my_tuple))  #<class 'tuple'>
+
+my_tuple=("python")
+print(type(my_tuple))  #<class 'str'>
+
 #####################################
 #ssets
+'''Sets are used to store multiple items in a single variable.
+Set is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Tuple, and Dictionary, all with different qualities and usage.
+A set is a collection which is unordered, unchangeable*, and unindexed.
+Unchangeable
+Set items are unchangeable, meaning that we cannot change the items after the set has been created.
+Once a set is created, you cannot change its items, but you can remove items and add new items.'''
+#################################
+my_set={2,3,True,1} #{True, 2, 3}
+print(my_set)#TRue and 1 considered as same value 
+
+my_set2={2,3,0,False} #{0, 2, 3}
+print(my_set)#False and 0 considered as same value
+
+for i in my_set:
+    print(i)   
+    
+print(3 in my_set) #True
+
+my_set.add(6)
+print(my_set)   #{True, 2, 3, 6}
+
+my_set.update(my_set2)
+print(my_set) #{0, True, 2, 3, 6}
+  
+#####################################
 my_set = {1,2,3,4,4}
 print(my_set)
 my_set2=set()
@@ -609,18 +707,51 @@ print(union_sets)
 Both_sets = my_set.union(my_set4)
 print(Both_sets)
 
+add_two_sets=my_set.update(my_set4)
+print(add_two_sets)
+
+my_set={0,1,4,5,6}
+my_set2={0,7,9,4}
+my_set3={"sai","gulivindala"}
+
+my_set4=my_set.union(my_set2,my_set3)
+print(my_set4)
+
+my_set={0,1,4,5,6}
+my_set2={0,7,9,4}
+my_set3={"sai","gulivindala"}
+
+my_set4=my_set | my_set2 | my_set3
+print(my_set4)
+
+'''Join a Set and a Tuple
+The union() method allows you to join a set with other data types, like lists or tuples.
+The result will be a set.'''
+
+my_set={1,2,3}
+my_tuple=(1,2,3,4)
+
+Both_set_tuple=my_set.union(my_tuple)
+print(Both_set_tuple)   #{1, 2, 3, 4}
+
+
+
+
 intersection_sets=my_set & my_set3 #common items in both sets 
 print(intersection_sets)
 
 Both_sets=my_set.intersection(my_set3)
 print(Both_sets)
 
+#The difference() method will return a new set that will contain only the items from the first set that are not present in the other set
 difference_sets=my_set - my_set3  #sets contain elements first set not in but not in second set
 print(difference_sets)
 
 Both_sets=my_set.difference(my_set3)
 print(Both_sets)
 
+#Symmetric Differences
+#The symmetric_difference() method will keep only the elements that are NOT present in both sets.
 symmetric_diffrence_sets = my_set ^ my_set3 #avoid common items and print remaining items in both sets
 print(symmetric_diffrence_sets)
 
@@ -657,7 +788,11 @@ The set is used as a key in a dictionary or an element in another set.
 
 ####################################
 #sdictionary
-#dictionary
+#Dictionary
+"""Dictionaries are used to store data values in key:value pairs.
+A dictionary is a collection which is ordered*, changeable and do not allow duplicates.
+Dictionaries cannot have two items with the same key"""
+
 my_dict = {"name": "sai","age":24}
 print(my_dict)
 
