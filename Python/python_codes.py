@@ -777,14 +777,14 @@ frozenset({1, 2.5, 3, 2, (2, 4), (1+4j)})
 <class 'frozenset'>
 '''
 
-Use set when:
+'''Use set when:
 
 we need a mutable collection of unique elements.
 The set will undergo frequent updates (add/remove operations).
 
 Use frozenset when:
 we need an immutable collection of unique elements.
-The set is used as a key in a dictionary or an element in another set.
+The set is used as a key in a dictionary or an element in another set.'''
 
 ####################################
 #sdictionary
@@ -796,8 +796,14 @@ Dictionaries cannot have two items with the same key"""
 my_dict = {"name": "sai","age":24}
 print(my_dict)
 
+x=my_dict.items()
+print(x) #dict_items([('name', 'sai'), ('age', 24)])
+
 my_dict2 = dict(name = "Python",version = 3.10)
 print(my_dict2)
+
+my_dict2=dict({"name":"python","version":3.12})
+print(my_dict6)
 
 my_dict["phno"] = 9392751509
 
@@ -812,6 +818,11 @@ print(my_dict2)
 
 #new_removed = my_dict.pop("age")
 #print(new_removed)
+
+my_dict={"name":"sai","age":25}
+my_dict.pop("name")
+print(my_dict)
+
 my_dict21=(1,2,3,4,5,4)
 ram=my_dict21[3]
 
@@ -827,7 +838,7 @@ print(my_dict)
 removed_item = my_dict.pop("age")
 print(removed_item)
 
-pop_item = my_dict.popitem()
+pop_item = my_dict.popitem() #removes last item
 print(my_dict)
 
 #my_dict.clear()
@@ -851,6 +862,28 @@ for key,value in my_dict.items():
 sai_dict = my_dict.copy()
 print(sai_dict)
 print(my_dict)
+
+my_dict={"name":"Python","version":3.12}
+copy_dict=dict(my_dict)
+print(copy_dict)
+############################
+my_family={"Father":{ "Name": "Ramakrishna","age": 50}, "Mother":{"Name":"Yerakamma","age": 35}}
+print(my_family)
+print(my_family["Father"]["Name"])
+
+for x, obj in my_family.items():
+    print(x,obj)
+    for y in obj:
+        print(y+ ":",obj[y])
+    
+'''{'Father': {'Name': 'Ramakrishna', 'age': 50}, 'Mother': {'Name': 'Yerakamma', 'age': 35}}
+Ramakrishna
+Father {'Name': 'Ramakrishna', 'age': 50}
+Name: Ramakrishna
+age: 50
+Mother {'Name': 'Yerakamma', 'age': 35}
+Name: Yerakamma
+age: 35'''
 ##################
 import copy
 nested_dict = {"language": {"name":"java","version": 3.15}}
@@ -859,12 +892,7 @@ print(g_dict)
 print(len(my_dict))
 
 ########################################################
-
-
-
-
-
-#2.	Control Flow Statements
+#scontrolflowstatements
 #sif elif else :
 lastball = 4
 if lastball >= 6:
@@ -873,8 +901,37 @@ elif lastball == 5:
     print("Draw match")
 else:
     print("Lost the match")
+###################################
+a=100
+b=50
+c=200
+if a < b and b < c:
+    print("True")
+else:
+    print("False") #False
     
+if a < b or b < c:
+    print("True")
+else:
+    print("False") #True
+    
+if not a < b and b < c:
+    print("True")
+else:
+    print("False")# True, it is opposite of first expression
+###################################################################
 #snestedif
+x=int(input()) #15
+
+if x > 20:
+    print("above twenty")
+    if x > 50:
+        print("also above 50")
+    else:
+        print("but not above 50")
+else:
+    print("below 20") #below 20
+#####################################################
 
 branch_name=input()
 build_status =input()
@@ -892,7 +949,16 @@ elif branch_name == "master":
 else:
     print("deploying to feature branch,no deployment triggered")
 ######################################################################  
-#sternoryoperator 
+#sternoryoperator or conditional expressions
+a=100
+b=200
+print("a is greater than b") if a > b else print("b is greater than a")
+
+a=100
+b=100
+print("a is greater than b") if a > b else print("a is equal to b") if a==b else print("b is greater than a")
+
+###############################################################
 import os
 print("File exists") if os.path.exists("/home/usr/sai.txt") else print("File does not exist")
 #Checks if the file exists at the specified path.
@@ -906,6 +972,15 @@ print("all files exists") if all(os.path.exists(file) for file in ["/home/usr/py
 #sternary operator if elif else
 server_status = int(input())
 status = "up" if server_status ==1 else "down" if server_status ==0 else "unknown"
+print(status)
+
+if server_status == 1:
+    status = "up"
+elif server_status == 0:
+    status = "down"
+else:
+    status = "unknown"
+
 print(status)
 ########################################################################
 #sfor loop
@@ -952,8 +1027,43 @@ for server in servers:
         
 ####################################################
 #swhile_loop
-import time
 
+'''while Loop
+With the while loop we can execute a set of statements as long as a condition is true.'''
+###################################
+'''continue Statement
+With the continue statement we can stop the current iteration, and continue with the next:'''
+i=0
+while i < 10:
+    i +=1
+    if i == 7:
+        continue
+    print(i)
+    
+#it will skip the 7 and continue with the next iteration
+##################################
+'''break Statement
+With the break statement we can stop the loop even if the while condition is true:'''
+
+i=1
+while i < 10:
+    print(i)
+    if i == 7:
+        break
+    i +=1
+#it will stop with 7 
+##################################
+#With the else statement we can run a block of code once when the condition no longer is true:
+i=1
+while i < 10:
+    print(i)
+    i +=1
+else:
+    print("i is no longer less than 6")
+    
+#Here print the both statements
+##################################
+import time
 cpu_usage = 76
 while cpu_usage < 90: print("High alert!" if cpu_usage > 80 else "normal usage"); time.sleep(3)
 #########################################
