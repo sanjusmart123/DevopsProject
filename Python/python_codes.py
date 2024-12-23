@@ -984,6 +984,11 @@ else:
 print(status)
 ########################################################################
 #sfor loop
+'''For Loops
+A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
+With the for loop we can execute a set of statements, once for each item in a list, tuple, set etc.'''
+
 sai=110
 for sa in range(100):
     if sai >= 70 and sai <= 100:
@@ -994,8 +999,21 @@ for sa in range(100):
         print("its ok")
         break
     else:
-        print("notvalid")
+        print("exceeded")
         break
+##############################################################
+x=["sai","saigulivindala","Phno"]
+for i in x:
+    print(i)
+    if i == "saigulivindala":
+        break 
+#######################################
+x=["sai","saigulivindala","Phno"]
+for i in x:
+    if i == "saigulivindala":
+        continue
+    print(i)
+
         
 ##############################################################        
 n=10
@@ -1084,6 +1102,10 @@ while cpu_usage < 90:
 ########################################
 #3.	Functions and Scope
 #sfunctions
+
+'''In Python, functions are blocks of reusable code that perform a specific task. 
+They help in organizing code, making it more readable, modular, and maintainable. 
+Functions allow us to write once and use the same code multiple times by calling the function.'''
 def greet(name):
     message = f"Good Morning, {name}"
     return message
