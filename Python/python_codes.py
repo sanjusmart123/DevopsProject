@@ -1106,6 +1106,11 @@ while cpu_usage < 90:
 '''In Python, functions are blocks of reusable code that perform a specific task. 
 They help in organizing code, making it more readable, modular, and maintainable. 
 Functions allow us to write once and use the same code multiple times by calling the function.'''
+
+'''Arguments
+Information can be passed into functions as arguments.
+Arguments are specified after the function name, inside the parentheses. 
+You can add as many arguments as you want, just separate them with a comma.'''
 def greet(name):
     message = f"Good Morning, {name}"
     return message
@@ -1195,6 +1200,21 @@ The file is automatically closed once the block of code under with is done, even
  This prevents issues like leaving a file open accidentally, which could lead to resource leaks or file corruption.'''
 ##############################################
 #sarbitary_arguments
+'''Arbitrary Arguments, *args
+If you do not know how many arguments that will be passed into your function, 
+add a * before the parameter name in the function definition.
+This way the function will receive a tuple of arguments, and can access the items accordingly:'''
+
+def my_function(*names):
+    for name in names:
+        print(f"Hello {name}")
+my_function("sai","sanju","virat","dhoni")
+
+'''Hello sai
+Hello sanju
+Hello virat
+Hello dhoni'''
+
 def deploy_apps(*apps):
     for app in apps:
         print(f"Deploying application: {app}...")
@@ -1204,12 +1224,19 @@ def deploy_apps(*apps):
 deploy_apps("web-app", "api-server", "worker")
 ##########################################
 #skeyword_arguments
+'''Keyword Arguments
+You can also send arguments with the key = value syntax.
+This way the order of the arguments does not matter.'''
+
 def deploy_pod(namespace, image,pod_name):
     print(f"Deploying pod '{pod_name}' in namespace '{namespace}' using image '{image}'.")
     
 deploy_pod(pod_name="my-app", namespace="dev", image="nginx:latest")
 ##############################################
 #sarbitary_keyword_arguments
+'''Arbitrary Keyword Arguments, **kwargs
+If you do not know how many keyword arguments that will be passed into your function, 
+add two asterisk: ** before the parameter name in the function definition.'''
 def configure_container(**config):
     print(f"Container configuration:")
     for key, value in config.items():
