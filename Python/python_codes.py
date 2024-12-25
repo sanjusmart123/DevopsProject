@@ -1243,6 +1243,45 @@ def configure_container(**config):
         print(f"  {key}: {value}")
 
 configure_container(image="nginx:latest", port="8080", env="production", name="web-server")
+##########################################
+def my_fun(food):
+    for i in food:
+        print(i)
+fruits=["apple","Banana","cherry"]
+my_fun(fruits)
+##########################################
+#spositional-Only Arguments
+'''You can specify that a function can have ONLY positional arguments, or ONLY keyword arguments.
+To specify that a function can have only positional arguments, add , / after the arguments:'''
+def my_fun(x, /):
+    print(x)
+my_fun(5)
+##########################################
+#skeywordonly arguments
+#To specify that a function can have only keyword arguments, add *, before the arguments:
+def my_function(*, x):
+  print(x)
+my_function(x = 3)
+##########################################
+#recursion
+'''A Function calls itself is known as Recursive function and its technic is know as Recursion.
+These should be at least one if statement used to terminate recursion.
+It doesnot contain any looping statements'''
+def fact(n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return n * fact(n-1) #here call its self till condition is satishfy
+print(fact(5))
+
+def fibonacci(n):
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+print(fibonacci(6)) #8 6th fibonacci series is 8  0,1,1,2,3,5,8
 
 ##########################################
 #sfunctionsinsidenestedfor
@@ -1351,6 +1390,13 @@ ALERT: MyApp is down!
 import boto3; boto3.client('s3').upload_file('local_file.txt', 'my-bucket', 's3_file.txt')
 ########################################################
 #slambdafunction
+Python Lambda
+'''A lambda function is a small anonymous function.
+A lambda function can take any number of arguments, but can only have one expression'''
+
+x=lambda a,b:a*b
+print(x(3,5))
+
 import boto3
 list_s3_buckets = lambda: [print(bucket['Name']) for bucket in boto3.client('s3').list_buckets()['Buckets']]
 list_s3_buckets()
