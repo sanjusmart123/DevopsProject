@@ -1223,7 +1223,7 @@ def deploy_apps(*apps):
 
 deploy_apps("web-app", "api-server", "worker")
 ##########################################
-#skeyword_arguments
+#skeywordarguments
 '''Keyword Arguments
 You can also send arguments with the key = value syntax.
 This way the order of the arguments does not matter.'''
@@ -1233,7 +1233,7 @@ def deploy_pod(namespace, image,pod_name):
     
 deploy_pod(pod_name="my-app", namespace="dev", image="nginx:latest")
 ##############################################
-#sarbitary_keyword_arguments
+#sarbitarykeywordarguments
 '''Arbitrary Keyword Arguments, **kwargs
 If you do not know how many keyword arguments that will be passed into your function, 
 add two asterisk: ** before the parameter name in the function definition.'''
@@ -1396,7 +1396,12 @@ A lambda function can take any number of arguments, but can only have one expres
 
 x=lambda a,b:a*b
 print(x(3,5))
-
+#########################################
+def my_fun(n):
+    return lambda a: a*n
+my_lambda_arg=my_fun(5) #this is lambda argument
+print(my_lambda_arg(10))
+#########################################
 import boto3
 list_s3_buckets = lambda: [print(bucket['Name']) for bucket in boto3.client('s3').list_buckets()['Buckets']]
 list_s3_buckets()
@@ -1404,8 +1409,17 @@ list_s3_buckets()
 import boto3
 list_iam_users = lambda: [print(user['UserName']) for user in boto3.client('iam').list_users()['Users']]
 list_iam_users()
+################################################
+#spythonarrays
+#Python does not have built-in support for Arrays, but Python Lists can be used instead
+'''An array in Python is a data structure that can hold multiple items of the same type. 
+While Python provides a native list type that can hold items of different types, 
+the array is a more specialized construct requiring all items to be of the same type, 
+which makes it efficient for certain numerical or scientific applications.
+An array is a special variable, which can hold more than one value at a time.'''
 
-
+cars = ["Ford", "Volvo", "BMW"] #same type
+#we can use all list functions like add,remove,access to this array
 
 ###############################################
 
@@ -1586,11 +1600,50 @@ jenkins_pipeline.add_stage("Test", test_action)
 jenkins_pipeline.add_stage("Deploy", deploy_action)
 
 jenkins_pipeline.execute()
+
+########################################################################
 #5.	Classes and Objects (OOP)
+#sclassesandobjects
+'''In Python, a class is a blueprint for creating objects. 
+It defines the properties (attributes) and behaviors (methods) that the objects created from the class will have. 
+Classes are a fundamental part of object-oriented programming (OOP), 
+enabling you to encapsulate data and functions into reusable structures.'''
+
+
+'''In Python, an object is an instance of a class. 
+It is a fundamental building block in object-oriented programming (OOP) 
+and represents a specific "thing" that has attributes (data) and behaviors (methods).'''
+#createing a class
+class Person:
+    def __init__(self, name, age):
+        # Attributes of the class
+        self.name = name
+        self.age = age
+
+    # Method to introduce the person
+    def introduce(self):
+        return f"Hi, my name is {self.name} and I am {self.age} years old."
+
+
+p = Person("sai", 25)  # Create an instance of the class
+print(p.introduce())    # Output: Hi, my name is sai and I am 25 years old.
+
+##################################################################################
 #s__init__
+'''In Python, the __init__ method is a special method that is automatically called when a new instance (object) of a class is created. 
+It is known as the constructor of the class and is used to initialize the attributes of the new object.
+The __init__ method can take additional arguments, allowing you to pass parameters when creating an instance. 
+These parameters are typically used to set the initial state of the object.'''
+
+#sselfparameter
+'''The self parameter is a reference to the current instance of the class, 
+and is used to access variables that belong to the class.
+It does not have to be named self, you can call it whatever you like, 
+but it has to be the first parameter of any function in the class'''
+#Difference between Normal class method and __init__ method
 class person:
     def setvalue(self,name,age):
-        self.name = name
+        self.name = name  #instance attributes
         self.age = age
     
     def getvalue(self):
@@ -1598,7 +1651,7 @@ class person:
 p1=person()
 name = input()
 age = int(input())
-p1.setvalue(name,age)
+p1.setvalue(name,age) #Without __init__, we have to manually set the attributes after the object is created:
 p1.getvalue()
 
 p2=person()
@@ -1606,7 +1659,7 @@ name = input()
 age = int(input())
 p2.setvalue(name,age)
 p2.getvalue()
-
+##################################
 class person:
     def __init__(self,name,age):
         self.name = name
@@ -1616,7 +1669,7 @@ class person:
 
 name = input()
 age = int(input())
-p1=person(name,age)
+p1=person(name,age)# Initialization happens automatically when the object is created.
 p1.getvalue()
 
 
@@ -1624,6 +1677,19 @@ name = input()
 age = int(input())
 p2=person(name,age)
 p1.getvalue()
+
+#we can also update the properties ,delete properties and delete objects
+p1.age=28
+del p1.age
+del p1
+
+##################################################################
+'''The pass Statement
+class definitions cannot be empty, but if you for some reason have a class definition with no content,
+ put in the pass statement to avoid getting an error.'''
+ 
+ class sai:
+    pass
 #######################################################################
 #s__init__
 class CICDPipeline:
@@ -1669,6 +1735,45 @@ Checking out branch 'main' from repository 'https://github.com/example/myapp.git
 Deploying code from branch 'main' to 'production' environment.
 Running tests on 'production' environment.
 '''
+####################################################################
+#s__str__ method
+'''In Python, the __str__ method is a special method used to define a string representation for an instance of a class. 
+This method is called when you use the str() function or when you print the object using the print() function. 
+The goal of __str__ is to provide a "nice" or user-friendly string representation of the object, which is meant to be readable.'''
+class MyClass:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def __str__(self):
+        
+        return f"My name is {self.name} and my age is {self.age}"
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+cls = MyClass(name,age)
+print(cls)
+
+'''we can also implement the __repr__ method in your class,
+ which is intended to provide an official string representation of the object, often more suitable for debugging. 
+If both methods are defined, __repr__ is typically aimed at developers, while __str__ is aimed at end users.'''
+
+########################################################################
+#sobjectmethods
+'''Objects can also contain methods. Methods in objects are functions that belong to the object.
+Let us create a method in the Person class:'''
+class MyClass:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def my_fun(self):
+        
+        print("Hello my name is "+ self.name)
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+p=MyClass("sai",25)
+p.my_fun()
+
 #####################################################################
 '''OOPs Concepts in Python
 Inheritance
@@ -1677,6 +1782,145 @@ Encapsulation
 Data Abstraction'''
 #sInheritance
 # Base class for Kubernetes resources
+'''Inheritance in Python is a fundamental concept in object-oriented programming (OOP) that allows 
+a class (called the child class or subclass) to inherit attributes and methods from another class (called the parent class or superclass).
+ This mechanism promotes code reusability, as you can create new classes that are based on existing classes, 
+ extending or modifying their behavior without needing to duplicate code.'''
+ 
+ '''Parent Class (Superclass)
+The parent class, also known as a superclass, is a class that provides properties (attributes) and methods (functions) that can be inherited by other classes. 
+A parent class serves as a general template or blueprint from which child classes can derive their characteristics. 
+It defines common functionality that can be shared across multiple child classes.'''
+
+class parent:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def info(self):
+        print(f"My name is {self.name} and my age is {self.age}")
+p=parent("sai",25)
+p.info()
+
+'''Child Class (Subclass)
+A child class, also known as a subclass, is a class that inherits from a parent class. 
+A child class can access the properties and methods of the parent class, and it can also add its own unique attributes and methods or override existing ones from the parent class. 
+The child class is typically more specialized than the parent class.'''
+
+class child(parent):
+  pass
+  
+########################################################################
+'''Add the __init__() Function
+So far we have created a child class that inherits the properties and methods from its parent.
+We want to add the __init__() function to the child class (instead of the pass keyword).
+Note: The __init__() function is called automatically every time the class is being used to create a new object.'''
+
+#add the __init__() function to the child class:
+class child(parent):
+    def __init__(self,ph):
+    
+'''
+When you add the __init__() function, the child class will no longer inherit the parent's __init__() function.
+The child's __init__() function overrides the inheritance of the parent's __init__() function.
+To keep the inheritance of the parent's __init__() function, add a call to the parent's __init__() function:
+'''
+class child(parent):
+    def __init__(self,ph):
+        parent.__init__("sai",25)
+        
+'''Use the super() Function
+Python also has a super() function that will make the child class inherit all the methods and properties from its parent'''
+class child(parents):
+    def __init__(self,ph):
+        super().__init__("sai",25)
+'''By using the super() function, you do not have to use the name of the parent element, 
+it will automatically inherit the methods and properties from its parent.'''
+#Then Add property to the child class
+class child(parents):
+    def __init__(self,ph):
+        super().__init__("sai",25)
+        self.ph=ph
+'''In the above example, the ph 9392 should be a variable, and passed into the Student class when creating student objects.
+ To do so, add another parameter in the __init__() function:''' 
+class child(parents):
+    def __init__(self,ph):
+        super().__init__("sai",25)
+        self.ph=ph
+ch=child(9392)
+
+#Add method
+def mychild(self):
+        print(f" My name is {self.name} and my age is {self.age}and phone number is {self.ph}")
+
+'''If you add a method in the child class with the same name as a function in the parent class, 
+the inheritance of the parent method will be overridden.'''    
+
+class parent:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def info(self):
+        print(f"My name is {self.name} and my age is {self.age}")
+
+class child(parents):
+    def __init__(self,ph):
+        super().__init__("sai",25)
+        self.ph=ph
+    def mychild(self):
+        print(f" My name is {self.name} and my age is {self.age} and phone number is {self.ph}")
+
+p=parents("sai",25)
+p.info()
+
+ch=child(9392)
+ch.mychild()
+
+'''OUTPUT  
+My name is sai and my age is 25
+ My name is sai and my age is 25and phone number is 9392 '''  
+ 
+'''Differences Between Using Parent and super()
+1. Readability and Maintainability
+With Parent: You are hardcoding the parent class name. 
+If the parent class name changes (e.g., Parent is renamed to BaseClass), 
+you'll need to update every occurrence of Parent in your child classes.
+
+With super(): It dynamically resolves the method from the class hierarchy. 
+You don’t need to change anything if the parent class name changes.'''
+
+'''The super() function in Python is used to call methods from a parent (or superclass) in a child class. 
+It provides a way to access the methods and properties of the parent class without explicitly naming it. 
+This is especially useful in inheritance, particularly in cases of multiple inheritance, 
+as it avoids hardcoding the parent class name and ensures the method resolution order (MRO) is followed correctly.'''
+
+class Parent:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def info(self):
+        print(f"My name is {self.name} and my age is {self.age}")
+
+class Child(Parent):
+    def __init__(self, name, age, ph):
+        # Using super() to call the parent class's __init__ method
+        super().__init__(name, age)
+        self.ph = ph
+
+    def mychild(self):
+        print(f"My name is {self.name}, my age is {self.age}, and my phone number is {self.ph}")
+
+# Create an instance of Parent
+p = Parent("Sai", 25)
+p.info()
+
+# Create an instance of Child
+ch = Child("Sanju", 27, 9392)
+ch.mychild()
+
+'''My name is Sai and my age is 25
+My name is Sanju, my age is 27, and my phone number is 9392'''
+########################################################################
 class K8sResource:
     def __init__(self, name, namespace):
         """
