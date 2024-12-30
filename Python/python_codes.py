@@ -1776,6 +1776,21 @@ p.my_fun()
 
 #####################################################################
 '''OOPs Concepts in Python
+OBJECT ORIENTED PROGRAMMING
+ Object-oriented Programming is a way of approaching, designing and developing Software.
+ oops is a programming paradigm that uses olojects and classes in the programe.
+ It aims to implement real world entities like inheritance, polymorphism and encapsulation etc
+ 
+ OOPs (Object-Oriented Programming) in Python is a programming paradigm that organizes code using objects and classes. 
+ It allows developers to create modular, reusable, and scalable programs by modeling real-world entities as objects with attributes and behaviors. 
+ Python supports OOP principles such as encapsulation, inheritance, polymorphism, and abstraction.
+ 
+ Advantages of oops..
+* Easier way to analyse and solve bugs
+* Reusability of Code through inheritance
+* Effective Problem Solving
+* Elimination of Code redundancy.
+
 Inheritance
 Polymorphism 
 Encapsulation 
@@ -1920,6 +1935,144 @@ ch.mychild()
 
 '''My name is Sai and my age is 25
 My name is Sanju, my age is 27, and my phone number is 9392'''
+#######################################################################
+'''MRO (Method Resolution Order) in Python refers to the order in which Python searches for a method or attribute in a class hierarchy. 
+It is the sequence Python follows to determine which method to call when multiple classes are involved, 
+particularly in the case of inheritance.
+The MRO ensures that:
+Each class in the hierarchy is visited only once.
+The order is consistent and follows a well-defined algorithm.
+It prevents issues like duplicate method calls or skipping methods.'''
+#MRO in Inheritance
+'''Single Inheritance in Python
+Single inheritance is a type of inheritance in which a child class inherits from only one parent class.
+ This is the simplest form of inheritance and is used when a derived class needs to extend or 
+ customize the functionality of a single base class.'''
+class A:
+    def show(self):
+        print("Class A")
+
+class B(A):
+    def show(self):
+        print("Class B")
+
+class C(B):
+    def show(self):
+        print("Class C")
+
+c = C()
+c.show()  # Output: Class C
+
+MRO: C -> B -> A -> object
+Python starts searching for show() in class C, finds it, and stops.
+
+###################################################################
+#MRO in multiple inheritance
+'''Multiple Inheritance in Python
+Multiple inheritance is a feature of object-oriented programming where a class can inherit from more than one parent class. 
+This allows the derived class to inherit attributes and methods from multiple base classes, 
+combining their functionalities.'''
+class A:
+    def show(self):
+        print("Class A")
+
+class B:
+    def show(self):
+        print("Class B")
+
+class C(A, B):
+    pass
+
+c = C()
+c.show()  # Output: Class A
+
+MRO: C -> A -> B -> object
+Python searches C, then A, then B.
+
+#############################################################
+'''Multilevel Inheritance in Python
+Multilevel inheritance refers to a scenario where a class inherits from a derived class, creating a chain of inheritance. 
+For example, Class A is the base class, Class B inherits from Class A, and Class C inherits from Class B. 
+This chain can extend to any number of levels.'''
+
+class Grandparent:
+    def display_grandparent(self):
+        print("This is the Grandparent class")
+
+class Parent(Grandparent):
+    def display_parent(self):
+        print("This is the Parent class")
+
+class Child(Parent):
+    def display_child(self):
+        print("This is the Child class")
+
+# Creating an instance of the Child class
+c = Child()
+
+# Accessing methods from all levels of the hierarchy
+c.display_grandparent()  # Inherited from Grandparent
+c.display_parent()       # Inherited from Parent
+c.display_child()        # Defined in Child
+########################################################################
+'''Hierarchical Inheritance in Python
+Hierarchical inheritance is a type of inheritance where multiple child classes inherit from the same parent class. 
+In this scenario, a single parent class acts as the base class for multiple derived classes.'''
+
+class Parent:
+    def display_parent(self):
+        print("This is the Parent class")
+
+class Child1(Parent):
+    def display_child1(self):
+        print("This is Child1 class")
+
+class Child2(Parent):
+    def display_child2(self):
+        print("This is Child2 class")
+
+# Creating instances of child classes
+c1 = Child1()
+c2 = Child2()
+
+# Accessing parent and child methods
+c1.display_parent()  # Inherited from Parent
+c1.display_child1()  # Defined in Child1
+
+c2.display_parent()  # Inherited from Parent
+c2.display_child2()  # Defined in Child2
+
+#########################################################################
+'''Hybrid Inheritance in Python
+Hybrid inheritance is a combination of two or more types of inheritance in a class hierarchy. 
+It involves a mix of single, multiple, multilevel, or hierarchical inheritance patterns. 
+Hybrid inheritance is used to model complex relationships among classes while ensuring code reusability and flexibility.'''
+
+class Grandparent:
+    def display_grandparent(self):
+        print("This is the Grandparent class")
+
+class Parent1(Grandparent):
+    def display_parent1(self):
+        print("This is Parent1 class")
+
+class Parent2(Grandparent):
+    def display_parent2(self):
+        print("This is Parent2 class")
+
+class Child(Parent1, Parent2):  # Multiple inheritance
+    def display_child(self):
+        print("This is the Child class")
+
+# Creating an instance of the Child class
+c = Child()
+
+# Accessing methods from all classes
+c.display_grandparent()  # Inherited from Grandparent
+c.display_parent1()      # Inherited from Parent1
+c.display_parent2()      # Inherited from Parent2
+c.display_child()        # Defined in Child
+
 ########################################################################
 class K8sResource:
     def __init__(self, name, namespace):
@@ -1970,6 +2123,149 @@ Exposing service 'my-app-service' on port 8080 in namespace 'production'.
 '''
 ############################################################################       
 #spolymorphism
+'''*Polymorphism means having many forms
+* In Simple words, we can define polymorphism as the ability of a more than message to be displayed in one form.
+* A real life example of Polymorphism who at the Same time Characteristics. is a person Can have different
+* Polymorphism in Pythan allow us to define methods in child class with the name as Same defined in their parent class.
+
+Two Types Of Polymorphism:
+1.Run-Time Polymorphism (Dynamic Polymorphism): Achieved through method overriding and is resolved during execution. 
+It allows objects of different classes to be treated as objects of a common superclass.
+
+a.Method Overriding in Python:
+Method overriding is a feature in object-oriented programming where a subclass provides a specific 
+implementation for a method that is already defined in its parent class. 
+In Python, it allows a child class to modify or extend the behavior of methods inherited from the parent class.
+if you want to implement Mehod Overriding Method name should be same and no of arguments should be same in both the classess
+
+Inheritance Required:
+
+Method overriding occurs in the context of a subclass inheriting from a parent class.
+Same Method Signature:
+
+The overriding method in the subclass must have the same name and parameters as the method in the parent class.
+Dynamic Behavior:
+
+When an overridden method is called on an object of the subclass, the subclass version is executed.
+super() for Parent Method:
+
+The super() function allows access to the overridden method in the parent class, 
+enabling the subclass to extend the functionality of the parent method.'''
+
+#Basic Example of Method Overriding:
+class Parent:
+    def greet(self):
+        print("Hello from the Parent class!")
+
+class Child(Parent):
+    def greet(self):
+        print("Hello from the Child class!")
+
+# Instantiate objects
+parent = Parent()
+child = Child()
+
+# Call the greet method
+parent.greet()  # Output: Hello from the Parent class!
+child.greet()   # Output: Hello from the Child class!
+
+#Using super() function
+
+class Parent:
+    def greet(self):
+        print("Hello from the Parent class!")
+
+class Child(Parent):
+    def greet(self):
+        super().greet()  # Call the parent class's greet method
+        print("Hello from the Child class!")
+
+# Instantiate child object
+child = Child()
+child.greet()
+
+# Output:
+# Hello from the Parent class!
+# Hello from the Child class!
+
+##################################################################
+'''Overriding __init__ Method:
+The __init__ method can also be overridden in a subclass, often to initialize additional attributes. 
+The parent class's __init__ method can be invoked using super().'''
+
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)  # Initialize the name attribute from Parent
+        self.age = age
+
+# Instantiate child object
+child = Child("Alice", 10)
+print(child.name)  # Output: Alice
+print(child.age)   # Output: 10
+
+###########################################
+class Parent:
+    def __init__(self,name):
+        self.name=name
+        print("parents method")
+class Child(Parent):
+    def __init__(self,name,age):
+        super().__init__(name)
+        self.age=age
+child=Child("sai",25)
+print(child.name)
+print(child.age)
+
+
+#parents method,name,age
+
+
+'''2.Compile-Time Polymorphism (Static Polymorphism): Achieved through method overloading and 
+operator overloading, resolved during compilation.where methods are resolved at compile time
+
+Compile-time polymorphism, often referred to as static polymorphism, allows for method overloading and operator overloading. 
+This is resolved at compile time, meaning the correct method is determined before the program starts running.
+
+Method Overloading: Methods in the same class have the same name 
+but different parameters (though Python does not natively support method overloading as seen in languages like Java or C++).
+Python does not natively support method overloading. 
+because it uses dynamic typing and interprets the latest method definition as the active one.Instead, 
+we can achieve similar behavior using default arguments or variable-length arguments (*args, **kwargs).'''
+
+class Calculator:
+    def add(self,*args):
+        if len(args) == 0:
+            print("No arguments provides")
+        elif len(args) == 1:
+            print(f"one argument is provide: {args[0]}")
+        else:
+            print(f"sum of arguments is: {sum(args)}")
+calc=Calculator()
+calc.add()
+calc.add(1)
+calc.add(1,2,3)
+
+
+'''Operator Overloading: Python allows you to define or change the behavior of operators for user-defined classes.
+Operator overloading in Python allows developers to define or modify the behavior of operators (+, -, *, etc.) 
+for custom objects by overriding special methods (also called magic methods or dunder methods). '''
+
+def operator(a,b):
+    print(a+b)
+operator(4,5) #add integers
+operator("Sai","Gulivindala") #concate strings
+operator([1,2,3],[4,5,6]) #add items
+    
+
+Dynamic Typing in Python
+Dynamic typing is a feature of programming languages like Python where the type of a variable is determined at runtime 
+rather than being explicitly declared or fixed during compile time. 
+In other words, variables in Python do not have a fixed type, and their type can change depending on the value assigned to them.
+'''
 class CloudProvider:
     def deploy_instance(self):
         raise NotImplementedError
@@ -2004,6 +2300,70 @@ Launching Compute Engine instance in GCP
 #7.	Error Handling and Exceptions
 #8.	File Handling
 #9.	Iterators and Generators
+#siterators
+'''In Python, an iterator is an object that allows you to traverse through a collection 
+(like a list or a dictionary) one element at a time. 
+Iterators implement two special methods defined by the iterator protocol: __iter__() and __next__().
+1.
+__iter__(): This method returns the iterator object itself. It is required for an object to be considered an iterator.
+
+__next__(): This method returns the next value from the iterator. 
+When there are no more elements to return, it raises the StopIteration exception to signal the end of the iteration.
+
+2.Creating an Iterator:
+You can create your own iterator by defining a class that implements the __iter__() and __next__() methods.
+'''
+
+class MyIterator:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0
+        
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.index < len(self.data):
+            value = self.data[self.index]
+            self.index += 1
+            return value
+        else:
+            raise StopIteration
+
+# Example of using the iterator
+my_list = [1, 2, 3, 4]
+iterator = MyIterator(my_list)
+
+for item in iterator:
+    print(item)
+###############################################################
+
+''' 3.Built-in Iterators
+Python has several built-in iterable types, such as lists, tuples, sets, and dictionaries. 
+You can easily get their iterators using the iter() function'''
+
+my_list = [1, 2, 3]
+iterator = iter(my_list)
+
+print(next(iterator))  # Output: 1
+print(next(iterator))  # Output: 2
+print(next(iterator))  # Output: 3
+# print(next(iterator))  # Raises StopIteration
+####################################################################
+'''4.Using Generators
+A common and more concise way to create iterators is by using generators. 
+Generators are a simple way to create iterators using the yield statement:'''
+def my_generator(data):
+    for item in data:
+        yield item
+
+# Example usage
+for item in my_generator([1, 2, 3]):
+    print(item)
+###########################################################################
+'''5. Iteration in Python
+You can use the built-in for loop to iterate over any iterable (which is anything that can 
+return an iterator, such as lists, sets, tuples, etc.).'''
 #10.Comprehensions
 #11. Decorators and Closures
 #12. Regular Expressions
