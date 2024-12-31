@@ -2259,13 +2259,132 @@ def operator(a,b):
 operator(4,5) #add integers
 operator("Sai","Gulivindala") #concate strings
 operator([1,2,3],[4,5,6]) #add items
-    
 
-Dynamic Typing in Python
-Dynamic typing is a feature of programming languages like Python where the type of a variable is determined at runtime 
-rather than being explicitly declared or fixed during compile time. 
-In other words, variables in Python do not have a fixed type, and their type can change depending on the value assigned to them.
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    # Overloading the '+' operator
+    def __add__(self,other ):
+        return Point(self.x + other.x, self.y + other.y)
+
+    # String representation for easier display
+    def __str__(self):
+        return f"Point({self.x}, {self.y})"
+
+# Example usage
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+
+result = p1 + p2  # Overloading '+' operator
+print(result)  # Output: Point(4, 6)
+
+s1="sai"
+s2="gulivindala"
+print(s1+s2)
+
+
+self.x + other.x = 2 + 4 = 6  #self is current instance(p1)  other is right hand side (p2) 
+self.y + other.y = 3 + 5 = 8
+
+'''__str__ Method:
+Added the __str__ method to provide a readable string representation of the Point object, so when you print it, you get something meaningful like Point(6, 8)'''
+######################################################   
+
 '''
+Function Polymorphism
+An example of a Python function that can be used on different objects is the len() function.
+
+1.String
+For strings len() returns the number of characters:'''
+x = "sai"
+print(len(x))
+'''2.Tuple
+For tuples len() returns the number of items in the tuple:'''
+
+mytuple = ("apple", "banana", "cherry")
+
+print(len(mytuple))
+print(len(x))
+
+'''3.Dictionary
+For dictionaries len() returns the number of key/value pairs in the dictionary:'''
+
+thisdict = {
+  "brand": "VIVO",
+  "model": "T2 5g",
+  "year": 2024
+}
+
+print(len(thisdict))
+
+######################################################################################
+#sclassploymorphism
+
+'''Class Polymorphism
+Polymorphism is often used in Class methods, where we can have multiple classes with the same method name.
+
+For example, say we have three classes: Car, Boat, and Plane, and they all have a method called move()'''
+
+class Car:
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+    def move(self):
+        print("drive")
+class Boat:
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+    def move(self):
+        print("sail")
+class Plane:
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+    def move(self):
+        print("fly")
+
+car1=Car("TATA","I10")
+boat1=Boat("sai","v6model")
+plane1=Plane("Boeing","747")
+
+for i in (car1,boat1,plane1):
+    i.move()
+        
+ #######################################################################
+#sinheritancepolymorphism 
+'''Inheritance Class Polymorphism
+What about classes with child classes with the same name? Can we use polymorphism there?
+Yes. If we use the example above and make a parent class called Vehicle, and make Car, Boat, Plane child classes of Vehicle, 
+the child classes inherits the Vehicle methods, but can override them:
+'''
+class Vehicle:
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+    def move(self):
+        print("Move")
+class Car(Vehicle):
+    pass
+class Boat(Vehicle):
+    def move(self):
+        print("sail")
+class Plane(Vehicle):
+    def move(self):
+        print("Flyy")
+
+car1=Car("TATA","I10")
+boat1=Boat("sai","v6model")
+plane1=Plane("Boeing","747")
+
+for i in (car1,boat1,plane1):
+    print(i.brand)
+    print(i.model)
+    i.move()
+############################################################# 
 class CloudProvider:
     def deploy_instance(self):
         raise NotImplementedError
@@ -2296,6 +2415,186 @@ Launching EC2 instance in AWS
 Launching Virtual Machine in Azure
 Launching Compute Engine instance in GCP
 '''
+
+'''Dynamic Typing in Python
+Dynamic typing is a feature of programming languages like Python where the type of a variable is determined at runtime 
+rather than being explicitly declared or fixed during compile time. 
+In other words, variables in Python do not have a fixed type, and their type can change depending on the value assigned to them.
+'''
+#############################################################################################
+#sencapsulation
+
+'''Encapsulation is a fundamental concept in object-oriented programming (OOP) that restricts direct access to some of an object's components, which can prevent the accidental modification of data. 
+In Python, encapsulation is achieved using the concept of classes and access modifiers
+ It is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit called a class.
+
+1.Data Hiding:
+
+Encapsulation allows data to be hidden from the outside world.
+The data can only be accessed and modified through well-defined methods (getters and setters).
+
+2.Access Modifiers in Python:
+
+Python provides three levels of access control for attributes and methods:
+1.Public: Accessible from anywhere (attribute_name).
+Public members can be accessed from anywhere, both inside and outside the class.
+No special syntax is required for public members.'''
+
+class Person:
+    def __init__(self, name):
+        self.name = name  # Public member
+person = Person("Alice")
+print(person.name)  # Accessible from outside
+
+
+''''2.Protected: 
+Accessible within the class and its subclasses (_attribute_name).
+Protected members are intended to be accessible only within the class and its subclasses.
+By convention, they are prefixed with a single underscore _.
+This is a convention, not enforcement. It signals to other developers that the member is for internal use.'''
+
+class Person:
+    def __init__(self, name, age):
+        self._age = age  # Protected member
+person = Person("Alice", 30)
+print(person._age)  # Still accessible but discouraged
+
+'''3.Private: Accessible only within the class (__attribute_name).
+Private members are intended to be accessible only within the class.
+They are prefixed with a double underscore __, which triggers name mangling to make the member harder to access from outside the class.
+This does not provide absolute security but makes accidental modification less likely.
+'''
+class Person:
+    def __init__(self, name, age):
+        self.__age = age  # Private member
+    
+    def get_age(self):
+        return self.__age  # Accessor method
+
+person = Person("Alice", 30)
+# print(person.__age)  # Raises AttributeError
+print(person.get_age())  # Access through a method
+
+'''4. Getters and Setters
+Python allows defining getter and setter methods for controlled access to private or protected members.
+These methods can validate or modify the values before assigning or retrieving them.'''
+
+class Person:
+    def __init__(self,name,age):
+        self.__name=name
+        self.__age=age
+    def get_age(self):
+        return self.__age
+    def set_age(self,age):
+        if age > 0:
+            self.__age=age
+        else:
+            raise ValueError("age must be positive")
+p=Person("sai",25)
+print(p.get_age())
+p.set_age(26)
+print(p.get_age())
+
+'''5. Using Properties (@property)
+Python provides a more Pythonic way of using getters and setters via the @property decorator.
+This allows you to access methods like attributes while maintaining encapsulation.'''
+
+class Person:
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+    
+    @property
+    def age(self):
+        return self.__age
+    
+    @age.setter
+    def age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            raise ValueError("Age must be positive")
+
+p = Person("sai", 25)
+print(p.age)  # Calls the getter
+p.age = 26   # Calls the setter
+print(p.age)  # Calls the getter again
+
+
+###############################################################
+#sdataabstraction
+'''4.Data abstraction in Python is a key concept in object-oriented programming (OOP) that involves hiding the internal details 
+and complexities of how data is represented or implemented, while exposing only the essential features. 
+This allows developers to work with data in a simplified and consistent way, focusing on what data represents rather than how it is managed.
+ It focuses on revealing only the relevant attributes and behaviors of an object while keeping the implementation details hidden. 
+ This helps in reducing code complexity and increases the reusability of code.'''
+ 
+ '''Python achieves data abstraction through:
+
+1. Classes and Objects:
+A class serves as a blueprint for creating objects. It encapsulates data (attributes) and functions (methods) to operate on that data.
+By exposing only necessary details through methods and keeping some internal workings private, a class provides abstraction.'''
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def make_sound(self):
+        pass  # To be defined in subclasses
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+# Usage
+dog = Dog("Buddy")  #we are passing Dog name 
+print(dog.make_sound())  # Output: Woof!
+
+'''#Here, the user interacts with make_sound without knowing the internal implementation for each animal
+#You can easily extend the functionality by adding more subclasses without modifying the Animal class
+#The base class defines the common interface, while derived classes provide their specific behaviors.'''
+class Cow(Animal):
+    def make_sound(self):
+        return "Moo!"
+
+cow = Cow("Daisy")
+print(cow.make_sound())  # Output: Moo!
+
+'''2.Encapsulation:
+Encapsulation is the practice of bundling the data and methods that operate on the data into a single unit.
+Python uses naming conventions to simulate private attributes. Attributes prefixed with _ or __ are considered non-public.'''
+
+class BankAcount:
+    def __init__(self,balance):
+        self.__balance=balance
+    def deposit(self,amount):
+        if amount > 0:
+            self.__balance += amount
+    def withdraw(self,amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+    def get_balance(self):
+        return self.__balance
+            
+acount=BankAcount(1000)
+print(acount.get_balance()) #1000
+
+#print(acount.__balance)   #raise an Attribute error
+acount.deposit(500)
+print(acount.get_balance()) #1500
+
+acount.withdraw(200)
+print(acount.get_balance()) #1300
+
+'''This makes it inaccessible directly from outside the class, enforcing that it can only be accessed 
+or modified through specific methods provided by the class (e.g., deposit, withdraw, get_balance).'''
+
+
+######################################################################################################
 #6.	Modules and Packages
 #7.	Error Handling and Exceptions
 #8.	File Handling
