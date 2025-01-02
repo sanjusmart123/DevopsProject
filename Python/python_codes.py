@@ -2457,8 +2457,22 @@ class Person:
     def __init__(self, name, age):
         self._age = age  # Protected member
 person = Person("Alice", 30)
-print(person._age)  # Still accessible but discouraged
+print(person._age)  # Still accessible but discouraged,not recommmended approach
 
+'''Encapsulation Breach: Accessing _protected_member directly bypasses the abstraction and encapsulation intended by the class design.'''
+#Recommended way
+class Person:
+    def __init__(self, name, age):
+        self._age = age  # Protected member
+
+    def get_age(self):
+        return self._age  # Controlled access to the protected member
+
+person = Person("Alice", 30)
+print(person.get_age())  #Output: 30
+
+
+######################################################################################
 '''3.Private: Accessible only within the class (__attribute_name).
 Private members are intended to be accessible only within the class.
 They are prefixed with a double underscore __, which triggers name mangling to make the member harder to access from outside the class.
