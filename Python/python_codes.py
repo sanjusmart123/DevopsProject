@@ -2492,7 +2492,7 @@ print(person.get_age())  # Access through a method
 '''4. Getters and Setters
 Python allows defining getter and setter methods for controlled access to private or protected members.
 These methods can validate or modify the values before assigning or retrieving them.'''
-
+#ex
 class Person:
     def __init__(self,name,age):
         self.__name=name
