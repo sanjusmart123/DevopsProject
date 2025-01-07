@@ -1422,7 +1422,10 @@ cars = ["Ford", "Volvo", "BMW"] #same type
 #we can use all list functions like add,remove,access to this array
 
 ###############################################
-
+#sdatastructures
+'''A data structure is a specialized format for organizing, processing, retrieving and storing data.
+Data Structures allows you to organize your data in such a way that enables you to store collections of data, relate them and perform operations on them accordingly.
+'''
 #4.	Data Structures
 list=["sai","Gulivindala",2,3.5]
 print(list)
@@ -1430,6 +1433,12 @@ list.pop(2)
 print(list)
 
 #slists
+'''Built-in Data Structures
+Lists
+Lists are used to store data of different data types in a sequential manner. 
+There are addresses assigned to every element of the list, which is called as Index.
+The index value starts from 0 and goes on until the last element called the positive index.
+There is also negative indexing which starts from -1 enabling you to access elements from the last to first. '''
 import random
 import time
 
@@ -1541,6 +1550,31 @@ while not deployment_queue.empty():
     deployment_queue.task_done()
 
 print("All deployments complete.")
+#################################################################################
+browser_history=[]
+browser_history.append("page1.html")
+browser_history.append("page2.html")
+browser_history.append("page3.html")
+
+while browser_history:
+    print(f"Returning to first visited page {browser_history.pop(0)}")
+
+'''Returning to first visited page page1.html
+Returning to first visited page page2.html
+Returning to first visited page page3.html
+'''
+
+
+
+#################################################################################
+#sseeinfoaboutmodule
+'''from queue import Queue
+import inspect
+print(inspect.getmembers(Queue))
+
+from queue import Queue
+print(help(Queue))
+'''
 ###################################################################################
 #sstackds
 from queue import LifoQueue as config_stack
@@ -1566,6 +1600,23 @@ def undo_changes():
     print("All changes undone.")
 print("\nError detected! Undoing changes...\n")
 undo_changes()
+######################################################################
+browser_history=[]
+browser_history.append("page1.html")
+browser_history.append("page2.html")
+browser_history.append("page3.html")
+
+while browser_history:
+    print(f"Returning to last page {browser_history.pop()}")
+
+'''Returning to last page page3.html
+Returning to last page page2.html
+Returning to last page page1.html'''
+
+
+'''Returning page is page3.html
+Returning page is page2.html
+Returning page is page1.html'''
 ######################################################################
 #slinkedlistds
 import time
