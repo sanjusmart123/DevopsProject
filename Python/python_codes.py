@@ -2492,7 +2492,7 @@ print(person.get_age())  # Access through a method
 '''4. Getters and Setters
 Python allows defining getter and setter methods for controlled access to private or protected members.
 These methods can validate or modify the values before assigning or retrieving them.'''
-#ex
+
 class Person:
     def __init__(self,name,age):
         self.__name=name
@@ -2677,6 +2677,356 @@ for item in my_generator([1, 2, 3]):
 '''5. Iteration in Python
 You can use the built-in for loop to iterate over any iterable (which is anything that can 
 return an iterator, such as lists, sets, tuples, etc.).'''
+############################################################################
+#sscope
+#A variable is only available from inside the region it is created. This is called scope.
+
+'''Local Scope:
+A variable created inside a function belongs to the local scope of that function, and can only be used inside that function.'''
+
+def myfunc():
+  x = 300
+  print(x)
+
+myfunc()
+
+'''Global Scope:
+A variable created in the main body of the Python code is a global variable and belongs to the global scope.
+Global variables are available from within any scope, global and local.'''
+x = 300
+
+def myfunc():
+  print(x)
+
+myfunc()
+
+print(x)
+
+'''Naming Variables
+If you operate with the same variable name inside and outside of a function, 
+Python will treat them as two separate variables, one available in the global scope 
+(outside the function) and one available in the local scope (inside the function):'''
+
+x = 300
+
+def myfunc():
+  x = 200
+  print(x) #200
+
+myfunc()
+
+print(x) #300
+
+'''Global Keyword
+If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.
+
+The global keyword makes the variable global.
+Global Keyword
+If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.
+
+The global keyword makes the variable global.
+'''
+
+def myfunc():
+  global x
+  x = 300
+
+myfunc()
+
+print(x)
+#To change the value of a global variable inside a function, refer to the variable by using the global keyword:
+
+x = 300
+
+def myfunc():
+  global x
+  x = 200
+
+myfunc()
+
+print(x)
+
+'''Nonlocal Keyword
+The nonlocal keyword is used to work with variables inside nested functions.
+
+The nonlocal keyword makes the variable belong to the outer function.
+
+If you use the nonlocal keyword, the variable will belong to the outer function:'''
+
+def myfunc1():
+  x = "Jane"
+  def myfunc2():
+    nonlocal x
+    x = "hello"
+  myfunc2()
+  return x
+
+print(myfunc1())
+
+###############################################################################################
+#smodule
+'''In Python, a module is a file that contains Python code, typically used to organize and reuse code. 
+Modules can define functions, classes, and variables, as well as include runnable code. 
+By grouping related code into a module, you can make your programs more organized and modular.'''
+
+'''Create a Module
+To create a module just save the code you want in a file with the file extension .py:
+'''
+#Save this code in a file named mymodule.py
+def greeting(name):
+  print("Hello, " + name)
+  
+'''Use a Module
+Now we can use the module we just created, by using the import statement:'''  
+#Import the module named mymodule, and call the greeting function:
+
+import mymodule
+
+mymodule.greeting("sai")
+
+'''Variables in Module
+The module can contain functions, as already described, 
+but also variables of all types (arrays, dictionaries, objects etc)'''
+#Save this code in the file mymodule.py
+
+person1 = {
+  "name": "sai",
+  "age": 36,
+  "country": "India"
+}
+
+import mymodule
+
+a = mymodule.person1["age"]
+print(a)
+###############################
+import mymodule as sai
+
+a = sai.person1["age"]
+print(a)
+
+#Built in modules
+import platform
+
+x = platform.system()
+print(x)
+
+#################################
+'''Using the dir() Function
+There is a built-in function to list all the function names (or variable names) in a module. The dir() function:'''
+
+import platform
+
+x = dir(platform)
+print(x)
+###################################
+'''Import From Module
+You can choose to import only parts from a module, by using the from keyword.'''
+#The module named mymodule has one function and one dictionary:
+
+def greeting(name):
+  print("Hello, " + name)
+
+person1 = {
+  "name": "sai",
+  "age": 25,
+  "country": "India"
+}
+
+#Import only the person1 dictionary from the module:
+
+from mymodule import person1
+
+print (person1["age"])
+
+#############################################
+#spythondates
+'''Python Dates
+A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.'''
+import datetime
+
+x = datetime.datetime.now()
+print(x)
+
+import datetime
+
+x = datetime.datetime.now()
+
+print(x.year)    #2025
+print(x.strftime("%A")) #Monday
+
+'''The strftime() Method
+The datetime object has a method for formatting date objects into readable strings.
+
+The method is called strftime(), and takes one parameter, format, to specify the format of the returned string:'''
+
+import datetime
+
+x = datetime.datetime(2018, 6, 1)
+
+print(x.strftime("%B")) #June
+#################################################
+#smathmodule
+x = min(5, 10, 25)
+y = max(5, 10, 25)
+
+print(x)
+print(y)
+
+#The abs() function returns the absolute (positive) value of the specified number:
+
+Example
+x = abs(-7.25)
+
+print(x)
+
+####################################################
+x = pow(4, 3)
+
+print(x)
+
+import math
+
+x = math.sqrt(64)
+
+print(x)
+############################################################
+'''The math.ceil() method rounds a number upwards to its nearest integer, and the math.floor() method 
+rounds a number downwards to its nearest integer, and returns the result:'''
+'''Python has a set of built-in math functions, including an extensive math module, 
+that allows you to perform mathematical tasks on numbers.
+
+Built-in Math Functions
+The min() and max() functions can be used to find the lowest or highest value in an iterable:'''
+
+import math
+
+x = math.ceil(1.4)
+y = math.floor(1.4)
+
+print(x) # returns 2
+print(y) # returns 1
+
+####################################################################
+
+'''JSON is a syntax for storing and exchanging data.
+
+JSON is text, written with JavaScript object notation.
+
+Parse JSON - Convert from JSON to Python
+If you have a JSON string, you can parse it by using the json.loads() method.
+
+The result will be a Python dictionary.
+
+'''
+
+#Convert from JSON to Python:
+
+import json
+
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y["age"])
+
+'''Convert from Python to JSON
+If you have a Python object, you can convert it into a JSON string by using the json.dumps() method.'''
+
+#Convert from Python to JSON:
+
+import json
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+
+#Convert Python objects into JSON strings, and print the values:
+
+import json
+
+print(json.dumps({"name": "John", "age": 30}))
+print(json.dumps(["apple", "bananas"]))
+print(json.dumps(("apple", "bananas")))
+print(json.dumps("hello"))
+print(json.dumps(42))
+print(json.dumps(31.76))
+print(json.dumps(True))
+print(json.dumps(False))
+print(json.dumps(None))
+
+###########################################################
+#Convert a Python object containing all the legal data types:
+
+import json
+
+x = {
+  "name": "sai",
+  "age": 25,
+  "married": True,
+  "divorced": False,
+  "children": ("sai","sandy"),
+  "pets": None,
+  "cars": [
+    {"model": "BMW 230", "mpg": 27.5},
+    {"model": "Ford Edge", "mpg": 24.1}
+  ]
+}
+
+print(json.dumps(x))
+
+#{"name": "Jsai", "age": 25, "married": true, "divorced": false, "children": ["sai","sandy"], "pets": null, "cars": [{"model": "BMW 230", "mpg": 27.5}, {"model": "Ford Edge", "mpg": 24.1}]
+
+######################################################################################################
+json.dumps(x, indent=4)
+
+#result will be
+{
+    "name": "John",
+    "age": 30,
+    "married": true,
+    "divorced": false,
+    "children": [
+        "Ann",
+        "Billy"
+    ],
+    "pets": null,
+    "cars": [
+        {
+            "model": "BMW 230",
+            "mpg": 27.5
+        },
+        {
+            "model": "Ford Edge",
+            "mpg": 24.1
+        }
+    ]
+    
+#################################################################################################
+#sregularexpressions
+'''Python RegEx:
+A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
+
+RegEx can be used to check if a string contains the specified search pattern.
+
+RegEx Module
+Python has a built-in package called re, which can be used to work with Regular Expressions.
+
+Import the re module:
+'''
+##################################################################################################
 #10.Comprehensions
 #11. Decorators and Closures
 #12. Regular Expressions
