@@ -699,6 +699,7 @@ Use Case: Scheduling jobs for execution in a DevOps pipeline, such as testing, b
 
 ################################################################################################################################
 Tree
+A Tree is a non linear heirarical data structure that consists of nodes connected by edges.
 Trees are non-linear Data Structures which have root and nodes.
 A tree is a collection of nodes connected by directed (or undirected) edges.
 The root is the node from where the data originates and the nodes are the other data points that are available to us. 
@@ -706,9 +707,41 @@ The node that precedes is the parent and the node after is called the child. The
 The last nodes are called the leaves. Trees create a hierarchy which can be used in a lot of real-world applications such as the HTML pages use trees to distinguish which tag comes under which block.
 It is also efficient in searching purposes and much more.
 
+*Top node of the tree--Root
+*Height of the node ---The height of a node is the number of edges from node to the deepest leaf(ie.Longest path from from the root to the leaf node)
+*Depth Of a Node---The depth of a node is the number of edges from the root to the node
+Parent Node---If the node contains subnode,then that node is said to be parent of the subnode
+Degree of a node ---The degree of a node is the total branches of that node
+
+Types of trees:
+1. General Tree
+Definition: A tree where each node can have any number of children.
+Use Case: Representing hierarchical data like a file system or organizational structure.
+2. Binary Tree
+Definition: A tree where each node has at most two children, often referred to as the left and right child.
+Use Case: Expression trees, game trees.
+Variants:
+Full Binary Tree: Every node has either 0 or 2 children.
+
+3. Binary Search Tree (BST)
+Definition: A binary tree where the left child contains values less than the parent, and the right child contains values greater than the parent.
+Use Case: Efficient searching, sorting, and range queries.
+Operations: Insert, search, delete (all average O(log n)).
+
+4. Trie (Prefix Tree)
+Definition: A specialized tree for storing strings where each node represents a character of the string.
+it is fast and efficient way for dynamic spell checking.
+Use Case: Auto-complete, dictionary implementations, IP routing.
+Properties: Each path from root to a leaf represents a unique key.
+
+Use cases:
+
 Git uses a tree structure to represent commits, branches, and merges. Each commit in Git is a node, and the tree structure helps track changes over time.
 In CI/CD pipelines, some tasks depend on others (e.g., testing depends on building, deployment depends on passing tests). A tree can model these dependencies.
 Organizing infrastructure components and their relationships (e.g., a virtual network having subnets, security groups, and instances) can be modeled using a tree.
+
+Game trees are used in strategy games (like chess and checkers) to represent the possible moves of players. 
+Each node represents a game state, and branches represent possible moves.
 
 #################################################################################################################################### 
 Graph
@@ -719,7 +752,7 @@ Many applications such as Google Maps, Uber, and many more use Graphs to find th
 
 In Continuous Integration/Continuous Deployment (CI/CD), pipelines often have jobs that depend on each other. A graph can represent jobs as nodes and their dependencies as edges.
 (IaC), a graph can model the relationships between various cloud resources. For example, an EC2 instance might depend on a security group, or a database might depend on a network.
-
+########################################################################################################################
 HashMaps
 HashMaps are the same as what dictionaries are in Python. 
 They can be used to implement applications such as phonebooks, populate data according to the lists and much more.
