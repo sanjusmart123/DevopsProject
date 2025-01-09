@@ -842,6 +842,30 @@ Many applications such as Google Maps, Uber, and many more use Graphs to find th
 
 In Continuous Integration/Continuous Deployment (CI/CD), pipelines often have jobs that depend on each other. A graph can represent jobs as nodes and their dependencies as edges.
 (IaC), a graph can model the relationships between various cloud resources. For example, an EC2 instance might depend on a security group, or a database might depend on a network.
+
+Ex:
+Cities are vertices.
+Roads between cities are edges.
+Edge weights represent distances.
+
+road_map = {
+    "CityA": [("CityB", 5), ("CityC", 10)],
+    "CityB": [("CityA", 5), ("CityD", 15)],
+    "CityC": [("CityA", 10), ("CityD", 20)],
+    "CityD": [("CityB", 15), ("CityC", 20)]
+}
+
+# CityA is connected to CityB (5 km) and CityC (10 km), and so on.
+
+website = {
+    "Home": ["About", "Services", "Contact"],
+    "About": ["Home", "Team"],
+    "Services": ["Home", "Pricing"],
+    "Contact": ["Home"]
+}
+
+# The "Home" page links to "About", "Services", and "Contact".
+
 ########################################################################################################################
 HashMaps
 HashMaps are the same as what dictionaries are in Python. 
