@@ -1534,6 +1534,18 @@ git_branches = {
 print(f"The latest commit on {branch_name} is: {git_branches[branch_name]}")
 
 #########################################################################
+#sarrayds
+'''An array is a linear data structure that stores elements in contiguous memory locations. 
+It allows for efficient indexing and iteration, making it ideal for scenarios 
+where elements need to be accessed frequently and sequentially.'''
+#seats selection in movie hall
+seats_array=[
+             ["A1","A2","A3"],
+             ["B1","B2","B3"],
+             ["C1","C2","C3"],
+            ]
+print(seats_array[1][2])
+#############################################################################
 #squeueds
 from queue import Queue
 import time
@@ -1551,19 +1563,16 @@ while not deployment_queue.empty():
 
 print("All deployments complete.")
 #################################################################################
-browser_history=[]
-browser_history.append("page1.html")
-browser_history.append("page2.html")
-browser_history.append("page3.html")
+# Initialize a queue
+queue = []
+queue.append("task1")
+queue.append("task2")
+queue.append("task3")
 
-while browser_history:
-    print(f"Returning to first visited page {browser_history.pop(0)}")
-
-'''Returning to first visited page page1.html
-Returning to first visited page page2.html
-Returning to first visited page page3.html
-'''
-
+# Process the queue in FIFO order
+while queue:
+    print(f"Processing first task in queue: {queue[0]}")
+    queue.pop(0)  # Remove the first element
 
 
 #################################################################################
@@ -1601,13 +1610,11 @@ def undo_changes():
 print("\nError detected! Undoing changes...\n")
 undo_changes()
 ######################################################################
-browser_history=[]
-browser_history.append("page1.html")
-browser_history.append("page2.html")
-browser_history.append("page3.html")
+browser_history = ["page1.html", "page2.html", "page3.html"]
 
 while browser_history:
-    print(f"Returning to last page {browser_history.pop()}")
+    print(f"Returning to last visited page {browser_history[-1]}")
+    browser_history = browser_history[:-1]  # Remove the last page
 
 '''Returning to last page page3.html
 Returning to last page page2.html
@@ -1620,37 +1627,28 @@ Returning page is page1.html'''
 ######################################################################
 #slinkedlistds
 import time
+
 class Pipeline:
     def __init__(self):
-        self.stages = []  
+        self.stages = []
 
-    def add_stage(self, name, action):
-        self.stages.append((name, action))
+    def add_stage(self, name):
+        self.stages.append(name)
 
     def execute(self):
-        for name, action in self.stages:
+        for name in self.stages:
             print(f"Executing stage: {name}")
-            action()
-            
+            print(f"{name} in progress...")
+            time.sleep(3)
         print("Pipeline execution completed.")
 
-# Define actions
-def build_action():
-    print("Building the application...")
-    time.sleep(3)
-def test_action():
-    print("Running tests...")
-    time.sleep(3)
-def deploy_action():
-    print("Deploying the application...")
-    time.sleep(3)
 # Create and execute the pipeline
-jenkins_pipeline = Pipeline()
-jenkins_pipeline.add_stage("Build", build_action)
-jenkins_pipeline.add_stage("Test", test_action)
-jenkins_pipeline.add_stage("Deploy", deploy_action)
+pipeline = Pipeline()
+for stage in ["Build", "Test", "Deploy"]:
+    pipeline.add_stage(stage)
 
-jenkins_pipeline.execute()
+pipeline.execute()
+
 
 ########################################################################
 #5.	Classes and Objects (OOP)
