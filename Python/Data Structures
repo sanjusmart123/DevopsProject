@@ -834,6 +834,7 @@ Each node represents a game state, and branches represent possible moves.
 
 #################################################################################################################################### 
 Graph
+A graph is a non-linear data structure that consists of a set of vertices (or nodes) connected by edges
 Graphs are used to store data collection of points called vertices (nodes) and edges (edges). 
 Graphs can be called as the most accurate representation of a real-world map.
 They are used to find the various cost-to-distance between the various data points called as the nodes and hence find the least path.
