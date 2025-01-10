@@ -619,47 +619,21 @@ Stacks are linear Data Structures which are based on the principle of Last-In-Fi
 It is built using the array structure and has operations namely, pushing (adding) elements, popping (deleting) elements and accessing elements only from one point in the stack called as the TOP.
 This TOP is the pointer to the current position of the stack. Stacks are prominently used in applications such as Recursive Programming, reversing words, undo mechanisms in word editors and so for
 
-# Initialize an empty stack
-stack = []
+stack = ["Deploy Database", "Deploy Backend"]
 
-# Push deployment steps onto the stack
-stack.append("Deploy Database")
-stack.append("Deploy Backend")
+while stack:
+    print(f"Rolling back: {stack.pop()}")
 
-# Pop and rollback each step manually
-if stack:
-    step = stack.pop()
-    print(f"Rolling back: {step}")
-else:
+if not stack:
     print("No steps to rollback.")
-
-if stack:
-    step = stack.pop()
-    print(f"Rolling back: {step}")
-else:
-    print("No steps to rollback.")
-
-if stack:
-    step = stack.pop()
-    print(f"Rolling back: {step}")
-else:
-    print("No steps to rollback.")
-
 
 Output:
 Rolling back: Deploy Backend
 Rolling back: Deploy Database
 No steps to rollback.
-
-
-Real-World Use in DevOps
-CI/CD Pipelines: Track deployment steps to roll back in case of failure.
-Infrastructure as Code (IaC): Undo/redo changes in infrastructure deployments.
-Container Management: Managing layered file systems in Docker.
-
 from queue import LifoQueue as config_stack
 import time
-
+##################################################################
 # Create a stack for configuration changes
 #config_stack = LifoQueue()
 
@@ -690,6 +664,12 @@ while browser_history:
 '''Returning to last page page3.html
 Returning to last page page2.html
 Returning to last page page1.html'''
+##########################################################################
+Real-World Use in DevOps
+CI/CD Pipelines: Track deployment steps to roll back in case of failure.
+Infrastructure as Code (IaC): Undo/redo changes in infrastructure deployments.
+Container Management: Managing layered file systems in Docker.
+
 ###################################################################################
 
 Queue
