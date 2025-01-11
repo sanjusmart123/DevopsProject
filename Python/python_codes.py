@@ -1424,15 +1424,28 @@ cars = ["Ford", "Volvo", "BMW"] #same type
 ###############################################
 #sdatastructures
 '''A data structure is a specialized format for organizing, processing, retrieving and storing data.
-Data Structures allows you to organize your data in such a way that enables you to store collections of data, relate them and perform operations on them accordingly.
-'''
-#4.	Data Structures
-list=["sai","Gulivindala",2,3.5]
-print(list)
-list.pop(2)
-print(list)
+Data Structures allows you to organize your data in such a way that enables you to store collections of data, 
+relate them and perform operations on them accordingly.
 
-#slists
+What is a Data Structure? 
+A data structure is a specialized format for organizing, processing, retrieving and storing data.
+Data Structures allows you to organize your data in such a way that enables you to store collections of data, relate them and perform operations on them accordingly.
+
+Types of Data Structures in Python
+Python has implicit support for Data Structures which enable you to store and access data.
+These structures are called List, Dictionary, Tuple and Set.
+
+Python allows its users to create their own Data Structures enabling them to have full control over their functionality. 
+The most prominent Data Structures are Stack, Queue, Tree, Linked List and so on which are also available to you in other programming languages.
+So now that you know what are the types available to you, why don’t we move ahead to the Data Structures and implement them using Python.
+
+Types of Datastructures:
+Built-in Data Structures
+User_defined Data structures
+'''
+
+##########################################################################################
+#slistds
 '''Built-in Data Structures
 Lists
 Lists are used to store data of different data types in a sequential manner. 
@@ -1470,7 +1483,7 @@ Server 192.168.1.5 is reachable.
 Ping operation completed for all servers.
 '''
 ##############################################
-#stuples
+#stupleds
 tuple1=("sai","Gulivindala",2,3.5,3+5j)
 print(tuple1)
 #tuple1[]
@@ -1519,7 +1532,6 @@ dict = {"username": "saig","password":"Saigulivindala"}
 print(dict)
 ##############################################################
 server_status = {"aws":"running","jenkins": "stopped","kubernetes":"running"}
-
 print(server_status["jenkins"])
 server_status["jenkins"] = "running"
 print(server_status["jenkins"])
@@ -1534,6 +1546,8 @@ git_branches = {
 print(f"The latest commit on {branch_name} is: {git_branches[branch_name]}")
 
 #########################################################################
+#suserdefinedds
+#User-Defined Data structures
 #sarrayds
 '''An array is a linear data structure that stores elements in contiguous memory locations. 
 It allows for efficient indexing and iteration, making it ideal for scenarios 
@@ -1547,6 +1561,10 @@ seats_array=[
 print(seats_array[1][2])
 #############################################################################
 #squeueds
+'''A queue is also a linear data structure which is based on the principle of First-In-First-Out (FIFO) where the data entered first will be accessed first.
+It is built using the array structure and has operations which can be performed from both ends of the Queue, that is, head-tail or front-back.
+Operations such as adding and deleting elements are called En-Queue and De-Queue and accessing the elements can be performed. 
+Queues are used as Network Buffers for traffic congestion management, used in Operating Systems for Job Scheduling and many more.'''
 from queue import Queue
 import time
 deployment_queue = Queue()
@@ -1586,6 +1604,9 @@ print(help(Queue))
 '''
 ###################################################################################
 #sstackds
+'''Stacks are linear Data Structures which are based on the principle of Last-In-First-Out (LIFO) where data which is entered last will be the first to get accessed. 
+It is built using the array structure and has operations namely, pushing (adding) elements, popping (deleting) elements and accessing elements only from one point in the stack called as the TOP.
+This TOP is the pointer to the current position of the stack. Stacks are prominently used in applications such as Recursive Programming, reversing words, undo mechanisms in word editors and so for'''
 from queue import LifoQueue as config_stack
 import time
 
@@ -1626,6 +1647,16 @@ Returning page is page2.html
 Returning page is page1.html'''
 ######################################################################
 #slinkedlistds
+'''A linked list is a linear data structure where each element is a separate object, known as a node. 
+Each node contains two items: the data and a reference (or link) to the next node in the sequence. 
+This structure allows for efficient insertion or removal of elements from any position in the sequence.
+These structures are most widely used in image viewing applications, music player applications and so forth.
+
+Pipeline Execution Order:
+Use Case: In continuous integration and continuous deployment (CI/CD) pipelines, each step of the pipeline (e.g., build, test, deploy) can be thought of as a node in a sequence.
+
+Task Scheduling:
+Use Case: Scheduling jobs for execution in a DevOps pipeline, such as testing, building, or deploying.'''
 import time
 
 class Pipeline:
@@ -1649,6 +1680,103 @@ for stage in ["Build", "Test", "Deploy"]:
 
 pipeline.execute()
 
+#########################################################################
+#treeds
+'''A Tree is a non linear heirarical data structure that consists each parent node can have at most 2 children nodes.
+Trees are non-linear Data Structures which have root and nodes.
+A tree is a collection of nodes connected by directed (or undirected) edges.
+The root is the node from where the data originates and the nodes are the other data points that are available to us. 
+The node that precedes is the parent and the node after is called the child. There are levels a tree has to show the depth of information. 
+The last nodes are called the leaves.
+Trees create a hierarchy which can be used in a lot of real-world applications such as the HTML pages use trees to distinguish which tag comes under which block.
+It is also efficient in searching purposes and much more.
+
+*Top node of the tree--Root
+*Height of the node ---The height of a node is the number of edges from node to the deepest leaf(ie.Longest path from from the root to the leaf node)
+*Depth Of a Node---The depth of a node is the number of edges from the root to the node
+Parent Node---If the node contains subnode,then that node is said to be parent of the subnode
+Degree of a node ---The degree of a node is the total branches of that node
+
+Types of trees:
+1. General Tree
+Definition: A tree where each node can have any number of children.
+Use Case: Representing hierarchical data like a file system or organizational structure.
+2. Binary Tree
+Definition: A tree where each node has at most two children, often referred to as the left and right child.
+Use Case: Expression trees, game trees.
+Variants:
+Full Binary Tree: Every node has either 0 or 2 children.
+
+3. Binary Search Tree (BST)
+Definition: A binary tree where the left child contains values less than the parent, and the right child contains values greater than the parent.
+Use Case: Efficient searching, sorting, and range queries.
+Operations: Insert, search, delete (all average O(log n)).
+
+4. Trie (Prefix Tree)
+Definition: A specialized tree for storing strings where each node represents a character of the string.
+it is fast and efficient way for dynamic spell checking.
+Use Case: Auto-complete, dictionary implementations, IP routing.
+Properties: Each path from root to a leaf represents a unique key.
+
+Use cases:
+Git uses a tree structure to represent commits, branches, and merges. Each commit in Git is a node, and the tree structure helps track changes over time.
+In CI/CD pipelines, some tasks depend on others (e.g., testing depends on building, deployment depends on passing tests). A tree can model these dependencies.
+Organizing infrastructure components and their relationships (e.g., a virtual network having subnets, security groups, and instances) can be modeled using a tree.
+
+Game trees are used in strategy games (like chess and checkers) to represent the possible moves of players. 
+Each node represents a game state, and branches represent possible moves.'''
+
+#####################################################################################
+#graphds
+'''Graph
+A graph is a non-linear data structure that consists of a set of vertices (or nodes) connected by edges
+Graphs are used to store data collection of points called vertices (nodes) and edges (edges). 
+Graphs can be called as the most accurate representation of a real-world map.
+They are used to find the various cost-to-distance between the various data points called as the nodes and hence find the least path.
+Many applications such as Google Maps, Uber, and many more use Graphs to find the least distance and increase profits in the best ways.
+
+In Continuous Integration/Continuous Deployment (CI/CD), pipelines often have jobs that depend on each other. 
+A graph can represent jobs as nodes and their dependencies as edges.
+(IaC), a graph can model the relationships between various cloud resources. 
+For example, an EC2 instance might depend on a security group, or a database might depend on a network.'''
+
+Ex:
+Cities are vertices.
+Roads between cities are edges.
+Edge weights represent distances.
+
+road_map = {
+    "CityA": [("CityB", 5), ("CityC", 10)],
+    "CityB": [("CityA", 5), ("CityD", 15)],
+    "CityC": [("CityA", 10), ("CityD", 20)],
+    "CityD": [("CityB", 15), ("CityC", 20)]
+}
+
+# CityA is connected to CityB (5 km) and CityC (10 km), and so on.
+
+website = {
+    "Home": ["About", "Services", "Contact"],
+    "About": ["Home", "Team"],
+    "Services": ["Home", "Pricing"],
+    "Contact": ["Home"]
+}
+
+# The "Home" page links to "About", "Services", and "Contact".
+
+########################################################################################################################
+#shashmaps
+'''HashMaps are the same as what dictionaries are in Python. 
+They can be used to implement applications such as phonebooks, populate data according to the lists and much more.'''
+##########################################################################################################################################
+'''The main difference between linear and nonlinear data structures lies in how the data elements are arranged and accessed
+In linear data structures, elements are arranged in a sequential order, where each element has a unique predecessor and successor (except for the first and last elements).
+Data is accessed in a linear or sequential manner.
+Sequential order: Elements are stored in a sequence, and each element is connected to the next one.
+
+In nonlinear data structures, elements are not arranged in a sequential order. 
+Instead, they are organized in a way that allows multiple relationships between elements, such as hierarchical or network-like structures.
+
+Non-sequential: Elements can be connected in multiple ways (not in a sequence).'''
 
 ########################################################################
 #5.	Classes and Objects (OOP)
@@ -1656,10 +1784,8 @@ pipeline.execute()
 '''In Python, a class is a blueprint for creating objects. 
 It defines the properties (attributes) and behaviors (methods) that the objects created from the class will have. 
 Classes are a fundamental part of object-oriented programming (OOP), 
-enabling you to encapsulate data and functions into reusable structures.'''
-
-
-'''In Python, an object is an instance of a class. 
+enabling you to encapsulate data and functions into reusable structures.
+In Python, an object is an instance of a class. 
 It is a fundamental building block in object-oriented programming (OOP) 
 and represents a specific "thing" that has attributes (data) and behaviors (methods).'''
 #createing a class
@@ -2472,18 +2598,15 @@ In other words, variables in Python do not have a fixed type, and their type can
 '''
 #############################################################################################
 #sencapsulation
-
 '''Encapsulation is a fundamental concept in object-oriented programming (OOP) that restricts direct access to some of an object's components, which can prevent the accidental modification of data. 
 In Python, encapsulation is achieved using the concept of classes and access modifiers
- It is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit called a class.
+It is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit called a class.
 
 1.Data Hiding:
-
 Encapsulation allows data to be hidden from the outside world.
 The data can only be accessed and modified through well-defined methods (getters and setters).
 
 2.Access Modifiers in Python:
-
 Python provides three levels of access control for attributes and methods:
 1.Public: Accessible from anywhere (attribute_name).
 Public members can be accessed from anywhere, both inside and outside the class.
@@ -2495,8 +2618,7 @@ class Person:
 person = Person("Alice")
 print(person.name)  # Accessible from outside
 
-
-''''2.Protected: 
+'''2.Protected: 
 Accessible within the class and its subclasses (_attribute_name).
 Protected members are intended to be accessible only within the class and its subclasses.
 By convention, they are prefixed with a single underscore _.
@@ -2519,7 +2641,6 @@ class Person:
 
 person = Person("Alice", 30)
 print(person.get_age())  #Output: 30
-
 
 ######################################################################################
 '''3.Private: Accessible only within the class (__attribute_name).
