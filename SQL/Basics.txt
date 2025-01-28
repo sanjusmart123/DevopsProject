@@ -1,3 +1,0 @@
-SQL (Structured Query Language) is a standard programming language used to communicate with and manage relational databases. 
-It allows users to perform tasks such as querying data, updating records, deleting records, and creating or modifying database structures. 
-SQL is widely used in database management systems like MySQL, PostgreSQL, Microsoft SQL Server, Oracle, and SQLite.
