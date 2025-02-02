@@ -7,4 +7,4 @@ Data Retrieval (Querying): Fetch data from databases using SELECT statements.
 Data Manipulation: Insert (INSERT), update (UPDATE), and delete (DELETE) data in tables.
 Data Definition: Create (CREATE), modify (ALTER), and drop (DROP) tables and other database objects.
 Data Control: Manage access to the database using GRANT and REVOKE.
-Transaction Control: Ensure data integrity with commands like COMMIT, ROLLBACK, and SAVEPOINT.
+Transaction Control: Ensure data integrity with commands like COMMIT, ROLLBACK, and SAVEPOINT
