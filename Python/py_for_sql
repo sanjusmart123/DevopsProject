@@ -1,0 +1,117 @@
+import os
+import sys
+import pymysql
+from datetime import datetime
+
+# Define the log file path
+LOG_FILE = "/tmp/setup_mysql.log"
+
+# Function to log messages to a file
+def log_message(message):
+    with open(LOG_FILE, "a") as log:
+        log.write(f"{datetime.now()} - {message}\n")
+    print(message)
+
+# Accept DB_HOST as a command-line argument
+if len(sys.argv) < 2:
+    log_message("❌ Error: Please provide the DB_HOST as a command-line argument.")
+    log_message("Usage: python3 setup_mysql.py <DB_HOST>")
+    sys.exit(1)
+
+# Get DB_HOST from command-line argument
+DB_HOST = sys.argv[1]
+
+# Set static database credentials
+DB_USER = "admin"
+DB_PASSWORD = "SecurePassword123!"
+DB_NAME = "mydb"
+
+# Install MySQL client and required packages
+def install_dependencies():
+    try:
+        log_message("⏳ Installing dependencies...")
+        os.system("sudo apt update -y && sudo apt install -y python3-pip mysql-client")
+        os.system("pip3 install pymysql")
+        log_message("✅ Dependencies installed successfully.")
+    except Exception as e:
+        log_message(f"❌ Error during dependency installation: {e}")
+        sys.exit(1)
+
+# Install dependencies
+install_dependencies()
+
+try:
+    # Connect to MySQL
+    log_message("⏳ Connecting to the database...")
+    connection = pymysql.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME,
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    log_message("✅ Connected to MySQL successfully!")
+
+    with connection.cursor() as cursor:
+        # List of SQL queries (with one wrong query for demonstration)
+        queries = [
+            """
+            CREATE TABLE IF NOT EXISTS users (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(50)
+            );
+            """,
+            """
+            CREATE TABLE IF NOT EXISTS orders (
+                order_id INT PRIMARY KEY AUTO_INCREMENT,
+                user_id INT,
+                product_name VARCHAR(100),
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+            """,
+            """
+            WRONG_SQL_COMMAND; -- Intentional error for demonstration
+            """,
+            """
+            INSERT INTO users (name) VALUES ('Sai');
+            """,
+            """
+            INSERT INTO orders (user_id, product_name) VALUES (1, 'Laptop');
+            """
+        ]
+
+        # Execute each query and log errors if any occur
+        for query in queries:
+            try:
+                log_message(f"🔄 Executing query: {query.strip()}")
+                cursor.execute(query)
+                log_message("✅ Query executed successfully.")
+            except pymysql.MySQLError as e:
+                log_message(f"❌ SQL Error: {e} | Query: {query.strip()}")
+
+        # Perform a JOIN query to fetch combined data
+        try:
+            join_query = """
+            SELECT users.name AS user_name, orders.product_name AS product
+            FROM users
+            INNER JOIN orders ON users.id = orders.user_id;
+            """
+            log_message(f"🔄 Executing JOIN query: {join_query.strip()}")
+            cursor.execute(join_query)
+            result = cursor.fetchall()
+            log_message(f"📌 Joined Records: {result}")
+        except pymysql.MySQLError as e:
+            log_message(f"❌ SQL Error during JOIN: {e}")
+
+    # Commit the transaction
+    connection.commit()
+
+except pymysql.MySQLError as e:
+    log_message(f"❌ Database error: {e}")
+except Exception as e:
+    log_message(f"❌ General error: {e}")
+finally:
+    if 'connection' in locals() and connection.open:
+        connection.close()
+        log_message("🔒 Database connection closed.")
+
