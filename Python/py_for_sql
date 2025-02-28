@@ -1,3 +1,106 @@
+
+import os
+import sys
+import pymysql
+import time
+from datetime import datetime
+
+# Define paths
+LOG_FILE = "/tmp/setup_mysql.log"  # Store logs in /tmp (Linux-friendly)
+SQL_FILE = "/tmp/mydb.sql"  # Linux path where Terraform uploads the SQL file
+
+# Function to log messages
+def log_message(message):
+    with open(LOG_FILE, "a") as log:
+        log.write(f"{datetime.now()} - {message}\n")
+    print(message)
+
+# Ensure the DB_HOST is passed as an argument
+if len(sys.argv) < 2:
+    log_message("❌ Error: Please provide the DB_HOST as a command-line argument.")
+    sys.exit(1)
+
+DB_HOST = sys.argv[1]
+DB_USER = "admin"
+DB_PASSWORD = "SecurePassword123!"
+DB_NAME = "mydb"
+
+# Install MySQL client and required dependencies
+def install_dependencies():
+    try:
+        log_message("⏳ Installing dependencies...")
+        os.system("pip install --quiet pymysql")  # Silent installation
+        log_message("✅ Dependencies installed successfully.")
+    except Exception as e:
+        log_message(f"❌ Error during dependency installation: {e}")
+        sys.exit(1)
+
+# Install dependencies
+install_dependencies()
+
+# Function to connect to MySQL with retry logic
+def connect_to_database(retries=3, delay=5):
+    """Tries to connect to the database, retrying on failure."""
+    for attempt in range(1, retries + 1):
+        try:
+            log_message(f"⏳ Attempt {attempt}/{retries}: Connecting to MySQL at {DB_HOST}...")
+            connection = pymysql.connect(
+                host=DB_HOST,
+                user=DB_USER,
+                password=DB_PASSWORD,
+                database=DB_NAME,
+                cursorclass=pymysql.cursors.DictCursor
+            )
+            log_message("✅ Connected to MySQL successfully!")
+            return connection
+        except pymysql.MySQLError as e:
+            log_message(f"❌ Connection failed: {e}")
+            if attempt < retries:
+                log_message(f"🔄 Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                log_message("❌ All retry attempts failed. Exiting.", is_error=True)
+                sys.exit(1)
+
+# Connect to MySQL with retry logic
+connection = connect_to_database()
+
+try:
+    with connection.cursor() as cursor:
+        # 🔹 Read the SQL file and execute its commands
+        if os.path.exists(SQL_FILE):
+            log_message(f"📂 Reading SQL file: {SQL_FILE}")
+            with open(SQL_FILE, "r") as file:
+                sql_script = file.read()
+
+            # 🔹 Split SQL commands and execute each one
+            for query in sql_script.split(";"):
+                query = query.strip()
+                if query:
+                    try:
+                        log_message(f"🔄 Executing query: {query}")
+                        cursor.execute(query)
+                        log_message("✅ Query executed successfully.")
+                    except pymysql.MySQLError as e:
+                        log_message(f"❌ SQL Error: {e} | Query: {query}")
+
+        else:
+            log_message(f"❌ SQL file not found at {SQL_FILE}")
+
+    connection.commit()
+    log_message("✅ Database changes committed successfully.")
+
+except pymysql.MySQLError as e:
+    log_message(f"❌ Database error: {e}")
+except Exception as e:
+    log_message(f"❌ General error: {e}")
+finally:
+    if 'connection' in locals() and connection.open:
+        connection.close()
+        log_message("🔒 Database connection closed.")
+
+
+######################################################################################
 import os
 import sys
 import pymysql
