@@ -639,3 +639,289 @@ SELECT AVG(Price) AS AveragePrice, CategoryID
 FROM Products
 GROUP BY CategoryID;
 You will learn more about the GROUP BY clause later in this tutorial.
+
+####################################################################################
+SQL LIKE Operator
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+
+ The percent sign % represents zero, one, or multiple characters
+ The underscore sign _ represents one, single character
+ 
+Select all customers that starts with the letter "a":
+
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+
+Return all customers from a city that starts with 'L' followed by one wildcard character, 
+then 'nd' and then two wildcard characters:
+
+SELECT * FROM Customers
+WHERE city LIKE 'L_nd__';
+
+The % Wildcard
+The % wildcard represents any number of characters, even zero characters.
+
+Example
+Return all customers from a city that contains the letter 'L':
+
+SELECT * FROM Customers
+WHERE city LIKE '%L%';
+
+##########################################################################################
+
+SQL Wildcards
+SQL Wildcard Characters
+A wildcard character is used to substitute one or more characters in a string.
+
+Wildcard characters are used with the LIKE operator. The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+Return all customers that starts with the letter 'a':
+
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+
+############################################################################################
+The SQL IN Operator
+The IN operator allows you to specify multiple values in a WHERE clause.
+
+The IN operator is a shorthand for multiple OR conditions.
+
+ExampleGet your own SQL Server
+Return all customers from 'Germany', 'France', or 'UK'
+
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
+#################################################################################
+SQL BETWEEN Operator
+The SQL BETWEEN Operator
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+The BETWEEN operator is inclusive: begin and end values are included. 
+Selects all products with a price between 10 and 20:
+
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20;
+###############################################################################
+SQL Aliases
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+Aliases are often used to make column names more readable.
+An alias only exists for the duration of that query.
+An alias is created with the AS keyword.
+SELECT CustomerID AS ID
+FROM Customers;
+##############################################################################
+SQL JOIN
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+Different Types of SQL JOINs
+Here are the different types of the JOINs in SQL:
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+###############################################################################
+INNER JOIN
+The INNER JOIN keyword selects records that have matching values in both tables.
+We will join the Products table with the Categories table, by using the CategoryID field from both tables:
+Join Products and Categories with the INNER JOIN keyword:
+
+SELECT ProductID, ProductName, CategoryName
+FROM Products
+INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+
+The INNER JOIN keyword returns only rows with a match in both tables. Which means that if you have a product with no CategoryID, 
+ or with a CategoryID that is not present in the Categories table, that record would not be returned in the result.
+ It is a good practice to include the table name when specifying columns in the SQL statement.
+Specify the table names:
+SELECT Products.ProductID, Products.ProductName, Categories.CategoryName
+FROM Products
+INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+JOIN or INNER JOIN
+JOIN and INNER JOIN will return the same result.
+
+INNER is the default join type for JOIN, so when you write JOIN the parser actually writes INNER JOIN.
+JOIN is the same as INNER JOIN:
+
+SELECT Products.ProductID, Products.ProductName, Categories.CategoryName
+FROM Products
+JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+
+JOIN Three Tables
+The following SQL statement selects all orders with customer and shipper information:
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+############################################################################
+SQL LEFT JOIN Keyword
+The LEFT JOIN keyword returns all records from the left table (table1), 
+and the matching records from the right table (table2).
+ The result is 0 records from the right side, if there is no match.
+ SQL LEFT JOIN Keyword
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.
+
+LEFT JOIN Syntax
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+The following SQL statement will select all customers, and any orders they might have:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+##############################################################################
+SQL RIGHT JOIN Keyword
+The RIGHT JOIN keyword returns all records from the right table (table2), 
+and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+The following SQL statement will return all employees, and any orders they might have placed:
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+###############################################################################
+SQL FULL OUTER JOIN Keyword
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+Tip: FULL OUTER JOIN and FULL JOIN are the same
+The following SQL statement selects all customers, and all orders:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+#############################################################################
+SQL Self Join
+A self join is a regular join, but the table is joined with itself.
+SQL Self Join Example
+The following SQL statement matches customers that are from the same city:
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+###########################################################################
+The SQL UNION Operator
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+Every SELECT statement within UNION must have the same number of columns
+The columns must also have similar data types
+The columns in every SELECT statement must also be in the same order
+UNION ALL Syntax
+The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+Note: The column names in the result-set are usually equal to the column names in the first SELECT statement.
+The following SQL statement returns the cities (only distinct values) from both the "Customers" and the "Suppliers" table:
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+#################################################################################
+The SQL GROUP BY Statement
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.
+SQL GROUP BY Examples
+The following SQL statement lists the number of customers in each country:
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+The following SQL statement lists the number of customers in each country, sorted high to low:
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID) DESC;
+
+GROUP BY With JOIN Example
+The following SQL statement lists the number of orders sent by each shipper:
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+####################################################################################
+The SQL HAVING Clause
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+SQL HAVING Examples
+The following SQL statement lists the number of customers in each country. Only include countries with more than 5 customers:
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+The following SQL statement lists the number of customers in each country, 
+sorted high to low (Only include countries with more than 5 customers):
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+The following SQL statement lists the employees that have registered more than 10 orders:
+
+Example
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM (Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 10;
+#############################################################################
+The SQL EXISTS Operator
+The EXISTS operator is used to test for the existence of any record in a subquery.
+The EXISTS operator returns TRUE if the subquery returns one or more records.
+SQL EXISTS Examples
+The following SQL statement returns TRUE and lists the suppliers with a product price less than 20:
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+############################################################################
+The SQL ANY and ALL Operators
+The ANY and ALL operators allow you to perform a comparison between a single column value and a range of other values.
+The SQL ANY Operator
+The ANY operator:
+returns a boolean value as a result
+returns TRUE if ANY of the subquery values meet the condition
+ANY means that the condition will be true if the operation is true for any of the values in the range.
+The SQL ALL Operator
+The ALL operator:
+returns a boolean value as a result
+returns TRUE if ALL of the subquery values meet the condition
+is used with SELECT, WHERE and HAVING statements
+ALL means that the condition will be true only if the operation is true for all values in the range.
+SQL ANY Examples
+The following SQL statement lists the ProductName if it finds ANY records in the OrderDetails table has Quantity equal to 10 (this will return TRUE because the Quantity column has some values of 10):
+
+ExampleGet your own SQL Server
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);  
+##################################################################################
+The SQL SELECT INTO Statement
+The SELECT INTO statement copies data from one table into a new table.
+SELECT INTO Syntax
+Copy all columns into a new table:
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+SQL SELECT INTO Examples
+The following SQL statement creates a backup copy of Customers:
+SELECT * INTO CustomersBackup2017
+FROM Customers;
+####################################################################################
+The SQL INSERT INTO SELECT Statement
+The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+The INSERT INTO SELECT statement requires that the data types in source and target tables match.
+The existing records in the target table are unaffected.
+Copy "Suppliers" into "Customers" (the columns that are not filled with data, will contain NULL):
+
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
+#######################################################################################
+The SQL CREATE DATABASE Statement
+The CREATE DATABASE statement is used to create a new SQL database.
+CREATE DATABASE databasename;
+
+The SQL DROP DATABASE Statement
+The DROP DATABASE statement is used to drop an existing SQL database.
+DROP DATABASE databasename;
