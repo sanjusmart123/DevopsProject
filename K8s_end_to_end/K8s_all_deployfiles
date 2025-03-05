@@ -1,0 +1,244 @@
+#!/bin/bash
+set -ex
+kubectl apply -f Deployment.yml
+sleep 10
+kubectl apply -f Service.yml
+sleep 10
+kubectl apply -f configmap.yml
+sleep 10
+kubectl apply -f secretes.yml
+sleep 10
+kubectl apply -f ingress.yml
+sleep 10
+kubectl apply -f eggress.yml
+sleep 10
+kubectl apply -f pv.yml
+sleep 10
+kubectl apply -f pvc.yml
+sleep 10
+kubectl apply -f role.yml
+sleep 10
+kubectl apply -f rolebinding.yml
+sleep 10
+kubectl apply -f serviceacount.yml
+sleep 10
+kubectl apply -f statefulset.yml
+sleep 10
+kubectl apply -f daemonset.yml
+sleep 10
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-config
+  namespace: default
+data:
+  welcome_message: "Welcome to My WebApp!"
+  log_level: "INFO"
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: webapp-daemonset
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: app-container
+        image: nginx
+        volumeMounts:
+        - name: storage
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-pvc
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-webapp-deployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          # Allow one additional pod to be created during the update
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      serviceAccountName: webapp-service-account
+      containers:
+      - name: webapp-container
+        image: nginx
+        env:
+        # Environment variables from ConfigMap
+        - name: WELCOME_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: welcome_message
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: log_level
+        # Environment variables from Secret
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secret
+              key: db_username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secret
+              key: db_password
+        volumeMounts:
+        - name: storage
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-pvc
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: egress-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: webapp
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 192.168.1.0/24
+    ports:
+    - protocol: TCP
+      port: 443
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+ 
+spec:
+  rules:
+  - host: webapp.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webapp-service
+            port:
+              number: 80
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/data"
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: webapp-role
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "secrets"]
+  verbs: ["get", "list"]
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: webapp-role-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: webapp-service-account
+  namespace: default
+roleRef:
+  kind: Role
+  name: webapp-role
+  apiGroup: rbac.authorization.k8s.io
+apiVersion: v1
+kind: Secret
+metadata:
+  name: webapp-secret
+  namespace: default
+type: Opaque
+data:
+  db_username: YWRtaW4=       
+  db_password: cGFzc3dvcmQ=   
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080
+  type: NodePortapiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webapp-service-account
+  namespace: default
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: webapp-statefulset
+  namespace: default
+spec:
+  serviceName: "webapp"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: app-container
+        image: nginx
+        volumeMounts:
+        - name: storage
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-pvc
+
