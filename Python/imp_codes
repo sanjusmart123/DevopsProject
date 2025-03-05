@@ -1,0 +1,11 @@
+import os
+
+file_path = "database_setup.sql"
+
+# Check if file exists before deleting
+if os.path.exists(file_path):
+    os.remove(file_path)
+    print(f"✅ File '{file_path}' has been deleted.")
+else:
+    print(f"❌ File '{file_path}' not found.")
+##########################################################
